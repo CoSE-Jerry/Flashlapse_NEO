@@ -2,18 +2,33 @@
 
 # Form implementation generated from reading ui file 'FlashLapse_CP.ui'
 #
-# Created by: PyQt5 UI code generator 5.9
+# Created by: PyQt5 UI code generator 5.8.2
 #
 # WARNING! All changes made in this file will be lost!
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+import PyQt5
+from threading import Timer
+from picamera import PiCamera
+from time import sleep
+from PyQt5.QtWidgets import QApplication
+import os
+import serial
+name =None
+directory = None
+global stop
+ASD = serial.Serial('/dev/ttyACM0', 9600)
+interval = None
+duration = None
+total = None
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(800, 480)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../_image/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -23,7 +38,7 @@ class Ui_MainWindow(object):
         self.Image_Frame.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.Image_Frame.setLineWidth(5)
         self.Image_Frame.setText("")
-        self.Image_Frame.setPixmap(QtGui.QPixmap("../_image/background1.png"))
+        self.Image_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/background1.png"))
         self.Image_Frame.setScaledContents(True)
         self.Image_Frame.setObjectName("Image_Frame")
         self.Snapshot = QtWidgets.QPushButton(self.centralwidget)
@@ -38,6 +53,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_4.setObjectName("verticalLayout_4")
         self.JPG = QtWidgets.QRadioButton(self.verticalLayoutWidget)
         self.JPG.setObjectName("JPG")
+        self.JPG.setChecked(True)
         self.verticalLayout_4.addWidget(self.JPG)
         self.PNG = QtWidgets.QRadioButton(self.verticalLayoutWidget)
         self.PNG.setObjectName("PNG")
@@ -60,7 +76,7 @@ class Ui_MainWindow(object):
         self.Color_Frame = QtWidgets.QLabel(self.FullColor)
         self.Color_Frame.setGeometry(QtCore.QRect(30, 10, 250, 250))
         self.Color_Frame.setText("")
-        self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_None.png"))
+        self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None.png"))
         self.Color_Frame.setScaledContents(True)
         self.Color_Frame.setObjectName("Color_Frame")
         self.Full_Color_Select = QtWidgets.QComboBox(self.FullColor)
@@ -76,13 +92,13 @@ class Ui_MainWindow(object):
         self.Half_Left = QtWidgets.QLabel(self.HalfColor)
         self.Half_Left.setGeometry(QtCore.QRect(11, 10, 125, 250))
         self.Half_Left.setText("")
-        self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_None_Left.png"))
+        self.Half_Left.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None_Left.png"))
         self.Half_Left.setScaledContents(True)
         self.Half_Left.setObjectName("Half_Left")
         self.Half_Right = QtWidgets.QLabel(self.HalfColor)
         self.Half_Right.setGeometry(QtCore.QRect(165, 10, 125, 250))
         self.Half_Right.setText("")
-        self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_None_Right.png"))
+        self.Half_Right.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None_Right.png"))
         self.Half_Right.setScaledContents(True)
         self.Half_Right.setObjectName("Half_Right")
         self.layoutWidget = QtWidgets.QWidget(self.HalfColor)
@@ -218,9 +234,9 @@ class Ui_MainWindow(object):
         self.Presets1.addTab(self.Barrier, "")
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
-        self.pushButton_4 = QtWidgets.QPushButton(self.tab)
-        self.pushButton_4.setGeometry(QtCore.QRect(40, 70, 231, 141))
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.disco = QtWidgets.QPushButton(self.tab)
+        self.disco.setGeometry(QtCore.QRect(40, 70, 231, 141))
+        self.disco.setObjectName("disco")
         self.Presets1.addTab(self.tab, "")
         self.Lights.addTab(self.Presets, "")
         self.Control_Tab.addTab(self.Lighting, "")
@@ -244,7 +260,7 @@ class Ui_MainWindow(object):
         self.Image_Interval.setObjectName("Image_Interval")
         self.verticalLayout.addWidget(self.Image_Interval)
         self.ICI_spinBox = QtWidgets.QSpinBox(self.layoutWidget2)
-        self.ICI_spinBox.setMaximum(9999)
+        self.ICI_spinBox.setMaximum(100000)
         self.ICI_spinBox.setObjectName("ICI_spinBox")
         self.verticalLayout.addWidget(self.ICI_spinBox)
         self.verticalLayout_3.addLayout(self.verticalLayout)
@@ -254,6 +270,7 @@ class Ui_MainWindow(object):
         self.Image_Duration.setObjectName("Image_Duration")
         self.verticalLayout_2.addWidget(self.Image_Duration)
         self.ISD_spinBox = QtWidgets.QSpinBox(self.layoutWidget2)
+        self.ISD_spinBox.setMaximum(100000)
         self.ISD_spinBox.setObjectName("ISD_spinBox")
         self.verticalLayout_2.addWidget(self.ISD_spinBox)
         self.line = QtWidgets.QFrame(self.layoutWidget2)
@@ -283,94 +300,17 @@ class Ui_MainWindow(object):
         self.Console.setObjectName("Console")
         self.verticalLayout_6.addWidget(self.Console)
         self.Progress_Bar = QtWidgets.QProgressBar(self.layoutWidget3)
-        self.Progress_Bar.setProperty("value", 24)
+        self.Progress_Bar.setProperty("value", 0)
         self.Progress_Bar.setObjectName("Progress_Bar")
         self.verticalLayout_6.addWidget(self.Progress_Bar)
+        self.layoutWidget.raise_()
+        self.layoutWidget.raise_()
         self.Control_Tab.addTab(self.Imaging, "")
-        self.Cloud = QtWidgets.QWidget()
-        self.Cloud.setObjectName("Cloud")
-        self.Service_Select = QtWidgets.QTabWidget(self.Cloud)
-        self.Service_Select.setGeometry(QtCore.QRect(10, 10, 401, 241))
-        self.Service_Select.setObjectName("Service_Select")
-        self.Dropbox = QtWidgets.QWidget()
-        self.Dropbox.setObjectName("Dropbox")
-        self.label = QtWidgets.QLabel(self.Dropbox)
-        self.label.setGeometry(QtCore.QRect(60, 10, 271, 140))
-        self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../_image/DropBox.png"))
-        self.label.setScaledContents(True)
-        self.label.setObjectName("label")
-        self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.Dropbox)
-        self.verticalLayoutWidget_2.setGeometry(QtCore.QRect(50, 130, 291, 80))
-        self.verticalLayoutWidget_2.setObjectName("verticalLayoutWidget_2")
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_2)
-        self.verticalLayout_9.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        spacerItem2 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_9.addItem(spacerItem2)
-        self.Dropbox_Email_Prompt = QtWidgets.QLabel(self.verticalLayoutWidget_2)
-        self.Dropbox_Email_Prompt.setObjectName("Dropbox_Email_Prompt")
-        self.verticalLayout_9.addWidget(self.Dropbox_Email_Prompt)
-        self.Drop_Box_Email = QtWidgets.QLineEdit(self.verticalLayoutWidget_2)
-        self.Drop_Box_Email.setObjectName("Drop_Box_Email")
-        self.verticalLayout_9.addWidget(self.Drop_Box_Email)
-        self.Dropbox_Confirm = QtWidgets.QPushButton(self.verticalLayoutWidget_2)
-        self.Dropbox_Confirm.setObjectName("Dropbox_Confirm")
-        self.verticalLayout_9.addWidget(self.Dropbox_Confirm)
-        self.Service_Select.addTab(self.Dropbox, "")
-        self.CyVerse = QtWidgets.QWidget()
-        self.CyVerse.setObjectName("CyVerse")
-        self.label_2 = QtWidgets.QLabel(self.CyVerse)
-        self.label_2.setGeometry(QtCore.QRect(60, 50, 281, 61))
-        self.label_2.setText("")
-        self.label_2.setPixmap(QtGui.QPixmap("../_image/cyverse_logo.png"))
-        self.label_2.setScaledContents(True)
-        self.label_2.setObjectName("label_2")
-        self.verticalLayoutWidget_3 = QtWidgets.QWidget(self.CyVerse)
-        self.verticalLayoutWidget_3.setGeometry(QtCore.QRect(50, 130, 291, 80))
-        self.verticalLayoutWidget_3.setObjectName("verticalLayoutWidget_3")
-        self.verticalLayout_10 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_3)
-        self.verticalLayout_10.setContentsMargins(0, 0, 0, 0)
-        self.verticalLayout_10.setObjectName("verticalLayout_10")
-        spacerItem3 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
-        self.verticalLayout_10.addItem(spacerItem3)
-        self.CyVerse_Email_Prompt = QtWidgets.QLabel(self.verticalLayoutWidget_3)
-        self.CyVerse_Email_Prompt.setObjectName("CyVerse_Email_Prompt")
-        self.verticalLayout_10.addWidget(self.CyVerse_Email_Prompt)
-        self.CyVerse_Email = QtWidgets.QLineEdit(self.verticalLayoutWidget_3)
-        self.CyVerse_Email.setObjectName("CyVerse_Email")
-        self.verticalLayout_10.addWidget(self.CyVerse_Email)
-        self.CyVerse_Confirm = QtWidgets.QPushButton(self.verticalLayoutWidget_3)
-        self.CyVerse_Confirm.setObjectName("CyVerse_Confirm")
-        self.verticalLayout_10.addWidget(self.CyVerse_Confirm)
-        self.Service_Select.addTab(self.CyVerse, "")
-        self.horizontalLayoutWidget = QtWidgets.QWidget(self.Cloud)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(40, 310, 361, 31))
-        self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
-        self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
-        self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
-        self.horizontalLayout_6.setObjectName("horizontalLayout_6")
-        self.Frequency_off = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
-        self.Frequency_off.setObjectName("Frequency_off")
-        self.horizontalLayout_6.addWidget(self.Frequency_off)
-        self.Frequency_rare = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
-        self.Frequency_rare.setObjectName("Frequency_rare")
-        self.horizontalLayout_6.addWidget(self.Frequency_rare)
-        self.radioButton_4 = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
-        self.radioButton_4.setObjectName("radioButton_4")
-        self.horizontalLayout_6.addWidget(self.radioButton_4)
-        self.radioButton = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
-        self.radioButton.setObjectName("radioButton")
-        self.horizontalLayout_6.addWidget(self.radioButton)
-        self.Email_Update_Prompt = QtWidgets.QLabel(self.Cloud)
-        self.Email_Update_Prompt.setGeometry(QtCore.QRect(40, 290, 171, 20))
-        self.Email_Update_Prompt.setObjectName("Email_Update_Prompt")
-        self.Control_Tab.addTab(self.Cloud, "")
         self.Start_Imaging = QtWidgets.QCommandLinkButton(self.centralwidget)
         self.Start_Imaging.setGeometry(QtCore.QRect(470, 380, 291, 51))
         self.Start_Imaging.setAutoFillBackground(False)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../_image/Start-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Start-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Start_Imaging.setIcon(icon1)
         self.Start_Imaging.setIconSize(QtCore.QSize(35, 35))
         self.Start_Imaging.setObjectName("Start_Imaging")
@@ -397,11 +337,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(2)
+        self.Control_Tab.setCurrentIndex(0)
         self.Lights.setCurrentIndex(0)
         self.Constant_Mode.setCurrentIndex(0)
         self.Presets1.setCurrentIndex(0)
-        self.Service_Select.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -410,9 +349,9 @@ class Ui_MainWindow(object):
         self.Snapshot.setText(_translate("MainWindow", "Snapshot"))
         self.JPG.setText(_translate("MainWindow", "JPG"))
         self.PNG.setText(_translate("MainWindow", "PNG"))
-        self.Full_Color_Select.setCurrentText(_translate("MainWindow", "Red"))
-        self.Full_Color_Select.setItemText(0, _translate("MainWindow", "Red"))
-        self.Full_Color_Select.setItemText(1, _translate("MainWindow", "None"))
+        self.Full_Color_Select.setCurrentText(_translate("MainWindow", "None"))
+        self.Full_Color_Select.setItemText(0, _translate("MainWindow", "none"))
+        self.Full_Color_Select.setItemText(1, _translate("MainWindow", "Red"))
         self.Full_Color_Select.setItemText(2, _translate("MainWindow", "Green"))
         self.Full_Color_Select.setItemText(3, _translate("MainWindow", "Blue"))
         self.Constant_Mode.setTabText(self.Constant_Mode.indexOf(self.FullColor), _translate("MainWindow", "Full"))
@@ -432,7 +371,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">12 hours full spectrum light from above, 90 degree rotation &amp; all lights become a certain color.</p></body></html>"))
         self.Gravi_Confirm.setText(_translate("MainWindow", "Confirm "))
-        self.Color_Gravi.setText(_translate("MainWindow", "Rotation Color:"))
+        self.Color_Gravi.setText(_translate("MainWindow", "Color:"))
         self.Gravi_Red.setText(_translate("MainWindow", "Red"))
         self.Gravi_Green.setText(_translate("MainWindow", "Green"))
         self.Gravi_Blue.setText(_translate("MainWindow", "Blue"))
@@ -444,7 +383,7 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">7 days of a certain colored light from all sides.</p></body></html>"))
         self.Germi_Confirm.setText(_translate("MainWindow", "Confirm "))
-        self.Color_Germi.setText(_translate("MainWindow", "Color Setting:"))
+        self.Color_Germi.setText(_translate("MainWindow", "Color:"))
         self.Germi_Red.setText(_translate("MainWindow", "Red"))
         self.Germi_Green.setText(_translate("MainWindow", "Green"))
         self.Germi_Blue.setText(_translate("MainWindow", "Blue"))
@@ -456,13 +395,13 @@ class Ui_MainWindow(object):
 "</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">24 hour of a certain colored light from above.</p></body></html>"))
         self.Barrier_Confirm.setText(_translate("MainWindow", "Confirm "))
-        self.Color_Barri.setText(_translate("MainWindow", "Color Setting:"))
+        self.Color_Barri.setText(_translate("MainWindow", "Color:"))
         self.Barri_Red.setText(_translate("MainWindow", "Red"))
         self.Barri_Green.setText(_translate("MainWindow", "Green"))
         self.Barri_Blue.setText(_translate("MainWindow", "Blue"))
         self.Barri_White.setText(_translate("MainWindow", "White"))
         self.Presets1.setTabText(self.Presets1.indexOf(self.Barrier), _translate("MainWindow", "Barrier"))
-        self.pushButton_4.setText(_translate("MainWindow", "Start!"))
+        self.disco.setText(_translate("MainWindow", "Start!"))
         self.Presets1.setTabText(self.Presets1.indexOf(self.tab), _translate("MainWindow", "Disco"))
         self.Lights.setTabText(self.Lights.indexOf(self.Presets), _translate("MainWindow", "Presets"))
         self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Lighting), _translate("MainWindow", "Lighting"))
@@ -474,21 +413,184 @@ class Ui_MainWindow(object):
         self.Directory.setText(_translate("MainWindow", "Storage Directory"))
         self.live_feed.setText(_translate("MainWindow", "Start Live Feed (30s)"))
         self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Imaging), _translate("MainWindow", "Imaging"))
-        self.Dropbox_Email_Prompt.setText(_translate("MainWindow", "Please Enter Your Email Adress: "))
-        self.Dropbox_Confirm.setText(_translate("MainWindow", "Confirm Email"))
-        self.Service_Select.setTabText(self.Service_Select.indexOf(self.Dropbox), _translate("MainWindow", "Dropbox"))
-        self.CyVerse_Email_Prompt.setText(_translate("MainWindow", "Please Enter Your CyVerse Email Adress:"))
-        self.CyVerse_Confirm.setText(_translate("MainWindow", "Confirm Email"))
-        self.Service_Select.setTabText(self.Service_Select.indexOf(self.CyVerse), _translate("MainWindow", "CyVerse "))
-        self.Frequency_off.setText(_translate("MainWindow", "OFF"))
-        self.Frequency_rare.setText(_translate("MainWindow", "RARE"))
-        self.radioButton_4.setText(_translate("MainWindow", "AVERAGE"))
-        self.radioButton.setText(_translate("MainWindow", "FREQUENT"))
-        self.Email_Update_Prompt.setText(_translate("MainWindow", "Email Status Update Frequency:"))
-        self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Cloud), _translate("MainWindow", "Cloud"))
         self.Start_Imaging.setText(_translate("MainWindow", "Start Image Sequence"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.actionOpen_Directory.setText(_translate("MainWindow", "Open Directory"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionCreate_Timelapse.setText(_translate("MainWindow", "Create Timelapse"))
+        self.run()
+
+    def run(self):
+        self.IST_Editor.editingFinished.connect(self.IST_Edit)
+        self.ICI_spinBox.valueChanged.connect(self.ICI_Change)
+        self.ISD_spinBox.valueChanged.connect(self.ISD_Change)
+        self.Snapshot.clicked.connect(self.take_snapshot)
+        self.live_feed.clicked.connect(self.start_live_feed)
+        self.Start_Imaging.clicked.connect(self.start_imaging)
+        self.Full_Color_Select.currentIndexChanged.connect(self.full_color_change)
+        self.Left_Select.currentIndexChanged.connect(self.half_color_change_left)
+        self.Right_Select.currentIndexChanged.connect(self.half_color_change_right)
+        self.Gravi_Confirm.clicked.connect(self.gravi_confirm)
+        self.Germi_Confirm.clicked.connect(self.germi_confirm)
+        self.Barrier_Confirm.clicked.connect(self.barri_confirm)
+        self.disco.clicked.connect(self.disco_confirm)
+
+    def IST_Edit(self):
+        global directory, name
+        name = self.IST_Editor.text()
+        print("name: " + name)
+        directory = "/home/pi/Desktop/" + name
+        self.Directory.setText(directory)
+
+    def ICI_Change(self):
+        global interval
+        interval = self.ICI_spinBox.value()
+
+    def ISD_Change(self):
+        global duration
+        duration = self.ISD_spinBox.value()
+        
+    def take_snapshot(self):
+        with PiCamera() as camera:
+            camera.resolution = (2464,2464)
+            camera.capture("/home/pi/Desktop/Flashlapse/temp/snap.jpg")
+        user_img = PyQt5.QtGui.QImage("/home/pi/Desktop/Flashlapse/temp/snap.jpg")
+        self.Image_Frame.setPixmap(QtGui.QPixmap(user_img))
+
+    def start_live_feed(self):
+        with PiCamera() as camera:
+            camera.start_preview()
+            sleep(30)
+            camera.stop_preview()
+            
+
+    def start_imaging(self):
+        global directory, name
+        global duration, interval, total
+        total = int((duration*60)/interval)
+        self.Progress_Bar.setMaximum(total)
+        self.Start_Imaging.setText("Imaging...")
+        if self.JPG.isChecked():
+            finaldir = directory+"/"+ name +"_%04d.jpg"
+        elif self.PNG.isChecked():
+            finaldir = directory+"/"+ name +"_%04d.png"
+        if(not os.path.isdir(directory)):
+            os.mkdir(directory)
+        for i in range(total):
+            with PiCamera() as camera:
+                camera.resolution = (2464,2464)
+                sleep(1)
+                temp = finaldir % i
+                camera.capture(temp)
+            current_img = PyQt5.QtGui.QImage(temp)
+            self.Image_Frame.setPixmap(QtGui.QPixmap(current_img))
+            self.Progress_Bar.setValue(i+1)
+            QApplication.processEvents()
+
+            sleep(interval-1)
+
+    def stop_imaging(self):
+        global stop
+        stop = 2
+        self.Start_Imaging.setText("Start Image Sequence")
+
+
+    def full_color_change(self):
+        temp = self.Full_Color_Select.currentIndex()
+        if temp == 1:
+            ASD.write(bytes('1', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Red.png"))
+        elif temp == 2:
+            ASD.write(bytes('2', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Green.png"))
+        elif temp == 3:
+            ASD.write(bytes('3', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Blue.png"))
+        elif temp == 4:
+            ASD.write(bytes('4', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Rainbow.png"))
+        else:
+            ASD.write(bytes('0', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None.png"))
+
+        self.Half_Left.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None_Left.png"))
+        self.Half_Right.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None_Right.png"))
+
+    
+    def half_color_change_left(self):
+        temp = self.Left_Select.currentIndex()
+        if temp == 1:
+            ASD.write(bytes('a', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Red_Left.png"))
+        elif temp == 2:
+            ASD.write(bytes('b', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Green_Left.png"))
+        elif temp == 3:
+            ASD.write(bytes('c', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Blue_Left.png"))
+        elif temp == 0:
+            ASD.write(bytes('A', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None_Left.png"))
+
+            self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None.png"))
+
+    def half_color_change_right(self):
+        temp = self.Right_Select.currentIndex()
+        if temp == 1:
+            ASD.write(bytes('d', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Red_Right.png"))
+        elif temp == 2:
+            ASD.write(bytes('e', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Green_Right.png"))
+        elif temp == 3:
+            ASD.write(bytes('f', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_Blue_Right.png"))
+        elif temp == 0:
+            ASD.write(bytes('B', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None_Right.png"))
+
+        self.Color_Frame.setPixmap(QtGui.QPixmap("/home/pi/Desktop/Flashlapse/_image/Color_None.png"))
+
+    def gravi_confirm(self):
+        if self.Gravi_Red.isChecked():
+            ASD.write(bytes('g', 'UTF-8'))
+        elif self.Gravi_Green.isChecked():
+            ASD.write(bytes('h', 'UTF-8'))
+        elif self.Gravi_Blue.isChecked():
+            ASD.write(bytes('i', 'UTF-8'))
+        elif self.Gravi_White.isChecked():
+            ASD.write(bytes('j', 'UTF-8'))
+
+
+    def germi_confirm(self):
+        if self.Germi_Red.isChecked():
+            ASD.write(bytes('k', 'UTF-8'))
+        elif self.Germi_Green.isChecked():
+            ASD.write(bytes('l', 'UTF-8'))
+        elif self.Germi_Blue.isChecked():
+            ASD.write(bytes('m', 'UTF-8'))
+        elif self.Germi_White.isChecked():
+            ASD.write(bytes('n', 'UTF-8'))
+
+    def barri_confirm(self):
+        if self.Barri_Red.isChecked():
+            ASD.write(bytes('o', 'UTF-8'))
+        elif self.Barri_Green.isChecked():
+            ASD.write(bytes('p', 'UTF-8'))
+        elif self.Barri_Blue.isChecked():
+            ASD.write(bytes('q', 'UTF-8'))
+        elif self.Barri_White.isChecked():
+            ASD.write(bytes('r', 'UTF-8'))
+            
+    def disco_confirm(self):
+        ASD.write(bytes('s', 'UTF-8'))
+        
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    ui = Ui_MainWindow()
+    ui.setupUi(MainWindow)
+    MainWindow.show()
+    sys.exit(app.exec_())
 

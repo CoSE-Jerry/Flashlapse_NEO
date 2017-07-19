@@ -1,1 +1,0 @@
-pyuic5 FlashLapse_CP.ui > FlashLapse_CP.py

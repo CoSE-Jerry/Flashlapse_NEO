@@ -86,7 +86,7 @@ class Ui_MainWindow(object):
         self.Half_Right.setScaledContents(True)
         self.Half_Right.setObjectName("Half_Right")
         self.layoutWidget = QtWidgets.QWidget(self.HalfColor)
-        self.layoutWidget.setGeometry(QtCore.QRect(50, 130, 191, 22))
+        self.layoutWidget.setGeometry(QtCore.QRect(50, 130, 191, 24))
         self.layoutWidget.setObjectName("layoutWidget")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.layoutWidget)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -297,7 +297,7 @@ class Ui_MainWindow(object):
         self.label = QtWidgets.QLabel(self.Dropbox)
         self.label.setGeometry(QtCore.QRect(60, 10, 271, 140))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../_image/DropBox.png"))
+        self.label.setPixmap(QtGui.QPixmap("../_image/dropbox_logo.png"))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
         self.verticalLayoutWidget_2 = QtWidgets.QWidget(self.Dropbox)
@@ -353,15 +353,15 @@ class Ui_MainWindow(object):
         self.Frequency_off = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
         self.Frequency_off.setObjectName("Frequency_off")
         self.horizontalLayout_6.addWidget(self.Frequency_off)
-        self.Frequency_rare = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
-        self.Frequency_rare.setObjectName("Frequency_rare")
-        self.horizontalLayout_6.addWidget(self.Frequency_rare)
-        self.radioButton_4 = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
-        self.radioButton_4.setObjectName("radioButton_4")
-        self.horizontalLayout_6.addWidget(self.radioButton_4)
-        self.radioButton = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
-        self.radioButton.setObjectName("radioButton")
-        self.horizontalLayout_6.addWidget(self.radioButton)
+        self.Frequency_Rare = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
+        self.Frequency_Rare.setObjectName("Frequency_Rare")
+        self.horizontalLayout_6.addWidget(self.Frequency_Rare)
+        self.Frequency_Average = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
+        self.Frequency_Average.setObjectName("Frequency_Average")
+        self.horizontalLayout_6.addWidget(self.Frequency_Average)
+        self.Frequency_Frequent = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
+        self.Frequency_Frequent.setObjectName("Frequency_Frequent")
+        self.horizontalLayout_6.addWidget(self.Frequency_Frequent)
         self.Email_Update_Prompt = QtWidgets.QLabel(self.Cloud)
         self.Email_Update_Prompt.setGeometry(QtCore.QRect(40, 290, 171, 20))
         self.Email_Update_Prompt.setObjectName("Email_Update_Prompt")
@@ -376,7 +376,7 @@ class Ui_MainWindow(object):
         self.Start_Imaging.setObjectName("Start_Imaging")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 19))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -397,7 +397,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(2)
+        self.Control_Tab.setCurrentIndex(0)
         self.Lights.setCurrentIndex(0)
         self.Constant_Mode.setCurrentIndex(0)
         self.Presets1.setCurrentIndex(0)
@@ -410,9 +410,9 @@ class Ui_MainWindow(object):
         self.Snapshot.setText(_translate("MainWindow", "Snapshot"))
         self.JPG.setText(_translate("MainWindow", "JPG"))
         self.PNG.setText(_translate("MainWindow", "PNG"))
-        self.Full_Color_Select.setCurrentText(_translate("MainWindow", "Red"))
-        self.Full_Color_Select.setItemText(0, _translate("MainWindow", "Red"))
-        self.Full_Color_Select.setItemText(1, _translate("MainWindow", "None"))
+        self.Full_Color_Select.setCurrentText(_translate("MainWindow", "None"))
+        self.Full_Color_Select.setItemText(0, _translate("MainWindow", "None"))
+        self.Full_Color_Select.setItemText(1, _translate("MainWindow", "Red"))
         self.Full_Color_Select.setItemText(2, _translate("MainWindow", "Green"))
         self.Full_Color_Select.setItemText(3, _translate("MainWindow", "Blue"))
         self.Constant_Mode.setTabText(self.Constant_Mode.indexOf(self.FullColor), _translate("MainWindow", "Full"))
@@ -429,8 +429,8 @@ class Ui_MainWindow(object):
         self.Gravi_Text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">12 hours full spectrum light from above, 90 degree rotation &amp; all lights become a certain color.</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.1pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">12 hours full spectrum light from above, 90 degree rotation &amp; all lights become a certain color.</span></p></body></html>"))
         self.Gravi_Confirm.setText(_translate("MainWindow", "Confirm "))
         self.Color_Gravi.setText(_translate("MainWindow", "Rotation Color:"))
         self.Gravi_Red.setText(_translate("MainWindow", "Red"))
@@ -441,8 +441,8 @@ class Ui_MainWindow(object):
         self.Germi_Text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">7 days of a certain colored light from all sides.</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.1pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">7 days of a certain colored light from all sides.</span></p></body></html>"))
         self.Germi_Confirm.setText(_translate("MainWindow", "Confirm "))
         self.Color_Germi.setText(_translate("MainWindow", "Color Setting:"))
         self.Germi_Red.setText(_translate("MainWindow", "Red"))
@@ -453,8 +453,8 @@ class Ui_MainWindow(object):
         self.Barrier_Text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">24 hour of a certain colored light from above.</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.1pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">24 hour of a certain colored light from above.</span></p></body></html>"))
         self.Barrier_Confirm.setText(_translate("MainWindow", "Confirm "))
         self.Color_Barri.setText(_translate("MainWindow", "Color Setting:"))
         self.Barri_Red.setText(_translate("MainWindow", "Red"))
@@ -481,9 +481,9 @@ class Ui_MainWindow(object):
         self.CyVerse_Confirm.setText(_translate("MainWindow", "Confirm Email"))
         self.Service_Select.setTabText(self.Service_Select.indexOf(self.CyVerse), _translate("MainWindow", "CyVerse "))
         self.Frequency_off.setText(_translate("MainWindow", "OFF"))
-        self.Frequency_rare.setText(_translate("MainWindow", "RARE"))
-        self.radioButton_4.setText(_translate("MainWindow", "AVERAGE"))
-        self.radioButton.setText(_translate("MainWindow", "FREQUENT"))
+        self.Frequency_Rare.setText(_translate("MainWindow", "RARE"))
+        self.Frequency_Average.setText(_translate("MainWindow", "AVERAGE"))
+        self.Frequency_Frequent.setText(_translate("MainWindow", "FREQUENT"))
         self.Email_Update_Prompt.setText(_translate("MainWindow", "Email Status Update Frequency:"))
         self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Cloud), _translate("MainWindow", "Cloud"))
         self.Start_Imaging.setText(_translate("MainWindow", "Start Image Sequence"))
