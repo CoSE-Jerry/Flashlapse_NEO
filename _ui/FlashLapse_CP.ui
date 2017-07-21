@@ -622,7 +622,7 @@ p, li { white-space: pre-wrap; }
         <x>10</x>
         <y>10</y>
         <width>381</width>
-        <height>301</height>
+        <height>311</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -894,7 +894,7 @@ p, li { white-space: pre-wrap; }
          <item>
           <widget class="QLabel" name="CyVerse_Email_Prompt">
            <property name="text">
-            <string>Please Enter Your CyVerse Email Adress:</string>
+            <string>Please Enter Your Email Adress:</string>
            </property>
           </widget>
          </item>
@@ -916,7 +916,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>310</y>
+        <y>330</y>
         <width>361</width>
         <height>31</height>
        </rect>
@@ -926,6 +926,12 @@ p, li { white-space: pre-wrap; }
         <widget class="QRadioButton" name="Frequency_off">
          <property name="text">
           <string>OFF</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -940,6 +946,9 @@ p, li { white-space: pre-wrap; }
         <widget class="QRadioButton" name="Frequency_Average">
          <property name="text">
           <string>AVERAGE</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -956,7 +965,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>290</y>
+        <y>310</y>
         <width>171</width>
         <height>20</height>
        </rect>
