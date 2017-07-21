@@ -1,1 +1,1 @@
-pyuic5 FlashLapse_CP.ui > ../python/FlashLapse_CP.py
+pyuic5 FlashLapse_CP.ui > ../_python/Flashlapse_UI.py
