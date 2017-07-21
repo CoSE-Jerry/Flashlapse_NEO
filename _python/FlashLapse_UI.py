@@ -397,10 +397,10 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(2)
-        self.Lights.setCurrentIndex(1)
-        self.Constant_Mode.setCurrentIndex(1)
-        self.Presets1.setCurrentIndex(1)
+        self.Control_Tab.setCurrentIndex(0)
+        self.Lights.setCurrentIndex(0)
+        self.Constant_Mode.setCurrentIndex(0)
+        self.Presets1.setCurrentIndex(0)
         self.Service_Select.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
