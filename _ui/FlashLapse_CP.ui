@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>480</height>
+    <height>500</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -94,11 +94,11 @@
       <x>30</x>
       <y>20</y>
       <width>441</width>
-      <height>401</height>
+      <height>421</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -110,11 +110,11 @@
         <x>10</x>
         <y>10</y>
         <width>381</width>
-        <height>361</height>
+        <height>371</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Constant">
        <attribute name="title">
@@ -126,11 +126,11 @@
           <x>10</x>
           <y>10</y>
           <width>321</width>
-          <height>311</height>
+          <height>321</height>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="FullColor">
          <attribute name="title">
@@ -317,11 +317,11 @@
           <x>10</x>
           <y>10</y>
           <width>321</width>
-          <height>311</height>
+          <height>321</height>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="Gravitropic">
          <attribute name="title">
