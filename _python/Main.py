@@ -37,8 +37,8 @@ class CaptureImage:
 class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
  # access variables inside of the UI's file
 
-    def IST_Edit(self):
-        file = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+   # def IST_Edit(self):
+        #file = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
         #Create Class
       #  Capture = CaptureImage()
         #Create Thread
