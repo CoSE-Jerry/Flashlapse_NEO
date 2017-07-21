@@ -700,6 +700,22 @@ p, li { white-space: pre-wrap; }
           </spacer>
          </item>
          <item>
+          <widget class="QLabel" name="Directory_Label">
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <property name="text">
+            <string>Storage Directory Not Selected</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="Storage_Directory">
            <property name="text">
             <string>Select Storage Directory</string>
