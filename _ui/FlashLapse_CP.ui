@@ -98,7 +98,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -114,7 +114,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Constant">
        <attribute name="title">
@@ -130,7 +130,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="FullColor">
          <attribute name="title">
@@ -321,7 +321,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="Gravitropic">
          <attribute name="title">
