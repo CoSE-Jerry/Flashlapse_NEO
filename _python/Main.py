@@ -42,16 +42,7 @@ total = 0
   #       self.wait()
 
   #  def run(self):
-       # global jpg, directory, name, duration, interval, total
-  #      total = int((duration*60)/interval)
-   #     print(total)
-   #     if jpg:
-   #         tempdir = directory+"/"+ name +"_%04d.jpg"
-    #    else:
-    #        tempdir = directory+"/"+ name +"_%04d.png"
-
-    #    if(not os.path.isdir(directory)):
-     #       os.mkdir(directory)
+       #
             
     #    with PiCamera() as camera:
      #       camera.resolution = (2464,2464)
@@ -87,25 +78,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         duration = self.ISD_spinBox.value()
         print(duration)
         
-    def Start_Snapshot(self):
+    def Select_Storage_Directory(self):
+        directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
+        self.Directory_Label.setText(directory)
         
+    def Start_Snapshot(self):
         self.Snap_Thread = Camera.Snap()
-       
         self.Snap_Thread.started.connect(lambda: self.Processing_Snapshot())
         self.Snap_Thread.finished.connect(lambda: self.Processing_Complete())
         self.Snap_Thread.start()
-        #directory = "/home/pi/Desktop/" + name
-        #self.Directory.setsasdText(directory)
-        
-        #self.Snapshot.setEnabled(False)
-        #self.Snapshot.setText("Processing...")
-        #QApplication.processEvents()
-   
-        
-        #user_img = PyQt5.QtGui.QImage("../_temp/snapshot.jpg")
-        #self.Image_Frame.setPixmap(QtGui.QPixmap(user_img))
-        #self.Snapshot.setText("Snapshot")
-        #self.Snapshot.setEnabled(True)
         
     def Processing_Snapshot(self):
         self.Snapshot.setEnabled(False)
@@ -118,24 +99,43 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Snapshot.setText("Snapshot")
         
     def Start_Live_Feed(self):
-        with PiCamera() as camera:
-            camera.start_preview()
-            sleep(10)
-            camera.stop_preview()
-
-    def Select_Storage_Directory(self):
-        directory = str(QFileDialog.getExistingDirectory(self, "Select Directory"))
-        self.Directory_Label.setText(directory)
+        self.Live_Thread = Camera.Live()
+        self.Live_Thread.started.connect(lambda: self.Processing_Live())
+        self.Live_Thread.finished.connect(lambda: self.Live_Complete())
+        self.Live_Thread.start()
+        
+    def Processing_Live(self):
+        self.Snapshot.setEnabled(False)
+        self.Live_Feed.setEnabled(False)
+        self.Start_Imaging.setEnabled(False)
+        self.Live_Feed.setText("Processing...")
+        
+    def Live_Complete(self):
+        self.Snapshot.setEnabled(True)
+        self.Live_Feed.setEnabled(True)
+        self.Start_Imaging.setEnabled(True)
+        self.Live_Feed.setText("Start Live Feed (10s)")
         
     def Begin_Imaging(self):
-        self.Image_Thread = Snapshot.Image()
-        self.Image_Thread.started.connect(lambda: self.Threading_GUI())
-        self.Image_Thread.start()
+        global jpg, directory, name, duration, interval, total
         
-    def Threading_GUI(self):
-        self.Start_Imaging.setEnabled(False)
+        total = int((duration*60)/interval)
+        directory = directory +"/"+name
         
-                
+        print(total)
+        if jpg:
+            tempdir = directory+"/"+ name +"_%04d.jpg"
+        else:
+            tempdir = directory+"/"+ name +"_%04d.png"
+
+        #if(not os.path.isdir(directory)):
+        print(directory)
+        self.IST_Editor.setEnabled(False)
+        
+        #self.Image_Thread = Camera.Image()
+        #self.Image_Thread.started.connect(lambda: self.Processing_Image())
+        #self.Image_Thread.finished.connect(lambda: self.Image_Complete())
+        #self.Image_Thread.start()
 
     def __init__(self):
         super(self.__class__, self).__init__()
