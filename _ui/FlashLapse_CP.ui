@@ -117,7 +117,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Constant">
        <attribute name="title">
@@ -133,7 +133,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="FullColor">
          <attribute name="title">
@@ -730,6 +730,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QPushButton" name="Storage_Directory">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Select Storage Directory</string>
            </property>
@@ -760,9 +763,9 @@ p, li { white-space: pre-wrap; }
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_6">
        <item>
-        <widget class="QLabel" name="Console">
+        <widget class="QLabel" name="Progress_Label">
          <property name="text">
-          <string/>
+          <string>Progress:</string>
          </property>
         </widget>
        </item>
@@ -853,6 +856,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QPushButton" name="Dropbox_Confirm">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Confirm Email</string>
            </property>
@@ -919,6 +925,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QPushButton" name="CyVerse_Confirm">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="text">
             <string>Confirm Email</string>
            </property>
