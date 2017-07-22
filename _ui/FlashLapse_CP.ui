@@ -961,9 +961,9 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="Frequency_Rare">
+        <widget class="QRadioButton" name="Frequency_Low">
          <property name="text">
-          <string>RARE</string>
+          <string>LOW</string>
          </property>
         </widget>
        </item>
