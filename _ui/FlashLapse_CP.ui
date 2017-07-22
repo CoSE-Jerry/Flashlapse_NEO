@@ -852,7 +852,7 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="Drop_Box_Email"/>
+          <widget class="QLineEdit" name="Dropbox_Email"/>
          </item>
          <item>
           <widget class="QPushButton" name="Dropbox_Confirm">
@@ -978,9 +978,9 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QRadioButton" name="Frequency_Frequent">
+        <widget class="QRadioButton" name="Frequency_High">
          <property name="text">
-          <string>FREQUENT</string>
+          <string>HIGH</string>
          </property>
         </widget>
        </item>
@@ -1008,7 +1008,7 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>380</y>
+      <y>390</y>
       <width>291</width>
       <height>51</height>
      </rect>
