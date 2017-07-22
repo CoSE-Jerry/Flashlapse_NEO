@@ -284,7 +284,7 @@ class Ui_MainWindow(object):
         self.Live_Feed.setObjectName("Live_Feed")
         self.verticalLayout_3.addWidget(self.Live_Feed)
         self.layoutWidget3 = QtWidgets.QWidget(self.Imaging)
-        self.layoutWidget3.setGeometry(QtCore.QRect(14, 330, 411, 42))
+        self.layoutWidget3.setGeometry(QtCore.QRect(14, 330, 411, 51))
         self.layoutWidget3.setObjectName("layoutWidget3")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.layoutWidget3)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
