@@ -44,7 +44,7 @@ class Ui_MainWindow(object):
         self.PNG.setObjectName("PNG")
         self.verticalLayout_4.addWidget(self.PNG)
         self.Control_Tab = QtWidgets.QTabWidget(self.centralwidget)
-        self.Control_Tab.setGeometry(QtCore.QRect(30, 20, 441, 421))
+        self.Control_Tab.setGeometry(QtCore.QRect(30, 20, 441, 431))
         self.Control_Tab.setObjectName("Control_Tab")
         self.Lighting = QtWidgets.QWidget()
         self.Lighting.setObjectName("Lighting")
@@ -414,7 +414,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuFile.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(1)
+        self.Control_Tab.setCurrentIndex(0)
         self.Lights.setCurrentIndex(0)
         self.Constant_Mode.setCurrentIndex(0)
         self.Presets1.setCurrentIndex(0)

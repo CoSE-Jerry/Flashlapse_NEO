@@ -97,11 +97,11 @@
       <x>30</x>
       <y>20</y>
       <width>441</width>
-      <height>421</height>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
