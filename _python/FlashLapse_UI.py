@@ -113,7 +113,7 @@ class Ui_MainWindow(object):
         self.Presets = QtWidgets.QWidget()
         self.Presets.setObjectName("Presets")
         self.Presets1 = QtWidgets.QTabWidget(self.Presets)
-        self.Presets1.setGeometry(QtCore.QRect(10, 10, 321, 321))
+        self.Presets1.setGeometry(QtCore.QRect(10, 10, 321, 331))
         self.Presets1.setObjectName("Presets1")
         self.Gravitropic = QtWidgets.QWidget()
         self.Gravitropic.setObjectName("Gravitropic")
