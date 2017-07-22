@@ -1,7 +1,7 @@
 from time import sleep
 from PyQt5.QtCore import QThread
 from picamera import PiCamera
-import Main
+from Main import *
 
 class Snap(QThread):
 
@@ -29,20 +29,4 @@ class Live(QThread):
         with PiCamera() as camera:
             camera._set_rotation(180)
             camera.start_preview()
-            sleep(10)
-            camera.stop_preview()
-            
-class Image(QThread):
-
-    def __init__(self):
-         QThread.__init__(self)
-
-    def __del__(self):
-         self._running = False
-
-    def run(self):
-        with PiCamera() as camera:
-            camera.start_preview()
-            sleep(10)
-            camera.stop_preview()
-        
+            sleep(30)
