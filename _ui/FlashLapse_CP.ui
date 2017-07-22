@@ -948,7 +948,7 @@ p, li { white-space: pre-wrap; }
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
-        <widget class="QRadioButton" name="Frequency_off">
+        <widget class="QRadioButton" name="Frequency_Off">
          <property name="text">
           <string>OFF</string>
          </property>
