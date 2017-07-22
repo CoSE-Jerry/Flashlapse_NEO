@@ -77,6 +77,9 @@
        <property name="text">
         <string>JPG</string>
        </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
       </widget>
      </item>
      <item>
@@ -98,7 +101,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -114,7 +117,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="Constant">
        <attribute name="title">
@@ -130,7 +133,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="FullColor">
          <attribute name="title">
@@ -636,7 +639,11 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="IST_Editor"/>
+          <widget class="QLineEdit" name="IST_Editor">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QLabel" name="Image_Interval">
@@ -647,6 +654,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QSpinBox" name="ICI_spinBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="suffix">
             <string> s</string>
            </property>
@@ -668,6 +678,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QSpinBox" name="ISD_spinBox">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
            <property name="suffix">
             <string> min</string>
            </property>
@@ -730,7 +743,7 @@ p, li { white-space: pre-wrap; }
        <item>
         <widget class="QPushButton" name="Live_Feed">
          <property name="text">
-          <string>Start Live Feed (10s)</string>
+          <string>Start Live Feed (30s)</string>
          </property>
         </widget>
        </item>
@@ -755,8 +768,11 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <widget class="QProgressBar" name="Progress_Bar">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="value">
-          <number>24</number>
+          <number>0</number>
          </property>
         </widget>
        </item>
@@ -977,9 +993,12 @@ p, li { white-space: pre-wrap; }
     </widget>
    </widget>
    <widget class="QCommandLinkButton" name="Start_Imaging">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
-      <x>470</x>
+      <x>480</x>
       <y>380</y>
       <width>291</width>
       <height>51</height>
