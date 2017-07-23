@@ -22,7 +22,8 @@ import functions
 from picamera import PiCamera
 from time import sleep
 
-#global variables 
+#global variables
+file_list = []
 directory = ""
 interval = 0
 duration = 0
@@ -46,7 +47,7 @@ class Image(QThread):
         self._running = False
 
     def run(self):
-        global current, current_image
+        global current, current_image, file_list
         for i in range(total):
             sleep(1)  
             current = i
@@ -55,6 +56,7 @@ class Image(QThread):
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
                 camera.capture(current_image)
+            file_list.append(current_image)
             self.capture.emit()
             sleep(interval-1)
                 
@@ -64,6 +66,30 @@ class Image(QThread):
            # Email.sendtest()
     def stop(self):
         self.running = False
+
+class Dropbox(QThread):
+    
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):  
+        global file_list, name
+
+        os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /" + name)
+        print(os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /" + name))
+        while True:
+            if (len(file_list) > 0):
+                os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + file_list[0] + " /"+name)
+                print("test")
+                del file_list[0]
+                
+            #os.system("rm test.jpg")
+            
+           # Email.sendtest()
+
            
 
 
@@ -158,11 +184,12 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Live_Feed.setText("Start Live Feed (30s)")
         
     def Begin_Imaging(self):
-        global jpg, directory, name, duration, interval, total, file, on_flag
+        global jpg, directory, name, duration, interval, total, file, on_flag, file_list
         
         if (on_flag == False): 
             global jpg, directory, name, duration, interval, total, file       
             self.Image_Thread = Image()
+            self.Dropbox_Thread = Dropbox()
             total = int((duration*60)/interval)
             self.Progress_Bar.setMaximum(total)
             
@@ -176,6 +203,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Image_Thread.started.connect(lambda: self.Start_Image())
             #self.Image_Thread.finished.connect(lambda: self.Image_Complete())
             self.Image_Thread.start()
+            self.Dropbox_Thread.start()
             self.Image_Thread.capture.connect(lambda: self.Progress())
             on_flag = True
         
@@ -203,6 +231,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Start_Imaging.setIcon(icon3)
             self.Start_Imaging.setText("Start Image Sequence")
             self.Progress_Bar.setValue(0)
+            del file_list[:]
             
             on_flag = False
 
@@ -250,7 +279,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
         self.Start_Imaging.clicked.connect(lambda: self.Begin_Imaging())
-        
 
 # I feel better having one of these
 def main():
