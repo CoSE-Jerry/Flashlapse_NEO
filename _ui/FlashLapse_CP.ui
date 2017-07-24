@@ -50,8 +50,8 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>330</y>
-      <width>181</width>
+      <y>400</y>
+      <width>91</width>
       <height>51</height>
      </rect>
     </property>
@@ -1043,8 +1043,8 @@ p, li { white-space: pre-wrap; }
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>400</y>
-      <width>93</width>
+      <y>330</y>
+      <width>111</width>
       <height>51</height>
      </rect>
     </property>
