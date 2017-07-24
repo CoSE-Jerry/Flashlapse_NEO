@@ -394,7 +394,7 @@ class Ui_MainWindow(object):
         self.Start_Imaging.setIconSize(QtCore.QSize(35, 35))
         self.Start_Imaging.setObjectName("Start_Imaging")
         self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
-        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(490, 330, 111, 51))
+        self.verticalLayoutWidget_4.setGeometry(QtCore.QRect(490, 330, 161, 51))
         self.verticalLayoutWidget_4.setObjectName("verticalLayoutWidget_4")
         self.verticalLayout_12 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_4)
         self.verticalLayout_12.setContentsMargins(0, 0, 0, 0)
