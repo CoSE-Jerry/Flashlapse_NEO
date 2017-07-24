@@ -3,20 +3,22 @@ import sys
 import os
 import time
 import subprocess
+import serial
  
 # This gets the Qt stuff
 import PyQt5
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QApplication
 from PyQt5.QtCore import QThread
-
-import functions
-import Camera
 from PyQt5.QtWidgets import *
+
 directory = None
 # This is our window from QtCreator
 import FlashLapse_UI
+
+#import custom functions
 import functions
+import Camera
 
 #camera libraries
 from picamera import PiCamera
@@ -31,21 +33,21 @@ from email.mime.text import MIMEText
 file_list = []
 directory = ""
 link =""
+email=""
 interval = 0
 duration = 0
 total = 0
 current = 0
 current_image = None
 file = None
-jpg = True
 name = None
 on_flag = False
+ASD = serial.Serial('/dev/ttyACM0', 9600)
 
 class Image(QThread):
-    
+
+    done = QtCore.pyqtSignal()
     capture = QtCore.pyqtSignal()
-    
-    
     def __init__(self):
         QThread.__init__(self)
 
@@ -56,25 +58,22 @@ class Image(QThread):
         global current, current_image, file_list
         for i in range(total):
             current = i
-            sleep(1)
+            sleep(0.8)
             current_image = file % i
             with PiCamera() as camera:
-                #sleep(0.5)
+                sleep(0.2)
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
                 camera.capture(current_image)
             file_list.append(current_image)
             self.capture.emit()
-            sleep(interval-0.5)
-                
-            #os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload test.jpg /test")
-            #os.system("rm test.jpg")
-            
-           # Email.sendtest()
+            sleep(interval-1)
+        self.done.emit()
     def stop(self):
         self.running = False
 
 class Dropbox(QThread):
+    upload_complete = QtCore.pyqtSignal()
     
     def __init__(self):
         QThread.__init__(self)
@@ -93,10 +92,8 @@ class Dropbox(QThread):
             if (len(file_list) > 0):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + file_list[0] + " /"+name)
                 del file_list[0]
-                
-            #os.system("rm test.jpg")
-            
-           # Email.sendtest()
+            if(current == total - 1 and len(file_list) == 0):
+                self.upload_complete.emit()
 
 class Email(QThread):
     
@@ -109,7 +106,7 @@ class Email(QThread):
     def run(self):
         global link, current, total
         fromaddr = "notification_noreply@flashlapseinnovations.com"
-        toaddr = "xmiao8@wisc.edu"
+        toaddr = email
         msg = MIMEMultipart()
         msg['From'] = fromaddr
         msg['To'] = toaddr
@@ -119,14 +116,14 @@ class Email(QThread):
         if (current == 0):
             sleep(5)
             print(link)
-            body = link
+            body = "Hi " + email.split("\\")[0] + "! \n" "Here is your " + link
             msg.attach(MIMEText(body, 'plain'))
 
         server = smtplib.SMTP('email-smtp.us-east-1.amazonaws.com', 587)
         server.ehlo()
         server.starttls()
         server.ehlo()
-        server.login("AKIAJOQJ7F74CE65JXIA", "Ar6L9IIFT/CxuaGMwM2BNHuT+FkSbpjkYWnCTAG05Rr+")
+        server.login("AKIAJA4ENXXLDIF6PCAA", "AqKdU1VP1ynuFNtB7fhJuV9BRe/onu4CWrp0P6MCFapm")
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text)
            
@@ -137,7 +134,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
  # access variables inside of the UI's file
 
     def IST_Edit(self):
-        global directory, name
+        global name
         name = self.IST_Editor.text()
         
     def IST_Change(self):
@@ -226,7 +223,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         global jpg, directory, name, duration, interval, total, file, on_flag, file_list
         
         if (on_flag == False): 
-            global jpg, directory, name, duration, interval, total, file       
             self.Image_Thread = Image()
             self.Dropbox_Thread = Dropbox()
             self.Email_Thread = Email()
@@ -236,16 +232,21 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             if(not os.path.isdir(directory)):
                 os.mkdir(directory)
             
-            if jpg:
+            if (self.JPG.isChecked()):
                 file = directory + "/" +name + "_%04d.jpg"
             else:
                 file = directory + "/" +name + "_%04d.png"
             self.Image_Thread.started.connect(lambda: self.Start_Image())
             #self.Image_Thread.finished.connect(lambda: self.Image_Complete())
-            self.Image_Thread.start()
-            self.Dropbox_Thread.start()
             self.Image_Thread.capture.connect(lambda: self.Progress())
-            self.Email_Thread.start()
+            self.Image_Thread.done.connect(lambda: self.Done())
+
+            self.Image_Thread.start()
+
+            if(self.Cloud_Sync.isChecked()):
+                self.Dropbox_Thread.start()
+                #self.Email_Thread.start()
+
             on_flag = True
         
         else:
@@ -260,8 +261,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.PNG.setEnabled(True)
             self.Dropbox_Email.setEnabled(True)
             self.Dropbox_Confirm.setEnabled(True)
-            self.CyVerse_Email.setEnabled(True)
-            self.CyVerse_Confirm.setEnabled(True)
             self.Frequency_Off.setEnabled(True)
             self.Frequency_Low.setEnabled(True)
             self.Frequency_Average.setEnabled(True)
@@ -275,19 +274,38 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             del file_list[:]
             self.Image_Thread.terminate()
             self.Dropbox_Thread.terminate()
-
-            
-            
             on_flag = False
 
-        
-
+    def Done(self):
+        self.Image_Thread.terminate()
+        self.Start_Imaging.setText("Start Another Sequence")
+        icon3 = QtGui.QIcon()
+        icon3.addPixmap(QtGui.QPixmap("../_image/Start-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.Start_Imaging.setIcon(icon3)
         
     def Progress(self):
         global current, current_image
         self.Progress_Bar.setValue(current+1)
         self.Image_Frame.setPixmap(QtGui.QPixmap(current_image))
-        #print(current)    
+        #print(current)
+
+    def Email_Change(self):
+        match =None
+        import re
+        temp_email = self.Dropbox_Email.text()
+        if (len(temp_email)) > 7:
+            match = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', temp_email)
+        if (match != None):
+            self.Dropbox_Confirm.setEnabled(True)
+        else:
+            self.Dropbox_Confirm.setEnabled(False)
+            self.Cloud_Sync.setEnabled(False)
+            self.Local_Storage.setChecked(True)
+
+    def Email_Entered(self):
+        global email
+        email = self.Dropbox_Email.text()
+        self.Cloud_Sync.setEnabled(True)
             
     def Start_Image(self):
                 
@@ -313,9 +331,123 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Start_Imaging.setIcon(icon2)
         self.Start_Imaging.setText("Stop Image Sequence")
 
+    def Check_Network(self):
+        import socket
+        REMOTE_SERVER = "www.google.com"
+        try:
+            host = socket.gethostbyname(REMOTE_SERVER)
+            s = socket.create_connection((host, 80), 2)
+        except:
+            pass
+            self.Service_Select.setEnabled(False)
+            self.Frequency_Off.setEnabled(False)
+            self.Frequency_Low.setEnabled(False)
+            self.Frequency_Average.setEnabled(False)
+            self.Frequency_High.setEnabled(False)
+
+    def full_color_change(self):
+        temp = self.Full_Color_Select.currentIndex()
+        if temp == 1:
+            ASD.write(bytes('4', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_None.png"))
+        elif temp == 2:
+            ASD.write(bytes('1', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_Red.png"))
+        elif temp == 3:
+            ASD.write(bytes('2', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_Green.png"))
+        elif temp == 4:
+            ASD.write(bytes('3', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_Blue.png"))
+        elif temp == 5:
+            ASD.write(bytes('4', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_Rainbow.png"))
+        else:
+            ASD.write(bytes('0', 'UTF-8'))
+            self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_None.png"))
+
+        self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_None_Left.png"))
+        self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_None_Right.png"))
+
+    
+    def half_color_change_left(self):
+        temp = self.Left_Select.currentIndex()
+        if temp == 1:
+            ASD.write(bytes('x', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_None_Left.png"))
+        elif temp == 2:
+            ASD.write(bytes('a', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_Red_left.png"))
+        elif temp == 3:
+            ASD.write(bytes('b', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_Red_left.png"))
+        elif temp == 4:
+            ASD.write(bytes('c', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_Red_left.png"))
+        elif temp == 0:
+            ASD.write(bytes('A', 'UTF-8'))
+            self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_None_Left.png"))
+
+            self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_None.png"))
+
+    def half_color_change_right(self):
+        temp = self.Right_Select.currentIndex()
+        if temp == 1:
+            ASD.write(bytes('y', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_None_Right.png"))
+        elif temp == 2:
+            ASD.write(bytes('d', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_Red_Right.png"))
+        elif temp == 3:
+            ASD.write(bytes('e', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_Green_Right.png"))
+        elif temp == 4:
+            ASD.write(bytes('f', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_Blue_Right.png"))
+        elif temp == 0:
+            ASD.write(bytes('B', 'UTF-8'))
+            self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_None_Right.png"))
+
+        self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_None.png"))
+
+    def gravi_confirm(self):
+        if self.Gravi_Red.isChecked():
+            ASD.write(bytes('g', 'UTF-8'))
+        elif self.Gravi_Green.isChecked():
+            ASD.write(bytes('h', 'UTF-8'))
+        elif self.Gravi_Blue.isChecked():
+            ASD.write(bytes('i', 'UTF-8'))
+        elif self.Gravi_White.isChecked():
+            ASD.write(bytes('j', 'UTF-8'))
+
+
+    def germi_confirm(self):
+        if self.Germi_Red.isChecked():
+            ASD.write(bytes('k', 'UTF-8'))
+        elif self.Germi_Green.isChecked():
+            ASD.write(bytes('l', 'UTF-8'))
+        elif self.Germi_Blue.isChecked():
+            ASD.write(bytes('m', 'UTF-8'))
+        elif self.Germi_White.isChecked():
+            ASD.write(bytes('n', 'UTF-8'))
+
+    def barri_confirm(self):
+        if self.Barri_Red.isChecked():
+            ASD.write(bytes('o', 'UTF-8'))
+        elif self.Barri_Green.isChecked():
+            ASD.write(bytes('p', 'UTF-8'))
+        elif self.Barri_Blue.isChecked():
+            ASD.write(bytes('q', 'UTF-8'))
+        elif self.Barri_White.isChecked():
+            ASD.write(bytes('r', 'UTF-8'))
+            
+    def disco_confirm(self):
+        ASD.write(bytes('s', 'UTF-8'))
+
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
+        self.Check_Network()
         self.IST_Editor.editingFinished.connect(lambda: self.IST_Edit())
         self.IST_Editor.textChanged.connect(lambda: self.IST_Change())
         self.ICI_spinBox.valueChanged.connect(lambda: self.ICI_Change())
@@ -324,6 +456,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
         self.Start_Imaging.clicked.connect(lambda: self.Begin_Imaging())
+        self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
+        self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
+        self.Full_Color_Select.currentIndexChanged.connect(lambda: self.full_color_change())
+        self.Left_Select.currentIndexChanged.connect(lambda: self.half_color_change_left())
+        self.Right_Select.currentIndexChanged.connect(lambda: self.half_color_change_right())
+        self.Gravi_Confirm.clicked.connect(lambda: self.gravi_confirm())
+        self.Germi_Confirm.clicked.connect(lambda: self.germi_confirm())
+        self.Barrier_Confirm.clicked.connect(lambda: self.barri_confirm())
+        self.Disco.clicked.connect(lambda: self.disco_confirm())
 
 # I feel better having one of these
 def main():
