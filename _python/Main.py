@@ -444,6 +444,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def disco_confirm(self):
         ASD.write(bytes('s', 'UTF-8'))
 
+    def rotate(self):
+        ASD.write(bytes('z', 'UTF-8'))
+
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
@@ -465,6 +468,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Germi_Confirm.clicked.connect(lambda: self.germi_confirm())
         self.Barrier_Confirm.clicked.connect(lambda: self.barri_confirm())
         self.Disco.clicked.connect(lambda: self.disco_confirm())
+        self.Rotate.clicked.connect(lambda: self.rotate())
 
 # I feel better having one of these
 def main():
