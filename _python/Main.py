@@ -58,10 +58,10 @@ class Image(QThread):
         global current, current_image, file_list
         for i in range(total):
             current = i
-            sleep(0.8)
+            sleep(0.2)
             current_image = file % i
             with PiCamera() as camera:
-                sleep(0.2)
+                sleep(0.8)
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
                 camera.capture(current_image)
