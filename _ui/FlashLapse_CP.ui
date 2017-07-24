@@ -596,7 +596,7 @@ p, li { white-space: pre-wrap; }
          <attribute name="title">
           <string>Disco</string>
          </attribute>
-         <widget class="QPushButton" name="pushButton_4">
+         <widget class="QPushButton" name="Disco">
           <property name="geometry">
            <rect>
             <x>40</x>
