@@ -55,8 +55,8 @@ class Image(QThread):
     def run(self):
         global current, current_image, file_list
         for i in range(total):
-            sleep(1)  
             current = i
+            sleep(1)
             current_image = file % i
             with PiCamera() as camera:
                 #sleep(0.5)
@@ -89,11 +89,9 @@ class Dropbox(QThread):
         link = str(subprocess.check_output("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /" + name, shell=True))
         link = link.replace("b' > ", "")
         link = link.split("\\")[0]
-        print(link)
         while True:
             if (len(file_list) > 0):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + file_list[0] + " /"+name)
-                print("test")
                 del file_list[0]
                 
             #os.system("rm test.jpg")
@@ -108,8 +106,29 @@ class Email(QThread):
     def __del__(self):
         self._running = False
 
-    def run(self):  
-        global file_list, name, link
+    def run(self):
+        global link, current, total
+        fromaddr = "notification_noreply@flashlapseinnovations.com"
+        toaddr = "xmiao8@wisc.edu"
+        msg = MIMEMultipart()
+        msg['From'] = fromaddr
+        msg['To'] = toaddr
+        msg['Subject'] = "FLASHLAPSE NOTIFICATION"
+
+
+        if (current == 0):
+            sleep(5)
+            print(link)
+            body = link
+            msg.attach(MIMEText(body, 'plain'))
+
+        server = smtplib.SMTP('email-smtp.us-east-1.amazonaws.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.ehlo()
+        server.login("AKIAJOQJ7F74CE65JXIA", "Ar6L9IIFT/CxuaGMwM2BNHuT+FkSbpjkYWnCTAG05Rr+")
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
            
 
 
@@ -210,6 +229,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             global jpg, directory, name, duration, interval, total, file       
             self.Image_Thread = Image()
             self.Dropbox_Thread = Dropbox()
+            self.Email_Thread = Email()
             total = int((duration*60)/interval)
             self.Progress_Bar.setMaximum(total)
             
@@ -225,6 +245,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Image_Thread.start()
             self.Dropbox_Thread.start()
             self.Image_Thread.capture.connect(lambda: self.Progress())
+            self.Email_Thread.start()
             on_flag = True
         
         else:
