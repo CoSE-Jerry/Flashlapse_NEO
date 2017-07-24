@@ -46,28 +46,12 @@
      <bool>true</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="Snapshot">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>679</x>
-      <y>330</y>
-      <width>101</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Snapshot</string>
-    </property>
-   </widget>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>490</x>
       <y>330</y>
-      <width>160</width>
+      <width>181</width>
       <height>51</height>
      </rect>
     </property>
@@ -177,6 +161,11 @@
           </item>
           <item>
            <property name="text">
+            <string>White</string>
+           </property>
+          </item>
+          <item>
+           <property name="text">
             <string>Red</string>
            </property>
           </item>
@@ -253,6 +242,11 @@
              </item>
              <item>
               <property name="text">
+               <string>White</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
                <string>Red</string>
               </property>
              </item>
@@ -286,6 +280,11 @@
              <item>
               <property name="text">
                <string>None</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>White</string>
               </property>
              </item>
              <item>
@@ -714,6 +713,9 @@ p, li { white-space: pre-wrap; }
          </item>
          <item>
           <widget class="QLabel" name="Directory_Label">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="frameShape">
             <enum>QFrame::StyledPanel</enum>
            </property>
@@ -787,6 +789,9 @@ p, li { white-space: pre-wrap; }
       <string>Cloud</string>
      </attribute>
      <widget class="QTabWidget" name="Service_Select">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -921,7 +926,11 @@ p, li { white-space: pre-wrap; }
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="CyVerse_Email"/>
+          <widget class="QLineEdit" name="CyVerse_Email">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="CyVerse_Confirm">
@@ -1007,9 +1016,9 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>480</x>
-      <y>390</y>
-      <width>291</width>
+      <x>600</x>
+      <y>400</y>
+      <width>191</width>
       <height>51</height>
      </rect>
     </property>
@@ -1029,6 +1038,67 @@ p, li { white-space: pre-wrap; }
       <height>35</height>
      </size>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>400</y>
+      <width>93</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_12">
+     <item>
+      <widget class="QRadioButton" name="Local_Storage">
+       <property name="text">
+        <string>Local Storage</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QRadioButton" name="Cloud_Sync">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="text">
+        <string>Cloud Sync</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>320</y>
+      <width>101</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_13">
+     <item>
+      <widget class="QPushButton" name="Snapshot">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Snapshot</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Rotate">
+       <property name="text">
+        <string>Rotate</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -1053,6 +1123,9 @@ p, li { white-space: pre-wrap; }
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionOpen_Directory">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
    <property name="text">
     <string>Open Directory</string>
    </property>
