@@ -2,6 +2,7 @@
 import sys
 import os
 import time
+import subprocess
  
 # This gets the Qt stuff
 import PyQt5
@@ -11,7 +12,6 @@ from PyQt5.QtCore import QThread
 
 import functions
 import Camera
-import Email
 from PyQt5.QtWidgets import *
 directory = None
 # This is our window from QtCreator
@@ -22,9 +22,15 @@ import functions
 from picamera import PiCamera
 from time import sleep
 
+#email libraries
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
 #global variables
 file_list = []
 directory = ""
+link =""
 interval = 0
 duration = 0
 total = 0
@@ -53,12 +59,13 @@ class Image(QThread):
             current = i
             current_image = file % i
             with PiCamera() as camera:
+                #sleep(0.5)
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
                 camera.capture(current_image)
             file_list.append(current_image)
             self.capture.emit()
-            sleep(interval-1)
+            sleep(interval-0.5)
                 
             #os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload test.jpg /test")
             #os.system("rm test.jpg")
@@ -76,10 +83,13 @@ class Dropbox(QThread):
         self._running = False
 
     def run(self):  
-        global file_list, name
+        global file_list, name, link
 
         os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /" + name)
-        print(os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /" + name))
+        link = str(subprocess.check_output("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /" + name, shell=True))
+        link = link.replace("b' > ", "")
+        link = link.split("\\")[0]
+        print(link)
         while True:
             if (len(file_list) > 0):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + file_list[0] + " /"+name)
@@ -90,6 +100,16 @@ class Dropbox(QThread):
             
            # Email.sendtest()
 
+class Email(QThread):
+    
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):  
+        global file_list, name, link
            
 
 
@@ -232,6 +252,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Start_Imaging.setText("Start Image Sequence")
             self.Progress_Bar.setValue(0)
             del file_list[:]
+            self.Image_Thread.terminate()
+            self.Dropbox_Thread.terminate()
+
+            
             
             on_flag = False
 
