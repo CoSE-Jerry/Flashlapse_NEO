@@ -58,10 +58,10 @@ class Image(QThread):
         global current, current_image, file_list
         for i in range(total):
             current = i
-            sleep(0.8)
+            sleep(0.2)
             current_image = file % i
             with PiCamera() as camera:
-                sleep(0.2)
+                sleep(0.8)
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
                 camera.capture(current_image)
@@ -373,19 +373,19 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def half_color_change_left(self):
         temp = self.Left_Select.currentIndex()
         if temp == 1:
-            ASD.write(bytes('x', 'UTF-8'))
+            ASD.write(bytes('y', 'UTF-8'))
             self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_None_Left.png"))
         elif temp == 2:
-            ASD.write(bytes('a', 'UTF-8'))
+            ASD.write(bytes('d', 'UTF-8'))
             self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_Red_left.png"))
         elif temp == 3:
-            ASD.write(bytes('b', 'UTF-8'))
+            ASD.write(bytes('e', 'UTF-8'))
             self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_Red_left.png"))
         elif temp == 4:
-            ASD.write(bytes('c', 'UTF-8'))
+            ASD.write(bytes('f', 'UTF-8'))
             self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_Red_left.png"))
         elif temp == 0:
-            ASD.write(bytes('A', 'UTF-8'))
+            ASD.write(bytes('B', 'UTF-8'))
             self.Half_Left.setPixmap(QtGui.QPixmap("../_image/Color_None_Left.png"))
 
             self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_None.png"))
@@ -393,19 +393,19 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def half_color_change_right(self):
         temp = self.Right_Select.currentIndex()
         if temp == 1:
-            ASD.write(bytes('y', 'UTF-8'))
+            ASD.write(bytes('x', 'UTF-8'))
             self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_None_Right.png"))
         elif temp == 2:
-            ASD.write(bytes('d', 'UTF-8'))
+            ASD.write(bytes('a', 'UTF-8'))
             self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_Red_Right.png"))
         elif temp == 3:
-            ASD.write(bytes('e', 'UTF-8'))
+            ASD.write(bytes('b', 'UTF-8'))
             self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_Green_Right.png"))
         elif temp == 4:
-            ASD.write(bytes('f', 'UTF-8'))
+            ASD.write(bytes('c', 'UTF-8'))
             self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_Blue_Right.png"))
         elif temp == 0:
-            ASD.write(bytes('B', 'UTF-8'))
+            ASD.write(bytes('A', 'UTF-8'))
             self.Half_Right.setPixmap(QtGui.QPixmap("../_image/Color_None_Right.png"))
 
         self.Color_Frame.setPixmap(QtGui.QPixmap("../_image/Color_None.png"))
