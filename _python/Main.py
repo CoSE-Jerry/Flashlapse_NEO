@@ -123,7 +123,7 @@ class Email(QThread):
         server.ehlo()
         server.starttls()
         server.ehlo()
-        server.login("AKIAJA4ENXXLDIF6PCAA", "AqKdU1VP1ynuFNtB7fhJuV9BRe/onu4CWrp0P6MCFapm")
+        server.login()
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text)
            

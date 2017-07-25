@@ -17,6 +17,6 @@ def sendtest():
     server.ehlo()
     server.starttls()
     server.ehlo()
-    server.login("AKIAJOQJ7F74CE65JXIA", "Ar6L9IIFT/CxuaGMwM2BNHuT+FkSbpjkYWnCTAG05Rr+")
+    server.login()
     text = msg.as_string()
     server.sendmail(fromaddr, toaddr, text)
