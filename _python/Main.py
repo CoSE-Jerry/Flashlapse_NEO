@@ -17,7 +17,6 @@ directory = None
 import FlashLapse_UI
 
 #import custom functions
-import functions
 import Camera
 
 #camera libraries
@@ -38,16 +37,23 @@ interval = 0
 duration = 0
 total = 0
 current = 0
+noti_count = 0
 current_image = None
 file = None
 name = None
 on_flag = False
+off= False
+low = False
+done = False
+average = False
+high = False
 ASD = serial.Serial('/dev/ttyACM0', 9600)
 
 class Image(QThread):
 
     done = QtCore.pyqtSignal()
     capture = QtCore.pyqtSignal()
+    check_point = QtCore.pyqtSignal()
     def __init__(self):
         QThread.__init__(self)
 
@@ -67,7 +73,10 @@ class Image(QThread):
                 camera.capture(current_image)
             file_list.append(current_image)
             self.capture.emit()
+            if(current%(0.1*total)==0):
+                self.check_point.emit()
             sleep(interval-1)
+            
         self.done.emit()
     def stop(self):
         self.running = False
@@ -104,7 +113,11 @@ class Email(QThread):
         self._running = False
 
     def run(self):
-        global link, current, total
+
+        sys.path.insert(0,'../../HP')
+        import Email
+        global link, current, total, noti_count, off, low, average, high, done
+        body = None
         fromaddr = "notification_noreply@flashlapseinnovations.com"
         toaddr = email
         msg = MIMEMultipart()
@@ -112,20 +125,45 @@ class Email(QThread):
         msg['To'] = toaddr
         msg['Subject'] = "FLASHLAPSE NOTIFICATION"
 
-
         if (current == 0):
-            sleep(5)
-            print(link)
-            body = "Hi " + email.split("\\")[0] + "! \n" "Here is your " + link
+            sleep(1)     
+        else:
+            if(noti_count == 0):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" has been initiated, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 1 and high):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 10% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 2 and (high or average)):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 20% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 3 and high):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 30% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 4 and (high or average)):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 40% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 5 and ((off == False) and average == False)):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 50% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 6 and (high or average)):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 60% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 7 and high):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 70% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 8 and (high or average)):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 80% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            elif(noti_count == 9 and high):
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 90% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                
+            noti_count += 1
+            
+        if(done):
+            body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+            done = False
+            
+        if(body != None):
             msg.attach(MIMEText(body, 'plain'))
-
-        server = smtplib.SMTP('email-smtp.us-east-1.amazonaws.com', 587)
-        server.ehlo()
-        server.starttls()
-        server.ehlo()
-        server.login("AKIAJA4ENXXLDIF6PCAA", "AqKdU1VP1ynuFNtB7fhJuV9BRe/onu4CWrp0P6MCFapm")
-        text = msg.as_string()
-        server.sendmail(fromaddr, toaddr, text)
+            server = smtplib.SMTP('email-smtp.us-east-1.amazonaws.com', 587)
+            server.ehlo()
+            server.starttls()
+            server.ehlo()
+            server.login(Email.user, Email.password)
+            text = msg.as_string()
+            server.sendmail(fromaddr, toaddr, text)
            
 
 
@@ -218,6 +256,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Live_Feed.setEnabled(True)
         self.Start_Imaging.setEnabled(True)
         self.Live_Feed.setText("Start Live Feed (30s)")
+
+    def Check_Point(self):
+        if(self.Cloud_Sync.isChecked()):
+            self.Email_Thread = Email()
+            self.Email_Thread.start()
         
     def Begin_Imaging(self):
         global jpg, directory, name, duration, interval, total, file, on_flag, file_list
@@ -237,15 +280,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             else:
                 file = directory + "/" +name + "_%04d.png"
             self.Image_Thread.started.connect(lambda: self.Start_Image())
-            #self.Image_Thread.finished.connect(lambda: self.Image_Complete())
+            self.Image_Thread.finished.connect(lambda: self.Done())
             self.Image_Thread.capture.connect(lambda: self.Progress())
-            self.Image_Thread.done.connect(lambda: self.Done())
+            self.Image_Thread.check_point.connect(lambda: self.Check_Point())
 
             self.Image_Thread.start()
 
             if(self.Cloud_Sync.isChecked()):
                 self.Dropbox_Thread.start()
-                #self.Email_Thread.start()
+                self.Email_Thread.start()
 
             on_flag = True
         
@@ -277,7 +320,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             on_flag = False
 
     def Done(self):
+        global done
+        print("done")
         self.Image_Thread.terminate()
+        done=True
+        self.Check_Point()
         self.Start_Imaging.setText("Start Another Sequence")
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("../_image/Start-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -287,7 +334,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         global current, current_image
         self.Progress_Bar.setValue(current+1)
         self.Image_Frame.setPixmap(QtGui.QPixmap(current_image))
-        #print(current)
 
     def Email_Change(self):
         match =None
@@ -308,7 +354,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Cloud_Sync.setEnabled(True)
             
     def Start_Image(self):
-                
+        global off, low, average, high
+        
         self.IST_Editor.setEnabled(False)
         self.ICI_spinBox.setEnabled(False)
         self.ISD_spinBox.setEnabled(False)
@@ -325,6 +372,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Frequency_Low.setEnabled(False)
         self.Frequency_Average.setEnabled(False)
         self.Frequency_High.setEnabled(False)
+
+        off= self.Frequency_Off.isChecked()
+        low = self.Frequency_Low.isChecked()
+        average = self.Frequency_Average.isChecked()
+        high = self.Frequency_High.isChecked()
         
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("../_image/Stop-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
