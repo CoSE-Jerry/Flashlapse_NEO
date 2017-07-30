@@ -959,9 +959,9 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="horizontalLayoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>40</x>
         <y>330</y>
-        <width>361</width>
+        <width>351</width>
         <height>31</height>
        </rect>
       </property>
@@ -1020,7 +1020,7 @@ p, li { white-space: pre-wrap; }
      <widget class="QLabel" name="Email_Update_Prompt">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>40</x>
         <y>300</y>
         <width>221</width>
         <height>31</height>
