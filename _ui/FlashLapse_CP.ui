@@ -624,7 +624,7 @@ p, li { white-space: pre-wrap; }
         <x>10</x>
         <y>10</y>
         <width>381</width>
-        <height>321</height>
+        <height>331</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -767,8 +767,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>14</x>
-        <y>330</y>
+        <x>10</x>
+        <y>340</y>
         <width>411</width>
         <height>51</height>
        </rect>
@@ -1009,9 +1009,9 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>310</y>
-        <width>171</width>
-        <height>20</height>
+        <y>299</y>
+        <width>221</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
