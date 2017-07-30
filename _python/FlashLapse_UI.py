@@ -227,7 +227,7 @@ class Ui_MainWindow(object):
         self.Imaging = QtWidgets.QWidget()
         self.Imaging.setObjectName("Imaging")
         self.layoutWidget2 = QtWidgets.QWidget(self.Imaging)
-        self.layoutWidget2.setGeometry(QtCore.QRect(10, 10, 381, 331))
+        self.layoutWidget2.setGeometry(QtCore.QRect(20, 10, 391, 331))
         self.layoutWidget2.setObjectName("layoutWidget2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.layoutWidget2)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)

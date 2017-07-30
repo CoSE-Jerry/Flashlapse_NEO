@@ -621,9 +621,9 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>10</y>
-        <width>381</width>
+        <width>391</width>
         <height>331</height>
        </rect>
       </property>
