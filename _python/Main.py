@@ -56,7 +56,7 @@ class Image(QThread):
     capture = QtCore.pyqtSignal()
     check_point = QtCore.pyqtSignal()
     imaging_running = QtCore.pyqtSignal()
-    imaging_running_complete = QtCore.pyqtSignal()
+    imaging_running_done = QtCore.pyqtSignal()
     def __init__(self):
         QThread.__init__(self)
 
@@ -64,7 +64,7 @@ class Image(QThread):
         self._running = False
 
     def run(self):
-        global current, current_image, file_list
+        global current, current_image, file_list, file
         for i in range(total):
             current = i
             sleep(0.2)
@@ -75,10 +75,10 @@ class Image(QThread):
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
                 camera.capture(current_image)
-            self.imaging_running_complete.emit()
-            file_list.append(current_image)
+            self.imaging_running_done.emit()
             self.capture.emit()
             sleep(interval-1)
+            file_list.append(current_image)
             if(current%(0.1*total)==0):
                 self.check_point.emit()
             
@@ -119,14 +119,10 @@ class Timelapse(QThread):
         self._running = False
 
     def run(self):
-        global file, directory, cloud
-        #if(cloud):
-        #os.system("avconv -r 10 -i " + file + " -r 10 -vcodec libx264 -crf 20 -g 15 -vf scale=2464:2464 " + directory + "/timelapse.mp4"+ " /"+name)
-        #os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + directory + "/timelapse.mp4")
-        #else:    
-        os.system("avconv -r 10 -i " + file + " -r 10 -vcodec libx264 -crf 20 -g 15 -vf scale=400:400 " + directory + "/timelapse.mp4")
+        global file, directory, cloud, file_list
+        os.system("avconv -r 10 -i " + file + " -r 5 -vcodec libx264 -crf 20 -g 15 -vf scale=400:400 " + directory + "/timelapse.mp4")
         os.system("omxplayer -p -o hdmi " + directory + "/timelapse.mp4")
-         
+        os.system("rm " + directory + "/timelapse.mp4")
     def stop(self):
         self.running = False
 
@@ -308,9 +304,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Image_Thread.finished.connect(lambda: self.Done())
             self.Image_Thread.capture.connect(lambda: self.Progress())
             self.Image_Thread.check_point.connect(lambda: self.Check_Point())
-            self.Image_Thread.check_point.connect(lambda: self.Check_Point())
             self.Image_Thread.imaging_running.connect(lambda: self.Imaging_Running())
-            self.Image_Thread.imaging_running_complete.connect(lambda: self.Imaging_Running_Complete())
+            self.Image_Thread.imaging_running_done.connect(lambda: self.Imaging_Running_Complete())
 
             self.Image_Thread.start()
 
@@ -354,24 +349,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Imaging_Running_Complete(self):
         self.Start_Imaging.setEnabled(True)
         self.Start_Imaging.setText("Stop Image Sequence")
-
-    def lapsing(self):
-        self.Start_Imaging.setEnabled(False)
-        self.Start_Imaging.setText("Generating Timelapse")
-
-    def lapsing_done(self):
-        self.Start_Imaging.setEnabled(True)
-        self.Start_Imaging.setText("Start Another Sequence")
-        self.IST_Editor.setEnabled(True)
-        self.ICI_spinBox.setEnabled(True)
-        self.ISD_spinBox.setEnabled(True)
-        self.Live_Feed.setEnabled(True)
-        self.Storage_Directory.setEnabled(True)
-        self.Snapshot.setEnabled(True)
-        self.JPG.setEnabled(True)
-        self.PNG.setEnabled(True)
-        self.Dropbox_Email.setEnabled(True)
-        self.Dropbox_Confirm.setEnabled(True)
 
     def Done(self):
         global done, on_flag, run_timelapse
