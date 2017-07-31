@@ -33,6 +33,7 @@ file_list = []
 directory = ""
 link =""
 email=""
+m_directory=""
 interval = 0
 duration = 0
 total = 0
@@ -47,6 +48,8 @@ low = False
 done = False
 average = False
 high = False
+cloud =False
+run_timelapse = True
 ASD = serial.Serial('/dev/ttyACM0', 9600)
 
 class Image(QThread):
@@ -104,7 +107,10 @@ class Dropbox(QThread):
                 del file_list[0]
             if(current == total - 1 and len(file_list) == 0):
                 self.upload_complete.emit()
+                
 class Timelapse(QThread):
+    begin = QtCore.pyqtSignal()
+    done = QtCore.pyqtSignal()
     
     def __init__(self):
         QThread.__init__(self)
@@ -113,8 +119,13 @@ class Timelapse(QThread):
         self._running = False
 
     def run(self):
-        os.system("avconv -r 10 -i " + file + " -r 10 -vcodec libx264 -crf 20 -g 15 -vf scale=720:720 /home/pi/Flashlapse_NEO/_temp/timelapse.mp4")
-        
+        global file, directory, cloud
+        #if(cloud):
+        #os.system("avconv -r 10 -i " + file + " -r 10 -vcodec libx264 -crf 20 -g 15 -vf scale=2464:2464 " + directory + "/timelapse.mp4"+ " /"+name)
+        #os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + directory + "/timelapse.mp4")
+        #else:    
+        os.system("avconv -r 10 -i " + file + " -r 10 -vcodec libx264 -crf 20 -g 15 -vf scale=400:400 " + directory + "/timelapse.mp4")
+        os.system("omxplayer -p -o hdmi " + directory + "/timelapse.mp4")
          
     def stop(self):
         self.running = False
@@ -144,25 +155,25 @@ class Email(QThread):
             sleep(1)     
         else:
             if(noti_count == 0):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" has been initiated, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" has been initiated, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 1 and high):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 10% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 10% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 2 and (high or average)):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 20% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 20% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 3 and high):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 30% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 30% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 4 and (high or average)):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 40% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 40% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 5 and ((off == False) and average == False)):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 50% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 50% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 6 and (high or average)):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 60% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 60% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 7 and high):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 70% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 70% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 8 and (high or average)):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 80% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 80% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
             elif(noti_count == 9 and high):
-                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 90% complete, check it out here.\n" + link + "\n\nTeam Flashlapse"
+                body = "Hi " + email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence "+name+" is 90% complete, check it out here.\n\n" + link + "\n\nTeam Flashlapse"
                 
             noti_count += 1
             
@@ -185,8 +196,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
  # access variables inside of the UI's file
 
     def IST_Edit(self):
-        global name
+        global name, directory, m_directory
         name = self.IST_Editor.text()
+        if(len(m_directory)>0):
+            directory = m_directory +"/"+name
+            self.Directory_Label.setText(directory)
         
     def IST_Change(self):
         self.ICI_spinBox.setEnabled(True)
@@ -222,10 +236,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         
         
     def Select_Storage_Directory(self):
-        global interval, duration, total, directory
-        directory = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/home/pi/Desktop'))
-        if(len(directory)!=0):
-            directory = directory +"/"+name
+        global interval, duration, total, directory, m_directory
+        m_directory = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/home/pi/Desktop'))
+        if(len(m_directory)!=0):
+            directory = m_directory +"/"+name
             self.Directory_Label.setText(directory)
             if(interval!= 0):
                 total = int((duration*60)/interval)
@@ -335,19 +349,52 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def Imaging_Running(self):
         self.Start_Imaging.setEnabled(False)
-        self.Start_Imaging.setText("Imaging")
+        self.Start_Imaging.setText("Imaging...")
         
     def Imaging_Running_Complete(self):
         self.Start_Imaging.setEnabled(True)
         self.Start_Imaging.setText("Stop Image Sequence")
 
+    def lapsing(self):
+        self.Start_Imaging.setEnabled(False)
+        self.Start_Imaging.setText("Generating Timelapse")
+
+    def lapsing_done(self):
+        self.Start_Imaging.setEnabled(True)
+        self.Start_Imaging.setText("Start Another Sequence")
+        self.IST_Editor.setEnabled(True)
+        self.ICI_spinBox.setEnabled(True)
+        self.ISD_spinBox.setEnabled(True)
+        self.Live_Feed.setEnabled(True)
+        self.Storage_Directory.setEnabled(True)
+        self.Snapshot.setEnabled(True)
+        self.JPG.setEnabled(True)
+        self.PNG.setEnabled(True)
+        self.Dropbox_Email.setEnabled(True)
+        self.Dropbox_Confirm.setEnabled(True)
+
     def Done(self):
-        global done, on_flag
-        self.Timelapse_Thread = Timelapse()
-        self.Timelapse_Thread.start()
+        global done, on_flag, run_timelapse
+        
+        if(run_timelapse):
+            self.Timelapse_Thread = Timelapse()
+            self.Timelapse_Thread.start()
+
         done=True
         self.Check_Point()
+        
         self.Start_Imaging.setText("Start Another Sequence")
+        
+        self.IST_Editor.setEnabled(True)
+        self.ICI_spinBox.setEnabled(True)
+        self.ISD_spinBox.setEnabled(True)
+        self.Live_Feed.setEnabled(True)
+        self.Storage_Directory.setEnabled(True)
+        self.Snapshot.setEnabled(True)
+        self.JPG.setEnabled(True)
+        self.PNG.setEnabled(True)
+        self.Dropbox_Email.setEnabled(True)
+        self.Dropbox_Confirm.setEnabled(True)
         icon3 = QtGui.QIcon()
         icon3.addPixmap(QtGui.QPixmap("../_image/Start-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Start_Imaging.setIcon(icon3)
@@ -375,9 +422,13 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         global email
         email = self.Dropbox_Email.text()
         self.Cloud_Sync.setEnabled(True)
+        self.Frequency_Off.setEnabled(True)
+        self.Frequency_Low.setEnabled(True)
+        self.Frequency_Average.setEnabled(True)
+        self.Frequency_High.setEnabled(True)
             
     def Start_Image(self):
-        global off, low, average, high
+        global off, low, average, high, cloud
         
         self.IST_Editor.setEnabled(False)
         self.ICI_spinBox.setEnabled(False)
@@ -400,6 +451,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         low = self.Frequency_Low.isChecked()
         average = self.Frequency_Average.isChecked()
         high = self.Frequency_High.isChecked()
+        cloud = self.Cloud_Sync.isChecked()
         
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("../_image/Stop-icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -522,6 +574,17 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def rotate(self):
         ASD.write(bytes('z', 'UTF-8'))
 
+    def timelapse_change(self):
+        global run_timelapse
+        if(run_timelapse):
+            self.Timelapse.setText("Timelapse Generation: OFF")
+            run_timelapse = False
+        else:
+            self.Timelapse.setText("Timelapse Generation: ON")
+            run_timelapse = True
+        
+
+        
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
@@ -544,6 +607,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Barrier_Confirm.clicked.connect(lambda: self.barri_confirm())
         self.Disco.clicked.connect(lambda: self.disco_confirm())
         self.Rotate.clicked.connect(lambda: self.rotate())
+        self.Timelapse.clicked.connect(lambda: self.timelapse_change())
 
 # I feel better having one of these
 def main():
