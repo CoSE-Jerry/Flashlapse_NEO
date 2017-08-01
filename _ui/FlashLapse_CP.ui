@@ -85,7 +85,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -94,14 +94,14 @@
      <widget class="QTabWidget" name="Lights">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>661</width>
-        <height>661</height>
+        <x>20</x>
+        <y>20</y>
+        <width>651</width>
+        <height>651</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="Constant">
        <attribute name="title">
@@ -110,14 +110,14 @@
        <widget class="QTabWidget" name="Constant_Mode">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>631</width>
-          <height>611</height>
+          <x>20</x>
+          <y>20</y>
+          <width>611</width>
+          <height>591</height>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="FullColor">
          <attribute name="title">
@@ -126,10 +126,10 @@
          <widget class="QLabel" name="Color_Frame">
           <property name="geometry">
            <rect>
-            <x>30</x>
-            <y>10</y>
-            <width>561</width>
-            <height>561</height>
+            <x>50</x>
+            <y>30</y>
+            <width>500</width>
+            <height>500</height>
            </rect>
           </property>
           <property name="text">
@@ -145,8 +145,8 @@
          <widget class="QComboBox" name="Full_Color_Select">
           <property name="geometry">
            <rect>
-            <x>230</x>
-            <y>160</y>
+            <x>220</x>
+            <y>270</y>
             <width>151</width>
             <height>41</height>
            </rect>
@@ -316,14 +316,14 @@
        <widget class="QTabWidget" name="Presets">
         <property name="geometry">
          <rect>
-          <x>10</x>
-          <y>10</y>
-          <width>631</width>
-          <height>611</height>
+          <x>20</x>
+          <y>20</y>
+          <width>611</width>
+          <height>591</height>
          </rect>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="Gravitropic">
          <attribute name="title">
@@ -421,9 +421,9 @@ p, li { white-space: pre-wrap; }
          <widget class="QTextBrowser" name="Germi_Text">
           <property name="geometry">
            <rect>
-            <x>10</x>
+            <x>20</x>
             <y>20</y>
-            <width>290</width>
+            <width>581</width>
             <height>110</height>
            </rect>
           </property>
@@ -623,8 +623,8 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>391</width>
-        <height>331</height>
+        <width>631</width>
+        <height>511</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -767,8 +767,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>340</y>
+        <x>70</x>
+        <y>590</y>
         <width>411</width>
         <height>51</height>
        </rect>
@@ -793,6 +793,9 @@ p, li { white-space: pre-wrap; }
        </item>
       </layout>
      </widget>
+     <zorder>layoutWidget</zorder>
+     <zorder>layoutWidget</zorder>
+     <zorder>Progress_Label</zorder>
     </widget>
     <widget class="QWidget" name="Cloud">
      <attribute name="title">
@@ -806,8 +809,8 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>401</width>
-        <height>271</height>
+        <width>661</width>
+        <height>661</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -820,10 +823,10 @@ p, li { white-space: pre-wrap; }
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>60</x>
-          <y>10</y>
-          <width>271</width>
-          <height>140</height>
+          <x>50</x>
+          <y>40</y>
+          <width>542</width>
+          <height>282</height>
          </rect>
         </property>
         <property name="text">
@@ -840,9 +843,9 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>130</y>
-          <width>291</width>
-          <height>80</height>
+          <y>280</y>
+          <width>551</width>
+          <height>111</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -881,6 +884,85 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>570</y>
+          <width>351</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QRadioButton" name="Frequency_Off">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>OFF</string>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="Frequency_Low">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>LOW</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="Frequency_Average">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>AVERAGE</string>
+           </property>
+           <property name="checked">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QRadioButton" name="Frequency_High">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>HIGH</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QLabel" name="Email_Update_Prompt">
+        <property name="geometry">
+         <rect>
+          <x>100</x>
+          <y>530</y>
+          <width>221</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Email Status Update Frequency:</string>
+        </property>
+       </widget>
+       <zorder>label</zorder>
+       <zorder>verticalLayoutWidget_2</zorder>
+       <zorder>horizontalLayoutWidget</zorder>
+       <zorder>Email_Update_Prompt</zorder>
+       <zorder>verticalSpacer_2</zorder>
       </widget>
       <widget class="QWidget" name="CyVerse">
        <attribute name="title">
@@ -955,80 +1037,6 @@ p, li { white-space: pre-wrap; }
         </layout>
        </widget>
       </widget>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>330</y>
-        <width>351</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_6">
-       <item>
-        <widget class="QRadioButton" name="Frequency_Off">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>OFF</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="Frequency_Low">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>LOW</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="Frequency_Average">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>AVERAGE</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="Frequency_High">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>HIGH</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="Email_Update_Prompt">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>300</y>
-        <width>221</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Email Status Update Frequency:</string>
-      </property>
      </widget>
     </widget>
    </widget>
@@ -1122,13 +1130,6 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
-   <zorder>Image_Frame</zorder>
-   <zorder>verticalLayoutWidget</zorder>
-   <zorder>Control_Tab</zorder>
-   <zorder>Start_Imaging</zorder>
-   <zorder>verticalLayoutWidget_4</zorder>
-   <zorder>verticalLayoutWidget_5</zorder>
-   <zorder>PNG</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QMenuBar" name="menubar">
