@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1280</width>
-    <height>800</height>
+    <width>800</width>
+    <height>492</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,10 +21,10 @@
    <widget class="QLabel" name="Image_Frame">
     <property name="geometry">
      <rect>
-      <x>750</x>
+      <x>480</x>
       <y>20</y>
-      <width>500</width>
-      <height>500</height>
+      <width>300</width>
+      <height>300</height>
      </rect>
     </property>
     <property name="frameShape">
@@ -49,10 +49,10 @@
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>610</y>
-      <width>161</width>
-      <height>71</height>
+      <x>490</x>
+      <y>400</y>
+      <width>91</width>
+      <height>51</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_4">
@@ -80,8 +80,8 @@
      <rect>
       <x>30</x>
       <y>20</y>
-      <width>691</width>
-      <height>711</height>
+      <width>441</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="currentIndex">
@@ -94,10 +94,10 @@
      <widget class="QTabWidget" name="Lights">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>651</width>
-        <height>651</height>
+        <x>10</x>
+        <y>10</y>
+        <width>381</width>
+        <height>381</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -110,10 +110,10 @@
        <widget class="QTabWidget" name="Constant_Mode">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>20</y>
-          <width>611</width>
-          <height>591</height>
+          <x>10</x>
+          <y>10</y>
+          <width>321</width>
+          <height>331</height>
          </rect>
         </property>
         <property name="currentIndex">
@@ -126,10 +126,10 @@
          <widget class="QLabel" name="Color_Frame">
           <property name="geometry">
            <rect>
-            <x>50</x>
-            <y>30</y>
-            <width>500</width>
-            <height>500</height>
+            <x>30</x>
+            <y>10</y>
+            <width>250</width>
+            <height>250</height>
            </rect>
           </property>
           <property name="text">
@@ -145,10 +145,10 @@
          <widget class="QComboBox" name="Full_Color_Select">
           <property name="geometry">
            <rect>
-            <x>220</x>
-            <y>270</y>
-            <width>151</width>
-            <height>41</height>
+            <x>120</x>
+            <y>100</y>
+            <width>69</width>
+            <height>22</height>
            </rect>
           </property>
           <property name="currentText">
@@ -316,10 +316,10 @@
        <widget class="QTabWidget" name="Presets">
         <property name="geometry">
          <rect>
-          <x>20</x>
-          <y>20</y>
-          <width>611</width>
-          <height>591</height>
+          <x>10</x>
+          <y>10</y>
+          <width>321</width>
+          <height>331</height>
          </rect>
         </property>
         <property name="currentIndex">
@@ -421,9 +421,9 @@ p, li { white-space: pre-wrap; }
          <widget class="QTextBrowser" name="Germi_Text">
           <property name="geometry">
            <rect>
-            <x>20</x>
+            <x>10</x>
             <y>20</y>
-            <width>581</width>
+            <width>290</width>
             <height>110</height>
            </rect>
           </property>
@@ -623,8 +623,8 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>631</width>
-        <height>511</height>
+        <width>391</width>
+        <height>331</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -767,8 +767,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>590</y>
+        <x>10</x>
+        <y>340</y>
         <width>411</width>
         <height>51</height>
        </rect>
@@ -793,9 +793,6 @@ p, li { white-space: pre-wrap; }
        </item>
       </layout>
      </widget>
-     <zorder>layoutWidget</zorder>
-     <zorder>layoutWidget</zorder>
-     <zorder>Progress_Label</zorder>
     </widget>
     <widget class="QWidget" name="Cloud">
      <attribute name="title">
@@ -809,8 +806,8 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>10</x>
         <y>10</y>
-        <width>661</width>
-        <height>661</height>
+        <width>401</width>
+        <height>271</height>
        </rect>
       </property>
       <property name="currentIndex">
@@ -823,10 +820,10 @@ p, li { white-space: pre-wrap; }
        <widget class="QLabel" name="label">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>40</y>
-          <width>542</width>
-          <height>282</height>
+          <x>60</x>
+          <y>10</y>
+          <width>271</width>
+          <height>140</height>
          </rect>
         </property>
         <property name="text">
@@ -843,9 +840,9 @@ p, li { white-space: pre-wrap; }
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>280</y>
-          <width>551</width>
-          <height>111</height>
+          <y>130</y>
+          <width>291</width>
+          <height>80</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_9">
@@ -884,85 +881,6 @@ p, li { white-space: pre-wrap; }
          </item>
         </layout>
        </widget>
-       <widget class="QWidget" name="horizontalLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>80</x>
-          <y>570</y>
-          <width>351</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="QRadioButton" name="Frequency_Off">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>OFF</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="checked">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="Frequency_Low">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>LOW</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="Frequency_Average">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>AVERAGE</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QRadioButton" name="Frequency_High">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>HIGH</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QLabel" name="Email_Update_Prompt">
-        <property name="geometry">
-         <rect>
-          <x>100</x>
-          <y>530</y>
-          <width>221</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>Email Status Update Frequency:</string>
-        </property>
-       </widget>
-       <zorder>label</zorder>
-       <zorder>verticalLayoutWidget_2</zorder>
-       <zorder>horizontalLayoutWidget</zorder>
-       <zorder>Email_Update_Prompt</zorder>
-       <zorder>verticalSpacer_2</zorder>
       </widget>
       <widget class="QWidget" name="CyVerse">
        <attribute name="title">
@@ -1038,6 +956,80 @@ p, li { white-space: pre-wrap; }
        </widget>
       </widget>
      </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>330</y>
+        <width>351</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QRadioButton" name="Frequency_Off">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>OFF</string>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="Frequency_Low">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>LOW</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="Frequency_Average">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>AVERAGE</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="Frequency_High">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>HIGH</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="Email_Update_Prompt">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>300</y>
+        <width>221</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Email Status Update Frequency:</string>
+      </property>
+     </widget>
     </widget>
    </widget>
    <widget class="QCommandLinkButton" name="Start_Imaging">
@@ -1046,9 +1038,9 @@ p, li { white-space: pre-wrap; }
     </property>
     <property name="geometry">
      <rect>
-      <x>940</x>
-      <y>680</y>
-      <width>311</width>
+      <x>600</x>
+      <y>400</y>
+      <width>191</width>
       <height>51</height>
      </rect>
     </property>
@@ -1072,10 +1064,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QWidget" name="verticalLayoutWidget_4">
     <property name="geometry">
      <rect>
-      <x>750</x>
-      <y>530</y>
+      <x>490</x>
+      <y>330</y>
       <width>161</width>
-      <height>71</height>
+      <height>51</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1104,10 +1096,10 @@ p, li { white-space: pre-wrap; }
    <widget class="QWidget" name="verticalLayoutWidget_5">
     <property name="geometry">
      <rect>
-      <x>1050</x>
-      <y>530</y>
-      <width>201</width>
-      <height>131</height>
+      <x>680</x>
+      <y>320</y>
+      <width>101</width>
+      <height>80</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1137,7 +1129,7 @@ p, li { white-space: pre-wrap; }
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1280</width>
+     <width>800</width>
      <height>19</height>
     </rect>
    </property>
