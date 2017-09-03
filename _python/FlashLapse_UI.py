@@ -23,7 +23,7 @@ class Ui_MainWindow(object):
         self.Image_Frame.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.Image_Frame.setLineWidth(5)
         self.Image_Frame.setText("")
-        self.Image_Frame.setPixmap(QtGui.QPixmap("../_image/background1.png"))
+        self.Image_Frame.setPixmap(QtGui.QPixmap("../_image/background.png"))
         self.Image_Frame.setScaledContents(True)
         self.Image_Frame.setObjectName("Image_Frame")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
@@ -227,7 +227,7 @@ class Ui_MainWindow(object):
         self.Imaging = QtWidgets.QWidget()
         self.Imaging.setObjectName("Imaging")
         self.layoutWidget2 = QtWidgets.QWidget(self.Imaging)
-        self.layoutWidget2.setGeometry(QtCore.QRect(10, 10, 381, 311))
+        self.layoutWidget2.setGeometry(QtCore.QRect(20, 10, 391, 331))
         self.layoutWidget2.setObjectName("layoutWidget2")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(self.layoutWidget2)
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -279,12 +279,16 @@ class Ui_MainWindow(object):
         self.Storage_Directory.setCheckable(False)
         self.Storage_Directory.setObjectName("Storage_Directory")
         self.verticalLayout_2.addWidget(self.Storage_Directory)
+        self.Timelapse = QtWidgets.QPushButton(self.layoutWidget2)
+        self.Timelapse.setEnabled(True)
+        self.Timelapse.setObjectName("Timelapse")
+        self.verticalLayout_2.addWidget(self.Timelapse)
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
         self.Live_Feed = QtWidgets.QPushButton(self.layoutWidget2)
         self.Live_Feed.setObjectName("Live_Feed")
         self.verticalLayout_3.addWidget(self.Live_Feed)
         self.layoutWidget3 = QtWidgets.QWidget(self.Imaging)
-        self.layoutWidget3.setGeometry(QtCore.QRect(14, 330, 411, 51))
+        self.layoutWidget3.setGeometry(QtCore.QRect(10, 340, 411, 51))
         self.layoutWidget3.setObjectName("layoutWidget3")
         self.verticalLayout_6 = QtWidgets.QVBoxLayout(self.layoutWidget3)
         self.verticalLayout_6.setContentsMargins(0, 0, 0, 0)
@@ -360,28 +364,32 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.addWidget(self.CyVerse_Confirm)
         self.Service_Select.addTab(self.CyVerse, "")
         self.horizontalLayoutWidget = QtWidgets.QWidget(self.Cloud)
-        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(40, 330, 361, 31))
+        self.horizontalLayoutWidget.setGeometry(QtCore.QRect(40, 330, 351, 31))
         self.horizontalLayoutWidget.setObjectName("horizontalLayoutWidget")
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout_6.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         self.Frequency_Off = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
+        self.Frequency_Off.setEnabled(False)
         self.Frequency_Off.setCheckable(True)
         self.Frequency_Off.setChecked(False)
         self.Frequency_Off.setObjectName("Frequency_Off")
         self.horizontalLayout_6.addWidget(self.Frequency_Off)
         self.Frequency_Low = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
+        self.Frequency_Low.setEnabled(False)
         self.Frequency_Low.setObjectName("Frequency_Low")
         self.horizontalLayout_6.addWidget(self.Frequency_Low)
         self.Frequency_Average = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
+        self.Frequency_Average.setEnabled(False)
         self.Frequency_Average.setChecked(True)
         self.Frequency_Average.setObjectName("Frequency_Average")
         self.horizontalLayout_6.addWidget(self.Frequency_Average)
         self.Frequency_High = QtWidgets.QRadioButton(self.horizontalLayoutWidget)
+        self.Frequency_High.setEnabled(False)
         self.Frequency_High.setObjectName("Frequency_High")
         self.horizontalLayout_6.addWidget(self.Frequency_High)
         self.Email_Update_Prompt = QtWidgets.QLabel(self.Cloud)
-        self.Email_Update_Prompt.setGeometry(QtCore.QRect(40, 310, 171, 20))
+        self.Email_Update_Prompt.setGeometry(QtCore.QRect(40, 300, 221, 31))
         self.Email_Update_Prompt.setObjectName("Email_Update_Prompt")
         self.Control_Tab.addTab(self.Cloud, "")
         self.Start_Imaging = QtWidgets.QCommandLinkButton(self.centralwidget)
@@ -425,7 +433,7 @@ class Ui_MainWindow(object):
         self.statusBar.setObjectName("statusBar")
         MainWindow.setStatusBar(self.statusBar)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 800, 19))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.actionOpen_Directory = QtWidgets.QAction(MainWindow)
@@ -471,8 +479,8 @@ class Ui_MainWindow(object):
         self.Gravi_Text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">12 hours full spectrum light from above, 90 degree rotation &amp; all lights become a certain color.</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.1pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">12 hours full spectrum light from above, 90 degree rotation &amp; all lights become a certain color.</span></p></body></html>"))
         self.Gravi_Confirm.setText(_translate("MainWindow", "Confirm "))
         self.Color_Gravi.setText(_translate("MainWindow", "Rotation Color:"))
         self.Gravi_Red.setText(_translate("MainWindow", "Red"))
@@ -483,8 +491,8 @@ class Ui_MainWindow(object):
         self.Germi_Text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">7 days of a certain colored light from all sides.</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.1pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">7 days of a certain colored light from all sides.</span></p></body></html>"))
         self.Germi_Confirm.setText(_translate("MainWindow", "Confirm "))
         self.Color_Germi.setText(_translate("MainWindow", "Color Setting:"))
         self.Germi_Red.setText(_translate("MainWindow", "Red"))
@@ -495,8 +503,8 @@ class Ui_MainWindow(object):
         self.Barrier_Text.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">24 hour of a certain colored light from above.</p></body></html>"))
+"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.1pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:8.25pt;\">24 hour of a certain colored light from above.</span></p></body></html>"))
         self.Barrier_Confirm.setText(_translate("MainWindow", "Confirm "))
         self.Color_Barri.setText(_translate("MainWindow", "Color Setting:"))
         self.Barri_Red.setText(_translate("MainWindow", "Red"))
@@ -515,6 +523,7 @@ class Ui_MainWindow(object):
         self.ISD_spinBox.setSuffix(_translate("MainWindow", " min"))
         self.Directory_Label.setText(_translate("MainWindow", "Storage Directory Not Selected"))
         self.Storage_Directory.setText(_translate("MainWindow", "Select Storage Directory"))
+        self.Timelapse.setText(_translate("MainWindow", "Timelapse Generation: ON"))
         self.Live_Feed.setText(_translate("MainWindow", "Start Live Feed (30s)"))
         self.Progress_Label.setText(_translate("MainWindow", "Progress:"))
         self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Imaging), _translate("MainWindow", "Imaging"))

@@ -40,7 +40,11 @@
      <string/>
     </property>
     <property name="pixmap">
+<<<<<<< HEAD
      <pixmap>../_image/background2.png</pixmap>
+=======
+     <pixmap>../_image/background.png</pixmap>
+>>>>>>> e269bc5d14c83fb96ad607fa9132f73fe45c8d8a
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -342,8 +346,8 @@
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;12 hours full spectrum light from above, 90 degree rotation &amp;amp; all lights become a certain color.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.1pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8.25pt;&quot;&gt;12 hours full spectrum light from above, 90 degree rotation &amp;amp; all lights become a certain color.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QPushButton" name="Gravi_Confirm">
@@ -431,8 +435,8 @@ p, li { white-space: pre-wrap; }
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;7 days of a certain colored light from all sides.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.1pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8.25pt;&quot;&gt;7 days of a certain colored light from all sides.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QPushButton" name="Germi_Confirm">
@@ -520,8 +524,8 @@ p, li { white-space: pre-wrap; }
            <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
-&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;24 hour of a certain colored light from above.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.1pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8.25pt;&quot;&gt;24 hour of a certain colored light from above.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
          <widget class="QPushButton" name="Barrier_Confirm">
@@ -621,10 +625,10 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>10</y>
-        <width>381</width>
-        <height>311</height>
+        <width>391</width>
+        <height>331</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -743,6 +747,16 @@ p, li { white-space: pre-wrap; }
            </property>
           </widget>
          </item>
+         <item>
+          <widget class="QPushButton" name="Timelapse">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Timelapse Generation: ON</string>
+           </property>
+          </widget>
+         </item>
         </layout>
        </item>
        <item>
@@ -757,8 +771,8 @@ p, li { white-space: pre-wrap; }
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>14</x>
-        <y>330</y>
+        <x>10</x>
+        <y>340</y>
         <width>411</width>
         <height>51</height>
        </rect>
@@ -951,13 +965,16 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>40</x>
         <y>330</y>
-        <width>361</width>
+        <width>351</width>
         <height>31</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
        <item>
         <widget class="QRadioButton" name="Frequency_Off">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>OFF</string>
          </property>
@@ -971,6 +988,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <widget class="QRadioButton" name="Frequency_Low">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>LOW</string>
          </property>
@@ -978,6 +998,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <widget class="QRadioButton" name="Frequency_Average">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>AVERAGE</string>
          </property>
@@ -988,6 +1011,9 @@ p, li { white-space: pre-wrap; }
        </item>
        <item>
         <widget class="QRadioButton" name="Frequency_High">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>HIGH</string>
          </property>
@@ -999,9 +1025,9 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>40</x>
-        <y>310</y>
-        <width>171</width>
-        <height>20</height>
+        <y>300</y>
+        <width>221</width>
+        <height>31</height>
        </rect>
       </property>
       <property name="text">
@@ -1108,7 +1134,7 @@ p, li { white-space: pre-wrap; }
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>19</height>
     </rect>
    </property>
   </widget>
