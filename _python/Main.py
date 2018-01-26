@@ -399,6 +399,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         global email
         email = self.Dropbox_Email.text()
         self.Cloud_Sync.setEnabled(True)
+        self.Cloud_Sync.setChecked(True)
         self.Frequency_Off.setEnabled(True)
         self.Frequency_Low.setEnabled(True)
         self.Frequency_Average.setEnabled(True)
