@@ -1046,7 +1046,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>-10</x>
-        <y>270</y>
+        <y>280</y>
         <width>461</width>
         <height>21</height>
        </rect>
@@ -1058,10 +1058,10 @@ p, li { white-space: pre-wrap; }
      <widget class="QPushButton" name="Start_Scheduler">
       <property name="geometry">
        <rect>
-        <x>320</x>
+        <x>310</x>
         <y>310</y>
-        <width>101</width>
-        <height>61</height>
+        <width>111</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="text">
@@ -1072,9 +1072,9 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>110</x>
-        <y>340</y>
+        <y>360</y>
         <width>121</width>
-        <height>31</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -1085,7 +1085,7 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>330</y>
+        <y>340</y>
         <width>271</width>
         <height>21</height>
        </rect>
@@ -1123,7 +1123,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>20</x>
         <y>230</y>
-        <width>101</width>
+        <width>111</width>
         <height>21</height>
        </rect>
       </property>
@@ -1136,8 +1136,8 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>10</x>
         <y>250</y>
-        <width>99</width>
-        <height>18</height>
+        <width>101</width>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
