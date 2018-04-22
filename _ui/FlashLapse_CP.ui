@@ -1098,7 +1098,7 @@ p, li { white-space: pre-wrap; }
         <x>300</x>
         <y>320</y>
         <width>131</width>
-        <height>61</height>
+        <height>71</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_17">
@@ -1123,8 +1123,8 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>20</x>
         <y>340</y>
-        <width>160</width>
-        <height>41</height>
+        <width>201</width>
+        <height>51</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_18">
