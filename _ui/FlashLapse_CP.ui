@@ -813,7 +813,7 @@ p, li { white-space: pre-wrap; }
         <x>180</x>
         <y>5</y>
         <width>81</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_11">
@@ -848,7 +848,7 @@ p, li { white-space: pre-wrap; }
         <x>300</x>
         <y>105</y>
         <width>81</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_14">
@@ -902,7 +902,7 @@ p, li { white-space: pre-wrap; }
         <x>180</x>
         <y>225</y>
         <width>81</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_15">
@@ -956,7 +956,7 @@ p, li { white-space: pre-wrap; }
         <x>60</x>
         <y>105</y>
         <width>81</width>
-        <height>41</height>
+        <height>51</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_16">
@@ -1073,7 +1073,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>110</x>
         <y>350</y>
-        <width>91</width>
+        <width>121</width>
         <height>21</height>
        </rect>
       </property>
@@ -1123,7 +1123,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>10</x>
         <y>220</y>
-        <width>91</width>
+        <width>101</width>
         <height>52</height>
        </rect>
       </property>
@@ -1136,9 +1136,9 @@ p, li { white-space: pre-wrap; }
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="Reset_Position">
          <property name="text">
-          <string>PushButton</string>
+          <string>Reset Position</string>
          </property>
         </widget>
        </item>
