@@ -1055,37 +1055,11 @@ p, li { white-space: pre-wrap; }
        <enum>Qt::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="Start_Scheduler">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>310</y>
-        <width>111</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Set Schedule</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="Motor_Speed">
-      <property name="geometry">
-       <rect>
-        <x>110</x>
-        <y>370</y>
-        <width>121</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Motor Speed: 600</string>
-      </property>
-     </widget>
      <widget class="QSlider" name="verticalSlider">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>340</y>
+        <y>320</y>
         <width>271</width>
         <height>21</height>
        </rect>
@@ -1118,31 +1092,57 @@ p, li { white-space: pre-wrap; }
        <number>40</number>
       </property>
      </widget>
-     <widget class="QLabel" name="Current_Location">
+     <widget class="QWidget" name="verticalLayoutWidget_10">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>320</y>
+        <width>131</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_17">
+       <item>
+        <widget class="QPushButton" name="Start_Scheduler">
+         <property name="text">
+          <string>Set Schedule</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Reset_Position">
+         <property name="text">
+          <string>Reset Position</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_11">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>230</y>
-        <width>111</width>
-        <height>21</height>
+        <y>340</y>
+        <width>160</width>
+        <height>41</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Current Location: 0 °</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="Reset_Position">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>250</y>
-        <width>101</width>
-        <height>21</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Reset Position</string>
-      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_18">
+       <item>
+        <widget class="QLabel" name="Motor_Speed">
+         <property name="text">
+          <string>Motor Speed: 600</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="Current_Location">
+         <property name="text">
+          <string>Current Location: 0 °</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
     <widget class="QWidget" name="Cloud">
