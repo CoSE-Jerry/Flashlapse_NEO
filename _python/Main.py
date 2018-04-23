@@ -569,7 +569,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def value_changed(self):
     
-        self.Motor_Speed.setText("Motor Speed: "+str(Motor_Speed.value()))
+        self.Motor_Speed.setText("Motor Speed: "+str(Speed_Slider.value()))
         
 
         
