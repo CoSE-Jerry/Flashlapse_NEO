@@ -610,6 +610,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         global sch_running
         if(sch_running):
             self.Schedule_Thread.terminate()
+            sch_running = False;
         ASD.write(bytes("~0\n", 'UTF-8'))
 
     def value_changed(self):
