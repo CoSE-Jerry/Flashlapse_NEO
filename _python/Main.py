@@ -600,13 +600,13 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         delay_1 = self.wait_spinbox_1.value()
         delay_2 = self.wait_spinbox_2.value()
 
-        if(sch_running)
+        if(sch_running):
             self.Schedule_Thread.terminate()
         self.Schedule_Thread = Schedule()
         self.Schedule_Thread.start()
 
     def reset_position(self):
-        if(sch_running)
+        if(sch_running):
             self.Schedule_Thread.terminate()
         ASD.write(bytes("~0\n", 'UTF-8'))
 
