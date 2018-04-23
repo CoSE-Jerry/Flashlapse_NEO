@@ -566,7 +566,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         angle = self.rotate_to_spinbox_1.value()
         
-        ASD.write(bytes('~'+angle+"\n", 'UTF-8'))
+        ASD.write(bytes('~'+str(angle)+"\n", 'UTF-8'))
         
 
         
