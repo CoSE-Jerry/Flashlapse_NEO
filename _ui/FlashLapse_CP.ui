@@ -332,7 +332,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>1</number>
         </property>
         <widget class="QWidget" name="Gravitropic">
          <attribute name="title">
@@ -618,6 +618,11 @@ p, li { white-space: pre-wrap; }
            <string>Start!</string>
           </property>
          </widget>
+        </widget>
+        <widget class="QWidget" name="tab_2">
+         <attribute name="title">
+          <string>Page</string>
+         </attribute>
         </widget>
        </widget>
       </widget>
@@ -1103,16 +1108,23 @@ p, li { white-space: pre-wrap; }
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_17">
        <item>
-        <widget class="QPushButton" name="Start_Scheduler">
+        <widget class="QPushButton" name="Reset_Position">
          <property name="text">
-          <string>Set Schedule</string>
+          <string>Reset Position</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="Reset_Position">
+        <widget class="QPushButton" name="Test_Run">
          <property name="text">
-          <string>Reset Position</string>
+          <string>Test Run</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Start_Scheduler">
+         <property name="text">
+          <string>Set Schedule</string>
          </property>
         </widget>
        </item>
@@ -1123,7 +1135,7 @@ p, li { white-space: pre-wrap; }
        <rect>
         <x>20</x>
         <y>340</y>
-        <width>201</width>
+        <width>141</width>
         <height>51</height>
        </rect>
       </property>
