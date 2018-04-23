@@ -583,7 +583,7 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(2)
+        self.Control_Tab.setCurrentIndex(0)
         self.Lights.setCurrentIndex(0)
         self.Constant_Mode.setCurrentIndex(0)
         self.Presets1.setCurrentIndex(1)
