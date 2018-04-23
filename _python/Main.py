@@ -592,7 +592,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             run_timelapse = True
 
     def start_scheduler(self):
-        global angle_1, angle_2, delay_1, delay_2
+        global angle_1, angle_2, delay_1, delay_2,sch_running
 
         
         angle_1 = self.rotate_to_spinbox_1.value()
@@ -604,8 +604,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Schedule_Thread.terminate()
         self.Schedule_Thread = Schedule()
         self.Schedule_Thread.start()
+        sch_running=True
 
     def reset_position(self):
+        global sch_running
         if(sch_running):
             self.Schedule_Thread.terminate()
         ASD.write(bytes("~0\n", 'UTF-8'))
