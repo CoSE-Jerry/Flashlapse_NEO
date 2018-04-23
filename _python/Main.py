@@ -618,7 +618,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     
         ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
 
-    def test_run(self)
+    def test_run(self):
         self.test_Thread = test()
         self.test_Thread.start()
         
