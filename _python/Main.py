@@ -564,8 +564,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_scheduler(self):
 
-        angle = self.rotate_to_spinbox_1.value() 
-        ASD.write(bytes('~'+str(angle)+"\n", 'UTF-8'))
+        angle = self.rotate_to_spinbox_1.value()
+        if(angle<0)
+            ASD.write(bytes('~'+str(360 + angle)+"\n", 'UTF-8'))
+        else
+            ASD.write(bytes('~'+str(angle)+"\n", 'UTF-8'))
+
+    def reset_position(self):
+ 
+        ASD.write(bytes('~0\n", 'UTF-8'))
 
     def value_changed(self):
     
@@ -601,8 +608,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Rotate.clicked.connect(lambda: self.rotate())
         self.Timelapse.clicked.connect(lambda: self.timelapse_change())
         self.Start_Scheduler.clicked.connect(lambda: self.start_scheduler())
+        self.Reset_Position.clicked.connect(lambda: self.reset_position())
         self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
         self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
+
+        
 
 # I feel better having one of these
 def main():
