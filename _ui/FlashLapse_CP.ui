@@ -1069,6 +1069,9 @@ p, li { white-space: pre-wrap; }
         <height>21</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>OpenHandCursor</cursorShape>
+      </property>
       <property name="minimum">
        <number>10</number>
       </property>
@@ -1076,7 +1079,7 @@ p, li { white-space: pre-wrap; }
        <number>1200</number>
       </property>
       <property name="singleStep">
-       <number>10</number>
+       <number>20</number>
       </property>
       <property name="pageStep">
        <number>30</number>

@@ -570,6 +570,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def value_changed(self):
     
         self.Motor_Speed.setText("Motor Speed: "+str(self.Speed_Select.value()))
+
+    def slider_released(self):
+    
+        ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
         
 
         
@@ -598,6 +602,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Timelapse.clicked.connect(lambda: self.timelapse_change())
         self.Start_Scheduler.clicked.connect(lambda: self.start_scheduler())
         self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
+        self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
 
 # I feel better having one of these
 def main():
