@@ -122,8 +122,6 @@ class Schedule(QThread):
         sch_running = True;
 
     def __del__(self):
-        global sch_running
-        sch_running = False;
         self._running = False
 
     def run(self):  
@@ -131,9 +129,30 @@ class Schedule(QThread):
 
         while True:
             ASD.write(bytes('~'+str(angle_1)+"\n", 'UTF-8'))
-            sleep(delay_1)
+
+            sleep(delay_1*60)
+
             ASD.write(bytes('~'+str(angle_2)+"\n", 'UTF-8'))
-            sleep(delay_2)
+
+            sleep(delay_2*60)
+
+class Test(QThread):
+    
+    def __init__(self):
+        global test_running
+        QThread.__init__(self)
+        test_running = True;
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        global angle_1, angle_2
+        while True:
+            ASD.write(bytes('~'+str(angle_1)+"\n", 'UTF-8'))
+            sleep(5)
+            ASD.write(bytes('~'+str(angle_2)+"\n", 'UTF-8'))
+            sleep(5)
             
             
             
@@ -602,15 +621,19 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         if(sch_running):
             self.Schedule_Thread.terminate()
+            sch_running = False;
         self.Schedule_Thread = Schedule()
         self.Schedule_Thread.start()
         sch_running=True
 
     def reset_position(self):
-        global sch_running
+        global sch_running,test_running
         if(sch_running):
             self.Schedule_Thread.terminate()
             sch_running = False;
+        if(test_running):
+            self.Test_Thread.terminate()
+            test_running = False;
         ASD.write(bytes("~0\n", 'UTF-8'))
 
     def value_changed(self):
@@ -622,11 +645,20 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
 
     def test_run(self):
-        self.test_Thread = test()
-        self.test_Thread.start()
+        global angle_1, angle_2, sch_running, test_running
+        if(sch_running):
+            self.Schedule_Thread.terminate()
+            sch_running = False;
+        if(test_running):
+            self.Test_Thread.terminate()
+            test_running = False;
+        angle_1 = self.rotate_to_spinbox_1.value()
+        angle_2 = self.rotate_to_spinbox_2.value()
+        self.Test_Thread = Test()
+        self.Test_Thread.start()
+        test_running = True;
         
 
-        
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
