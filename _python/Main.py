@@ -591,7 +591,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         angle_2 = self.rotate_to_spinbox_2.value()
         delay_1 = self.wait_spinbox_1.value()
         delay_2 = self.wait_spinbox_2.value()
-
+        
+        self.Schedule_Thread.terminate()
+        
         self.Schedule_Thread = Schedule()
         self.Schedule_Thread.start()
 
