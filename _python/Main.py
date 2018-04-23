@@ -54,6 +54,8 @@ average = False
 high = False
 cloud =False
 run_timelapse = True
+test_running = False
+sch_running = False
 ASD = serial.Serial('/dev/ttyACM0', 9600)
 
 class Image(QThread):
@@ -115,9 +117,13 @@ class Dropbox(QThread):
 class Schedule(QThread):
     
     def __init__(self):
+        global sch_running
         QThread.__init__(self)
+        sch_running = True;
 
     def __del__(self):
+        global sch_running
+        sch_running = False;
         self._running = False
 
     def run(self):  
@@ -587,18 +593,21 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_scheduler(self):
         global angle_1, angle_2, delay_1, delay_2
+
+        
         angle_1 = self.rotate_to_spinbox_1.value()
         angle_2 = self.rotate_to_spinbox_2.value()
         delay_1 = self.wait_spinbox_1.value()
         delay_2 = self.wait_spinbox_2.value()
-        
-        self.Schedule_Thread.terminate()
-        
+
+        if(sch_running)
+            self.Schedule_Thread.terminate()
         self.Schedule_Thread = Schedule()
         self.Schedule_Thread.start()
 
     def reset_position(self):
-        self.Schedule_Thread.terminate()
+        if(sch_running)
+            self.Schedule_Thread.terminate()
         ASD.write(bytes("~0\n", 'UTF-8'))
 
     def value_changed(self):
@@ -608,6 +617,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def slider_released(self):
     
         ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
+
+    def test_run(self)
+        self.test_Thread = test()
+        self.test_Thread.start()
         
 
         
@@ -636,6 +649,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Timelapse.clicked.connect(lambda: self.timelapse_change())
         self.Start_Scheduler.clicked.connect(lambda: self.start_scheduler())
         self.Reset_Position.clicked.connect(lambda: self.reset_position())
+        self.Test_Run.clicked.connect(lambda: self.test_run())
         self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
         self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
 
