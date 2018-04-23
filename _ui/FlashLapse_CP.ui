@@ -873,7 +873,7 @@ p, li { white-space: pre-wrap; }
           <string> min</string>
          </property>
          <property name="minimum">
-          <number>0</number>
+          <number>1</number>
          </property>
          <property name="maximum">
           <number>1440</number>
@@ -981,7 +981,7 @@ p, li { white-space: pre-wrap; }
           <string> min</string>
          </property>
          <property name="minimum">
-          <number>0</number>
+          <number>1</number>
          </property>
          <property name="maximum">
           <number>1440</number>
@@ -1124,6 +1124,12 @@ p, li { white-space: pre-wrap; }
         <widget class="QPushButton" name="Test_Run">
          <property name="text">
           <string>Test Run</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <property name="checked">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
