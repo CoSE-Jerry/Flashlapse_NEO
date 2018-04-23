@@ -36,6 +36,7 @@ email=""
 m_directory=""
 interval = 0
 duration = 0
+angle = 0
 total = 0
 current = 0
 noti_count = 0
@@ -560,6 +561,12 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         else:
             self.Timelapse.setText("Timelapse Generation: ON")
             run_timelapse = True
+
+    def start_scheduler(self):
+
+        angle = self.rotate_to_spinbox_1.value()
+        
+        ASD.write(bytes('~'+angle+"\n", 'UTF-8'))
         
 
         
@@ -586,6 +593,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Disco.clicked.connect(lambda: self.disco_confirm())
         self.Rotate.clicked.connect(lambda: self.rotate())
         self.Timelapse.clicked.connect(lambda: self.timelapse_change())
+        self.Start_Scheduler.clicked.connect(lambda: self.start_scheduler())
 
 # I feel better having one of these
 def main():
