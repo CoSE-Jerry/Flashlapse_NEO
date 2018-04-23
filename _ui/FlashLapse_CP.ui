@@ -1101,9 +1101,9 @@ p, li { white-space: pre-wrap; }
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>320</y>
+        <y>300</y>
         <width>131</width>
-        <height>71</height>
+        <height>91</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_17">

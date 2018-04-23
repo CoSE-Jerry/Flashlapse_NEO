@@ -418,7 +418,7 @@ class Ui_MainWindow(object):
         self.verticalSlider.setTickInterval(40)
         self.verticalSlider.setObjectName("verticalSlider")
         self.verticalLayoutWidget_10 = QtWidgets.QWidget(self.Scheduler)
-        self.verticalLayoutWidget_10.setGeometry(QtCore.QRect(300, 320, 131, 71))
+        self.verticalLayoutWidget_10.setGeometry(QtCore.QRect(300, 300, 131, 91))
         self.verticalLayoutWidget_10.setObjectName("verticalLayoutWidget_10")
         self.verticalLayout_17 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_10)
         self.verticalLayout_17.setContentsMargins(0, 0, 0, 0)
