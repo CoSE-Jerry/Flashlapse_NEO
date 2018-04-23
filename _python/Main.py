@@ -36,7 +36,10 @@ email=""
 m_directory=""
 interval = 0
 duration = 0
-angle = 0
+angle_1 = 0
+angle_2 = 0
+delay_1 = 0
+delay_2 = 0
 total = 0
 current = 0
 noti_count = 0
@@ -108,6 +111,26 @@ class Dropbox(QThread):
                 del file_list[0]
             if(current == total - 1 and len(file_list) == 0):
                 self.upload_complete.emit()
+
+class Schedule(QThread):
+    
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):  
+        global angle_1, angle_2, delay_1, delay_2
+
+        while True:
+            ASD.write(bytes('~'+str(angle1)+"\n", 'UTF-8'))
+            sleep(delay_1)
+            ASD.write(bytes('~'+str(angle2)+"\n", 'UTF-8'))
+            sleep(delay_2)
+            
+            
+            
                 
 class Timelapse(QThread):
     begin = QtCore.pyqtSignal()
@@ -563,9 +586,14 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             run_timelapse = True
 
     def start_scheduler(self):
+        global angle_1, angle_2, delay_1, delay_2
+        angle1 = self.rotate_to_spinbox_1.value()
+        angle2 = self.rotate_to_spinbox_2.value()
+        delay_1 = self.wait_spinbox_1.value()
+        delay_2 = self.wait_spinbox_2.value()
 
-        angle = self.rotate_to_spinbox_1.value()
-        ASD.write(bytes('~'+str(angle)+"\n", 'UTF-8'))
+        self.Schedule_Thread = Schedule()
+        self.Schedule_Thread.start()
 
     def reset_position(self):
  
