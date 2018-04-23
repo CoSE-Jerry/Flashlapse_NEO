@@ -587,8 +587,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_scheduler(self):
         global angle_1, angle_2, delay_1, delay_2
-        angle1 = self.rotate_to_spinbox_1.value()
-        angle2 = self.rotate_to_spinbox_2.value()
+        angle_1 = self.rotate_to_spinbox_1.value()
+        angle_2 = self.rotate_to_spinbox_2.value()
         delay_1 = self.wait_spinbox_1.value()
         delay_2 = self.wait_spinbox_2.value()
 
