@@ -1073,10 +1073,10 @@ p, li { white-space: pre-wrap; }
        <cursorShape>OpenHandCursor</cursorShape>
       </property>
       <property name="minimum">
-       <number>10</number>
+       <number>100</number>
       </property>
       <property name="maximum">
-       <number>1200</number>
+       <number>1000</number>
       </property>
       <property name="singleStep">
        <number>20</number>
