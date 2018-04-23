@@ -124,9 +124,9 @@ class Schedule(QThread):
         global angle_1, angle_2, delay_1, delay_2
 
         while True:
-            ASD.write(bytes('~'+str(angle1)+"\n", 'UTF-8'))
+            ASD.write(bytes('~'+str(angle_1)+"\n", 'UTF-8'))
             sleep(delay_1)
-            ASD.write(bytes('~'+str(angle2)+"\n", 'UTF-8'))
+            ASD.write(bytes('~'+str(angle_2)+"\n", 'UTF-8'))
             sleep(delay_2)
             
             
