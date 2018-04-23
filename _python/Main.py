@@ -565,10 +565,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def start_scheduler(self):
 
         angle = self.rotate_to_spinbox_1.value()
-        if(angle<0):
-            ASD.write(bytes('~'+str(360 + angle)+"\n", 'UTF-8'))
-        else:
-            ASD.write(bytes('~'+str(angle)+"\n", 'UTF-8'))
+        ASD.write(bytes('~'+str(angle)+"\n", 'UTF-8'))
 
     def reset_position(self):
  
