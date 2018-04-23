@@ -572,7 +572,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def reset_position(self):
  
-        ASD.write(bytes('~0\n", 'UTF-8'))
+        ASD.write(bytes("~0\n", 'UTF-8'))
 
     def value_changed(self):
     
