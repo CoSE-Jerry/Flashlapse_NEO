@@ -596,7 +596,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Schedule_Thread.start()
 
     def reset_position(self):
- 
+        self.Schedule_Thread.terminate()
         ASD.write(bytes("~0\n", 'UTF-8'))
 
     def value_changed(self):
