@@ -5,6 +5,9 @@ import time
 import subprocess
 import serial
  
+#OpenCV support
+import cv2
+
 # This gets the Qt stuff
 import PyQt5
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -18,6 +21,7 @@ import FlashLapse_UI
 
 #import custom functions
 import Camera
+import SeekCamera
 
 #camera libraries
 from picamera import PiCamera
@@ -40,6 +44,7 @@ total = 0
 current = 0
 noti_count = 0
 current_image = None
+imaging_device = "SeekThermalCamera"
 file = None
 name = None
 on_flag = False
@@ -50,7 +55,9 @@ average = False
 high = False
 cloud =False
 run_timelapse = True
-ASD = serial.Serial('/dev/ttyACM0', 9600)
+ASD = serial.Serial('/dev/ttyAMA0', 9600)
+gcolormap = cv2.COLORMAP_JET
+
 
 class Image(QThread):
     capture = QtCore.pyqtSignal()
@@ -58,6 +65,13 @@ class Image(QThread):
     imaging_running = QtCore.pyqtSignal()
     imaging_running_done = QtCore.pyqtSignal()
     def __init__(self):
+        global imaging_device
+        if( imaging_device == "PiCamera" ):
+            self.camera = PiCamera()
+            camera.resolution = (2464,2464)
+            camera._set_rotation(180)
+        elif( imaging_device == "SeekThermalCamera" ):
+            self.camera = SeekCamera.SeekCamera(colormap=gcolormap)
         QThread.__init__(self)
 
     def __del__(self):
@@ -70,17 +84,15 @@ class Image(QThread):
             sleep(0.2)
             current_image = file % i
             self.imaging_running.emit()
-            with PiCamera() as camera:
-                sleep(0.8)
-                camera.resolution = (2464,2464)
-                camera._set_rotation(180)
-                camera.capture(current_image)
+            sleep(0.8)
+            self.camera.capture(current_image)
             self.imaging_running_done.emit()
             self.capture.emit()
             sleep(interval-1)
             file_list.append(current_image)
             if(current%(0.1*total)==0):
                 self.check_point.emit()
+        del self.camera
             
     def stop(self):
         self.running = False
@@ -228,8 +240,28 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 self.Start_Imaging.setEnabled(True)
             else:
                 self.Start_Imaging.setEnabled(False)
-            
-        
+
+    def PI_Camera_Toggled(self):
+        try: self.Snapshot.clicked.disconnect()
+        except Exception: pass
+        try: self.Live_Feed.clicked.disconnect()
+        except Exception: pass
+        if( self.PI_Camera.isChecked() ):
+            global imaging_device
+            imaging_device = "PiCamera"
+            self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
+            self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
+
+    def Seek_Thermal_Camera_Toggled(self):
+        try: self.Snapshot.clicked.disconnect()
+        except Exception: pass
+        try: self.Live_Feed.clicked.disconnect()
+        except Exception: pass
+        if( self.Seek_Thermal_Camera.isChecked() ):
+            global imaging_device 
+            imaging_device = "SeekThermalCamera"
+            self.Snapshot.clicked.connect(lambda: self.Start_Snapshot_Seek_Thermal())
+            self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed_Seek_Thermal())
         
     def Select_Storage_Directory(self):
         global interval, duration, total, directory, m_directory
@@ -249,14 +281,22 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Snap_Thread.started.connect(lambda: self.Processing_Snapshot())
         self.Snap_Thread.finished.connect(lambda: self.Processing_Complete())
         self.Snap_Thread.start()
-        
+
+    def Start_Snapshot_Seek_Thermal(self):
+        self.Snap_Thread = SeekCamera.Snap(colormap=gcolormap)
+        self.Snap_Thread.started.connect(lambda: self.Processing_Snapshot())
+        self.Snap_Thread.finished.connect(lambda: self.Processing_Complete())
+        self.Snap_Thread.start()
+
     def Processing_Snapshot(self):
+        self.Enable_Disable_Colormap_Radios(False)
         self.Snapshot.setEnabled(False)
         self.Snapshot.setText("Processing...")
         
     def Processing_Complete(self):
         user_img = PyQt5.QtGui.QImage("../_temp/snapshot.jpg")
         self.Image_Frame.setPixmap(QtGui.QPixmap(user_img))
+        self.Enable_Disable_Colormap_Radios(True)
         self.Snapshot.setEnabled(True)
         self.Snapshot.setText("Snapshot")
         
@@ -265,18 +305,37 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Live_Thread.started.connect(lambda: self.Processing_Live())
         self.Live_Thread.finished.connect(lambda: self.Live_Complete())
         self.Live_Thread.start()
+
+    def Start_Live_Feed_Seek_Thermal(self):
+        self.Live_Thread = SeekCamera.Live(self.Image_Frame, colormap=gcolormap)
+        self.Live_Thread.started.connect(lambda: self.Processing_Live())
+        self.Live_Thread.finished.connect(lambda: self.Live_Complete())
+        self.Live_Thread.start()
+
+    def Stop_Live_Feed_Seek_Thermal(self):
+        self.Live_Thread.stop()
         
+    def Enable_Disable_Colormap_Radios(self, enable):
+        self.Radio_Rainbow.setEnabled(enable)
+        self.Radio_Hot.setEnabled(enable)
+        self.Radio_HSV.setEnabled(enable)
+        self.Radio_Jet.setEnabled(enable)
+
     def Processing_Live(self):
+        self.Live_Feed.clicked.disconnect()
+        self.Live_Feed.clicked.connect(lambda: self.Stop_Live_Feed_Seek_Thermal())
         self.Snapshot.setEnabled(False)
-        self.Live_Feed.setEnabled(False)
+        self.Enable_Disable_Colormap_Radios(False)
         self.Start_Imaging.setEnabled(False)
-        self.Live_Feed.setText("Processing...")
+        self.Live_Feed.setText("Stop Live Feed")
         
     def Live_Complete(self):
+        self.Live_Feed.clicked.disconnect()
+        self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed_Seek_Thermal())
         self.Snapshot.setEnabled(True)
-        self.Live_Feed.setEnabled(True)
+        self.Enable_Disable_Colormap_Radios(True)
         self.Start_Imaging.setEnabled(True)
-        self.Live_Feed.setText("Start Live Feed (30s)")
+        self.Live_Feed.setText("Start Live Feed")
 
     def Check_Point(self):
         if(self.Cloud_Sync.isChecked()):
@@ -317,6 +376,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         
         else:
             self.Image_Thread.terminate()
+            self.Enable_Disable_Colormap_Radios(True)
             self.IST_Editor.setEnabled(True)
             self.ICI_spinBox.setEnabled(True)
             self.ISD_spinBox.setEnabled(True)
@@ -344,6 +404,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def Imaging_Running(self):
         self.Start_Imaging.setEnabled(False)
+        self.Enable_Disable_Colormap_Radios(False)
         self.Start_Imaging.setText("Imaging...")
         
     def Imaging_Running_Complete(self):
@@ -362,6 +423,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         
         self.Start_Imaging.setText("Start Another Sequence")
         
+        self.Enable_Disable_Colormap_Radios(True)
         self.IST_Editor.setEnabled(True)
         self.ICI_spinBox.setEnabled(True)
         self.ISD_spinBox.setEnabled(True)
@@ -561,7 +623,19 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Timelapse.setText("Timelapse Generation: ON")
             run_timelapse = True
         
-
+    def Seek_Thermal_Change_Colormap(self, radio):
+        global gcolormap
+        if( radio == self.Radio_Rainbow ):
+            gcolormap = cv2.COLORMAP_RAINBOW
+        elif( radio == self.Radio_Hot ):
+            gcolormap = cv2.COLORMAP_HOT
+        elif( radio == self.Radio_HSV ):
+            gcolormap = cv2.COLORMAP_HSV
+        elif( radio == self.Radio_Jet):
+            gcolormap = cv2.COLORMAP_JET
+        else:
+            gcolormap = -1 #Greyscale
+        
         
     def __init__(self):
         super(self.__class__, self).__init__()
@@ -571,8 +645,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.IST_Editor.textChanged.connect(lambda: self.IST_Change())
         self.ICI_spinBox.valueChanged.connect(lambda: self.ICI_Change())
         self.ISD_spinBox.valueChanged.connect(lambda: self.ISD_Change())
-        self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
-        self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
+        self.PI_Camera.toggled.connect(lambda: self.PI_Camera_Toggled())
+        self.PI_Camera.setEnabled(False)
+        self.Seek_Thermal_Camera.toggled.connect(lambda: self.Seek_Thermal_Camera_Toggled())
+        self.Snapshot.clicked.connect(lambda: self.Start_Snapshot_Seek_Thermal())
+        self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed_Seek_Thermal())
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
         self.Start_Imaging.clicked.connect(lambda: self.Begin_Imaging())
         self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
@@ -586,6 +663,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Disco.clicked.connect(lambda: self.disco_confirm())
         self.Rotate.clicked.connect(lambda: self.rotate())
         self.Timelapse.clicked.connect(lambda: self.timelapse_change())
+        self.Radio_Rainbow.toggled.connect(lambda: self.Seek_Thermal_Change_Colormap(self.Radio_Rainbow))
+        self.Radio_Hot.toggled.connect(lambda: self.Seek_Thermal_Change_Colormap(self.Radio_Hot))
+        self.Radio_HSV.toggled.connect(lambda: self.Seek_Thermal_Change_Colormap(self.Radio_HSV))
+        self.Radio_Jet.toggled.connect(lambda: self.Seek_Thermal_Change_Colormap(self.Radio_Jet))
+        self.Radio_Jet.setChecked(True)
 
 # I feel better having one of these
 def main():
