@@ -104,6 +104,7 @@ class Dropbox(QThread):
         while True:
             if (len(file_list) > 0):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + file_list[0] + " /"+name)
+                os.system("rm " + file_list[0])
                 del file_list[0]
             if(current == total - 1 and len(file_list) == 0):
                 self.upload_complete.emit()
