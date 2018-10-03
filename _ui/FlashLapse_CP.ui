@@ -332,7 +332,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>1</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="Gravitropic">
          <attribute name="title">
@@ -618,11 +618,6 @@ p, li { white-space: pre-wrap; }
            <string>Start!</string>
           </property>
          </widget>
-        </widget>
-        <widget class="QWidget" name="tab_2">
-         <attribute name="title">
-          <string>Page</string>
-         </attribute>
         </widget>
        </widget>
       </widget>
