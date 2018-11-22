@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>540</height>
+    <height>550</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -84,7 +84,7 @@
       <x>20</x>
       <y>20</y>
       <width>451</width>
-      <height>471</height>
+      <height>481</height>
      </rect>
     </property>
     <property name="tabPosition">
@@ -106,11 +106,11 @@
         <x>20</x>
         <y>10</y>
         <width>401</width>
-        <height>351</height>
+        <height>371</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -120,7 +120,7 @@
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>10</y>
+          <y>20</y>
           <width>300</width>
           <height>300</height>
          </rect>
@@ -139,7 +139,7 @@
         <property name="geometry">
          <rect>
           <x>170</x>
-          <y>150</y>
+          <y>160</y>
           <width>69</width>
           <height>22</height>
          </rect>
@@ -182,7 +182,7 @@
         <property name="geometry">
          <rect>
           <x>20</x>
-          <y>10</y>
+          <y>20</y>
           <width>150</width>
           <height>300</height>
          </rect>
@@ -201,7 +201,7 @@
         <property name="geometry">
          <rect>
           <x>230</x>
-          <y>10</y>
+          <y>20</y>
           <width>150</width>
           <height>300</height>
          </rect>
@@ -308,7 +308,7 @@
         <property name="geometry">
          <rect>
           <x>212</x>
-          <y>130</y>
+          <y>140</y>
           <width>150</width>
           <height>190</height>
          </rect>
@@ -327,7 +327,7 @@
         <property name="geometry">
          <rect>
           <x>50</x>
-          <y>0</y>
+          <y>10</y>
           <width>301</width>
           <height>121</height>
          </rect>
@@ -346,7 +346,7 @@
         <property name="geometry">
          <rect>
           <x>40</x>
-          <y>130</y>
+          <y>140</y>
           <width>150</width>
           <height>190</height>
          </rect>
@@ -365,7 +365,7 @@
         <property name="geometry">
          <rect>
           <x>170</x>
-          <y>50</y>
+          <y>60</y>
           <width>69</width>
           <height>22</height>
          </rect>
@@ -403,7 +403,7 @@
         <property name="geometry">
          <rect>
           <x>100</x>
-          <y>210</y>
+          <y>220</y>
           <width>69</width>
           <height>22</height>
          </rect>
@@ -441,7 +441,7 @@
         <property name="geometry">
          <rect>
           <x>235</x>
-          <y>210</y>
+          <y>220</y>
           <width>69</width>
           <height>22</height>
          </rect>
@@ -484,7 +484,7 @@
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>370</y>
+        <y>390</y>
         <width>81</width>
         <height>22</height>
        </rect>
@@ -497,7 +497,7 @@
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>400</y>
+        <y>420</y>
         <width>81</width>
         <height>22</height>
        </rect>
@@ -507,7 +507,7 @@
       <property name="geometry">
        <rect>
         <x>280</x>
-        <y>405</y>
+        <y>425</y>
         <width>47</width>
         <height>13</height>
        </rect>
@@ -520,7 +520,7 @@
       <property name="geometry">
        <rect>
         <x>265</x>
-        <y>375</y>
+        <y>395</y>
         <width>47</width>
         <height>13</height>
        </rect>
@@ -536,7 +536,7 @@
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>375</y>
+        <y>395</y>
         <width>40</width>
         <height>40</height>
        </rect>
@@ -557,30 +557,11 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QDial" name="brightnessdial">
-      <property name="geometry">
-       <rect>
-        <x>5</x>
-        <y>360</y>
-        <width>71</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="wrapping">
-       <bool>false</bool>
-      </property>
-      <property name="notchTarget">
-       <double>8.000000000000000</double>
-      </property>
-      <property name="notchesVisible">
-       <bool>true</bool>
-      </property>
-     </widget>
      <widget class="QWidget" name="verticalLayoutWidget_11">
       <property name="geometry">
        <rect>
         <x>160</x>
-        <y>370</y>
+        <y>390</y>
         <width>101</width>
         <height>51</height>
        </rect>
@@ -608,8 +589,8 @@
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>375</y>
+        <x>50</x>
+        <y>395</y>
         <width>81</width>
         <height>21</height>
        </rect>
@@ -621,8 +602,8 @@
      <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">
        <rect>
-        <x>80</x>
-        <y>400</y>
+        <x>50</x>
+        <y>415</y>
         <width>51</width>
         <height>20</height>
        </rect>
