@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -181,7 +181,7 @@
        <widget class="QLabel" name="Half_Left">
         <property name="geometry">
          <rect>
-          <x>20</x>
+          <x>40</x>
           <y>20</y>
           <width>150</width>
           <height>300</height>
@@ -200,7 +200,7 @@
        <widget class="QLabel" name="Half_Right">
         <property name="geometry">
          <rect>
-          <x>230</x>
+          <x>210</x>
           <y>20</y>
           <width>150</width>
           <height>300</height>
@@ -483,9 +483,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>280</x>
         <y>390</y>
-        <width>91</width>
+        <width>101</width>
         <height>22</height>
        </rect>
       </property>
@@ -496,9 +496,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>280</x>
         <y>420</y>
-        <width>91</width>
+        <width>101</width>
         <height>22</height>
        </rect>
       </property>
@@ -506,7 +506,7 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>260</x>
+        <x>255</x>
         <y>425</y>
         <width>47</width>
         <height>13</height>
@@ -519,7 +519,7 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>245</x>
+        <x>240</x>
         <y>395</y>
         <width>47</width>
         <height>13</height>
@@ -589,7 +589,7 @@
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>30</x>
         <y>390</y>
         <width>81</width>
         <height>21</height>
@@ -602,7 +602,7 @@
      <widget class="QSpinBox" name="spinBox">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>30</x>
         <y>410</y>
         <width>51</width>
         <height>22</height>
@@ -613,19 +613,6 @@
       </property>
       <property name="value">
        <number>50</number>
-      </property>
-     </widget>
-     <widget class="QDial" name="dial">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>390</y>
-        <width>41</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="notchesVisible">
-       <bool>true</bool>
       </property>
      </widget>
     </widget>
@@ -711,6 +698,39 @@
           </widget>
          </item>
          <item>
+          <spacer name="verticalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="Dropbox_Email_Prompt">
+           <property name="text">
+            <string>Email Adress: </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="Dropbox_Email"/>
+         </item>
+         <item>
+          <widget class="QPushButton" name="Dropbox_Confirm">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Confirm Email</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Vertical</enum>
@@ -738,7 +758,7 @@
             <enum>QFrame::Raised</enum>
            </property>
            <property name="text">
-            <string>Storage Directory Not Selected</string>
+            <string>Default Directory</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -760,22 +780,15 @@
          </item>
         </layout>
        </item>
-       <item>
-        <widget class="QPushButton" name="Live_Feed">
-         <property name="text">
-          <string>Start Live Feed (30s)</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
-        <x>10</x>
-        <y>340</y>
-        <width>411</width>
-        <height>51</height>
+        <x>20</x>
+        <y>370</y>
+        <width>421</width>
+        <height>61</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -1098,7 +1111,7 @@
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>300</y>
+        <y>320</y>
         <width>131</width>
         <height>91</height>
        </rect>
@@ -1152,9 +1165,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>100</x>
-        <y>370</y>
-        <width>191</width>
+        <x>20</x>
+        <y>380</y>
+        <width>201</width>
         <height>51</height>
        </rect>
       </property>
@@ -1174,149 +1187,6 @@
         <height>35</height>
        </size>
       </property>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="Cloud">
-     <attribute name="title">
-      <string>Cloud</string>
-     </attribute>
-     <widget class="QWidget" name="horizontalLayoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>300</y>
-        <width>351</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_6">
-       <item>
-        <widget class="QRadioButton" name="Frequency_Off">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>OFF</string>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="checked">
-          <bool>false</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="Frequency_Low">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>LOW</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="Frequency_Average">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>AVERAGE</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="Frequency_High">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>HIGH</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="Email_Update_Prompt">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>270</y>
-        <width>221</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Email Status Update Frequency:</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="label">
-      <property name="geometry">
-       <rect>
-        <x>80</x>
-        <y>50</y>
-        <width>271</width>
-        <height>140</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../_image/dropbox_logo.png</pixmap>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QWidget" name="verticalLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>70</x>
-        <y>170</y>
-        <width>291</width>
-        <height>80</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_9">
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QLabel" name="Dropbox_Email_Prompt">
-         <property name="text">
-          <string>Please Enter Your Email Adress: </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="Dropbox_Email"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="Dropbox_Confirm">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="text">
-          <string>Confirm Email</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
      </widget>
     </widget>
    </widget>
@@ -1355,7 +1225,7 @@
       <x>490</x>
       <y>360</y>
       <width>121</width>
-      <height>51</height>
+      <height>61</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -1386,8 +1256,8 @@
      <rect>
       <x>680</x>
       <y>350</y>
-      <width>101</width>
-      <height>80</height>
+      <width>111</width>
+      <height>91</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_13">
@@ -1398,6 +1268,13 @@
        </property>
        <property name="text">
         <string>Snapshot</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="Live_Feed">
+       <property name="text">
+        <string>Live Feed (30s)</string>
        </property>
       </widget>
      </item>
