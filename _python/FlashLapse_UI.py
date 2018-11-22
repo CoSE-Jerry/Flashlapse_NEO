@@ -11,7 +11,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(800, 535)
+        MainWindow.resize(800, 550)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../_image/icon.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -41,7 +41,7 @@ class Ui_MainWindow(object):
         self.PNG.setObjectName("PNG")
         self.verticalLayout_4.addWidget(self.PNG)
         self.Control_Tab = QtWidgets.QTabWidget(self.centralwidget)
-        self.Control_Tab.setGeometry(QtCore.QRect(30, 20, 441, 461))
+        self.Control_Tab.setGeometry(QtCore.QRect(30, 20, 441, 471))
         self.Control_Tab.setTabPosition(QtWidgets.QTabWidget.North)
         self.Control_Tab.setTabShape(QtWidgets.QTabWidget.Rounded)
         self.Control_Tab.setObjectName("Control_Tab")
@@ -174,13 +174,13 @@ class Ui_MainWindow(object):
         self.lightScheduleButton.setFlat(False)
         self.lightScheduleButton.setObjectName("lightScheduleButton")
         self.brightnessdial = QtWidgets.QDial(self.Lighting)
-        self.brightnessdial.setGeometry(QtCore.QRect(0, 360, 71, 81))
+        self.brightnessdial.setGeometry(QtCore.QRect(5, 360, 71, 81))
         self.brightnessdial.setWrapping(False)
         self.brightnessdial.setNotchTarget(8.0)
         self.brightnessdial.setNotchesVisible(True)
         self.brightnessdial.setObjectName("brightnessdial")
         self.verticalLayoutWidget_11 = QtWidgets.QWidget(self.Lighting)
-        self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(170, 370, 81, 51))
+        self.verticalLayoutWidget_11.setGeometry(QtCore.QRect(150, 370, 81, 51))
         self.verticalLayoutWidget_11.setObjectName("verticalLayoutWidget_11")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.verticalLayoutWidget_11)
         self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
@@ -522,8 +522,8 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(0)
-        self.Constant_Mode.setCurrentIndex(1)
+        self.Control_Tab.setCurrentIndex(2)
+        self.Constant_Mode.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
