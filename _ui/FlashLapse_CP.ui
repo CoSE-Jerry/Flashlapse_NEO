@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>550</height>
+    <height>540</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -81,9 +81,9 @@
    <widget class="QTabWidget" name="Control_Tab">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>20</x>
       <y>20</y>
-      <width>441</width>
+      <width>451</width>
       <height>471</height>
      </rect>
     </property>
@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -103,7 +103,7 @@
      <widget class="QTabWidget" name="Constant_Mode">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>10</y>
         <width>401</width>
         <height>351</height>
@@ -483,7 +483,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>300</x>
         <y>370</y>
         <width>81</width>
         <height>22</height>
@@ -496,7 +496,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>290</x>
+        <x>300</x>
         <y>400</y>
         <width>81</width>
         <height>22</height>
@@ -506,7 +506,7 @@
      <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>280</x>
         <y>405</y>
         <width>47</width>
         <height>13</height>
@@ -519,7 +519,7 @@
      <widget class="QLabel" name="label_7">
       <property name="geometry">
        <rect>
-        <x>255</x>
+        <x>265</x>
         <y>375</y>
         <width>47</width>
         <height>13</height>
@@ -535,7 +535,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>390</x>
         <y>375</y>
         <width>40</width>
         <height>40</height>
@@ -579,9 +579,9 @@
      <widget class="QWidget" name="verticalLayoutWidget_11">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>160</x>
         <y>370</y>
-        <width>81</width>
+        <width>101</width>
         <height>51</height>
        </rect>
       </property>
@@ -609,26 +609,29 @@
       <property name="geometry">
        <rect>
         <x>80</x>
-        <y>380</y>
+        <y>375</y>
         <width>81</width>
-        <height>16</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
        <string>Brightness:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="current_Brightness">
+     <widget class="QLineEdit" name="lineEdit">
       <property name="geometry">
        <rect>
-        <x>100</x>
+        <x>80</x>
         <y>400</y>
-        <width>47</width>
-        <height>13</height>
+        <width>51</width>
+        <height>20</height>
        </rect>
       </property>
       <property name="text">
        <string>50</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </widget>
