@@ -1,5 +1,6 @@
 # import basic libraries
 import sys
+import datetime
 
 #import UI functions
 import UI_Update_Disable
@@ -57,6 +58,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
+        self.IST_Editor.setText(datetime.date.today()).replace("-","_"))
         self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
         self.IST_Editor.editingFinished.connect(lambda: self.IST_Edit())
         self.Rotate.clicked.connect(lambda: self.Start_Rotate())
