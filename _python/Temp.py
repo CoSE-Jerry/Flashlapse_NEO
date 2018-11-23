@@ -48,7 +48,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Directory_Label.setText(full_dir)
 
     def Add_Date(self):
-        full_dir=full_dir + "_"str(datetime.date.today()).replace("-","_")
+        full_dir=full_dir + "_" + str(datetime.date.today()).replace("-","_")
         self.Directory_Label.setText(full_dir)
 
     def Start_Rotate(self):
