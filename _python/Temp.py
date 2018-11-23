@@ -23,7 +23,7 @@ sch_ready = False
 sch_flip = False
 
 #global variables
-sequence_name = None
+sequence_name = ""
 default_dir = "/home/pi/Desktop"
 full_dir = ""
  
