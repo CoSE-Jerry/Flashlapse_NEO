@@ -69,7 +69,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
         self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
-        self.IST_Editor.editingFinished.connect(lambda: self.IST_Edit())
+        self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
         self.Rotate.clicked.connect(lambda: self.Start_Rotate())
         self.add_Date.clicked.connect(lambda: self.Add_Date())
 
