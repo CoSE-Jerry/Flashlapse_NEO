@@ -44,7 +44,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         except Exception as e:
             print(e)
 
-    def IST_Edit(self)
+    def IST_Edit(self):
         sequence_name = self.IST_Editor.text()
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
