@@ -1,6 +1,8 @@
 # import Qt content
 import PyQt5
 
+from PyQt5 import QtCore, QtGui, QtWidgets
+
 #disable all ui elements that utilizes the cameraduring the snapshot is taken
 def snap_enable(self):
     snap_img = PyQt5.QtGui.QImage("../_temp/snapshot.jpg")
