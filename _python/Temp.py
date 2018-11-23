@@ -72,7 +72,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Email_Change(self):
         valid = None
         if (len(self.Dropbox_Email.text())) > 7:
-            valid = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.Dropbox_Email.text())
+            valid = re.valid('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.Dropbox_Email.text())
         if (match != None):
             self.Dropbox_Confirm.setEnabled(True)
         else:
