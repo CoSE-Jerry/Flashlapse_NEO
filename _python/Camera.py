@@ -3,6 +3,7 @@ from PyQt5.QtCore import QThread
 from picamera import PiCamera
 from Main import *
 
+#QThread for snapshot function
 class Snap(QThread):
 
     def __init__(self):
