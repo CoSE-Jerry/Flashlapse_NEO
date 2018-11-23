@@ -52,7 +52,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Directory_Label.setText(full_dir)
         if date not in sequence_name: 
             self.add_Date.setEnabled(True)
-        if(len(sequence_name)==0)
+        if(len(sequence_name) == 0):
             self.add_Date.setEnabled(False)
 
     def Add_Date(self):
