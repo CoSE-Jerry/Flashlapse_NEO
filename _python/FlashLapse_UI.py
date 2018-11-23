@@ -423,7 +423,7 @@ class Ui_MainWindow(object):
         self.Rotate.setObjectName("Rotate")
         self.verticalLayout_13.addWidget(self.Rotate)
         self.Start_Schedule = QtWidgets.QCommandLinkButton(self.centralwidget)
-        self.Start_Schedule.setEnabled(False)
+        self.Start_Schedule.setEnabled(True)
         self.Start_Schedule.setGeometry(QtCore.QRect(590, 450, 201, 51))
         self.Start_Schedule.setAutoFillBackground(False)
         icon1 = QtGui.QIcon()
