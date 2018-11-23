@@ -43,6 +43,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             print(e)
 
     def IST_Edit(self):
+        global sequence_name
         sequence_name = self.IST_Editor.text()
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
@@ -50,6 +51,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Add_Date(self):
         global sequence_name
         sequence_name = sequence_name + "_" + str(datetime.date.today()).replace("-","_")
+        self.IST_Editor.setText(sequence_name)
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
 
