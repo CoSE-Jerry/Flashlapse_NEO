@@ -679,7 +679,21 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="Dropbox_Email"/>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <item>
+            <widget class="QLineEdit" name="Dropbox_Email"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="save_default">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Save Default</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <widget class="QPushButton" name="Dropbox_Confirm">

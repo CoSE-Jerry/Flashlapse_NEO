@@ -1,6 +1,7 @@
 # import basic libraries
 import sys
 import time
+import re
 
 #import UI functions
 import UI_Update_Disable
@@ -24,8 +25,9 @@ sch_flip = False
 
 #global variables
 sequence_name = ""
-default_dir = "/home/pi/Desktop"
+email = ""
 full_dir = ""
+default_dir = "/home/pi/Desktop"
 date = time.strftime('%m_%d_%Y')
  
 # create class for Raspberry Pi GUI
@@ -66,6 +68,23 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             UI_Update_Enable.snap_enable(self)
         except Exception as e:
             print(e)
+
+    def Email_Change(self):
+        valid = None
+        if (len(temp_email)) > 7:
+            valid = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', temp_email)
+        if (match != None):
+            self.Dropbox_Confirm.setEnabled(True)
+        else:
+            self.Dropbox_Confirm.setEnabled(False)
+            self.Cloud_Sync.setEnabled(False)
+            self.Local_Storage.setChecked(True)
+
+    def Email_Entered(self):
+        global email
+        email = self.Dropbox_Email.text()
+        self.Cloud_Sync.setEnabled(True)
+        self.Cloud_Sync.setChecked(True)
             
  # access variables inside of the UI's file
     def __init__(self):
@@ -75,6 +94,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
         self.Rotate.clicked.connect(lambda: self.Start_Rotate())
         self.add_Date.clicked.connect(lambda: self.Add_Date())
+        self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
+        self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
 
         
         
