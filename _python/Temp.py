@@ -1,6 +1,6 @@
 # import basic libraries
 import sys
-import datetime
+import time
 
 #import UI functions
 import UI_Update_Disable
@@ -26,6 +26,7 @@ sch_flip = False
 sequence_name = ""
 default_dir = "/home/pi/Desktop"
 full_dir = ""
+date = time.strftime('%m_%d_%Y')
  
 # create class for Raspberry Pi GUI
 class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
@@ -47,12 +48,12 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         sequence_name = self.IST_Editor.text()
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
-        if str(datetime.date.today()).replace("-","_") not in sequence_name: 
+        if date not in sequence_name: 
             self.add_Date.setEnabled(True)
 
     def Add_Date(self):
         global sequence_name
-        sequence_name = sequence_name + "_" + str(datetime.date.today()).replace("-","_")
+        sequence_name = sequence_name + "_" + date
         self.IST_Editor.setText(sequence_name)
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
