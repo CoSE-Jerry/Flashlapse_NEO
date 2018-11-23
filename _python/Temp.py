@@ -1,9 +1,10 @@
-# import vital libraries
+# import basic libraries
 import sys
 
 #import UI functions
 import UI_Update_Disable
 import UI_Update_Enable
+import UI_Update_General
 
 #import custom functions
 import Camera
@@ -15,14 +16,22 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
  
 # import generated UI
-
 import FlashLapse_UI
+
+#UI variables
+pre_ready = False
+sch_ready = False
+pre_flip = False
+sch_flip = False
  
 # create class for Raspberry Pi GUI
 class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def Start_Snapshot(self):
         try:
+            pre_ready, sch_ready= UI_Update_General.check_stat(self)
+            pre_flip = pre_ready
+            sch_flip = sch_ready
             self.Snap_Thread = Camera.Snap()
             self.Snap_Thread.started.connect(lambda: UI_Update_Disable.snap_disable(self))
             self.Snap_Thread.finished.connect(lambda: UI_Update_Enable.snap_enable(self))

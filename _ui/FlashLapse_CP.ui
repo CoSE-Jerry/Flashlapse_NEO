@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -1159,7 +1159,7 @@
        <string>Motor Speed: 600</string>
       </property>
      </widget>
-     <widget class="QCommandLinkButton" name="Start_Imaging_2">
+     <widget class="QCommandLinkButton" name="Start_Schedule">
       <property name="enabled">
        <bool>false</bool>
       </property>
