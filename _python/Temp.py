@@ -11,7 +11,6 @@ import Camera
  
 # import Qt content
 import PyQt5
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import *
  
@@ -23,6 +22,11 @@ pre_ready = False
 sch_ready = False
 pre_flip = False
 sch_flip = False
+
+#global variables
+sequence_name = None
+default_dir = "/home/pi/Desktop"
+full_dir = ""
  
 # create class for Raspberry Pi GUI
 class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
@@ -40,6 +44,12 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         except Exception as e:
             print(e)
 
+    def IST_Edit(self)
+        sequence_name = self.IST_Editor.text()
+        full_dir = default_dir + "/" + sequence_name
+        self.Directory_Label.setText(full_dir)
+        
+
     def Start_Rotate(self):
         try:
             UI_Update_Enable.snap_enable(self)
@@ -51,6 +61,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
         self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
+        self.IST_Editor.editingFinished.connect(lambda: self.IST_Edit())
         self.Rotate.clicked.connect(lambda: self.Start_Rotate())
         
  

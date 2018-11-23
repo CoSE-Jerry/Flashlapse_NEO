@@ -53,7 +53,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>430</y>
+      <y>450</y>
       <width>91</width>
       <height>51</height>
      </rect>
@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -646,69 +646,16 @@
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QLabel" name="Image_Interval">
-           <property name="text">
-            <string>Image Capture Interval</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="ICI_spinBox">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="suffix">
-            <string> s</string>
-           </property>
-           <property name="maximum">
-            <number>9999999</number>
-           </property>
-          </widget>
-         </item>
         </layout>
        </item>
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="Image_Duration">
-           <property name="text">
-            <string>Image Sequence Duration</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="ISD_spinBox">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="suffix">
-            <string> min</string>
-           </property>
-           <property name="maximum">
-            <number>9999999</number>
-           </property>
-          </widget>
-         </item>
          <item>
           <widget class="Line" name="line">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
           </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>40</height>
-            </size>
-           </property>
-          </spacer>
          </item>
          <item>
           <widget class="QLabel" name="Dropbox_Email_Prompt">
@@ -1067,8 +1014,8 @@
      <widget class="QSlider" name="Speed_Select">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>320</y>
+        <x>10</x>
+        <y>350</y>
         <width>271</width>
         <height>21</height>
        </rect>
@@ -1149,8 +1096,8 @@
      <widget class="QLabel" name="Motor_Speed">
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>340</y>
+        <x>10</x>
+        <y>370</y>
         <width>139</width>
         <height>21</height>
        </rect>
@@ -1159,65 +1106,7 @@
        <string>Motor Speed: 600</string>
       </property>
      </widget>
-     <widget class="QCommandLinkButton" name="Start_Schedule">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>380</y>
-        <width>201</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <property name="autoFillBackground">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string>Start Scheduled Imaging</string>
-      </property>
-      <property name="icon">
-       <iconset>
-        <normaloff>../_image/time-left.png</normaloff>../_image/time-left.png</iconset>
-      </property>
-      <property name="iconSize">
-       <size>
-        <width>35</width>
-        <height>35</height>
-       </size>
-      </property>
-     </widget>
     </widget>
-   </widget>
-   <widget class="QCommandLinkButton" name="Start_Imaging">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>600</x>
-      <y>430</y>
-      <width>191</width>
-      <height>51</height>
-     </rect>
-    </property>
-    <property name="autoFillBackground">
-     <bool>false</bool>
-    </property>
-    <property name="text">
-     <string>Start Image Sequence</string>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>../_image/Start-icon.png</normaloff>../_image/Start-icon.png</iconset>
-    </property>
-    <property name="iconSize">
-     <size>
-      <width>35</width>
-      <height>35</height>
-     </size>
-    </property>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget_4">
     <property name="geometry">
@@ -1286,6 +1175,35 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QCommandLinkButton" name="Start_Schedule">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>450</y>
+      <width>201</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="text">
+     <string>Start Scheduled Imaging</string>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>../_image/time-left.png</normaloff>../_image/time-left.png</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>35</width>
+      <height>35</height>
+     </size>
+    </property>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
