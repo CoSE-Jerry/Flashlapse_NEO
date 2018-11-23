@@ -240,7 +240,7 @@ class Ui_MainWindow(object):
         self.Directory_Label.setObjectName("Directory_Label")
         self.verticalLayout_2.addWidget(self.Directory_Label)
         self.Storage_Directory = QtWidgets.QPushButton(self.layoutWidget)
-        self.Storage_Directory.setEnabled(False)
+        self.Storage_Directory.setEnabled(True)
         self.Storage_Directory.setCheckable(False)
         self.Storage_Directory.setObjectName("Storage_Directory")
         self.verticalLayout_2.addWidget(self.Storage_Directory)
@@ -448,8 +448,8 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(1)
-        self.Constant_Mode.setCurrentIndex(2)
+        self.Control_Tab.setCurrentIndex(0)
+        self.Constant_Mode.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -504,7 +504,7 @@ class Ui_MainWindow(object):
         self.Image_Title.setText(_translate("MainWindow", "Image Sequence Title"))
         self.Dropbox_Email_Prompt.setText(_translate("MainWindow", "Email Adress: "))
         self.Dropbox_Confirm.setText(_translate("MainWindow", "Confirm Email"))
-        self.Directory_Label.setText(_translate("MainWindow", "Default Directory"))
+        self.Directory_Label.setText(_translate("MainWindow", "/home/pi/Desktop"))
         self.Storage_Directory.setText(_translate("MainWindow", "Select Storage Directory"))
         self.Progress_Label.setText(_translate("MainWindow", "Progress:"))
         self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Imaging), _translate("MainWindow", "Imaging"))
