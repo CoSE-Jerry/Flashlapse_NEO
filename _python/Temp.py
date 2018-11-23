@@ -33,8 +33,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             pre_flip = pre_ready
             sch_flip = sch_ready
             self.Snap_Thread = Camera.Snap()
-            self.Snap_Thread.started.connect(lambda: UI_Update_Disable.snap_disable(self))
-            self.Snap_Thread.finished.connect(lambda: UI_Update_Enable.snap_enable(self))
+            self.Snap_Thread.started.connect(lambda: UI_Update_Disable.snap_disable(self,pre_flip,sch_flip))
+            self.Snap_Thread.finished.connect(lambda: UI_Update_Enable.snap_enable(self,pre_flip,sch_flip))
             self.Snap_Thread.start()
             
         except Exception as e:
