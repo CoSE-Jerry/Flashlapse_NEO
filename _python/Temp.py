@@ -48,7 +48,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
         if str(datetime.date.today()).replace("-","_") not in sequence_name: 
-        `   self.add_Date.setEnabled(True)
+            self.add_Date.setEnabled(True)
 
     def Add_Date(self):
         global sequence_name
