@@ -215,6 +215,7 @@ class Ui_MainWindow(object):
         self.IST_Editor.setObjectName("IST_Editor")
         self.horizontalLayout_4.addWidget(self.IST_Editor)
         self.add_Date = QtWidgets.QPushButton(self.layoutWidget)
+        self.add_Date.setEnabled(False)
         self.add_Date.setObjectName("add_Date")
         self.horizontalLayout_4.addWidget(self.add_Date)
         self.verticalLayout.addLayout(self.horizontalLayout_4)

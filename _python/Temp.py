@@ -47,6 +47,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         sequence_name = self.IST_Editor.text()
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
+        if str(datetime.date.today()).replace("-","_") not in sequence_name: 
+        `   self.add_Date.setEnabled(True)
 
     def Add_Date(self):
         global sequence_name
@@ -54,6 +56,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.IST_Editor.setText(sequence_name)
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
+        self.add_Date.setEnabled(False)
 
     def Start_Rotate(self):
         try:
