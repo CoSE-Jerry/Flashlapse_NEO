@@ -48,6 +48,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Directory_Label.setText(full_dir)
 
     def Add_Date(self):
+        global sequence_name
         sequence_name = sequence_name + "_" + str(datetime.date.today()).replace("-","_")
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
