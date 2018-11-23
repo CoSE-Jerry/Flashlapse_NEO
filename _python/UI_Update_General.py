@@ -1,5 +1,5 @@
 def check_stat(self):
-    return self.Start_Imaging.isEnabled(),Start_Schedule.isEnabled()
+    return self.Start_Imaging.isEnabled(),self.Start_Schedule.isEnabled()
 
 def start_image_disable(self):
     self.Start_Imaging.setEnabled(False)
