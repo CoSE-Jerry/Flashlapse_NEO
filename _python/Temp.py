@@ -18,9 +18,7 @@ from PyQt5.QtWidgets import *
 import FlashLapse_UI
 
 #UI variables
-pre_ready = False
 sch_ready = False
-pre_flip = False
 sch_flip = False
 
 #global variables
@@ -33,8 +31,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def Start_Snapshot(self):
         try:
-            pre_ready, sch_ready= UI_Update_General.check_stat(self)
-            pre_flip = pre_ready
+            sch_ready= UI_Update_General.check_stat(self)
             sch_flip = sch_ready
             self.Snap_Thread = Camera.Snap()
             self.Snap_Thread.started.connect(lambda: UI_Update_Disable.snap_disable(self,pre_flip,sch_flip))
