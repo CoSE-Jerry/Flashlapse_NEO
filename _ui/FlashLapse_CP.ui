@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -640,11 +640,22 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="IST_Editor">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLineEdit" name="IST_Editor">
+             <property name="enabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="add_Date">
+             <property name="text">
+              <string>Add Date</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -1178,7 +1189,7 @@
    </widget>
    <widget class="QCommandLinkButton" name="Start_Schedule">
     <property name="enabled">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
     <property name="geometry">
      <rect>
