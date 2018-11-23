@@ -9,7 +9,7 @@ import UI_Update_Enable
 import Camera
  
 # import Qt content
-import PyQt5
+import PyQt5.*
 from PyQt5.QtWidgets import *
  
 # import generated UI
