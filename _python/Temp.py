@@ -109,6 +109,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         fh = open("../_temp/save_data.txt", "r") 
         self.Dropbox_Email.setText(fh.readline())
         fh.close
+        self.Email_Change()
         
         self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
         self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
