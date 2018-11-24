@@ -79,23 +79,46 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Dropbox_Confirm.setEnabled(False)
             self.Cloud_Sync.setEnabled(False)
             self.Local_Storage.setChecked(True)
+            self.Save_Default.setEnabled(False)
 
     def Email_Entered(self):
         global email
         email = self.Dropbox_Email.text()
         self.Cloud_Sync.setEnabled(True)
         self.Cloud_Sync.setChecked(True)
+        self.Save_Default.setEnabled(True)
+        
+
+    def Save_Email(self):
+        global email
+        open("../_temp/save_data.txt", "w").close()
+
+        file = open("../_temp/save_data.txt","w") 
+        file.write(email)  
+        file.close() 
+        
+        
+        
             
  # access variables inside of the UI's file
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
+
+        #load default email
+        fh = open("../_temp/save_data.txt", "r") 
+        Dropbox_Email.setText(fh.readline())
+        fh.close
+        
         self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
         self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
         self.Rotate.clicked.connect(lambda: self.Start_Rotate())
         self.add_Date.clicked.connect(lambda: self.Add_Date())
         self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
         self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
+        self.save_default.clicked.connect(lambda: self.Save_Email())
+        
+        
 
         
         

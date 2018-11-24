@@ -684,7 +684,7 @@
             <widget class="QLineEdit" name="Dropbox_Email"/>
            </item>
            <item>
-            <widget class="QPushButton" name="save_default">
+            <widget class="QPushButton" name="Save_Default">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -1235,16 +1235,6 @@
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <widget class="QMenuBar" name="menubar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>800</width>
-     <height>21</height>
-    </rect>
-   </property>
-  </widget>
   <action name="actionOpen_Directory">
    <property name="enabled">
     <bool>false</bool>
