@@ -116,7 +116,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.add_Date.clicked.connect(lambda: self.Add_Date())
         self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
         self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
-        self.save_default.clicked.connect(lambda: self.Save_Email())
+        self.Save_Default.clicked.connect(lambda: self.Save_Email())
         
         
 
