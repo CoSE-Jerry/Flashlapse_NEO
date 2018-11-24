@@ -102,7 +102,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         default_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/home/pi/Desktop'))
         if(len(default_dir)!=0):
             full_dir = default_dir + "/" + sequence_name
-            self.Directory_Label.setText(directory)
+            self.Directory_Label.setText(full_dir)
             
  # access variables inside of the UI's file
     def __init__(self):
