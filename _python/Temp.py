@@ -107,7 +107,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         #load default email
         fh = open("../_temp/save_data.txt", "r") 
-        Dropbox_Email.setText(fh.readline())
+        self.Dropbox_Email.setText(fh.readline())
         fh.close
         
         self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
