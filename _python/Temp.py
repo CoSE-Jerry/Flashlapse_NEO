@@ -95,10 +95,14 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         file = open("../_temp/save_data.txt","w") 
         file.write(email)  
-        file.close() 
-        
-        
-        
+        file.close()
+
+    def Select_Storage_Directory(self):
+        global full_dir, default_dir
+        default_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/home/pi/Desktop'))
+        if(len(default_dir)!=0):
+            full_dir = default_dir + "/" + name
+            self.Directory_Label.setText(directory)
             
  # access variables inside of the UI's file
     def __init__(self):
@@ -118,6 +122,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
         self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
         self.Save_Default.clicked.connect(lambda: self.Save_Email())
+        self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
+        
         
         
 
