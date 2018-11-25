@@ -1,3 +1,5 @@
+import serial
+
 def init():
     global sch_running
     sch_running = False

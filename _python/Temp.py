@@ -2,7 +2,6 @@
 import sys
 import time
 import re
-import serial
 
 #import UI functions
 import UI_Update_Disable
