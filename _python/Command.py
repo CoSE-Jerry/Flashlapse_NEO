@@ -15,9 +15,11 @@ class Schedule(QThread):
     def run(self):
         while True:
             Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
-            sleep(Settings.delay_1*5)
+            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
+            sleep(Settings.delay_1*60)
             Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
-            sleep(Settings.delay_2*5)
+            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
+            sleep(Settings.delay_2*60)
 
 class Test(QThread):
     
@@ -31,6 +33,8 @@ class Test(QThread):
     def run(self):
         while True:
             Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
+            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(5)
             Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
+            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(5)
