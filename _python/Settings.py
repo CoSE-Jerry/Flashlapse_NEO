@@ -3,6 +3,7 @@ import serial
 def init():
     global sch_running
     sch_running = False
+    test_running = False
     
     global ASD
     ASD = serial.Serial('/dev/ttyACM0', 9600)
