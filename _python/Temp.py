@@ -2,14 +2,18 @@
 import sys
 import time
 import re
+import serial
 
 #import UI functions
 import UI_Update_Disable
 import UI_Update_Enable
 import UI_Update_General
 
+#import settings
+import Settings
+
 #import custom functions
-import Camera
+#import Camera
  
 # import Qt content
 import PyQt5
@@ -103,11 +107,27 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if(len(default_dir)!=0):
             full_dir = default_dir + "/" + sequence_name
             self.Directory_Label.setText(full_dir)
+
+    def start_scheduler(self):
+        Settings.angle_1 = self.rotate_to_spinbox_1.value()
+        Settings.angle_2 = self.rotate_to_spinbox_2.value()
+        Settings.delay_1 = self.wait_spinbox_1.value()
+        Settings.delay_2 = self.wait_spinbox_2.value()
+
+        if(Setting.sch_running):
+            self.Schedule_Thread.terminate()
+            Settings.sch_running = False;
+            
+        self.Schedule_Thread = Schedule()
+        self.Schedule_Thread.start()
+        Settings.sch_running=True
             
  # access variables inside of the UI's file
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
+
+        Settings.init()
 
         #load default email
         fh = open("../_temp/save_data.txt", "r") 
@@ -123,19 +143,14 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
         self.Save_Default.clicked.connect(lambda: self.Save_Email())
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
-        
-        
-        
-
-        
-        
- 
+         
 # main function
 def main():
     # a new app instance
     app = QApplication(sys.argv)
     form = MainWindow()
     form.show()
+    
     # without this, the script exits immediately.
     sys.exit(app.exec_())
  

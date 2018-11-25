@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -625,8 +625,8 @@
        <rect>
         <x>20</x>
         <y>10</y>
-        <width>391</width>
-        <height>331</height>
+        <width>401</width>
+        <height>421</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -754,35 +754,6 @@
           </widget>
          </item>
         </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>370</y>
-        <width>421</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_6">
-       <item>
-        <widget class="QLabel" name="Progress_Label">
-         <property name="text">
-          <string>Progress:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QProgressBar" name="Progress_Bar">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="value">
-          <number>0</number>
-         </property>
-        </widget>
        </item>
       </layout>
      </widget>
