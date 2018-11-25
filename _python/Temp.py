@@ -143,6 +143,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
+
+    def reset_position(self):
+        if(Settings.sch_running):
+            self.Schedule_Thread.terminate()
+            Settings.sch_running = False;
+        if(Settings.test_running):
+            self.Test_Thread.terminate()
+            Settings.test_running = False;
+        Settings.ASD.write(bytes("~0\n", 'UTF-8'))
         
 
             
@@ -169,6 +178,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
         self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
         self.Test_Run.clicked.connect(lambda: self.start_scheduler())
+        self.Reset_Position.clicked.connect(lambda: self.start_scheduler())
+        
+        
 
         
 
