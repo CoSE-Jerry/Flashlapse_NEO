@@ -3,6 +3,7 @@ import serial
 def init():
     global sch_running
     sch_running = False
+    global test_running
     test_running = False
     
     global ASD
