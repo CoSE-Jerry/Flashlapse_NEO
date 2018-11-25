@@ -12,7 +12,8 @@ import UI_Update_General
 import Settings
 
 #import custom functions
-#import Camera
+import Camera
+import Command
  
 # import Qt content
 import PyQt5
@@ -117,7 +118,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
             
-        self.Schedule_Thread = Schedule()
+        self.Schedule_Thread = Command.Schedule()
         self.Schedule_Thread.start()
         Settings.sch_running=True
             
