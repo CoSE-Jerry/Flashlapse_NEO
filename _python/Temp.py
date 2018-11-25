@@ -157,7 +157,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Motor_Speed.setText("Motor Speed: "+str(self.Speed_Select.value()))
 
     def slider_released(self):
-        ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
+        Settings.ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
         
 
             
