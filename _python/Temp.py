@@ -149,6 +149,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
         if(Settings.test_running):
+            print("runningtest")
             self.Test_Thread.terminate()
             Settings.test_running = False;
         Settings.ASD.write(bytes("~0\n", 'UTF-8'))
