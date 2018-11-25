@@ -25,7 +25,7 @@ class Test(QThread):
     
     def __init__(self):
         QThread.__init__(self)
-        Settings.sch_running = True
+        Settings.test_running = True
 
     def __del__(self):
         self._running = False
