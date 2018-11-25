@@ -142,7 +142,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
         self.Save_Default.clicked.connect(lambda: self.Save_Email())
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
-         
+        self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
+
+        
 # main function
 def main():
     # a new app instance
