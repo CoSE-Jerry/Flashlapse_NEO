@@ -149,10 +149,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
         if(Settings.test_running):
-            print("runningtest")
             self.Test_Thread.terminate()
             Settings.test_running = False;
         Settings.ASD.write(bytes("~0\n", 'UTF-8'))
+
+    def value_changed(self):
+        self.Motor_Speed.setText("Motor Speed: "+str(self.Speed_Select.value()))
+
+    def slider_released(self):
+        ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
         
 
             
@@ -180,6 +185,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
         self.Test_Run.clicked.connect(lambda: self.start_scheduler())
         self.Reset_Position.clicked.connect(lambda: self.reset_position())
+        self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
+        self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
+        
         
         
 
