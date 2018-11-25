@@ -117,10 +117,27 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if(Settings.sch_running):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
+        if(Settings.test_running):
+            self.Test_Thread.terminate()
+            test_running = False;
             
         self.Schedule_Thread = Command.Schedule()
         self.Schedule_Thread.start()
-        Settings.sch_running=True
+
+    def test_run(self):
+        Settings.angle_1 = self.rotate_to_spinbox_1.value()
+        Settings.angle_2 = self.rotate_to_spinbox_2.value()
+
+        if(Settings.sch_running):
+            Settings.self.Schedule_Thread.terminate()
+            Settings.sch_running = False;
+        if(Settings.test_running):
+            Settings.self.Test_Thread.terminate()
+            Settings.test_running = False;
+            
+        self.Test_Thread = Command.Test()
+        self.Test_Thread.start()
+        Settings.test_running = True;
             
  # access variables inside of the UI's file
     def __init__(self):
@@ -144,6 +161,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Save_Default.clicked.connect(lambda: self.Save_Email())
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
         self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
+        self.Test_Run.clicked.connect(lambda: self.start_scheduler())
+
+        
 
         
 # main function
