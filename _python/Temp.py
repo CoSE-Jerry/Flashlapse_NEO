@@ -125,19 +125,26 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Schedule_Thread.start()
 
     def test_run(self):
-        Settings.angle_1 = self.rotate_to_spinbox_1.value()
-        Settings.angle_2 = self.rotate_to_spinbox_2.value()
 
-        if(Settings.sch_running):
-            Settings.self.Schedule_Thread.terminate()
-            Settings.sch_running = False;
-        if(Settings.test_running):
-            Settings.self.Test_Thread.terminate()
-            Settings.test_running = False;
+        try:
+            Settings.angle_1 = self.rotate_to_spinbox_1.value()
+            Settings.angle_2 = self.rotate_to_spinbox_2.value()
+
+            if(Settings.sch_running):
+                Settings.self.Schedule_Thread.terminate()
+                Settings.sch_running = False;
+            if(Settings.test_running):
+                Settings.self.Test_Thread.terminate()
+                Settings.test_running = False;
+                
+            self.Test_Thread = Command.Test()
+            self.Test_Thread.start()
+            Settings.test_running = True;
             
-        self.Test_Thread = Command.Test()
-        self.Test_Thread.start()
-        Settings.test_running = True;
+        except Exception as e:
+            print(e)
+        
+
             
  # access variables inside of the UI's file
     def __init__(self):
