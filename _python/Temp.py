@@ -113,7 +113,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         Settings.delay_1 = self.wait_spinbox_1.value()
         Settings.delay_2 = self.wait_spinbox_2.value()
 
-        if(Setting.sch_running):
+        if(Settings.sch_running):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
             
