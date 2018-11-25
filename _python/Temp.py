@@ -179,7 +179,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
         self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
         self.Test_Run.clicked.connect(lambda: self.start_scheduler())
-        self.Reset_Position.clicked.connect(lambda: self.start_scheduler())
+        self.Reset_Position.clicked.connect(lambda: self.reset_position())
         
         
 
