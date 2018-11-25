@@ -15,6 +15,6 @@ class Schedule(QThread):
     def run(self):  
         while True:
             Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
-            sleep(delay_1*5)
+            sleep(Settings.delay_1*5)
             Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
-            sleep(delay_2*5)
+            sleep(Settings.delay_2*5)
