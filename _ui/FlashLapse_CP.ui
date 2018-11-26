@@ -586,7 +586,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="brightness_label">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -599,7 +599,7 @@
        <string>Brightness:</string>
       </property>
      </widget>
-     <widget class="QSpinBox" name="spinBox">
+     <widget class="QSpinBox" name="brightness_spinBox">
       <property name="geometry">
        <rect>
         <x>30</x>
