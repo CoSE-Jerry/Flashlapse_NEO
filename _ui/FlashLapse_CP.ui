@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -235,11 +235,6 @@
            </item>
            <item>
             <property name="text">
-             <string>White</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
              <string>Red</string>
             </property>
            </item>
@@ -251,6 +246,11 @@
            <item>
             <property name="text">
              <string>Blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>White</string>
             </property>
            </item>
           </widget>
@@ -277,11 +277,6 @@
            </item>
            <item>
             <property name="text">
-             <string>White</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
              <string>Red</string>
             </property>
            </item>
@@ -293,6 +288,11 @@
            <item>
             <property name="text">
              <string>Blue</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>White</string>
             </property>
            </item>
           </widget>

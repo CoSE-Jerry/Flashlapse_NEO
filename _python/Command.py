@@ -38,3 +38,29 @@ class Test(QThread):
             Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes("~0\n", "UTF-8"))
             sleep(5)
+
+def full_color_change(self):
+    temp = self.Full_Color_Select.currentIndex()
+    if temp == 1:
+        Settings.ASD.write(bytes('1', 'UTF-8'))
+    elif temp == 2:
+        Settings.ASD.write(bytes('2', 'UTF-8'))
+    elif temp == 3:
+        Settings.ASD.write(bytes('3', 'UTF-8'))
+    elif temp == 4:
+        Settings.ASD.write(bytes('4', 'UTF-8'))
+    else:
+        Settings.ASD.write(bytes('0', 'UTF-8'))
+
+def half_color_change_left(self):
+    temp = self.Left_Select.currentIndex()
+    if temp == 1:
+        Settings.ASD.write(bytes('a', 'UTF-8'))
+    elif temp == 2:
+        Settings.ASD.write(bytes('b', 'UTF-8'))
+    elif temp == 3:
+        Settings.ASD.write(bytes('c', 'UTF-8'))
+    elif temp == 4:
+        Settings.ASD.write(bytes('d', 'UTF-8'))
+    else:
+        Settings.ASD.write(bytes('e', 'UTF-8'))

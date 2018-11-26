@@ -158,19 +158,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def slider_released(self):
         Settings.ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
-        
-    def full_color_change(self):
-        temp = self.Full_Color_Select.currentIndex()
-        if temp == 1:
-            Settings.ASD.write(bytes('1', 'UTF-8'))
-        elif temp == 2:
-            Settings.ASD.write(bytes('2', 'UTF-8'))
-        elif temp == 3:
-            Settings.ASD.write(bytes('3', 'UTF-8'))
-        elif temp == 4:
-            Settings.ASD.write(bytes('4', 'UTF-8'))
-        else:
-            Settings.ASD.write(bytes('0', 'UTF-8'))
 
     def brightness_change(self):
         Settings.ASD.write(bytes('.'+str(self.brightness_spinBox.value())+"\n", 'UTF-8'))
@@ -202,8 +189,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Reset_Position.clicked.connect(lambda: self.reset_position())
         self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
         self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
-        self.Full_Color_Select.currentIndexChanged.connect(lambda: self.full_color_change())
+        self.Full_Color_Select.currentIndexChanged.connect(lambda: Command.full_color_change(self))
         self.brightness_spinBox.valueChanged.connect(lambda: self.brightness_change())
+        self.Left_Select.currentIndexChanged.connect(lambda: Command.self.half_color_change_left())
+        #self.Right_Select.currentIndexChanged.connect(lambda: self.half_color_change_right())
 
         
         
