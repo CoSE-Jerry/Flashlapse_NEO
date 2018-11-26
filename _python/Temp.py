@@ -162,15 +162,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def full_color_change(self):
         temp = self.Full_Color_Select.currentIndex()
         if temp == 1:
-            ASD.write(bytes('1', 'UTF-8'))
+            Settings.ASD.write(bytes('1', 'UTF-8'))
         elif temp == 2:
-            ASD.write(bytes('2', 'UTF-8'))
+            Settings.ASD.write(bytes('2', 'UTF-8'))
         elif temp == 3:
-            ASD.write(bytes('3', 'UTF-8'))
+            Settings.ASD.write(bytes('3', 'UTF-8'))
         elif temp == 4:
-            ASD.write(bytes('4', 'UTF-8'))
+            Settings.ASD.write(bytes('4', 'UTF-8'))
         else:
-            ASD.write(bytes('0', 'UTF-8'))
+            Settings.ASD.write(bytes('0', 'UTF-8'))
             
  # access variables inside of the UI's file
     def __init__(self):
