@@ -444,7 +444,7 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(2)
+        self.Control_Tab.setCurrentIndex(0)
         self.Constant_Mode.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -455,10 +455,10 @@ class Ui_MainWindow(object):
         self.PNG.setText(_translate("MainWindow", "PNG"))
         self.Full_Color_Select.setCurrentText(_translate("MainWindow", "None"))
         self.Full_Color_Select.setItemText(0, _translate("MainWindow", "None"))
-        self.Full_Color_Select.setItemText(1, _translate("MainWindow", "White"))
-        self.Full_Color_Select.setItemText(2, _translate("MainWindow", "Red"))
-        self.Full_Color_Select.setItemText(3, _translate("MainWindow", "Green"))
-        self.Full_Color_Select.setItemText(4, _translate("MainWindow", "Blue"))
+        self.Full_Color_Select.setItemText(1, _translate("MainWindow", "Red"))
+        self.Full_Color_Select.setItemText(2, _translate("MainWindow", "Green"))
+        self.Full_Color_Select.setItemText(3, _translate("MainWindow", "Blue"))
+        self.Full_Color_Select.setItemText(4, _translate("MainWindow", "White"))
         self.Constant_Mode.setTabText(self.Constant_Mode.indexOf(self.FullColor), _translate("MainWindow", "Full"))
         self.Left_Select.setItemText(0, _translate("MainWindow", "None"))
         self.Left_Select.setItemText(1, _translate("MainWindow", "White"))

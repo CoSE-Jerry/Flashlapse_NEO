@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -154,11 +154,6 @@
         </item>
         <item>
          <property name="text">
-          <string>White</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
           <string>Red</string>
          </property>
         </item>
@@ -170,6 +165,11 @@
         <item>
          <property name="text">
           <string>Blue</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>White</string>
          </property>
         </item>
        </widget>
