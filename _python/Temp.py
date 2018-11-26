@@ -191,8 +191,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
         self.Full_Color_Select.currentIndexChanged.connect(lambda: Command.full_color_change(self))
         self.brightness_spinBox.valueChanged.connect(lambda: self.brightness_change())
-        self.Left_Select.currentIndexChanged.connect(lambda: Command.self.half_color_change_left())
-        #self.Right_Select.currentIndexChanged.connect(lambda: self.half_color_change_right())
+        self.Left_Select.currentIndexChanged.connect(lambda: Command.half_color_change_left(self))
+        self.Right_Select.currentIndexChanged.connect(lambda: Command.half_color_change_right(self))
 
         
         

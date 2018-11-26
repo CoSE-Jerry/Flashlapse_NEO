@@ -64,3 +64,16 @@ def half_color_change_left(self):
         Settings.ASD.write(bytes('d', 'UTF-8'))
     else:
         Settings.ASD.write(bytes('e', 'UTF-8'))
+
+def half_color_change_right(self):
+    temp = self.Right_Select.currentIndex()
+    if temp == 1:
+        ASD.write(bytes('A', 'UTF-8'))
+    elif temp == 2:
+        ASD.write(bytes('B', 'UTF-8'))
+    elif temp == 3:
+        ASD.write(bytes('C', 'UTF-8'))
+    elif temp == 4:
+        ASD.write(bytes('D', 'UTF-8'))
+    elif temp == 0:
+        ASD.write(bytes('E', 'UTF-8'))
