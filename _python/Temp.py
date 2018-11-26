@@ -171,6 +171,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.ASD.write(bytes('4', 'UTF-8'))
         else:
             Settings.ASD.write(bytes('0', 'UTF-8'))
+
+    def brightness_change(self):
+        Settings.ASD.write(bytes('.'+str(self.brightness_spinBox.value())+"\n", 'UTF-8'))
+        
             
  # access variables inside of the UI's file
     def __init__(self):
@@ -199,6 +203,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
         self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
         self.Full_Color_Select.currentIndexChanged.connect(lambda: self.full_color_change())
+        self.brightness_spinBox.valueChanged.connect(lambda: self.brightness_change())
+
+        
         
         
         
