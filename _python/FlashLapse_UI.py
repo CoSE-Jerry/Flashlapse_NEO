@@ -191,6 +191,7 @@ class Ui_MainWindow(object):
         self.brightness_label.setObjectName("brightness_label")
         self.brightness_spinBox = QtWidgets.QSpinBox(self.Lighting)
         self.brightness_spinBox.setGeometry(QtCore.QRect(30, 410, 61, 22))
+        self.brightness_spinBox.setMinimum(1)
         self.brightness_spinBox.setMaximum(255)
         self.brightness_spinBox.setProperty("value", 50)
         self.brightness_spinBox.setObjectName("brightness_spinBox")
