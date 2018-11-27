@@ -105,36 +105,46 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Directory_Label.setText(Settings.full_dir)
 
     def start_scheduler(self):
-        icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.Start_Schedule.setIcon(icon)
-        self.Start_Schedule.setText("Stop Scheduled Imaging")
-
         
-        if(Settings.sch_running):
-            self.Schedule_Thread.terminate()
-            Settings.sch_running = False;
         if(Settings.test_running):
             self.Test_Thread.terminate()
             test_running = False;
-        if(not os.path.isdir(Settings.full_dir)):
+
+        if( not Settings.sch_running)
+
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.Start_Schedule.setIcon(icon)
+            self.Start_Schedule.setText("Stop Scheduled Imaging")
+            if(not os.path.isdir(Settings.full_dir)):
                 os.mkdir(Settings.full_dir)
+                    
+            self.Dropbox_Thread = Thread.Dropbox()
+            self.Email_Thread = Thread.Email()
+            self.Schedule_Thread = Thread.Schedule()
+            
+            if (self.JPG.isChecked()):
+                Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.jpg"
+            else:
+                Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.png"
+
+            self.Schedule_Thread.captured.connect(lambda: self.change_image())
+            self.Schedule_Thread.start()
+
+            if(self.Cloud_Sync.isChecked()):
+                self.Dropbox_Thread.start()
+                self.Email_Thread.start()
                 
-        self.Dropbox_Thread = Thread.Dropbox()
-        self.Email_Thread = Thread.Email()
-        self.Schedule_Thread = Thread.Schedule()
-        
-        if (self.JPG.isChecked()):
-            Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.jpg"
-        else:
-            Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.png"
+        else
+            self.Schedule_Thread.terminate()
+            self.Dropbox_Thread.terminate()
 
-        self.Schedule_Thread.captured.connect(lambda: self.change_image())
-        self.Schedule_Thread.start()
-
-        if(self.Cloud_Sync.isChecked()):
-            self.Dropbox_Thread.start()
-            self.Email_Thread.start()
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.Start_Schedule.setIcon(icon)
+            self.Start_Schedule.setText("Start Scheduled Imaging")
+            Settings.sch_running = False;
+            
 
     def change_image(self):
         self.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))

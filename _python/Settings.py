@@ -23,21 +23,15 @@ def init():
 
     global sequence_name
     sequence_name = ""
-
     global email
     email = ""
-
     global file_list
     file_list = []
-
     global link
     link = ""
-
     global file
     file = ""
-
     global full_dir
     full_dir = ""
-
     global current_image
     current_image = ""
