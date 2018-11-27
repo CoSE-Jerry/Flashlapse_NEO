@@ -23,21 +23,7 @@ class Schedule(QThread):
     def run(self):
         count = 1
         while True:
-            self.capture(self,count)
-            count+=1
-            Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
-            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
-            sleep(Settings.delay_1*60)
-
-            self.capture(self,count)
-            count+=1
-            Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
-            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
-            sleep(Settings.delay_2*60)
-
-    def capture(self,num):
             current_image = Settings.file % num
-            
             with PiCamera() as camera:
                 sleep(0.8)
                 camera.resolution = (2464,2464)
@@ -45,6 +31,27 @@ class Schedule(QThread):
                 camera.capture(current_image)
             self.Image_Frame.setPixmap(QtGui.QPixmap(current_image))
             Settings.file_list.append(current_image)
+            
+            count+=1
+            Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
+            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
+            sleep(Settings.delay_1*60)
+
+            current_image = Settings.file % num
+            with PiCamera() as camera:
+                sleep(0.8)
+                camera.resolution = (2464,2464)
+                camera._set_rotation(180)
+                camera.capture(current_image)
+            self.Image_Frame.setPixmap(QtGui.QPixmap(current_image))
+            Settings.file_list.append(current_image)
+
+            capture(count)
+            count+=1
+            Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
+            Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
+            sleep(Settings.delay_2*60)
+
 
 class Test(QThread):
     
@@ -101,7 +108,7 @@ class Email(QThread):
         msg['To'] = toaddr
         msg['Subject'] = "MECHSTIM NOTIFICATION"
 
-        body = "Hi " + email.split("@")[0] + "! \n\n" "Your MECHSTIM image sequence "+name+" has been initiated, check it out here.\n\n" + Settings.link + "\n\nTeam Flashlapse"       
+        body = "Hi " + Settings.email.split("@")[0] + "! \n\n" "Your MECHSTIM image sequence " + Settings.sequence_name + " has been initiated, check it out here.\n\n" + Settings.link + "\n\nTeam Flashlapse"       
         
         msg.attach(MIMEText(body, 'plain'))
         server = smtplib.SMTP('email-smtp.us-east-1.amazonaws.com', 587)
