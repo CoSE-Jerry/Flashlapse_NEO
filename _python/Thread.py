@@ -8,6 +8,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from time import sleep
 from PyQt5.QtCore import QThread
+from picamera import PiCamera
 
 
 #QThread for schedule function
