@@ -15,7 +15,7 @@ class Schedule(QThread):
     def run(self):
         count = 1
         while True:
-            capture(count)
+            capture(self,count)
             count++
             Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
@@ -27,7 +27,7 @@ class Schedule(QThread):
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(Settings.delay_2*60)
 
-    def capture(num):
+    def capture(self,num):
             current_image = Settings.file % num
             
             with PiCamera() as camera:
@@ -35,6 +35,7 @@ class Schedule(QThread):
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
                 camera.capture(current_image)
+            self.Image_Frame.setPixmap(QtGui.QPixmap(current_image))
             Settings.file_list.append(current_image)
 
 class Test(QThread):
