@@ -23,7 +23,7 @@ class Schedule(QThread):
     def run(self):
         count = 1
         while True:
-            current_image = Settings.file % num
+            current_image = Settings.file % count
             with PiCamera() as camera:
                 sleep(0.8)
                 camera.resolution = (2464,2464)
@@ -37,7 +37,7 @@ class Schedule(QThread):
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(Settings.delay_1*60)
 
-            current_image = Settings.file % num
+            current_image = Settings.file % count
             with PiCamera() as camera:
                 sleep(0.8)
                 camera.resolution = (2464,2464)
@@ -100,6 +100,7 @@ class Email(QThread):
 
     def run(self):
         sys.path.insert(0,'../../HP')
+        import Email
         body = None
         fromaddr = "notification_noreply@flashlapseinnovations.com"
         toaddr = Settings.email
