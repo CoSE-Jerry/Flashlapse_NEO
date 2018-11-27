@@ -17,6 +17,8 @@ def init():
     delay_1 = 0
     global delay_2
     delay_2 = 0
+    global rotation
+    rotation = 2
 
     global sch_confirmed
     sch_confirmed = False

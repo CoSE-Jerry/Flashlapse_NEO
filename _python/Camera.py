@@ -2,6 +2,7 @@ from time import sleep
 from PyQt5.QtCore import QThread
 from picamera import PiCamera
 from Main import *
+import Settings
 
 #QThread for snapshot function
 class Snap(QThread):
@@ -15,7 +16,7 @@ class Snap(QThread):
     def run(self):
         with PiCamera() as camera:
             camera.resolution = (2464,2464)
-            camera._set_rotation(90*Settings.rotation)
+            camera._set_rotation(180)
             camera.capture("../_temp/snapshot.jpg")
             
 class Live(QThread):

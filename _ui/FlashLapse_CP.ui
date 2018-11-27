@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -624,7 +624,7 @@
     </widget>
     <widget class="QWidget" name="Imaging">
      <attribute name="title">
-      <string>Imaging</string>
+      <string>Settings</string>
      </attribute>
      <widget class="QWidget" name="layoutWidget">
       <property name="geometry">

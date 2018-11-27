@@ -66,8 +66,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.add_Date.setEnabled(False)
 
     def Start_Rotate(self):
+        Settings.rotation += 1
         try:
-            UI_Update_Enable.snap_enable(self)
+            sch_ready= UI_Update_General.check_stat(self)
+            sch_flip = sch_ready
+            self.Snap_Thread = Camera.Snap()
+            self.Snap_Thread.started.connect(lambda: UI_Update_Disable.snap_disable(self,sch_flip))
+            self.Snap_Thread.finished.connect(lambda: UI_Update_Enable.snap_enable(self,sch_flip))
+            self.Snap_Thread.start()
+            
         except Exception as e:
             print(e)
 
@@ -134,6 +141,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             if(self.Cloud_Sync.isChecked()):
                 self.Dropbox_Thread.start()
                 self.Email_Thread.start()
+            self.Start_Schedule.setEnabled(False)
+            self.Test_Run.setEnabled(False)
+            self.Reset_Position.setEnabled(False)
+            
             
 
     def change_image(self):

@@ -446,7 +446,7 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(0)
+        self.Control_Tab.setCurrentIndex(1)
         self.Constant_Mode.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
@@ -506,7 +506,7 @@ class Ui_MainWindow(object):
         self.Dropbox_Confirm.setText(_translate("MainWindow", "Confirm Email"))
         self.Directory_Label.setText(_translate("MainWindow", "/home/pi/Desktop"))
         self.Storage_Directory.setText(_translate("MainWindow", "Select Storage Directory"))
-        self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Imaging), _translate("MainWindow", "Imaging"))
+        self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.Imaging), _translate("MainWindow", "Settings"))
         self.Rotate1.setText(_translate("MainWindow", "Reflex To"))
         self.rotate_to_spinbox_1.setSuffix(_translate("MainWindow", " °"))
         self.Wait1.setText(_translate("MainWindow", "Pause For"))
