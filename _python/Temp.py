@@ -49,18 +49,18 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def IST_Edit(self):
         Settings.sequence_name = self.IST_Editor.text()
-        full_dir = default_dir + "/" + sequence_name
+        full_dir = default_dir + "/" + Settings.sequence_name
         self.Directory_Label.setText(full_dir)
-        if date not in sequence_name: 
+        if date not in Settings.sequence_name: 
             self.add_Date.setEnabled(True)
-        if(len(sequence_name) == 0):
+        if(len(Settings.sequence_name) == 0):
             self.add_Date.setEnabled(False)
         UI_Update_General.schedule_update(self)
 
     def Add_Date(self):
-        Settings.sequence_name = sequence_name + "_" + date
-        self.IST_Editor.setText(sequence_name)
-        full_dir = default_dir + "/" + sequence_name
+        Settings.sequence_name = Settings.sequence_name + "_" + date
+        self.IST_Editor.setText(Settings.sequence_name)
+        full_dir = default_dir + "/" + Settings.sequence_name
         self.Directory_Label.setText(full_dir)
         self.add_Date.setEnabled(False)
 
@@ -100,7 +100,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         global full_dir, default_dir
         default_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/home/pi/Desktop'))
         if(len(default_dir)!=0):
-            full_dir = default_dir + "/" + sequence_name
+            full_dir = default_dir + "/" + Settings.sequence_name
             self.Directory_Label.setText(full_dir)
 
     def start_scheduler(self):
