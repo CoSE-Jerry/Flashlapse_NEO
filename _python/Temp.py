@@ -106,6 +106,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Directory_Label.setText(full_dir)
 
     def start_scheduler(self):
+        global full_dir
         if(Settings.sch_running):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
