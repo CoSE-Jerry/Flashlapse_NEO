@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -399,7 +399,7 @@
          </property>
         </item>
        </widget>
-       <widget class="QComboBox" name="Full_Color_Select_3">
+       <widget class="QComboBox" name="LL_Color_Select">
         <property name="geometry">
          <rect>
           <x>110</x>
@@ -437,7 +437,7 @@
          </property>
         </item>
        </widget>
-       <widget class="QComboBox" name="BR_Color_Select">
+       <widget class="QComboBox" name="LR_Color_Select">
         <property name="geometry">
          <rect>
           <x>230</x>
