@@ -1,6 +1,5 @@
 import Settings
 import os
-import Email
 from time import sleep
 from PyQt5.QtCore import QThread
 
