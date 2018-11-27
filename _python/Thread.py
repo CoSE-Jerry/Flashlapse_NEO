@@ -4,6 +4,7 @@ import sys
 import subprocess
 import smtplib
 
+from PyQt5 import QtCore
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from time import sleep
