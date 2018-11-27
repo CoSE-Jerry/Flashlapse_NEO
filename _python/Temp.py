@@ -30,7 +30,6 @@ sch_ready = False
 sch_flip = False
 
 #global variables
-full_dir = ""
 default_dir = "/home/pi/Desktop"
 date = time.strftime('%m_%d_%Y')
  
@@ -51,8 +50,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def IST_Edit(self):
         Settings.sequence_name = self.IST_Editor.text()
-        full_dir = default_dir + "/" + Settings.sequence_name
-        self.Directory_Label.setText(full_dir)
+        Settings.full_dir = default_dir + "/" + Settings.sequence_name
+        self.Directory_Label.setText(Settings.full_dir)
         if date not in Settings.sequence_name: 
             self.add_Date.setEnabled(True)
         if(len(Settings.sequence_name) == 0):
@@ -62,8 +61,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Add_Date(self):
         Settings.sequence_name = Settings.sequence_name + "_" + date
         self.IST_Editor.setText(Settings.sequence_name)
-        full_dir = default_dir + "/" + Settings.sequence_name
-        self.Directory_Label.setText(full_dir)
+        Settings.full_dir = default_dir + "/" + Settings.sequence_name
+        self.Directory_Label.setText(Settings.full_dir)
         self.add_Date.setEnabled(False)
 
     def Start_Rotate(self):
@@ -99,31 +98,30 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         file.close()
 
     def Select_Storage_Directory(self):
-        global full_dir, default_dir
+        global default_dir
         default_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/home/pi/Desktop'))
         if(len(default_dir)!=0):
-            full_dir = default_dir + "/" + Settings.sequence_name
-            self.Directory_Label.setText(full_dir)
+            Settings.full_dir = default_dir + "/" + Settings.sequence_name
+            self.Directory_Label.setText(Settings.full_dir)
 
     def start_scheduler(self):
-        global full_dir
         if(Settings.sch_running):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
         if(Settings.test_running):
             self.Test_Thread.terminate()
             test_running = False;
-        if(not os.path.isdir(full_dir)):
-                os.mkdir(full_dir)
+        if(not os.path.isdir(Settings.full_dir)):
+                os.mkdir(Settings.full_dir)
                 
         self.Dropbox_Thread = Thread.Dropbox()
         self.Email_Thread = Thread.Email()
         self.Schedule_Thread = Thread.Schedule()
         
         if (self.JPG.isChecked()):
-            Settings.file = full_dir + "/" + Settings.sequence_name + "_%04d.jpg"
+            Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.jpg"
         else:
-            Settings.file = full_dir + "/" + Settings.sequence_name + "_%04d.png"
+            Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.png"
         
         self.Schedule_Thread.start()
 
