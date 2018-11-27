@@ -13,6 +13,8 @@ from picamera import PiCamera
 
 #QThread for schedule function
 class Schedule(QThread):
+
+    captured = QtCore.pyqtSignal()
     
     def __init__(self):
         QThread.__init__(self)
@@ -24,30 +26,30 @@ class Schedule(QThread):
     def run(self):
         count = 1
         while True:
-            current_image = Settings.file % count
+            Settings.current_image = Settings.file % count
             with PiCamera() as camera:
                 sleep(0.8)
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
-                camera.capture(current_image)
-            self.Image_Frame.setPixmap(QtGui.QPixmap(current_image))
-            Settings.file_list.append(current_image)
+                camera.capture(Settings.current_image)
+                self.captured.emit()
+            self.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
+            Settings.file_list.append(Settings.current_image)
             
             count+=1
             Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(Settings.delay_1*60)
 
-            current_image = Settings.file % count
+            Settings.current_image = Settings.file % count
             with PiCamera() as camera:
                 sleep(0.8)
                 camera.resolution = (2464,2464)
                 camera._set_rotation(180)
-                camera.capture(current_image)
-            self.Image_Frame.setPixmap(QtGui.QPixmap(current_image))
-            Settings.file_list.append(current_image)
+                camera.capture(Settings.current_image)
+                self.captured.emit()
+            Settings.file_list.append(Settings.current_image)
 
-            capture(count)
             count+=1
             Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
@@ -120,8 +122,3 @@ class Email(QThread):
         server.login(Email.user, Email.password)
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text)
-
-
-
-
-                

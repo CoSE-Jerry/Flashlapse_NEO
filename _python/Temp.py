@@ -122,12 +122,17 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.jpg"
         else:
             Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.png"
-        
+
+        self.Image_Thread.capture.connect(lambda: self.change_image())
         self.Schedule_Thread.start()
 
         if(self.Cloud_Sync.isChecked()):
             self.Dropbox_Thread.start()
             self.Email_Thread.start()
+
+    def change_image(self):
+        self.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
+        
 
     def test_run(self):
 

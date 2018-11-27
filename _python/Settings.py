@@ -35,3 +35,9 @@ def init():
 
     global file
     file = ""
+
+    global full_dir
+    full_dir = ""
+
+    global current_image
+    current_image = ""
