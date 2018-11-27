@@ -7,7 +7,7 @@ def schedule_disable(self):
 def schedule_enable(self):
     self.Start_Schedule.setEnabled(True)
 
-def schedule_update(self)
+def schedule_update(self):
     sn = len(Settings.sequence_name)
     em = len(Settings.email)
     if(sn != 0 and em != 0)
