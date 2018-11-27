@@ -110,7 +110,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Test_Thread.terminate()
             test_running = False;
 
-        if( not Settings.sch_running)
+        if( not Settings.sch_running):
 
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -135,7 +135,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 self.Dropbox_Thread.start()
                 self.Email_Thread.start()
                 
-        else
+        else:
             self.Schedule_Thread.terminate()
             self.Dropbox_Thread.terminate()
 
