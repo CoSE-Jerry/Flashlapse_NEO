@@ -16,13 +16,13 @@ class Schedule(QThread):
         count = 1
         while True:
             capture(self,count)
-            count++
+            count+=1
             Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(Settings.delay_1*60)
 
-            capture(count)
-            count++
+            capture(self,count)
+            count+=1
             Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(Settings.delay_2*60)
