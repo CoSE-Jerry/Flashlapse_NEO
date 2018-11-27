@@ -26,3 +26,12 @@ def init():
 
     global email
     email = ""
+
+    global file_list
+    file_list = []
+
+    global link
+    link = ""
+
+    global file
+    file = ""

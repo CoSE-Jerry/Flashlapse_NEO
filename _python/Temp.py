@@ -110,9 +110,21 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if(Settings.test_running):
             self.Test_Thread.terminate()
             test_running = False;
-            
-        self.Schedule_Thread = Command.Schedule()
+
+    
+        self.Dropbox_Thread = Thread.Dropbox()
+        self.Email_Thread = Thread.Email()
+        self.Schedule_Thread = Thread.Schedule()
+        
+        if (self.JPG.isChecked()):
+            Settings.file = full_dir + "/" + Setting.sequence_name + "_%04d.jpg"
+        else:
+            Settings.file = full_dir + "/" + Setting.sequence_name + "_%04d.png"
+        
         self.Schedule_Thread.start()
+        if(self.Cloud_Sync.isChecked()):
+            self.Dropbox_Thread.start()
+            self.Email_Thread.start()
 
     def test_run(self):
 
@@ -129,7 +141,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 Settings.test_running = False;
                 print("testrunning")
                 
-            self.Test_Thread = Command.Test()
+            self.Test_Thread = Thread.Test()
             self.Test_Thread.start()
         except Exception as e:
             print(e)
@@ -175,7 +187,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Live_Complete(self):
         self.Snapshot.setEnabled(True)
         self.Live_Feed.setEnabled(True)
-        self.Live_Feed.setText("Start Live Feed (30s)")
+        self.Live_Feed.setText("Live Feed (30s)")
         
  # access variables inside of the UI's file
     def __init__(self):

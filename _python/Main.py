@@ -326,7 +326,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Snapshot.setEnabled(True)
         self.Live_Feed.setEnabled(True)
         self.Start_Imaging.setEnabled(True)
-        self.Live_Feed.setText("Start Live Feed (30s)")
+        self.Live_Feed.setText("Live Feed (30s)")
 
     def Check_Point(self):
         if(self.Cloud_Sync.isChecked()):
