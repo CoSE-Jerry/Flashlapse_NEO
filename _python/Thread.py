@@ -1,7 +1,9 @@
 import Settings
 import os
+import Email
 from time import sleep
 from PyQt5.QtCore import QThread
+
 
 #QThread for schedule function
 class Schedule(QThread):
@@ -74,3 +76,38 @@ class Dropbox(QThread):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + Settings.file_list[0] + " /"+Settings.sequence_name)
                 os.system("rm " + Settings.file_list[0])
                 del Settings.file_list[0]
+
+class Email(QThread):
+    
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+        sleep(10)
+
+    def run(self):
+        sys.path.insert(0,'../../HP')
+        body = None
+        fromaddr = "notification_noreply@flashlapseinnovations.com"
+        toaddr = Settings.email
+        msg = MIMEMultipart()
+        msg['From'] = fromaddr
+        msg['To'] = toaddr
+        msg['Subject'] = "MECHSTIM NOTIFICATION"
+
+        body = "Hi " + email.split("@")[0] + "! \n\n" "Your MECHSTIM image sequence "+name+" has been initiated, check it out here.\n\n" + Settings.link + "\n\nTeam Flashlapse"       
+        
+        msg.attach(MIMEText(body, 'plain'))
+        server = smtplib.SMTP('email-smtp.us-east-1.amazonaws.com', 587)
+        server.ehlo()
+        server.starttls()
+        server.ehlo()
+        server.login(Email.user, Email.password)
+        text = msg.as_string()
+        server.sendmail(fromaddr, toaddr, text)
+
+
+
+
+                
