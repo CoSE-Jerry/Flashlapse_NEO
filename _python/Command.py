@@ -79,7 +79,7 @@ def half_color_change_right(self):
         Settings.ASD.write(bytes('E', 'UTF-8'))
 
 def third_color_change_top(self):
-    temp = self.Left_Select.currentIndex()
+    temp = self.Top_Color_Select.currentIndex()
     if temp == 1:
         Settings.ASD.write(bytes('f', 'UTF-8'))
     elif temp == 2:
@@ -92,7 +92,7 @@ def third_color_change_top(self):
         Settings.ASD.write(bytes('j', 'UTF-8'))
 
 def third_color_change_lower_left(self):
-    temp = self.Left_Select.currentIndex()
+    temp = self.LL_Color_Select.currentIndex()
     if temp == 1:
         Settings.ASD.write(bytes('k', 'UTF-8'))
     elif temp == 2:
@@ -105,7 +105,7 @@ def third_color_change_lower_left(self):
         Settings.ASD.write(bytes('o', 'UTF-8'))
 
 def third_color_change_lower_right(self):
-    temp = self.Left_Select.currentIndex()
+    temp = self.LR_Color_Select.currentIndex()
     if temp == 1:
         Settings.ASD.write(bytes('p', 'UTF-8'))
     elif temp == 2:
