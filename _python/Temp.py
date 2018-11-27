@@ -111,8 +111,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if(Settings.test_running):
             self.Test_Thread.terminate()
             test_running = False;
-
-    
+        if(not os.path.isdir(Settings.directory)):
+                os.mkdir(full_dir)
+                
         self.Dropbox_Thread = Thread.Dropbox()
         self.Email_Thread = Thread.Email()
         self.Schedule_Thread = Thread.Schedule()
@@ -123,6 +124,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.file = full_dir + "/" + Settings.sequence_name + "_%04d.png"
         
         self.Schedule_Thread.start()
+
         if(self.Cloud_Sync.isChecked()):
             self.Dropbox_Thread.start()
             self.Email_Thread.start()
