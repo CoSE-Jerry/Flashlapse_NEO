@@ -16,7 +16,7 @@ class Snap(QThread):
     def run(self):
         with PiCamera() as camera:
             camera.resolution = (2464,2464)
-            camera._set_rotation(180)
+            camera._set_rotation(90*Settings.rotation)
             camera.capture("../_temp/snapshot.jpg")
             
 class Live(QThread):
@@ -29,6 +29,6 @@ class Live(QThread):
 
     def run(self):
         with PiCamera() as camera:
-            camera._set_rotation(180)
+            camera._set_rotation(90*Settings.rotation)
             camera.start_preview()
             sleep(30)
