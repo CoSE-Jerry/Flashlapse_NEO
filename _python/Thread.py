@@ -1,4 +1,5 @@
 import Settings
+import os
 from time import sleep
 from PyQt5.QtCore import QThread
 
