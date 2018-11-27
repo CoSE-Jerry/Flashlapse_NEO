@@ -136,6 +136,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 self.Email_Thread.start()
                 
         else:
+
+
+            try:
             self.Schedule_Thread.terminate()
             self.Dropbox_Thread.terminate()
 
@@ -144,6 +147,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Start_Schedule.setIcon(icon)
             self.Start_Schedule.setText("Start Scheduled Imaging")
             Settings.sch_running = False;
+
+
+            except Exception as e:
+            print(e)
             
 
     def change_image(self):
