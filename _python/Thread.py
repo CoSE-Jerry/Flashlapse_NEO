@@ -31,7 +31,7 @@ class Schedule(QThread):
             with PiCamera() as camera:
                 sleep(0.8)
                 camera.resolution = (2464,2464)
-                camera._set_rotation(180)
+                camera._set_rotation(90*Settings.rotation)
                 camera.capture(Settings.current_image)
                 self.captured.emit()
             Settings.file_list.append(Settings.current_image)
@@ -45,7 +45,7 @@ class Schedule(QThread):
             with PiCamera() as camera:
                 sleep(0.8)
                 camera.resolution = (2464,2464)
-                camera._set_rotation(180)
+                camera._set_rotation(90*Settings.rotation)
                 camera.capture(Settings.current_image)
                 self.captured.emit()
             Settings.file_list.append(Settings.current_image)

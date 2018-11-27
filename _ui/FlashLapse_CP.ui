@@ -1175,7 +1175,7 @@
      <item>
       <widget class="QPushButton" name="Rotate">
        <property name="text">
-        <string>Rotate</string>
+        <string>Rotate Image</string>
        </property>
       </widget>
      </item>

@@ -524,7 +524,7 @@ class Ui_MainWindow(object):
         self.Cloud_Sync.setText(_translate("MainWindow", "Cloud Sync"))
         self.Snapshot.setText(_translate("MainWindow", "Snapshot"))
         self.Live_Feed.setText(_translate("MainWindow", "Live Feed (30s)"))
-        self.Rotate.setText(_translate("MainWindow", "Rotate"))
+        self.Rotate.setText(_translate("MainWindow", "Rotate Image"))
         self.Start_Schedule.setText(_translate("MainWindow", "Start Scheduled Imaging"))
         self.actionOpen_Directory.setText(_translate("MainWindow", "Open Directory"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))

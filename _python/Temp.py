@@ -134,23 +134,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             if(self.Cloud_Sync.isChecked()):
                 self.Dropbox_Thread.start()
                 self.Email_Thread.start()
-                
-        else:
-
-
-            try:
-                self.Schedule_Thread.terminate()
-                self.Dropbox_Thread.terminate()
-
-                icon = QtGui.QIcon()
-                icon.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-                self.Start_Schedule.setIcon(icon)
-                self.Start_Schedule.setText("Start Scheduled Imaging")
-                Settings.sch_running = False;
-
-
-            except Exception as e:
-                print(e)
             
 
     def change_image(self):
