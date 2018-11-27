@@ -160,6 +160,22 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         
         Settings.sch_confirmed = True
         UI_Update_General.schedule_update(self)
+
+    def Start_Live_Feed(self):
+        self.Live_Thread = Camera.Live()
+        self.Live_Thread.started.connect(lambda: self.Processing_Live())
+        self.Live_Thread.finished.connect(lambda: self.Live_Complete())
+        self.Live_Thread.start()
+
+    def Processing_Live(self):
+        self.Snapshot.setEnabled(False)
+        self.Live_Feed.setEnabled(False)
+        self.Live_Feed.setText("Processing...")
+        
+    def Live_Complete(self):
+        self.Snapshot.setEnabled(True)
+        self.Live_Feed.setEnabled(True)
+        self.Live_Feed.setText("Start Live Feed (30s)")
         
  # access variables inside of the UI's file
     def __init__(self):
@@ -195,6 +211,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Top_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_top(self))
         self.LL_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_left(self))
         self.LR_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_right(self))
+
+        self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
+
+        
 
         
 # main function
