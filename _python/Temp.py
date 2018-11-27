@@ -112,7 +112,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if(Settings.test_running):
             self.Test_Thread.terminate()
             test_running = False;
-        if(not os.path.isdir(Settings.directory)):
+        if(not os.path.isdir(full_dir)):
                 os.mkdir(full_dir)
                 
         self.Dropbox_Thread = Thread.Dropbox()
