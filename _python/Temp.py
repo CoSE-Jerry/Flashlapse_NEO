@@ -139,18 +139,18 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
 
             try:
-            self.Schedule_Thread.terminate()
-            self.Dropbox_Thread.terminate()
+                self.Schedule_Thread.terminate()
+                self.Dropbox_Thread.terminate()
 
-            icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-            self.Start_Schedule.setIcon(icon)
-            self.Start_Schedule.setText("Start Scheduled Imaging")
-            Settings.sch_running = False;
+                icon = QtGui.QIcon()
+                icon.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+                self.Start_Schedule.setIcon(icon)
+                self.Start_Schedule.setText("Start Scheduled Imaging")
+                Settings.sch_running = False;
 
 
             except Exception as e:
-            print(e)
+                print(e)
             
 
     def change_image(self):
