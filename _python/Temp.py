@@ -14,6 +14,7 @@ import Settings
 #import custom functions
 import Camera
 import Command
+import Thread
  
 # import Qt content
 import PyQt5
