@@ -118,9 +118,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Schedule_Thread = Thread.Schedule()
         
         if (self.JPG.isChecked()):
-            Settings.file = full_dir + "/" + Setting.sequence_name + "_%04d.jpg"
+            Settings.file = full_dir + "/" + Settings.sequence_name + "_%04d.jpg"
         else:
-            Settings.file = full_dir + "/" + Setting.sequence_name + "_%04d.png"
+            Settings.file = full_dir + "/" + Settings.sequence_name + "_%04d.png"
         
         self.Schedule_Thread.start()
         if(self.Cloud_Sync.isChecked()):
