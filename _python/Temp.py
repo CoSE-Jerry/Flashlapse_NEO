@@ -159,6 +159,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         Settings.delay_2 = self.wait_spinbox_2.value()
         
         sch_confirmed = True
+        UI_Update_General.schedule_update(self)
         
  # access variables inside of the UI's file
     def __init__(self):
