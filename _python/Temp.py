@@ -131,7 +131,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Email_Thread.start()
 
     def change_image(self):
-        MainWindow.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
+        self.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
         
 
     def test_run(self):
