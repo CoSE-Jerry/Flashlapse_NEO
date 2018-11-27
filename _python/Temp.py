@@ -123,7 +123,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         else:
             Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.png"
 
-        self.Image_Thread.capture.connect(lambda: self.change_image())
+        self.Schedule_Thread.captured.connect(lambda: self.change_image())
         self.Schedule_Thread.start()
 
         if(self.Cloud_Sync.isChecked()):
