@@ -10,7 +10,7 @@ def schedule_enable(self):
 def schedule_update(self):
     sn = len(Settings.sequence_name)
     em = len(Settings.email)
-    if(sn != 0 and em != 0)
+    if(sn != 0 and em != 0):
         schedule_enable(self)
-    else
+    else:
         schedule_disable(self):
