@@ -105,7 +105,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Directory_Label.setText(Settings.full_dir)
 
     def start_scheduler(self):
-        Start_Schedule
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
 
