@@ -107,6 +107,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def start_scheduler(self):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.Start_Imaging.setIcon(icon)
+        self.Start_Imaging.setText("Stop Scheduled Imaging")
 
         
         if(Settings.sch_running):
