@@ -34,7 +34,6 @@ class Schedule(QThread):
                 camera._set_rotation(180)
                 camera.capture(Settings.current_image)
                 self.captured.emit()
-            self.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
             Settings.file_list.append(Settings.current_image)
             
             count+=1
