@@ -123,7 +123,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         else:
             Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.png"
 
-        self.Schedule_Thread.captured.connect(lambda: self.change_image(self))
+        self.Schedule_Thread.captured.connect(lambda: change_image(self))
         self.Schedule_Thread.start()
 
         if(self.Cloud_Sync.isChecked()):
@@ -131,7 +131,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Email_Thread.start()
 
     def change_image(self):
-        self.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
+        MainWindow.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
         
 
     def test_run(self):
