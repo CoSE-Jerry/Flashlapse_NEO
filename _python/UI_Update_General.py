@@ -13,4 +13,4 @@ def schedule_update(self):
     if(sn != 0 and em != 0):
         schedule_enable(self)
     else:
-        schedule_disable(self):
+        schedule_disable(self)
