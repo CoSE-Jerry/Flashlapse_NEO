@@ -1201,7 +1201,7 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>../_image/time-left.png</normaloff>../_image/time-left.png</iconset>
+      <normaloff>../_image/Start-Scheduler.png</normaloff>../_image/Start-Scheduler.png</iconset>
     </property>
     <property name="iconSize">
      <size>

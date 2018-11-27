@@ -99,9 +99,9 @@ class Email(QThread):
 
     def __del__(self):
         self._running = False
-        sleep(10)
-
+        
     def run(self):
+        sleep(60)
         sys.path.insert(0,'../../HP')
         import Email
         body = None

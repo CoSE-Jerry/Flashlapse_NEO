@@ -429,7 +429,7 @@ class Ui_MainWindow(object):
         self.Start_Schedule.setGeometry(QtCore.QRect(590, 450, 201, 51))
         self.Start_Schedule.setAutoFillBackground(False)
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("../_image/time-left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.Start_Schedule.setIcon(icon1)
         self.Start_Schedule.setIconSize(QtCore.QSize(35, 35))
         self.Start_Schedule.setObjectName("Start_Schedule")
@@ -446,7 +446,7 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(1)
+        self.Control_Tab.setCurrentIndex(2)
         self.Constant_Mode.setCurrentIndex(2)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
