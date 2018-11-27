@@ -19,13 +19,13 @@ class Schedule(QThread):
     def run(self):
         count = 1
         while True:
-            capture(self,count)
+            self.capture(self,count)
             count+=1
             Settings.ASD.write(bytes('~'+str(Settings.angle_1)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
             sleep(Settings.delay_1*60)
 
-            capture(self,count)
+            self.capture(self,count)
             count+=1
             Settings.ASD.write(bytes('~'+str(Settings.angle_2)+"\n", 'UTF-8'))
             Settings.ASD.write(bytes('~0'+"\n", 'UTF-8'))
@@ -73,7 +73,7 @@ class Dropbox(QThread):
         Settings.link = Settings.link.replace("b' > ", "")
         Settings.link = Settings.link.split("\\")[0]
         while True:
-            if (len(file_list) > 0):
+            if (len(Settings.file_list) > 0):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + Settings.file_list[0] + " /"+Settings.sequence_name)
                 os.system("rm " + Settings.file_list[0])
                 del Settings.file_list[0]
