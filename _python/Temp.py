@@ -28,8 +28,6 @@ sch_ready = False
 sch_flip = False
 
 #global variables
-sequence_name = ""
-email = ""
 full_dir = ""
 default_dir = "/home/pi/Desktop"
 date = time.strftime('%m_%d_%Y')
@@ -50,18 +48,17 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             print(e)
 
     def IST_Edit(self):
-        global sequence_name
-        sequence_name = self.IST_Editor.text()
+        Settings.sequence_name = self.IST_Editor.text()
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
         if date not in sequence_name: 
             self.add_Date.setEnabled(True)
         if(len(sequence_name) == 0):
             self.add_Date.setEnabled(False)
+        UI_Update_General.schedule_update(self)
 
     def Add_Date(self):
-        global sequence_name
-        sequence_name = sequence_name + "_" + date
+        Settings.sequence_name = sequence_name + "_" + date
         self.IST_Editor.setText(sequence_name)
         full_dir = default_dir + "/" + sequence_name
         self.Directory_Label.setText(full_dir)
@@ -86,19 +83,17 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Save_Default.setEnabled(False)
 
     def Email_Entered(self):
-        global email
-        email = self.Dropbox_Email.text()
+        Settings.email = self.Dropbox_Email.text()
         self.Cloud_Sync.setEnabled(True)
         self.Cloud_Sync.setChecked(True)
         self.Save_Default.setEnabled(True)
-        
+        UI_Update_General.schedule_update(self)
 
     def Save_Email(self):
-        global email
         open("../_temp/save_data.txt", "w").close()
 
         file = open("../_temp/save_data.txt","w") 
-        file.write(email)  
+        file.write(Settings.email)  
         file.close()
 
     def Select_Storage_Directory(self):
@@ -109,11 +104,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Directory_Label.setText(full_dir)
 
     def start_scheduler(self):
-        Settings.angle_1 = self.rotate_to_spinbox_1.value()
-        Settings.angle_2 = self.rotate_to_spinbox_2.value()
-        Settings.delay_1 = self.wait_spinbox_1.value()
-        Settings.delay_2 = self.wait_spinbox_2.value()
-
         if(Settings.sch_running):
             self.Schedule_Thread.terminate()
             Settings.sch_running = False;
@@ -161,8 +151,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def brightness_change(self):
         Settings.ASD.write(bytes('.'+str(self.brightness_spinBox.value())+"\n", 'UTF-8'))
+
+    def Confirm_Schedule(self):
+        Settings.angle_1 = self.rotate_to_spinbox_1.value()
+        Settings.angle_2 = self.rotate_to_spinbox_2.value()
+        Settings.delay_1 = self.wait_spinbox_1.value()
+        Settings.delay_2 = self.wait_spinbox_2.value()
         
-            
+        sch_confirmed = True
+        
  # access variables inside of the UI's file
     def __init__(self):
         super(self.__class__, self).__init__()
@@ -185,6 +182,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Save_Default.clicked.connect(lambda: self.Save_Email())
         self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
         self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
+        self.Set_Schedule.clicked.connect(lambda: self.Confirm_Schedule())
         self.Test_Run.clicked.connect(lambda: self.test_run())
         self.Reset_Position.clicked.connect(lambda: self.reset_position())
         self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
@@ -196,14 +194,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Top_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_top(self))
         self.LL_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_left(self))
         self.LR_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_right(self))
-        
-
-        
-        
-        
-        
-
-        
 
         
 # main function

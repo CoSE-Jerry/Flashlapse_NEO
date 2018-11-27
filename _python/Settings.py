@@ -17,4 +17,12 @@ def init():
     delay_1 = 0
     global delay_2
     delay_2 = 0
-    
+
+    global sch_confirmed
+    sch_confirmed = False
+
+    global sequence_name
+    sequence_name = ""
+
+    global email
+    email = ""

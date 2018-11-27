@@ -55,19 +55,6 @@ def full_color_change(self):
 def half_color_change_left(self):
     temp = self.Left_Select.currentIndex()
     if temp == 1:
-        Settings.ASD.write(bytes('a', 'UTF-8'))
-    elif temp == 2:
-        Settings.ASD.write(bytes('b', 'UTF-8'))
-    elif temp == 3:
-        Settings.ASD.write(bytes('c', 'UTF-8'))
-    elif temp == 4:
-        Settings.ASD.write(bytes('d', 'UTF-8'))
-    else:
-        Settings.ASD.write(bytes('e', 'UTF-8'))
-
-def half_color_change_right(self):
-    temp = self.Right_Select.currentIndex()
-    if temp == 1:
         Settings.ASD.write(bytes('A', 'UTF-8'))
     elif temp == 2:
         Settings.ASD.write(bytes('B', 'UTF-8'))
@@ -75,8 +62,21 @@ def half_color_change_right(self):
         Settings.ASD.write(bytes('C', 'UTF-8'))
     elif temp == 4:
         Settings.ASD.write(bytes('D', 'UTF-8'))
-    elif temp == 0:
+    else:
         Settings.ASD.write(bytes('E', 'UTF-8'))
+
+def half_color_change_right(self):
+    temp = self.Right_Select.currentIndex()
+    if temp == 1:
+        Settings.ASD.write(bytes('a', 'UTF-8'))
+    elif temp == 2:
+        Settings.ASD.write(bytes('b', 'UTF-8'))
+    elif temp == 3:
+        Settings.ASD.write(bytes('c', 'UTF-8'))
+    elif temp == 4:
+        Settings.ASD.write(bytes('d', 'UTF-8'))
+    elif temp == 0:
+        Settings.ASD.write(bytes('e', 'UTF-8'))
 
 def third_color_change_top(self):
     temp = self.Top_Color_Select.currentIndex()
