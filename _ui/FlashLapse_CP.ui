@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>800</width>
-    <height>545</height>
+    <height>570</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,7 +43,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../_image/background.jpg</pixmap>
+     <pixmap>../_image/Background.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -84,7 +84,7 @@
       <x>20</x>
       <y>20</y>
       <width>451</width>
-      <height>481</height>
+      <height>521</height>
      </rect>
     </property>
     <property name="tabPosition">
@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -170,6 +170,11 @@
         <item>
          <property name="text">
           <string>White</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Custom</string>
          </property>
         </item>
        </widget>
@@ -253,6 +258,11 @@
              <string>White</string>
             </property>
            </item>
+           <item>
+            <property name="text">
+             <string>Custom</string>
+            </property>
+           </item>
           </widget>
          </item>
          <item>
@@ -293,6 +303,11 @@
            <item>
             <property name="text">
              <string>White</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Custom</string>
             </property>
            </item>
           </widget>
@@ -398,6 +413,11 @@
           <string>White</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>Custom</string>
+         </property>
+        </item>
        </widget>
        <widget class="QComboBox" name="LL_Color_Select">
         <property name="geometry">
@@ -434,6 +454,11 @@
         <item>
          <property name="text">
           <string>White</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Custom</string>
          </property>
         </item>
        </widget>
@@ -474,6 +499,11 @@
           <string>White</string>
          </property>
         </item>
+        <item>
+         <property name="text">
+          <string>Custom</string>
+         </property>
+        </item>
        </widget>
       </widget>
      </widget>
@@ -484,7 +514,7 @@
       <property name="geometry">
        <rect>
         <x>280</x>
-        <y>390</y>
+        <y>430</y>
         <width>101</width>
         <height>22</height>
        </rect>
@@ -497,7 +527,7 @@
       <property name="geometry">
        <rect>
         <x>280</x>
-        <y>420</y>
+        <y>460</y>
         <width>101</width>
         <height>22</height>
        </rect>
@@ -507,7 +537,7 @@
       <property name="geometry">
        <rect>
         <x>245</x>
-        <y>425</y>
+        <y>465</y>
         <width>47</width>
         <height>13</height>
        </rect>
@@ -520,7 +550,7 @@
       <property name="geometry">
        <rect>
         <x>230</x>
-        <y>395</y>
+        <y>435</y>
         <width>47</width>
         <height>13</height>
        </rect>
@@ -531,12 +561,12 @@
      </widget>
      <widget class="QPushButton" name="lightScheduleButton">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="geometry">
        <rect>
         <x>390</x>
-        <y>395</y>
+        <y>435</y>
         <width>40</width>
         <height>40</height>
        </rect>
@@ -561,7 +591,7 @@
       <property name="geometry">
        <rect>
         <x>130</x>
-        <y>390</y>
+        <y>430</y>
         <width>101</width>
         <height>51</height>
        </rect>
@@ -593,7 +623,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>390</y>
+        <y>430</y>
         <width>81</width>
         <height>21</height>
        </rect>
@@ -606,7 +636,7 @@
       <property name="geometry">
        <rect>
         <x>30</x>
-        <y>410</y>
+        <y>450</y>
         <width>61</width>
         <height>22</height>
        </rect>
@@ -621,6 +651,110 @@
        <number>50</number>
       </property>
      </widget>
+     <widget class="Line" name="line_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>410</y>
+        <width>401</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="R_spinBox">
+      <property name="geometry">
+       <rect>
+        <x>140</x>
+        <y>390</y>
+        <width>51</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="G_spinBox">
+      <property name="geometry">
+       <rect>
+        <x>240</x>
+        <y>390</y>
+        <width>51</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="B_spinBox">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>390</y>
+        <width>51</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="maximum">
+       <number>255</number>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label">
+      <property name="geometry">
+       <rect>
+        <x>50</x>
+        <y>385</y>
+        <width>71</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Custom RGB:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>125</x>
+        <y>390</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>R:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>225</x>
+        <y>390</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>G:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_9">
+      <property name="geometry">
+       <rect>
+        <x>325</x>
+        <y>390</y>
+        <width>21</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>B:</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="Imaging">
      <attribute name="title">
@@ -632,7 +766,7 @@
         <x>20</x>
         <y>10</y>
         <width>401</width>
-        <height>421</height>
+        <height>461</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -1020,7 +1154,7 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>350</y>
+        <y>360</y>
         <width>271</width>
         <height>21</height>
        </rect>
@@ -1063,7 +1197,7 @@
       <property name="geometry">
        <rect>
         <x>300</x>
-        <y>320</y>
+        <y>350</y>
         <width>131</width>
         <height>91</height>
        </rect>
@@ -1102,13 +1236,39 @@
       <property name="geometry">
        <rect>
         <x>10</x>
-        <y>370</y>
+        <y>380</y>
         <width>139</width>
         <height>21</height>
        </rect>
       </property>
       <property name="text">
        <string>Motor Speed: 600</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>410</y>
+        <width>131</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment lasts for:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="Total_Reflex">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>405</y>
+        <width>81</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <property name="suffix">
+       <string> RFLX</string>
       </property>
      </widget>
     </widget>
