@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.Image_Frame = QtWidgets.QLabel(self.centralwidget)
-        self.Image_Frame.setGeometry(QtCore.QRect(480, 40, 300, 300))
+        self.Image_Frame.setGeometry(QtCore.QRect(480, 60, 300, 300))
         self.Image_Frame.setCursor(QtGui.QCursor(QtCore.Qt.CrossCursor))
         self.Image_Frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.Image_Frame.setFrameShadow(QtWidgets.QFrame.Sunken)
