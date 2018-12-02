@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -513,9 +513,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>280</x>
         <y>430</y>
-        <width>101</width>
+        <width>91</width>
         <height>22</height>
        </rect>
       </property>
@@ -526,9 +526,9 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>270</x>
+        <x>280</x>
         <y>460</y>
-        <width>101</width>
+        <width>91</width>
         <height>22</height>
        </rect>
       </property>
@@ -1261,7 +1261,7 @@
      <widget class="QSpinBox" name="Total_Reflex">
       <property name="geometry">
        <rect>
-        <x>160</x>
+        <x>180</x>
         <y>410</y>
         <width>81</width>
         <height>22</height>
