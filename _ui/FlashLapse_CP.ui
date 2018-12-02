@@ -667,7 +667,7 @@
      <widget class="QSpinBox" name="R_spinBox">
       <property name="geometry">
        <rect>
-        <x>140</x>
+        <x>150</x>
         <y>390</y>
         <width>51</width>
         <height>22</height>
@@ -680,7 +680,7 @@
      <widget class="QSpinBox" name="G_spinBox">
       <property name="geometry">
        <rect>
-        <x>240</x>
+        <x>250</x>
         <y>390</y>
         <width>51</width>
         <height>22</height>
@@ -693,7 +693,7 @@
      <widget class="QSpinBox" name="B_spinBox">
       <property name="geometry">
        <rect>
-        <x>340</x>
+        <x>350</x>
         <y>390</y>
         <width>51</width>
         <height>22</height>
@@ -706,9 +706,9 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>40</x>
         <y>385</y>
-        <width>71</width>
+        <width>81</width>
         <height>31</height>
        </rect>
       </property>
@@ -719,7 +719,7 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>125</x>
+        <x>130</x>
         <y>390</y>
         <width>21</width>
         <height>21</height>
@@ -732,7 +732,7 @@
      <widget class="QLabel" name="label_8">
       <property name="geometry">
        <rect>
-        <x>225</x>
+        <x>230</x>
         <y>390</y>
         <width>21</width>
         <height>21</height>
@@ -745,7 +745,7 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>325</x>
+        <x>330</x>
         <y>390</y>
         <width>21</width>
         <height>21</height>
@@ -1251,7 +1251,7 @@
         <x>10</x>
         <y>410</y>
         <width>131</width>
-        <height>16</height>
+        <height>21</height>
        </rect>
       </property>
       <property name="text">
@@ -1261,8 +1261,8 @@
      <widget class="QSpinBox" name="Total_Reflex">
       <property name="geometry">
        <rect>
-        <x>120</x>
-        <y>405</y>
+        <x>130</x>
+        <y>410</y>
         <width>81</width>
         <height>22</height>
        </rect>
