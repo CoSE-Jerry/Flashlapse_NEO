@@ -433,6 +433,7 @@ class Ui_MainWindow(object):
         self.label_10.setObjectName("label_10")
         self.Total_Reflex = QtWidgets.QSpinBox(self.Scheduler)
         self.Total_Reflex.setGeometry(QtCore.QRect(180, 410, 101, 22))
+        self.Total_Reflex.setMaximum(99999)
         self.Total_Reflex.setObjectName("Total_Reflex")
         self.Control_Tab.addTab(self.Scheduler, "")
         self.verticalLayoutWidget_4 = QtWidgets.QWidget(self.centralwidget)
