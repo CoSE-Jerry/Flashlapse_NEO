@@ -22,7 +22,7 @@
     <property name="geometry">
      <rect>
       <x>480</x>
-      <y>20</y>
+      <y>40</y>
       <width>300</width>
       <height>300</height>
      </rect>
@@ -53,7 +53,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>450</y>
+      <y>470</y>
       <width>91</width>
       <height>51</height>
      </rect>
@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -1141,7 +1141,7 @@
       <property name="geometry">
        <rect>
         <x>-10</x>
-        <y>280</y>
+        <y>290</y>
         <width>461</width>
         <height>21</height>
        </rect>
@@ -1250,7 +1250,7 @@
        <rect>
         <x>10</x>
         <y>410</y>
-        <width>131</width>
+        <width>161</width>
         <height>21</height>
        </rect>
       </property>
@@ -1277,7 +1277,7 @@
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>360</y>
+      <y>380</y>
       <width>121</width>
       <height>61</height>
      </rect>
@@ -1309,7 +1309,7 @@
     <property name="geometry">
      <rect>
       <x>640</x>
-      <y>350</y>
+      <y>370</y>
       <width>141</width>
       <height>91</height>
      </rect>
@@ -1348,7 +1348,7 @@
     <property name="geometry">
      <rect>
       <x>590</x>
-      <y>450</y>
+      <y>470</y>
       <width>201</width>
       <height>51</height>
      </rect>
