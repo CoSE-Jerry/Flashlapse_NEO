@@ -75,26 +75,6 @@ def third_color_change_top(self):
     
     temp = self.Top_Color_Select.currentIndex()
     if temp == 1:
-        Settings.ASD.write(bytes("1~0~19~255~0~0~3", 'UTF-8'))
-    elif temp == 2:
-        Settings.ASD.write(bytes("1~0~19~0~255~0~3", 'UTF-8'))
-    elif temp == 3:
-        Settings.ASD.write(bytes("1~0~19~0~0~255~3", 'UTF-8'))
-    elif temp == 4:
-        Settings.ASD.write(bytes("1~0~19~85~85~85~3", 'UTF-8'))
-    elif temp == 5:
-        Settings.ASD.write(bytes("1~0~19~" + str(Settings.custom_R) + "~" + str(Settings.custom_G) + "~" + str(Settings.custom_B) + "~3", 'UTF-8'))
-    else:
-        Settings.ASD.write(bytes("1~0~19~0~0~0~3", 'UTF-8'))
-
-def third_color_change_lower_left(self):
-
-    self.Full_Color_Select.setCurrentIndex(0)
-    self.Left_Select.setCurrentIndex(0)
-    self.Right_Select.setCurrentIndex(0)
-    
-    temp = self.LL_Color_Select.currentIndex()
-    if temp == 1:
         Settings.ASD.write(bytes("1~19~38~255~0~0~3", 'UTF-8'))
     elif temp == 2:
         Settings.ASD.write(bytes("1~19~38~0~255~0~3", 'UTF-8'))
@@ -105,7 +85,27 @@ def third_color_change_lower_left(self):
     elif temp == 5:
         Settings.ASD.write(bytes("1~19~38~" + str(Settings.custom_R) + "~" + str(Settings.custom_G) + "~" + str(Settings.custom_B) + "~3", 'UTF-8'))
     else:
-        Settings.ASD.write(bytes("1~19~38~255~0~0~3", 'UTF-8'))
+        Settings.ASD.write(bytes("1~19~38~0~0~0~3", 'UTF-8'))
+
+def third_color_change_lower_left(self):
+
+    self.Full_Color_Select.setCurrentIndex(0)
+    self.Left_Select.setCurrentIndex(0)
+    self.Right_Select.setCurrentIndex(0)
+    
+    temp = self.LL_Color_Select.currentIndex()
+    if temp == 1:
+        Settings.ASD.write(bytes("1~0~19~255~0~0~3", 'UTF-8'))
+    elif temp == 2:
+        Settings.ASD.write(bytes("1~0~19~0~255~0~3", 'UTF-8'))
+    elif temp == 3:
+        Settings.ASD.write(bytes("1~0~19~0~0~255~3", 'UTF-8'))
+    elif temp == 4:
+        Settings.ASD.write(bytes("1~0~19~85~85~85~3", 'UTF-8'))
+    elif temp == 5:
+        Settings.ASD.write(bytes("1~0~19~" + str(Settings.custom_R) + "~" + str(Settings.custom_G) + "~" + str(Settings.custom_B) + "~3", 'UTF-8'))
+    else:
+        Settings.ASD.write(bytes("1~0~19~255~0~0~3", 'UTF-8'))
 
 def third_color_change_lower_right(self):
 
@@ -117,11 +117,11 @@ def third_color_change_lower_right(self):
     if temp == 1:
         Settings.ASD.write(bytes("1~38~58~255~0~0~3", 'UTF-8'))
     elif temp == 2:
-        Settings.ASD.write(bytes("1~38~58~255~0~0~3", 'UTF-8'))
+        Settings.ASD.write(bytes("1~38~58~0~255~0~3", 'UTF-8'))
     elif temp == 3:
-        Settings.ASD.write(bytes("1~38~58~255~0~0~3", 'UTF-8'))
+        Settings.ASD.write(bytes("1~38~58~0~0~255~3", 'UTF-8'))
     elif temp == 4:
-        Settings.ASD.write(bytes("1~38~58~255~0~0~3", 'UTF-8'))
+        Settings.ASD.write(bytes("1~38~58~85~85~85~3", 'UTF-8'))
     elif temp == 5:
         Settings.ASD.write(bytes("1~38~58~" + str(Settings.custom_R) + "~" + str(Settings.custom_G) + "~" + str(Settings.custom_B) + "~3", 'UTF-8'))
     else:
