@@ -45,6 +45,6 @@ def init():
     global custom_R
     custom_R=0
     global custom_G
-    custom_R=0
+    custom_G=0
     global custom_B
-    custom_R=0
+    custom_B=0
