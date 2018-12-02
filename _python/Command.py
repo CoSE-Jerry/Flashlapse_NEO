@@ -4,12 +4,13 @@ from PyQt5.QtCore import QThread
 
 def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
-    
-    self.Left_Select.setCurrentIndex(0)
-    self.Right_Select.setCurrentIndex(0)
-    self.Top_Color_Select.setCurrentIndex(0)
-    self.LL_Color_Select.setCurrentIndex(0)
-    self.LR_Color_Select.setCurrentIndex(0)
+
+    if(self.Left_Select.currentIndex() != 0)
+        self.Left_Select.setCurrentIndex(0)
+    #self.Right_Select.setCurrentIndex(0)
+    #self.Top_Color_Select.setCurrentIndex(0)
+    #self.LL_Color_Select.setCurrentIndex(0)
+    #self.LR_Color_Select.setCurrentIndex(0)
 
     if temp == 1:
         Settings.ASD.write(bytes("1~0~58~255~0~0~1", 'UTF-8'))
@@ -27,13 +28,16 @@ def full_color_change(self):
 def half_color_change_left(self):
 
     temp = self.Left_Select.currentIndex()
-    self.Full_Color_Select.setCurrentIndex(0)
-    self.Top_Color_Select.setCurrentIndex(0)
-    self.LL_Color_Select.setCurrentIndex(0)
-    self.LR_Color_Select.setCurrentIndex(0)
+
+    if(self.Full_Color_Select.currentIndex() != 0)
+        self.Full_Color_Select.setCurrentIndex(0)
+        
+    #self.Top_Color_Select.setCurrentIndex(0)
+    #self.LL_Color_Select.setCurrentIndex(0)
+    #self.LR_Color_Select.setCurrentIndex(0)
 
     if temp == 1:
-        Settings.ASD.write(bytes('A', 'UTF-8'))
+        Settings.ASD.write(bytes('1~0~29~255~0~0~2', 'UTF-8'))
     elif temp == 2:
         Settings.ASD.write(bytes('B', 'UTF-8'))
     elif temp == 3:
