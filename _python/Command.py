@@ -5,7 +5,7 @@ from PyQt5.QtCore import QThread
 def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
 
-    if(self.Left_Select.currentIndex() != 0)
+    if(self.Left_Select.currentIndex() != 0):
         self.Left_Select.setCurrentIndex(0)
     #self.Right_Select.setCurrentIndex(0)
     #self.Top_Color_Select.setCurrentIndex(0)
@@ -29,7 +29,7 @@ def half_color_change_left(self):
 
     temp = self.Left_Select.currentIndex()
 
-    if(self.Full_Color_Select.currentIndex() != 0)
+    if(self.Full_Color_Select.currentIndex() != 0):
         self.Full_Color_Select.setCurrentIndex(0)
         
     #self.Top_Color_Select.setCurrentIndex(0)
