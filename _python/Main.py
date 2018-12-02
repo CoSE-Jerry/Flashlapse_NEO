@@ -184,9 +184,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         Settings.ASD.write(bytes('4~'+str(self.brightness_spinBox.value()), 'UTF-8'))
 
     def custom_update(self):
-        Settings.custom_R = R_spinBox.value()
-        Settings.custom_G = G_spinBox.value()
-        Settings.custom_B = B_spinBox.value()
+        Settings.custom_R = self.R_spinBox.value()
+        Settings.custom_G = self.G_spinBox.value()
+        Settings.custom_B = self.B_spinBox.value()
 
     def Confirm_Schedule(self):
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
