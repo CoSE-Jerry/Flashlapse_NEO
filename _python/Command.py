@@ -25,13 +25,13 @@ def full_color_change(self):
         Settings.ASD.write(bytes("1~0~58~0~0~0~1", 'UTF-8'))
 
 def half_color_change_left(self):
-    
+
+    temp = self.Left_Select.currentIndex()
     self.Full_Color_Select.setCurrentIndex(0)
     self.Top_Color_Select.setCurrentIndex(0)
     self.LL_Color_Select.setCurrentIndex(0)
     self.LR_Color_Select.setCurrentIndex(0)
-    
-    temp = self.Left_Select.currentIndex()
+
     if temp == 1:
         Settings.ASD.write(bytes('A', 'UTF-8'))
     elif temp == 2:
