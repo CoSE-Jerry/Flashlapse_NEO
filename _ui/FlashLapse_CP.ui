@@ -622,7 +622,7 @@
      <widget class="QLabel" name="brightness_label">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>420</y>
         <width>81</width>
         <height>31</height>
@@ -635,7 +635,7 @@
      <widget class="QSpinBox" name="brightness_spinBox">
       <property name="geometry">
        <rect>
-        <x>10</x>
+        <x>20</x>
         <y>450</y>
         <width>71</width>
         <height>22</height>
