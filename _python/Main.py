@@ -178,10 +178,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Motor_Speed.setText("Motor Speed: "+str(self.Speed_Select.value()))
 
     def slider_released(self):
-        Settings.ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
+        Settings.ASD.write(bytes('3~'+str(self.Speed_Select.value()), 'UTF-8'))
 
     def brightness_change(self):
-        Settings.ASD.write(bytes('.'+str(self.brightness_spinBox.value())+"\n", 'UTF-8'))
+        Settings.ASD.write(bytes('4~'+str(self.brightness_spinBox.value()), 'UTF-8'))
+
+    def custom_update(self):
+        Settings.custom_R = R_spinBox.value()
+        Settings.custom_G = G_spinBox.value()
+        Settings.custom_B = B_spinBox.value()
 
     def Confirm_Schedule(self):
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
@@ -242,6 +247,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Top_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_top(self))
         self.LL_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_left(self))
         self.LR_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_right(self))
+
+        self.R_spinBox.valueChanged.connect(lambda: self.brightness_change())
+        self.G_spinBox.valueChanged.connect(lambda: self.brightness_change())
+        self.B_spinBox.valueChanged.connect(lambda: self.brightness_change())
 
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
 

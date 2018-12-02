@@ -41,3 +41,10 @@ def init():
     full_dir = ""
     global current_image
     current_image = ""
+
+    global custom_R
+    custom_R=0
+    global custom_G
+    custom_R=0
+    global custom_B
+    custom_R=0
