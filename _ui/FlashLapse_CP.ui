@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -515,7 +515,7 @@
        <rect>
         <x>280</x>
         <y>430</y>
-        <width>91</width>
+        <width>101</width>
         <height>22</height>
        </rect>
       </property>
@@ -528,7 +528,7 @@
        <rect>
         <x>280</x>
         <y>460</y>
-        <width>91</width>
+        <width>101</width>
         <height>22</height>
        </rect>
       </property>
@@ -565,7 +565,7 @@
       </property>
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>390</x>
         <y>435</y>
         <width>40</width>
         <height>40</height>
@@ -1263,7 +1263,7 @@
        <rect>
         <x>180</x>
         <y>410</y>
-        <width>81</width>
+        <width>101</width>
         <height>22</height>
        </rect>
       </property>
