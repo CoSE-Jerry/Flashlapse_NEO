@@ -5,7 +5,7 @@ from PyQt5.QtCore import QThread
 def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
     if temp == 1:
-        Settings.ASD.write(bytes('test', 'UTF-8'))
+        Settings.ASD.write(bytes('1-0-30-255-0-0-0', 'UTF-8'))
     elif temp == 2:
         Settings.ASD.write(bytes('2', 'UTF-8'))
     elif temp == 3:
