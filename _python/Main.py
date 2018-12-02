@@ -172,7 +172,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Schedule_Thread.terminate()
         if(Settings.test_running):
             self.Test_Thread.terminate()
-        Settings.ASD.write(bytes("~0\n", 'UTF-8'))
+        Settings.ASD.write(bytes("2~0", 'UTF-8'))
 
     def value_changed(self):
         self.Motor_Speed.setText("Motor Speed: "+str(self.Speed_Select.value()))
