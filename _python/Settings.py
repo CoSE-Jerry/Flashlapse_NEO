@@ -41,6 +41,8 @@ def init():
     full_dir = ""
     global current_image
     current_image = ""
+    global command_list
+    command_list = []
 
     global custom_R
     custom_R=0
