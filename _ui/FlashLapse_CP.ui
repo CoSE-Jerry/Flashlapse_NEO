@@ -708,7 +708,7 @@
        <rect>
         <x>40</x>
         <y>385</y>
-        <width>81</width>
+        <width>101</width>
         <height>31</height>
        </rect>
       </property>
@@ -775,7 +775,7 @@
          <item>
           <widget class="QLabel" name="Image_Title">
            <property name="text">
-            <string>Image Sequence Title</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Image Sequence Title&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -814,7 +814,7 @@
          <item>
           <widget class="QLabel" name="Dropbox_Email_Prompt">
            <property name="text">
-            <string>Email Adress: </string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Email Adress: &lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
           </widget>
          </item>
@@ -1255,7 +1255,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment lasts for:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment Duration:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QSpinBox" name="Total_Reflex">
