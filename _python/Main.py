@@ -248,9 +248,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.LL_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_left(self))
         self.LR_Color_Select.currentIndexChanged.connect(lambda: Command.third_color_change_lower_right(self))
 
-        self.R_spinBox.valueChanged.connect(lambda: self.brightness_change())
-        self.G_spinBox.valueChanged.connect(lambda: self.brightness_change())
-        self.B_spinBox.valueChanged.connect(lambda: self.brightness_change())
+        self.R_spinBox.valueChanged.connect(lambda: self.custom_update())
+        self.G_spinBox.valueChanged.connect(lambda: self.custom_update())
+        self.B_spinBox.valueChanged.connect(lambda: self.custom_update())
 
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
 
