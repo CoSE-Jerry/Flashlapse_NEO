@@ -94,7 +94,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="Lighting">
      <attribute name="title">
@@ -110,7 +110,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="FullColor">
        <attribute name="title">
@@ -637,7 +637,7 @@
        <rect>
         <x>30</x>
         <y>450</y>
-        <width>61</width>
+        <width>71</width>
         <height>22</height>
        </rect>
       </property>
@@ -667,7 +667,7 @@
      <widget class="QSpinBox" name="R_spinBox">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>160</x>
         <y>390</y>
         <width>51</width>
         <height>22</height>
@@ -693,7 +693,7 @@
      <widget class="QSpinBox" name="B_spinBox">
       <property name="geometry">
        <rect>
-        <x>350</x>
+        <x>340</x>
         <y>390</y>
         <width>51</width>
         <height>22</height>
@@ -719,7 +719,7 @@
      <widget class="QLabel" name="label_2">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>140</x>
         <y>390</y>
         <width>21</width>
         <height>21</height>
@@ -745,7 +745,7 @@
      <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>320</x>
         <y>390</y>
         <width>21</width>
         <height>21</height>
@@ -1261,7 +1261,7 @@
      <widget class="QSpinBox" name="Total_Reflex">
       <property name="geometry">
        <rect>
-        <x>130</x>
+        <x>160</x>
         <y>410</y>
         <width>81</width>
         <height>22</height>
