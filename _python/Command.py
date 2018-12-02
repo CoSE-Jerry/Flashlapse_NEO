@@ -44,7 +44,7 @@ def half_color_change_left(self):
     elif temp == 5:
         Settings.ASD.write(bytes("1~0~29~" + str(Settings.custom_R) + "~" + str(Settings.custom_G) + "~" + str(Settings.custom_B) + "~2", 'UTF-8'))
     else:
-        Settings.ASD.write(bytes("1~0~29~0~0~0~2", 'UTF-8'), 'UTF-8'))
+        Settings.ASD.write(bytes("1~0~29~0~0~0~2", 'UTF-8'))
 
 def half_color_change_right(self):
 
