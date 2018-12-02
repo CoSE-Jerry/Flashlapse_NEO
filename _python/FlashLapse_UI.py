@@ -436,7 +436,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.addWidget(self.Storage_Directory)
         self.verticalLayout_3.addLayout(self.verticalLayout_2)
         self.frame = QtWidgets.QFrame(self.Imaging)
-        self.frame.setGeometry(QtCore.QRect(20, 320, 401, 161))
+        self.frame.setGeometry(QtCore.QRect(20, 330, 401, 141))
         self.frame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.frame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.frame.setObjectName("frame")
