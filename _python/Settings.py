@@ -5,6 +5,10 @@ def init():
     sch_running = False
     global test_running
     test_running = False
+    global dropbox_running
+    dropbox_running = False
+    global email_running
+    email_running = False
     
     global ASD
     ASD = serial.Serial('/dev/ttyACM0', 9600)

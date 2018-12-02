@@ -22,6 +22,7 @@ class Schedule(QThread):
         Settings.sch_running = True
 
     def __del__(self):
+        Settings.sch_running = False
         self._running = False
         
     def run(self):
@@ -63,6 +64,7 @@ class Test(QThread):
         Settings.test_running = True
 
     def __del__(self):
+        Settings.test_running = False
         self._running = False
         
     def run(self):
@@ -78,9 +80,11 @@ class Dropbox(QThread):
     def __init__(self):
         QThread.__init__(self)
         os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /MECHSTIM/" + Settings.sequence_name)
-
+        Settings.dropbox_running = True
+        
     def __del__(self):
         self._running = False
+        Settings.dropbox_running = False
 
     def run(self):  
         Settings.link = str(subprocess.check_output("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /MECHSTIM/" + Settings.sequence_name, shell=True))
@@ -96,9 +100,12 @@ class Email(QThread):
     
     def __init__(self):
         QThread.__init__(self)
+        Settings.email_running = True
 
     def __del__(self):
         self._running = False
+        Settings.email_running = False
+
         
     def run(self):
         sleep(60)

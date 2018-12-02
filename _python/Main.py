@@ -112,10 +112,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Directory_Label.setText(Settings.full_dir)
 
     def start_scheduler(self):
-        
         if(Settings.test_running):
             self.Test_Thread.terminate()
-            test_running = False;
 
         if( not Settings.sch_running):
 
@@ -161,12 +159,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
             if(Settings.sch_running):
                 self.Schedule_Thread.terminate()
-                Settings.sch_running = False;
             if(Settings.test_running):
-                print("testrunning")
                 self.Test_Thread.terminate()
-                Settings.test_running = False;
-                print("testrunning")
                 
             self.Test_Thread = Thread.Test()
             self.Test_Thread.start()
@@ -176,10 +170,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def reset_position(self):
         if(Settings.sch_running):
             self.Schedule_Thread.terminate()
-            Settings.sch_running = False;
         if(Settings.test_running):
             self.Test_Thread.terminate()
-            Settings.test_running = False;
         Settings.ASD.write(bytes("~0\n", 'UTF-8'))
 
     def value_changed(self):
