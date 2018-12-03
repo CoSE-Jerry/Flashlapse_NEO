@@ -63,7 +63,9 @@ class Test(QThread):
 
     def __del__(self):
         Settings.test_running = False
+        print("testkill")
         self._running = False
+       
         
     def run(self):
         while True:
