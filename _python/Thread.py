@@ -60,17 +60,13 @@ class Test(QThread):
     def __init__(self):
         QThread.__init__(self)
 
-    def __del__(self):
-        
+    def __del__(self): 
         self._running = False
        
-        
     def run(self):
         Settings.ASD.write(bytes("2~"+str(Settings.angle_1), 'UTF-8'))
         sleep(5)
         Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
-        sleep(5)
-        self.Test_Run.setEnabled(True)
 
 class Dropbox(QThread):
     def __init__(self):

@@ -160,7 +160,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def test_run(self):
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
-Settings.angle_2 = self.rotate_to_spinbox_2.value()
+        Settings.angle_2 = self.rotate_to_spinbox_2.value()
 
         if(Settings.sch_running):
             self.Schedule_Thread.__del__()
