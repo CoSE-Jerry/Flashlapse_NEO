@@ -81,8 +81,8 @@ class Dropbox(QThread):
         Settings.dropbox_running = True
         
     def __del__(self):
-        self._running = False
         Settings.dropbox_running = False
+        self._running = False
 
     def run(self):  
         Settings.link = str(subprocess.check_output("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /MECHSTIM/" + Settings.sequence_name, shell=True))
@@ -101,8 +101,9 @@ class Email(QThread):
         Settings.email_running = True
 
     def __del__(self):
-        self._running = False
         Settings.email_running = False
+        self._running = False
+        
 
         
     def run(self):
