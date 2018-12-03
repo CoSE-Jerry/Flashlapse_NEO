@@ -284,7 +284,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
         self.Inject_Code.clicked.connect(lambda: Command.inject_code(self))
 
-        Inject_Code
 
         
 
