@@ -27,7 +27,7 @@ class Schedule(QThread):
         
     def run(self):
         count = 1
-        while (count/2)<cycle:
+        while (count/2)<Settings.cycle:
             Settings.current_image = Settings.file % count
             with PiCamera() as camera:
                 sleep(0.8)
