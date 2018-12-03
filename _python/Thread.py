@@ -101,7 +101,7 @@ class Email(QThread):
         self._running = False
 
     def run(self):
-        while(len(Settings.link)==0)
+        while(len(Settings.link)==0):
             sleep(1)
         print("linked")
         sys.path.insert(0,'../../HP')
