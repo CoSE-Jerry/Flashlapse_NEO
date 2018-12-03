@@ -22,6 +22,8 @@ def init():
 
     global sch_confirmed
     sch_confirmed = False
+    global cycle
+    cycle = 0
 
     global sequence_name
     sequence_name = ""
