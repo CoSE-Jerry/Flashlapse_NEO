@@ -228,12 +228,16 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         print(Settings.test_running)
         print(Settings.dropbox_running)
         if Settings.sch_running:
+            print("killing Schedule_Thread")
             self.Schedule_Thread.terminate()
         if Settings.test_running:
+            print("killing Test_Thread")
             self.Test_Thread.terminate()
         if Settings.dropbox_running:
+            print("killing Dropbox_Thread")
             self.Dropbox_Thread.terminate()
         if Settings.email_running:
+            print("killing Email_Thread")
             self.Email_Thread.terminate()
         
  # access variables inside of the UI's file
