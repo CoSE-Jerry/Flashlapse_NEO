@@ -22,7 +22,7 @@ class Schedule(QThread):
         Settings.sch_running = True
 
     def __del__(self):
-        Settings.sch_running = False
+        
         self._running = False
         
     def run(self):
@@ -76,14 +76,13 @@ class Dropbox(QThread):
         Settings.file_list.clear
         
     def __del__(self):
-        Settings.dropbox_running = False
         self._running = False
 
     def run(self):  
         Settings.link = str(subprocess.check_output("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /MECHSTIM/" + Settings.sequence_name, shell=True))
         Settings.link = Settings.link.replace("b' > ", "")
         Settings.link = Settings.link.split("\\")[0]
-        while True:
+        while Settings.dropbox_running:
             if (len(Settings.file_list) > 0):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + Settings.file_list[0] + " /MECHSTIM/"+Settings.sequence_name)
                 os.system("rm " + Settings.file_list[0])
