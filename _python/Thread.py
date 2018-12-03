@@ -3,6 +3,7 @@ import os
 import sys
 import subprocess
 import smtplib
+import Main
 
 from PyQt5 import QtCore
 from email.mime.multipart import MIMEMultipart
@@ -27,7 +28,7 @@ class Schedule(QThread):
         
     def run(self):
         count = 1
-        while True:
+        while (count/2)<Total_Reflex.value():
             Settings.current_image = Settings.file % count
             with PiCamera() as camera:
                 sleep(0.8)
@@ -53,6 +54,7 @@ class Schedule(QThread):
             count+=1
             Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
             sleep(Settings.delay_2*60)
+        Settings.dropbox_running = False
 
 
 class Test(QThread):

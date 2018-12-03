@@ -112,7 +112,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def start_scheduler(self):
 
         if not Settings.sch_running:
-
+            Settings.cycle = self.Total_Reflex.value()
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.Start_Schedule.setIcon(icon)
