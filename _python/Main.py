@@ -112,10 +112,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Directory_Label.setText(Settings.full_dir)
 
     def start_scheduler(self):
-        if(Settings.test_running):
+        if Settings.test_running:
             self.Test_Thread.terminate()
 
-        if( not Settings.sch_running):
+        if not Settings.sch_running:
 
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
@@ -139,12 +139,13 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             if(self.Cloud_Sync.isChecked()):
                 self.Dropbox_Thread.start()
                 self.Email_Thread.start()
-            self.Start_Schedule.setEnabled(False)
             self.Test_Run.setEnabled(False)
             self.Reset_Position.setEnabled(False)
             self.Live_Feed.setEnabled(False)
             self.Snapshot.setEnabled(False)
-            
+
+        else:
+            self.Kill_Theads()
             
 
     def change_image(self):
@@ -212,6 +213,16 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Snapshot.setEnabled(True)
         self.Live_Feed.setEnabled(True)
         self.Live_Feed.setText("Live Feed (30s)")
+
+    def Kill_Theads(self):
+        if Settings.sch_running:
+            self.Schedule_Thread.terminate()
+        if Settings.test_running:
+            self.Test_Thread.terminate()
+        if Settings.dropbox_running:
+            self.Dropbox_Thread.terminate()
+        if Settings.email_running:
+            self.Email_Thread.terminate()
         
  # access variables inside of the UI's file
     def __init__(self):
