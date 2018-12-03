@@ -61,6 +61,7 @@ class Test(QThread):
         QThread.__init__(self)
 
     def __del__(self):
+        self.Test_Run.setEnabled(True)
         self._running = False
        
         

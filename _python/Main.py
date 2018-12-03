@@ -160,17 +160,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def test_run(self):
 
-        try:
-            Settings.angle_1 = self.rotate_to_spinbox_1.value()
-            Settings.angle_2 = self.rotate_to_spinbox_2.value()
+	Settings.angle_1 = self.rotate_to_spinbox_1.value()
+	Settings.angle_2 = self.rotate_to_spinbox_2.value()
 
-            if(Settings.sch_running):
-                self.Schedule_Thread.__del__()
+	if(Settings.sch_running):
+	    self.Schedule_Thread.__del__()
 
-            self.Test_Thread = Thread.Test()
-            self.Test_Thread.start()
-        except Exception as e:
-            print(e)
+	self.Test_Thread = Thread.Test()
+	self.Test_Thread.start()
+	self.Test_Run.setEnabled(False)
 
     def reset_position(self):
         if(Settings.sch_running):
