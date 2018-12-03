@@ -103,7 +103,7 @@ class Email(QThread):
     def run(self):
         while(len(Settings.link)==0):
             sleep(1)
-        print("linked")
+        
         sys.path.insert(0,'../../HP')
         import Email
         body = None
@@ -124,3 +124,5 @@ class Email(QThread):
         server.login(Email.user, Email.password)
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text)
+        Settings.email_running = False
+        print("done")
