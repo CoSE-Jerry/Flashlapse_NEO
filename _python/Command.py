@@ -126,3 +126,6 @@ def third_color_change_lower_right(self):
         Settings.ASD.write(bytes("1~38~58~" + str(Settings.custom_R) + "~" + str(Settings.custom_G) + "~" + str(Settings.custom_B) + "~3", 'UTF-8'))
     else:
         Settings.ASD.write(bytes("1~38~58~0~0~0~3", 'UTF-8'))
+
+def inject_code(self):
+    Settings.ASD.write(bytes(self.IC_0.text()+"~"+self.IC_1.text()+"~"+self.IC_2.text()+"~"+self.IC_3.text()+"~"+self.IC_4.text()+"~"+self.IC_5.text()+"~"+self.IC_6.text(), 'UTF-8'))

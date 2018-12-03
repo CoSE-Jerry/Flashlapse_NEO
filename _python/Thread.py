@@ -22,6 +22,7 @@ class Schedule(QThread):
         Settings.sch_running = True
 
     def __del__(self):
+        Settings.sch_running = False
         self._running = False
         
     def run(self):
@@ -38,7 +39,6 @@ class Schedule(QThread):
             
             count+=1
             Settings.ASD.write(bytes("2~"+str(Settings.angle_1), 'UTF-8'))
-            Settings.ASD.write(bytes("2~0", 'UTF-8'))
             sleep(Settings.delay_1*60)
 
             Settings.current_image = Settings.file % count
@@ -52,7 +52,6 @@ class Schedule(QThread):
 
             count+=1
             Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
-            Settings.ASD.write(bytes("2~0", 'UTF-8'))
             sleep(Settings.delay_2*60)
 
 
@@ -63,6 +62,7 @@ class Test(QThread):
         Settings.test_running = True
 
     def __del__(self):
+        Settings.test_running = False
         self._running = False
         
     def run(self):
@@ -77,8 +77,10 @@ class Dropbox(QThread):
         QThread.__init__(self)
         os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /MECHSTIM/" + Settings.sequence_name)
         Settings.dropbox_running = True
+        file_list.clear
         
     def __del__(self):
+        Settings.dropbox_running = False
         self._running = False
 
     def run(self):  
@@ -125,4 +127,3 @@ class Email(QThread):
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text)
         Settings.email_running = False
-        print("done")

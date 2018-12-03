@@ -111,8 +111,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_scheduler(self):
         if Settings.test_running:
-            self.Test_Thread.terminate()
-            Settings.test_running = False
+            self.Test_Thread.__del__()
 
         if not Settings.sch_running:
 
@@ -168,11 +167,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.angle_2 = self.rotate_to_spinbox_2.value()
 
             if(Settings.sch_running):
-                self.Schedule_Thread.terminate()
-                Settings.sch_running = False
+                self.Schedule_Thread.__del__()
+                
             if(Settings.test_running):
-                self.Test_Thread.terminate()
-                Settings.test_running = False
+                self.Test_Thread.__del__()
                 
             self.Test_Thread = Thread.Test()
             self.Test_Thread.start()
@@ -181,11 +179,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def reset_position(self):
         if(Settings.sch_running):
-            self.Schedule_Thread.terminate()
-            Settings.sch_running = False
+            self.Schedule_Thread.__del__()
+
         if(Settings.test_running):
-            self.Test_Thread.terminate()
-            Settings.test_running = False
+            self.Test_Thread.__del__()
+            
         Settings.ASD.write(bytes("2~0", 'UTF-8'))
 
     def value_changed(self):
@@ -204,8 +202,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def Confirm_Schedule(self):
         if(Settings.test_running):
-            self.Test_Thread.terminate()
-            Settings.test_running = False
+            self.Test_Thread.__del__()
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
         Settings.angle_2 = self.rotate_to_spinbox_2.value()
         Settings.delay_1 = self.wait_spinbox_1.value()
@@ -236,12 +233,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         print(Settings.dropbox_running)
         if Settings.sch_running:
             print("killing Schedule_Thread")
-            self.Schedule_Thread.terminate()
-            Settings.sch_running = False
+            self.Schedule_Thread.__del__()
         if Settings.test_running:
             print("killing Test_Thread")
-            self.Test_Thread.terminate()
-            Settings.test_running = False
+            self.Test_Thread.__del__()
         if Settings.dropbox_running:
             print("killing Dropbox_Thread")
             self.Dropbox_Thread.__del__()
@@ -287,6 +282,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.B_spinBox.valueChanged.connect(lambda: self.custom_update())
 
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
+        self.Inject_Code.clicked.connect(lambda: Command.inject_code(self))
+
+        Inject_Code
 
         
 
