@@ -146,6 +146,14 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         else:
             self.Kill_Theads()
+            icon = QtGui.QIcon()
+            icon.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+            self.Start_Schedule.setIcon(icon)
+            self.Start_Schedule.setText("Start Scheduled Imaging")
+            self.Test_Run.setEnabled(True)
+            self.Reset_Position.setEnabled(True)
+            self.Live_Feed.setEnabled(True)
+            self.Snapshot.setEnabled(True)
             
 
     def change_image(self):
