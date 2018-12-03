@@ -22,7 +22,6 @@ class Schedule(QThread):
         Settings.sch_running = True
 
     def __del__(self):
-        Settings.sch_running = False
         self._running = False
         
     def run(self):
@@ -64,7 +63,6 @@ class Test(QThread):
         Settings.test_running = True
 
     def __del__(self):
-        Settings.test_running = False
         self._running = False
         
     def run(self):
@@ -81,7 +79,6 @@ class Dropbox(QThread):
         Settings.dropbox_running = True
         
     def __del__(self):
-        Settings.dropbox_running = False
         self._running = False
 
     def run(self):  
@@ -101,11 +98,8 @@ class Email(QThread):
         Settings.email_running = True
 
     def __del__(self):
-        Settings.email_running = False
         self._running = False
-        
 
-        
     def run(self):
         sleep(60)
         sys.path.insert(0,'../../HP')

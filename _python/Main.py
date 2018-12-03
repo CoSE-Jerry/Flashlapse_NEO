@@ -168,6 +168,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
             if(Settings.sch_running):
                 self.Schedule_Thread.terminate()
+                Settings.sch_running = False
             if(Settings.test_running):
                 self.Test_Thread.terminate()
                 Settings.test_running = False
@@ -180,6 +181,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def reset_position(self):
         if(Settings.sch_running):
             self.Schedule_Thread.terminate()
+            Settings.sch_running = False
         if(Settings.test_running):
             self.Test_Thread.terminate()
             Settings.test_running = False
@@ -234,6 +236,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if Settings.sch_running:
             print("killing Schedule_Thread")
             self.Schedule_Thread.terminate()
+            Settings.sch_running = False
         if Settings.test_running:
             print("killing Test_Thread")
             self.Test_Thread.terminate()
@@ -241,9 +244,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if Settings.dropbox_running:
             print("killing Dropbox_Thread")
             self.Dropbox_Thread.terminate()
+            Settings.dropbox_running = False
         if Settings.email_running:
             print("killing Email_Thread")
             self.Email_Thread.terminate()
+            Settings.email_running = False
         
  # access variables inside of the UI's file
     def __init__(self):
