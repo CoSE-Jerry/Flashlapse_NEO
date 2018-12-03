@@ -59,20 +59,16 @@ class Test(QThread):
     
     def __init__(self):
         QThread.__init__(self)
-        Settings.test_running = True
 
     def __del__(self):
-        Settings.test_running = False
-        print("testkill")
         self._running = False
        
         
     def run(self):
-        while True:
-            Settings.ASD.write(bytes("2~"+str(Settings.angle_1), 'UTF-8'))
-            sleep(5)
-            Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
-            sleep(5)
+        Settings.ASD.write(bytes("2~"+str(Settings.angle_1), 'UTF-8'))
+        sleep(5)
+        Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
+        sleep(5)
 
 class Dropbox(QThread):
     def __init__(self):

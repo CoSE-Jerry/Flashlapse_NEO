@@ -110,8 +110,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Directory_Label.setText(Settings.full_dir)
 
     def start_scheduler(self):
-        if Settings.test_running:
-            self.Test_Thread.__del__()
 
         if not Settings.sch_running:
 
@@ -168,10 +166,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
             if(Settings.sch_running):
                 self.Schedule_Thread.__del__()
-                
-            if(Settings.test_running):
-                self.Test_Thread.__del__()
-                
+
             self.Test_Thread = Thread.Test()
             self.Test_Thread.start()
         except Exception as e:
@@ -180,9 +175,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def reset_position(self):
         if(Settings.sch_running):
             self.Schedule_Thread.__del__()
-
-        if(Settings.test_running):
-            self.Test_Thread.__del__()
             
         Settings.ASD.write(bytes("2~0", 'UTF-8'))
 
@@ -201,9 +193,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         Settings.custom_B = self.B_spinBox.value()
 
     def Confirm_Schedule(self):
-        if(Settings.test_running):
-            self.Test_Thread.terminate()
-            Settings.test_running=False
+
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
         Settings.angle_2 = self.rotate_to_spinbox_2.value()
         Settings.delay_1 = self.wait_spinbox_1.value()
@@ -230,14 +220,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def Kill_Theads(self):
         print(Settings.sch_running)
-        print(Settings.test_running)
         print(Settings.dropbox_running)
         if Settings.sch_running:
             print("killing Schedule_Thread")
             self.Schedule_Thread.__del__()
-        if Settings.test_running:
-            print("killing Test_Thread")
-            self.Test_Thread.__del__()
+            
         if Settings.dropbox_running:
             print("killing Dropbox_Thread")
             self.Dropbox_Thread.__del__()
