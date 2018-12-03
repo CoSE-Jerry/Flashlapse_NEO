@@ -112,6 +112,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def start_scheduler(self):
         if Settings.test_running:
             self.Test_Thread.terminate()
+            Settings.test_running = False
 
         if not Settings.sch_running:
 
@@ -169,6 +170,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 self.Schedule_Thread.terminate()
             if(Settings.test_running):
                 self.Test_Thread.terminate()
+                Settings.test_running = False
                 
             self.Test_Thread = Thread.Test()
             self.Test_Thread.start()
@@ -180,6 +182,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Schedule_Thread.terminate()
         if(Settings.test_running):
             self.Test_Thread.terminate()
+            Settings.test_running = False
         Settings.ASD.write(bytes("2~0", 'UTF-8'))
 
     def value_changed(self):
@@ -199,6 +202,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Confirm_Schedule(self):
         if(Settings.test_running):
             self.Test_Thread.terminate()
+            Settings.test_running = False
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
         Settings.angle_2 = self.rotate_to_spinbox_2.value()
         Settings.delay_1 = self.wait_spinbox_1.value()
@@ -233,6 +237,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if Settings.test_running:
             print("killing Test_Thread")
             self.Test_Thread.terminate()
+            Settings.test_running = False
         if Settings.dropbox_running:
             print("killing Dropbox_Thread")
             self.Dropbox_Thread.terminate()
