@@ -244,7 +244,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.test_running = False
         if Settings.dropbox_running:
             print("killing Dropbox_Thread")
-            self.Dropbox_Thread.terminate()
+            self.Dropbox_Thread.__del__()
             Settings.dropbox_running = False
         
  # access variables inside of the UI's file
