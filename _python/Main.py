@@ -5,8 +5,6 @@ import re
 import os
 
 #import UI functions
-import UI_Update_Disable
-import UI_Update_Enable
 import UI_Update_General
 
 #import settings
@@ -41,8 +39,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             sch_ready= UI_Update_General.check_stat(self)
             sch_flip = sch_ready
             self.Snap_Thread = Camera.Snap()
-            self.Snap_Thread.started.connect(lambda: UI_Update_Disable.snap_disable(self,sch_flip))
-            self.Snap_Thread.finished.connect(lambda: UI_Update_Enable.snap_enable(self,sch_flip))
+            self.Snap_Thread.started.connect(lambda: UI_Update_General.snap_disable(self,sch_flip))
+            self.Snap_Thread.finished.connect(lambda: UI_Update_General.snap_enable(self,sch_flip))
             self.Snap_Thread.start()
             
         except Exception as e:
@@ -71,8 +69,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             sch_ready= UI_Update_General.check_stat(self)
             sch_flip = sch_ready
             self.Snap_Thread = Camera.Snap()
-            self.Snap_Thread.started.connect(lambda: UI_Update_Disable.snap_disable(self,sch_flip))
-            self.Snap_Thread.finished.connect(lambda: UI_Update_Enable.snap_enable(self,sch_flip))
+            self.Snap_Thread.started.connect(lambda: UI_Update_General.snap_disable(self,sch_flip))
+            self.Snap_Thread.finished.connect(lambda: UI_Update_General.snap_enable(self,sch_flip))
             self.Snap_Thread.start()
             
         except Exception as e:
