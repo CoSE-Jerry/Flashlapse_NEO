@@ -70,10 +70,8 @@ class Test(QThread):
     def run(self):
         while True:
             Settings.ASD.write(bytes("2~"+str(Settings.angle_1), 'UTF-8'))
-            Settings.ASD.write(bytes("2~0", "UTF-8"))
             sleep(5)
             Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
-            Settings.ASD.write(bytes("2~0", "UTF-8"))
             sleep(5)
 
 class Dropbox(QThread):
