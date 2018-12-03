@@ -77,7 +77,7 @@ class Dropbox(QThread):
         QThread.__init__(self)
         os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /MECHSTIM/" + Settings.sequence_name)
         Settings.dropbox_running = True
-        file_list.clear
+        Settings.file_list.clear
         
     def __del__(self):
         Settings.dropbox_running = False

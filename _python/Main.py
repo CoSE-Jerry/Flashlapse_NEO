@@ -203,6 +203,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Confirm_Schedule(self):
         if(Settings.test_running):
             self.Test_Thread.terminate()
+            Settings.test_running=False
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
         Settings.angle_2 = self.rotate_to_spinbox_2.value()
         Settings.delay_1 = self.wait_spinbox_1.value()
