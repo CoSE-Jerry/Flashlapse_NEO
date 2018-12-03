@@ -146,6 +146,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         else:
             self.Kill_Theads()
+            
             icon = QtGui.QIcon()
             icon.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
             self.Start_Schedule.setIcon(icon)
@@ -223,6 +224,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Live_Feed.setText("Live Feed (30s)")
 
     def Kill_Theads(self):
+        print(Settings.sch_running)
+        print(Settings.test_running)
+        print(Settings.dropbox_running)
         if Settings.sch_running:
             self.Schedule_Thread.terminate()
         if Settings.test_running:
