@@ -123,8 +123,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             if(not os.path.isdir(Settings.full_dir)):
                 os.mkdir(Settings.full_dir)
                     
-            self.Dropbox_Thread = Thread.Dropbox()
-            self.Email_Thread = Thread.Email()
+
             self.Schedule_Thread = Thread.Schedule()
             
             if (self.JPG.isChecked()):
@@ -136,6 +135,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Schedule_Thread.start()
 
             if(self.Cloud_Sync.isChecked()):
+                self.Dropbox_Thread = Thread.Dropbox()
+                self.Email_Thread = Thread.Email()
                 self.Dropbox_Thread.start()
                 self.Email_Thread.start()
             self.Test_Run.setEnabled(False)
