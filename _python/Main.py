@@ -190,7 +190,7 @@ class Email(QThread):
         import Email
         global link, current, total, noti_count, off, low, average, high, done
         body = None
-        fromaddr = "notification_noreply@flashlapseinnovations.com"
+        fromaddr = "notifications_noreply@coseinstruments.com"
         toaddr = email
         msg = MIMEMultipart()
         msg['From'] = fromaddr
