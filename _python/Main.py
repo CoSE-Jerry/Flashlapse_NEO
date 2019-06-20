@@ -601,66 +601,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def rotate(self):
         ASD.write(bytes('z', 'UTF-8'))
-
-    def timelapse_change(self):
-        global run_timelapse
-        if(run_timelapse):
-            self.Timelapse.setText("Timelapse Generation: OFF")
-            run_timelapse = False
-        else:
-            self.Timelapse.setText("Timelapse Generation: ON")
-            run_timelapse = True
-
-    def start_scheduler(self):
-        global angle_1, angle_2, delay_1, delay_2,sch_running,test_running
-
-        
-        angle_1 = self.rotate_to_spinbox_1.value()
-        angle_2 = self.rotate_to_spinbox_2.value()
-        delay_1 = self.wait_spinbox_1.value()
-        delay_2 = self.wait_spinbox_2.value()
-
-        if(sch_running):
-            self.Schedule_Thread.terminate()
-            sch_running = False;
-        if(test_running):
-            self.Test_Thread.terminate()
-            test_running = False;
-        self.Schedule_Thread = Schedule()
-        self.Schedule_Thread.start()
-        sch_running=True
-
-    def reset_position(self):
-        global sch_running,test_running
-        if(sch_running):
-            self.Schedule_Thread.terminate()
-            sch_running = False;
-        if(test_running):
-            self.Test_Thread.terminate()
-            test_running = False;
-        ASD.write(bytes("~0\n", 'UTF-8'))
-
-    def value_changed(self):
-    
-        self.Motor_Speed.setText("Motor Speed: "+str(self.Speed_Select.value()))
-
-    def slider_released(self):
-    
-        ASD.write(bytes('+'+str(self.Speed_Select.value())+"\n", 'UTF-8'))
-
-    def test_run(self):
-        global angle_1, angle_2, sch_running, test_running
-        if(sch_running):
-            self.Schedule_Thread.terminate()
-            sch_running = False;
-        if(test_running):
-            self.Test_Thread.terminate()
-            test_running = False;
-        angle_1 = self.rotate_to_spinbox_1.value()
-        angle_2 = self.rotate_to_spinbox_2.value()
-        self.Test_Thread = Test()
-        self.Test_Thread.start()
-        test_running = True;
         
 
     def __init__(self):
@@ -685,12 +625,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Barrier_Confirm.clicked.connect(lambda: self.barri_confirm())
         self.Disco.clicked.connect(lambda: self.disco_confirm())
         self.Rotate.clicked.connect(lambda: self.rotate())
-        self.Timelapse.clicked.connect(lambda: self.timelapse_change())
-        self.Start_Scheduler.clicked.connect(lambda: self.start_scheduler())
-        self.Reset_Position.clicked.connect(lambda: self.reset_position())
-        self.Test_Run.clicked.connect(lambda: self.test_run())
-        self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
-        self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
 
         
 
