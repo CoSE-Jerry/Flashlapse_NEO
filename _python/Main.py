@@ -468,8 +468,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.PNG.setEnabled(False)
         self.Dropbox_Email.setEnabled(False)
         self.Dropbox_Confirm.setEnabled(False)
-        self.CyVerse_Email.setEnabled(False)
-        self.CyVerse_Confirm.setEnabled(False)
         self.Frequency_Off.setEnabled(False)
         self.Frequency_Low.setEnabled(False)
         self.Frequency_Average.setEnabled(False)
