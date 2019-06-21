@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Flashlapse
+Comment=Starts Flashlapse
+Icon=/home/pi/Flashlapse_NEO/_image/icon.png
+Exec=/home/pi/Flashlapse_NEO/Flashlapse.sh
+Type=Application
+Encoding=UTF-8
+Terminal=false
+Categories=None;
