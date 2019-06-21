@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         self.Image_Frame.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.Image_Frame.setLineWidth(5)
         self.Image_Frame.setText("")
-        self.Image_Frame.setPixmap(QtGui.QPixmap("../_image/background.png"))
+        self.Image_Frame.setPixmap(QtGui.QPixmap("../_image/Desktop.png"))
         self.Image_Frame.setScaledContents(True)
         self.Image_Frame.setObjectName("Image_Frame")
         self.verticalLayoutWidget = QtWidgets.QWidget(self.centralwidget)
