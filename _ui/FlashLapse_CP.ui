@@ -151,7 +151,7 @@
         <item>
          <widget class="QPushButton" name="disco_pushButton">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="text">
            <string>Disco</string>
@@ -161,7 +161,7 @@
         <item>
          <widget class="QPushButton" name="rainbow_pushButton">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="text">
            <string>Rainbow</string>
@@ -171,7 +171,7 @@
         <item>
          <widget class="QPushButton" name="sundial_pushButton">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="text">
            <string>Sundial</string>
@@ -1327,7 +1327,7 @@
            <item>
             <widget class="QPushButton" name="emailDefault_pushButton">
              <property name="enabled">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="text">
               <string>Save default</string>
@@ -1339,7 +1339,7 @@
          <item>
           <widget class="QPushButton" name="emailConfirm_pushButton">
            <property name="enabled">
-            <bool>false</bool>
+            <bool>true</bool>
            </property>
            <property name="text">
             <string>Confirm Email</string>
@@ -1350,7 +1350,7 @@
        </widget>
       </widget>
      </widget>
-     <widget class="QWidget" name="">
+     <widget class="QWidget" name="layoutWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
