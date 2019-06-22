@@ -7,7 +7,7 @@ import os
 import Settings
 
 #import custom functions
-import Command
+import Commands
 
 '''#import UI functions
 import UI_Update_General
