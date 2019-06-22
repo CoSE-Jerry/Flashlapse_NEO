@@ -1,18 +1,19 @@
 # import basic libraries
 import sys
 import time
-import re
 import os
-
-'''#import UI functions
-import UI_Update_General
 
 #import settings
 import Settings
 
 #import custom functions
-import Camera
 import Command
+
+'''#import UI functions
+import UI_Update_General
+
+#import custom functions
+import Camera
 import Thread'''
  
 # import Qt content
@@ -22,10 +23,6 @@ from PyQt5.QtWidgets import *
  
 # import generated UI
 import FlashLapse_UI
-
-#UI variables
-sch_ready = False
-sch_flip = False
 
 #global variables
 default_dir = "/home/pi/Desktop"
@@ -231,6 +228,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
 
+        self.light_Confirm_pushButton.clicked.connect(lambda: Commands.light_confirm(self))
         '''Settings.init()
 
         #load default email

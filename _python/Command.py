@@ -1,8 +1,12 @@
 import Settings
 from time import sleep
-from PyQt5.QtCore import QThread
 
-def full_color_change(self):
+def light_confirm(self):
+    current_CMD = "1~"+str(self.Start_spinBox.value())+"~"+str(self.End_spinBox.value())+"~"+ str(self.R_spinBox.value()) + "~" + str(self.G_spinBox.value()) + "~" + str(self.B_spinBox.value()+ "~" + str(self.BRT_spinBox.value())
+    Settings.commands_list.append(current_CMD)
+    Settings.sendCMD()
+
+'''def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
 
     self.Left_Select.setCurrentIndex(0)
@@ -128,4 +132,4 @@ def third_color_change_lower_right(self):
         Settings.ASD.write(bytes("1~38~58~0~0~0~3", 'UTF-8'))
 
 def inject_code(self):
-    Settings.ASD.write(bytes(self.IC_0.text()+"~"+self.IC_1.text()+"~"+self.IC_2.text()+"~"+self.IC_3.text()+"~"+self.IC_4.text()+"~"+self.IC_5.text()+"~"+self.IC_6.text(), 'UTF-8'))
+    Settings.ASD.write(bytes(self.IC_0.text()+"~"+self.IC_1.text()+"~"+self.IC_2.text()+"~"+self.IC_3.text()+"~"+self.IC_4.text()+"~"+self.IC_5.text()+"~"+self.IC_6.text(), 'UTF-8'))'''

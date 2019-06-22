@@ -1,7 +1,21 @@
 import serial
 
 def init():
-    global sch_running
+    global ASD
+    ASD = serial.Serial('/dev/ttyACM0', 9600)
+
+    global commands_list
+    commands_list = []
+
+    global current_CMD
+    current_CMD = ""
+
+
+def sendCMD():
+    serial.Serial('/dev/ttyACM0', 9600).write(bytes(current_CMD, 'UTF-8'))
+    
+
+    '''global sch_running
     sch_running = False
     global dropbox_running
     dropbox_running = False
@@ -40,11 +54,4 @@ def init():
     global current_image
     current_image = ""
     global command_list
-    command_list = []
-
-    global custom_R
-    custom_R=0
-    global custom_G
-    custom_G=0
-    global custom_B
-    custom_B=0
+    command_list = []'''
