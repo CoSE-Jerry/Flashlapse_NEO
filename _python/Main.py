@@ -227,9 +227,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
+        Settings.init()
 
         self.light_Confirm_pushButton.clicked.connect(lambda: Commands.light_confirm(self))
-        '''Settings.init()
+        '''
 
         #load default email
         fh = open("../_temp/save_data.txt", "r") 
