@@ -2,19 +2,13 @@ import serial
 
 def init():
     global ASD
-    ASD = serial.Serial('/dev/ttyAMA0', 9600)
+    ASD = serial.Serial('/dev/ttyACM0', 9600)
 
     global commands_list
     commands_list = []
 
     global current_CMD
     current_CMD = ""
-
-
-def sendCMD():
-    print(current_CMD)
-    serial.Serial('/dev/ttyAMA0', 9600).write(bytes(current_CMD, 'UTF-8'))
-    
 
     '''global sch_running
     sch_running = False
