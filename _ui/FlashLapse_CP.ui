@@ -21,10 +21,10 @@
    <widget class="QLabel" name="Image_Frame">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>600</x>
       <y>20</y>
-      <width>350</width>
-      <height>350</height>
+      <width>380</width>
+      <height>380</height>
      </rect>
     </property>
     <property name="cursor">
@@ -65,9 +65,9 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
-    <widget class="QWidget" name="Lighting">
+    <widget class="QWidget" name="lighting_tab">
      <attribute name="title">
       <string>Lighting</string>
      </attribute>
@@ -97,14 +97,14 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
-         <widget class="QLabel" name="lightCycle_label_2">
+         <widget class="QLabel" name="powerCycle_label">
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Power Cycle&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="Cycle_label_2">
+         <widget class="QLabel" name="Cycle_label">
           <property name="text">
            <string>Cycle Duration:</string>
           </property>
@@ -114,7 +114,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QSpinBox" name="powerCycle_spinBox_2">
+         <widget class="QSpinBox" name="powerCycle_spinBox">
           <property name="suffix">
            <string> min</string>
           </property>
@@ -130,7 +130,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="confirmCycle_pushButton_2">
+         <widget class="QPushButton" name="confirmCycle_pushButton">
           <property name="text">
            <string>CONFIRM</string>
           </property>
@@ -144,12 +144,12 @@
          <x>10</x>
          <y>50</y>
          <width>121</width>
-         <height>91</height>
+         <height>131</height>
         </rect>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <item>
-         <widget class="QPushButton" name="disco_pushButton_2">
+         <widget class="QPushButton" name="disco_pushButton">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -159,7 +159,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QPushButton" name="rainbow_pushButton_2">
+         <widget class="QPushButton" name="rainbow_pushButton">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -168,9 +168,19 @@
           </property>
          </widget>
         </item>
+        <item>
+         <widget class="QPushButton" name="sundial_pushButton">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="text">
+           <string>Sundial</string>
+          </property>
+         </widget>
+        </item>
        </layout>
       </widget>
-      <widget class="QLabel" name="lightCycle_label_3">
+      <widget class="QLabel" name="Presets_label">
        <property name="geometry">
         <rect>
          <x>10</x>
@@ -184,7 +194,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frame">
+     <widget class="QFrame" name="image_frame">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -219,7 +229,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QFrame" name="frame_5">
+     <widget class="QFrame" name="Ligting_frame">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -291,7 +301,7 @@
         <item>
          <layout class="QVBoxLayout" name="verticalLayout_19">
           <item>
-           <widget class="QLabel" name="Start_label_3">
+           <widget class="QLabel" name="End_label">
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;End LED:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
@@ -303,7 +313,7 @@
              <number>1</number>
             </property>
             <property name="maximum">
-             <number>34</number>
+             <number>57</number>
             </property>
            </widget>
           </item>
@@ -316,6 +326,9 @@
             <property name="text">
              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Brightness:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
             </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
            </widget>
           </item>
           <item>
@@ -324,10 +337,10 @@
              <number>1</number>
             </property>
             <property name="maximum">
-             <number>255</number>
+             <number>100</number>
             </property>
             <property name="value">
-             <number>50</number>
+             <number>20</number>
             </property>
            </widget>
           </item>
@@ -341,63 +354,28 @@
          <x>10</x>
          <y>90</y>
          <width>331</width>
-         <height>71</height>
+         <height>41</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout">
-        <item row="1" column="1">
-         <widget class="QSpinBox" name="B_spinBox">
-          <property name="maximum">
-           <number>255</number>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QLabel" name="W_label">
+        <item row="0" column="2">
+         <widget class="QLabel" name="G_label">
           <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;White:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Green:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
           </property>
          </widget>
         </item>
         <item row="0" column="1">
          <widget class="QSpinBox" name="R_spinBox">
           <property name="maximum">
-           <number>255</number>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="3">
-         <widget class="QSpinBox" name="W_spinBox">
-          <property name="maximum">
-           <number>255</number>
+           <number>100</number>
           </property>
          </widget>
         </item>
         <item row="0" column="3">
          <widget class="QSpinBox" name="G_spinBox">
           <property name="maximum">
-           <number>255</number>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="4">
-         <widget class="QPushButton" name="light_Reset_pushButton">
-          <property name="text">
-           <string>RESET</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="4">
-         <widget class="QPushButton" name="light_Confirm_pushButton">
-          <property name="text">
-           <string>CONFIRM</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="G_label">
-          <property name="text">
-           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Green:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           <number>100</number>
           </property>
          </widget>
         </item>
@@ -408,10 +386,43 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
+        <item row="0" column="4">
          <widget class="QLabel" name="B_label">
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Blue:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="5">
+         <widget class="QSpinBox" name="B_spinBox">
+          <property name="maximum">
+           <number>100</number>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="horizontalLayoutWidget">
+       <property name="geometry">
+        <rect>
+         <x>89</x>
+         <y>130</y>
+         <width>171</width>
+         <height>41</height>
+        </rect>
+       </property>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QPushButton" name="lightConfirm_pushButton">
+          <property name="text">
+           <string>CONFIRM</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="lightReset_pushButton">
+          <property name="text">
+           <string>RESET</string>
           </property>
          </widget>
         </item>
@@ -419,371 +430,23 @@
       </widget>
      </widget>
     </widget>
-    <widget class="QWidget" name="Imaging">
-     <attribute name="title">
-      <string>Settings</string>
-     </attribute>
-     <widget class="QWidget" name="layoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>20</y>
-        <width>511</width>
-        <height>331</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_3">
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QLabel" name="Image_Title">
-           <property name="text">
-            <string>Image Sequence Title</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_2">
-           <item>
-            <widget class="QLineEdit" name="title_lineEdit">
-             <property name="enabled">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="addDate_pushButton">
-             <property name="enabled">
-              <bool>false</bool>
-             </property>
-             <property name="text">
-              <string>Add Date</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_2">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>38</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="Image_Interval">
-           <property name="text">
-            <string>Image Capture Interval</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="ICI_spinBox">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="suffix">
-            <string> min</string>
-           </property>
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>99999999</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer_3">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>38</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QLabel" name="Image_Duration">
-           <property name="text">
-            <string>Image Sequence Duration</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="ISD_spinBox">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="suffix">
-            <string> min</string>
-           </property>
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>99999999</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="Line" name="line_3">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
-           </property>
-           <property name="sizeType">
-            <enum>QSizePolicy::Expanding</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>20</width>
-             <height>120</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QLabel" name="directory_label">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <property name="text">
-            <string>Sequence Title Required</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="directory_pushButton">
-           <property name="enabled">
-            <bool>true</bool>
-           </property>
-           <property name="text">
-            <string>Select Storage Directory</string>
-           </property>
-           <property name="checkable">
-            <bool>false</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="gridLayoutWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>410</y>
-        <width>281</width>
-        <height>54</height>
-       </rect>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="1">
-        <widget class="QLabel" name="CoreCtr_label_5">
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;X&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="0">
-        <widget class="QSpinBox" name="x_resolution_spinBox">
-         <property name="suffix">
-          <string> px</string>
-         </property>
-         <property name="minimum">
-          <number>50</number>
-         </property>
-         <property name="maximum">
-          <number>3240</number>
-         </property>
-         <property name="value">
-          <number>2464</number>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2">
-        <widget class="QSpinBox" name="y_resolution_spinBox">
-         <property name="suffix">
-          <string> px</string>
-         </property>
-         <property name="minimum">
-          <number>50</number>
-         </property>
-         <property name="maximum">
-          <number>2464</number>
-         </property>
-         <property name="value">
-          <number>2464</number>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#000000;&quot;&gt;[ 50 , 3240 ]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="1">
-        <widget class="QLabel" name="CoreCtr_label_6">
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-        </widget>
-       </item>
-       <item row="1" column="2">
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#000000;&quot;&gt;[ 50 , 2464 ]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QLabel" name="resolution_label">
-      <property name="geometry">
-       <rect>
-        <x>45</x>
-        <y>380</y>
-        <width>231</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IMAGING RESOLUTION&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QLabel" name="resolution_label_2">
-      <property name="geometry">
-       <rect>
-        <x>310</x>
-        <y>380</y>
-        <width>231</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IMAGE FORMAT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-      </property>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>20</x>
-        <y>500</y>
-        <width>511</width>
-        <height>61</height>
-       </rect>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_7">
-       <item alignment="Qt::AlignHCenter">
-        <widget class="QLabel" name="Progress_Label">
-         <property name="text">
-          <string>Progress: 0 / 1</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QProgressBar" name="Progress_Bar">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
-         <property name="value">
-          <number>0</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="horizontalLayoutWidget_6">
-      <property name="geometry">
-       <rect>
-        <x>330</x>
-        <y>410</y>
-        <width>201</width>
-        <height>51</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_7">
-       <item>
-        <widget class="QRadioButton" name="JPG_radioButton">
-         <property name="text">
-          <string>.JPG</string>
-         </property>
-         <property name="checked">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="PNG_radioButton">
-         <property name="text">
-          <string>.PNG</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="Motion">
+    <widget class="QWidget" name="motion_tab">
      <attribute name="title">
       <string>Motion</string>
      </attribute>
-     <widget class="QTabWidget" name="tabWidget">
+     <widget class="QTabWidget" name="motion_tabWidget">
       <property name="geometry">
        <rect>
         <x>20</x>
         <y>20</y>
         <width>511</width>
-        <height>531</height>
+        <height>501</height>
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
-      <widget class="QWidget" name="Scheduler">
+      <widget class="QWidget" name="scheduler_tab">
        <attribute name="title">
         <string>Scheduler</string>
        </attribute>
@@ -798,7 +461,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_11">
          <item>
-          <widget class="QLabel" name="Rotate1">
+          <widget class="QLabel" name="rotate1_label">
            <property name="text">
             <string>Reflex To</string>
            </property>
@@ -808,7 +471,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="rotate_to_spinbox_1">
+          <widget class="QSpinBox" name="rotate1_spinbox">
            <property name="suffix">
             <string> °</string>
            </property>
@@ -833,7 +496,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_14">
          <item>
-          <widget class="QLabel" name="Wait1">
+          <widget class="QLabel" name="wait1_label">
            <property name="text">
             <string>Pause For</string>
            </property>
@@ -843,7 +506,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="wait_spinbox_1">
+          <widget class="QSpinBox" name="wait1_spinbox">
            <property name="suffix">
             <string> min</string>
            </property>
@@ -857,7 +520,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="Color_Frame_2">
+       <widget class="QLabel" name="graphic_2">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -906,7 +569,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_16">
          <item>
-          <widget class="QLabel" name="Wait2">
+          <widget class="QLabel" name="wait2_label">
            <property name="text">
             <string>Pause For</string>
            </property>
@@ -916,7 +579,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="wait_spinbox_2">
+          <widget class="QSpinBox" name="wait2_spinbox">
            <property name="suffix">
             <string> min</string>
            </property>
@@ -933,9 +596,9 @@
        <widget class="Line" name="line_2">
         <property name="geometry">
          <rect>
-          <x>-50</x>
-          <y>285</y>
-          <width>551</width>
+          <x>20</x>
+          <y>290</y>
+          <width>461</width>
           <height>21</height>
          </rect>
         </property>
@@ -943,7 +606,7 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QLabel" name="R2_2">
+       <widget class="QLabel" name="R3">
         <property name="geometry">
          <rect>
           <x>105</x>
@@ -973,7 +636,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_15">
          <item>
-          <widget class="QLabel" name="Rotate2">
+          <widget class="QLabel" name="rotate2_label">
            <property name="text">
             <string>Reflex To</string>
            </property>
@@ -983,7 +646,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QSpinBox" name="rotate_to_spinbox_2">
+          <widget class="QSpinBox" name="rotate2spinbox">
            <property name="suffix">
             <string> °</string>
            </property>
@@ -1016,7 +679,7 @@
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="R2_3">
+       <widget class="QLabel" name="R4">
         <property name="geometry">
          <rect>
           <x>105</x>
@@ -1035,49 +698,6 @@
          <bool>true</bool>
         </property>
        </widget>
-       <widget class="QSlider" name="Speed_Select">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>340</y>
-          <width>271</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="cursor">
-         <cursorShape>OpenHandCursor</cursorShape>
-        </property>
-        <property name="minimum">
-         <number>100</number>
-        </property>
-        <property name="maximum">
-         <number>1000</number>
-        </property>
-        <property name="singleStep">
-         <number>20</number>
-        </property>
-        <property name="pageStep">
-         <number>30</number>
-        </property>
-        <property name="value">
-         <number>600</number>
-        </property>
-        <property name="sliderPosition">
-         <number>600</number>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="invertedControls">
-         <bool>true</bool>
-        </property>
-        <property name="tickPosition">
-         <enum>QSlider::TicksBothSides</enum>
-        </property>
-        <property name="tickInterval">
-         <number>50</number>
-        </property>
-       </widget>
        <widget class="QWidget" name="verticalLayoutWidget_10">
         <property name="geometry">
          <rect>
@@ -1089,14 +709,14 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_17">
          <item>
-          <widget class="QPushButton" name="Reset_Position">
+          <widget class="QPushButton" name="schedulerReset_pushButton">
            <property name="text">
             <string>Reset Position</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="Test_Run">
+          <widget class="QPushButton" name="schedulerTest_pushButton">
            <property name="text">
             <string>Test Run</string>
            </property>
@@ -1109,7 +729,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="Set_Schedule">
+          <widget class="QPushButton" name="schedulerSet_pushButton">
            <property name="text">
             <string>Set Schedule</string>
            </property>
@@ -1117,101 +737,751 @@
          </item>
         </layout>
        </widget>
-       <widget class="QLabel" name="Motor_Speed">
+       <widget class="QWidget" name="verticalLayoutWidget">
         <property name="geometry">
          <rect>
-          <x>50</x>
-          <y>360</y>
-          <width>139</width>
-          <height>21</height>
+          <x>30</x>
+          <y>320</y>
+          <width>281</width>
+          <height>141</height>
          </rect>
         </property>
-        <property name="text">
-         <string>Motor Speed: 600</string>
-        </property>
-       </widget>
-       <widget class="QSpinBox" name="Total_Reflex">
-        <property name="geometry">
-         <rect>
-          <x>220</x>
-          <y>390</y>
-          <width>101</width>
-          <height>22</height>
-         </rect>
-        </property>
-        <property name="suffix">
-         <string> RFLX</string>
-        </property>
-        <property name="maximum">
-         <number>99999</number>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_10">
-        <property name="geometry">
-         <rect>
-          <x>50</x>
-          <y>390</y>
-          <width>161</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment Duration:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <item>
+          <widget class="QLabel" name="scheduleDuration_label">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment Duration:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="scheduleDuration_spinbox">
+           <property name="suffix">
+            <string> REFLEXS</string>
+           </property>
+           <property name="maximum">
+            <number>99999</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="scheduleImaging_label">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Schedule Imaging:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="scheduleImaging_spinbox">
+           <property name="suffix">
+            <string> REFLEXS</string>
+           </property>
+           <property name="prefix">
+            <string>EVERY </string>
+           </property>
+           <property name="maximum">
+            <number>99999</number>
+           </property>
+           <property name="value">
+            <number>1</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
-      <widget class="QWidget" name="Clinostat">
+      <widget class="QWidget" name="clinostat_tab">
        <attribute name="title">
         <string>Clinostat</string>
        </attribute>
+       <widget class="QLabel" name="R4_2">
+        <property name="geometry">
+         <rect>
+          <x>105</x>
+          <y>35</y>
+          <width>71</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../_image/L1.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="R1_2">
+        <property name="geometry">
+         <rect>
+          <x>315</x>
+          <y>35</y>
+          <width>71</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../_image/R1.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="graphic_3">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>70</y>
+          <width>150</width>
+          <height>150</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../_image/Scheduler.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="R3_2">
+        <property name="geometry">
+         <rect>
+          <x>105</x>
+          <y>175</y>
+          <width>71</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../_image/L2.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="R2_2">
+        <property name="geometry">
+         <rect>
+          <x>315</x>
+          <y>175</y>
+          <width>71</width>
+          <height>71</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+        <property name="pixmap">
+         <pixmap>../_image/R2.png</pixmap>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+       </widget>
+       <widget class="Line" name="line_4">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>290</y>
+          <width>461</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_11">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>320</y>
+          <width>281</width>
+          <height>141</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_8">
+         <item>
+          <widget class="QLabel" name="clinostatDuration_label">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment Duration:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="clinostatDuration_spinbox">
+           <property name="suffix">
+            <string> ROTATIONS</string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
+           </property>
+           <property name="maximum">
+            <number>99999</number>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="clinostatImaging_label">
+           <property name="text">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Schedule Imaging:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSpinBox" name="ClinostatImaging_spinbox">
+           <property name="suffix">
+            <string> ROTATIONS</string>
+           </property>
+           <property name="prefix">
+            <string>EVERY </string>
+           </property>
+           <property name="maximum">
+            <number>99999</number>
+           </property>
+           <property name="displayIntegerBase">
+            <number>10</number>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+       <widget class="QWidget" name="verticalLayoutWidget_12">
+        <property name="geometry">
+         <rect>
+          <x>340</x>
+          <y>330</y>
+          <width>131</width>
+          <height>132</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_21">
+         <item>
+          <widget class="QPushButton" name="clinostatReset_pushButton">
+           <property name="text">
+            <string>Reset Position</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clinostatTest_pushButton">
+           <property name="text">
+            <string>Test Run</string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+           <property name="checked">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="clinostatSet_pushButton">
+           <property name="text">
+            <string>Set Schedule</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
      </widget>
+     <widget class="QLabel" name="motorSpeed_label">
+      <property name="geometry">
+       <rect>
+        <x>450</x>
+        <y>530</y>
+        <width>91</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Motor RPM: 5.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QSlider" name="motorSpeed_slider">
+      <property name="geometry">
+       <rect>
+        <x>28</x>
+        <y>530</y>
+        <width>401</width>
+        <height>32</height>
+       </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>OpenHandCursor</cursorShape>
+      </property>
+      <property name="minimum">
+       <number>0</number>
+      </property>
+      <property name="maximum">
+       <number>100</number>
+      </property>
+      <property name="singleStep">
+       <number>1</number>
+      </property>
+      <property name="pageStep">
+       <number>30</number>
+      </property>
+      <property name="value">
+       <number>50</number>
+      </property>
+      <property name="sliderPosition">
+       <number>50</number>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="invertedControls">
+       <bool>true</bool>
+      </property>
+      <property name="tickPosition">
+       <enum>QSlider::TicksBothSides</enum>
+      </property>
+      <property name="tickInterval">
+       <number>5</number>
+      </property>
+     </widget>
     </widget>
-   </widget>
-   <widget class="QWidget" name="verticalLayoutWidget_4">
-    <property name="geometry">
-     <rect>
-      <x>620</x>
-      <y>390</y>
-      <width>211</width>
-      <height>61</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_12">
-     <item>
-      <widget class="QRadioButton" name="Local_Storage">
-       <property name="text">
-        <string>Local Storage</string>
-       </property>
-       <property name="checked">
-        <bool>true</bool>
-       </property>
+    <widget class="QWidget" name="imaging_tab">
+     <attribute name="title">
+      <string>Imaging</string>
+     </attribute>
+     <widget class="QWidget" name="gridLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>420</y>
+        <width>281</width>
+        <height>54</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QLabel" name="x_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;X&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QSpinBox" name="x_resolution_spinBox">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>50</number>
+         </property>
+         <property name="maximum">
+          <number>3240</number>
+         </property>
+         <property name="value">
+          <number>2464</number>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QSpinBox" name="y_resolution_spinBox">
+         <property name="suffix">
+          <string> px</string>
+         </property>
+         <property name="minimum">
+          <number>50</number>
+         </property>
+         <property name="maximum">
+          <number>2464</number>
+         </property>
+         <property name="value">
+          <number>2464</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="xRange_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#000000;&quot;&gt;[ 50 , 3240 ]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="CoreCtr_label_6">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="yRange_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600; color:#000000;&quot;&gt;[ 50 , 2464 ]&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="resolution_label">
+      <property name="geometry">
+       <rect>
+        <x>45</x>
+        <y>390</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IMAGING RESOLUTION&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="format_label">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>390</y>
+        <width>231</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;IMAGE FORMAT&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="layoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>500</y>
+        <width>511</width>
+        <height>61</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item alignment="Qt::AlignHCenter">
+        <widget class="QLabel" name="Progress_Label">
+         <property name="text">
+          <string>Progress: 0 / 1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QProgressBar" name="Progress_Bar">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="value">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="horizontalLayoutWidget_6">
+      <property name="geometry">
+       <rect>
+        <x>330</x>
+        <y>420</y>
+        <width>201</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_7">
+       <item>
+        <widget class="QRadioButton" name="JPG_radioButton">
+         <property name="text">
+          <string>.JPG</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QRadioButton" name="PNG_radioButton">
+         <property name="text">
+          <string>.PNG</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTabWidget" name="storage_tabWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>270</y>
+        <width>521</width>
+        <height>121</height>
+       </rect>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="local_tab">
+       <attribute name="title">
+        <string>Local</string>
+       </attribute>
+       <widget class="QWidget" name="verticalLayoutWidget_13">
+        <property name="geometry">
+         <rect>
+          <x>19</x>
+          <y>11</y>
+          <width>461</width>
+          <height>81</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_9">
+         <item>
+          <widget class="QLabel" name="directory_label">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="frameShape">
+            <enum>QFrame::StyledPanel</enum>
+           </property>
+           <property name="frameShadow">
+            <enum>QFrame::Raised</enum>
+           </property>
+           <property name="text">
+            <string>Sequence Title Required</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="directory_pushButton">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+           <property name="text">
+            <string>Select Storage Directory</string>
+           </property>
+           <property name="checkable">
+            <bool>false</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
-     </item>
-     <item>
-      <widget class="QRadioButton" name="Cloud_Sync">
-       <property name="enabled">
-        <bool>false</bool>
-       </property>
-       <property name="text">
-        <string>Cloud Sync</string>
-       </property>
+      <widget class="QWidget" name="cloud_tab">
+       <attribute name="title">
+        <string>Cloud</string>
+       </attribute>
+       <widget class="QWidget" name="verticalLayoutWidget_14">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>491</width>
+          <height>84</height>
+         </rect>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_10">
+         <item>
+          <spacer name="verticalSpacer_4">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="Email_label">
+           <property name="text">
+            <string>Please Enter Your Email Adress: </string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_4">
+           <item>
+            <widget class="QLineEdit" name="Email_lineEdit"/>
+           </item>
+           <item>
+            <widget class="QPushButton" name="emailDefault_pushButton">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="text">
+              <string>Save default</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="emailConfirm_pushButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Confirm Email</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </widget>
-     </item>
-    </layout>
+     </widget>
+     <widget class="QWidget" name="">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>509</width>
+        <height>239</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="imageTitle_label">
+         <property name="text">
+          <string>Image Sequence Title</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLineEdit" name="imageTitle_lineEdit">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="addDate_pushButton">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Add Date</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>38</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="ImageInterval_label">
+         <property name="text">
+          <string>Image Capture Interval</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="ImageInterval_spinBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="suffix">
+          <string> min</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>99999999</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>38</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="imageDuration_label">
+         <property name="text">
+          <string>Image Sequence Duration</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="imageDuration_spinBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="suffix">
+          <string> min</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>99999999</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </widget>
    <widget class="QWidget" name="verticalLayoutWidget_5">
     <property name="geometry">
      <rect>
       <x>840</x>
-      <y>380</y>
+      <y>410</y>
       <width>141</width>
-      <height>111</height>
+      <height>114</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout_13">
      <item>
-      <widget class="QPushButton" name="Snapshot">
+      <widget class="QPushButton" name="snapshot_pushButton">
        <property name="enabled">
         <bool>true</bool>
        </property>
@@ -1221,14 +1491,41 @@
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="Live_Feed">
+      <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <item>
+        <widget class="QPushButton" name="liveFeed_pushButton">
+         <property name="text">
+          <string>Live Feed</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="liveFeed_spinBox">
+         <property name="suffix">
+          <string> s</string>
+         </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>600</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="preview_pushButton">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="text">
-        <string>Live Feed (30s)</string>
+        <string>Full Preview</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="Rotate">
+      <widget class="QPushButton" name="rotate_pushButton">
        <property name="text">
         <string>Rotate Image</string>
        </property>
@@ -1236,18 +1533,120 @@
      </item>
     </layout>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="startRoutines_pushButton">
     <property name="geometry">
      <rect>
       <x>760</x>
-      <y>510</y>
+      <y>560</y>
       <width>221</width>
-      <height>81</height>
+      <height>61</height>
      </rect>
     </property>
     <property name="text">
-     <string>Start Scheduled Imaging</string>
+     <string>Start Routines</string>
     </property>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>410</y>
+      <width>234</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_12">
+     <item>
+      <widget class="QLabel" name="AOI_label_3">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;AREA OF INTEREST&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_3">
+       <item row="2" column="0">
+        <widget class="QDoubleSpinBox" name="AOIX_doubleSpinBox"/>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="AOIW_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;W&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QDoubleSpinBox" name="AOIW_doubleSpinBox"/>
+       </item>
+       <item row="2" column="3">
+        <widget class="QDoubleSpinBox" name="AOIH_doubleSpinBox"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="AOIX_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;X&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLabel" name="AOIY_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Y&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QDoubleSpinBox" name="AOIY_doubleSpinBox"/>
+       </item>
+       <item row="1" column="3">
+        <widget class="QLabel" name="AOIH_label">
+         <property name="text">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;H&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="AOI_pushButton">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="text">
+        <string>Confirm</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_15">
+    <property name="geometry">
+     <rect>
+      <x>600</x>
+      <y>540</y>
+      <width>141</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_22">
+     <item>
+      <widget class="QLabel" name="motor_label">
+       <property name="text">
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rotate Motor&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="motor_spinBox"/>
+     </item>
+     <item>
+      <widget class="QPushButton" name="motorConfirm_pushButton">
+       <property name="text">
+        <string>Start Routines</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>

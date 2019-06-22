@@ -4,7 +4,7 @@ import time
 import re
 import os
 
-#import UI functions
+'''#import UI functions
 import UI_Update_General
 
 #import settings
@@ -13,7 +13,7 @@ import Settings
 #import custom functions
 import Camera
 import Command
-import Thread
+import Thread'''
  
 # import Qt content
 import PyQt5
@@ -34,7 +34,7 @@ date = time.strftime('%m_%d_%Y')
 # create class for Raspberry Pi GUI
 class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
-    def Start_Snapshot(self):
+    '''def Start_Snapshot(self):
         try:
             sch_ready= UI_Update_General.check_stat(self)
             sch_flip = sch_ready
@@ -224,14 +224,14 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         if Settings.dropbox_running:
             print("killing Dropbox_Thread")
-            Settings.dropbox_running = False
+            Settings.dropbox_running = False'''
         
  # access variables inside of the UI's file
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
 
-        Settings.init()
+        '''Settings.init()
 
         #load default email
         fh = open("../_temp/save_data.txt", "r") 
@@ -266,7 +266,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.B_spinBox.valueChanged.connect(lambda: self.custom_update())
 
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
-        self.Inject_Code.clicked.connect(lambda: Command.inject_code(self))
+        self.Inject_Code.clicked.connect(lambda: Command.inject_code(self))'''
 
 
         
