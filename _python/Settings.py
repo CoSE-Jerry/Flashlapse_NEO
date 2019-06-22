@@ -2,7 +2,7 @@ import serial
 
 def init():
     global ASD
-    ASD = serial.Serial('/dev/ttyAMA0', 9600)
+    ASD = serial.Serial('/dev/ttyACM0', 9600)
 
     global commands_list
     commands_list = []
@@ -12,7 +12,8 @@ def init():
 
 
 def sendCMD():
-    serial.Serial('/dev/ttyAMA0', 9600).write(bytes(current_CMD, 'UTF-8'))
+    print(current_CMD)
+    serial.Serial('/dev/ttyACM0', 9600).write(bytes(current_CMD, 'UTF-8'))
     
 
     '''global sch_running
