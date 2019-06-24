@@ -248,7 +248,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.motorSpeed_slider.valueChanged.connect(lambda: Commands.motorSliderChange(self))
         self.motorSpeed_slider.sliderReleased.connect(lambda: Commands.motorSliderRelease(self))
 
-        self.clinostatSet_pushButton.clicked.connect(lambda: Commands.clinoStart())
+        self.clinostatSet_pushButton.clicked.connect(lambda: Commands.clinoStart(self))
         
         '''
 

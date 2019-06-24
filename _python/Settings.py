@@ -31,6 +31,9 @@ def init(self):
 
     global test_running
     test_running = False
+
+    global clino_running
+    clino_running = False
     
     global angle_1
     angle_1 = 0
