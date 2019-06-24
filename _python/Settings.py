@@ -121,7 +121,7 @@ def init(self):
       if line[0:6]=='Serial':
         cpuserial = line[10:26]
     f.close()
-    print cpuserial
+    print (cpuserial)
 
     
     '''
