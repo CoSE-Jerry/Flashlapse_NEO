@@ -139,7 +139,7 @@ class Preview(QThread):
     def run(self):
         with PiCamera() as camera:
             camera.zoom = (Settings.AOI_X, Settings.AOI_Y, Settings.AOI_W, Settings.AOI_H)
-            camera.resolution = (2464,2464)
+            camera.resolution = (Settings.x_resolution,Settings.y_resolution)
             
             camera._set_rotation(90*Settings.rotation)
 

@@ -136,6 +136,19 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.image_format = 1
         else:
             Settings.image_format = 0
+
+    def rotate_image(self):
+        try:
+            self.Camera_update()
+            Settings.rotation += 1
+            self.Snap_Thread = Threads.Snap()
+            self.Snap_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
+            self.Snap_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/snapshot.jpg"))
+            self.Snap_Thread.start()
+            
+            
+        except Exception as e:
+            print(e)
         
                 
  # access variables inside of the UI's file
@@ -169,6 +182,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.preview_pushButton.clicked.connect(lambda: self.start_preview())
         self.x_resolution_spinBox.valueChanged.connect(lambda: self.update_resolution())
         self.y_resolution_spinBox.valueChanged.connect(lambda: self.update_resolution())
+        self.rotate_pushButton.clicked.connect(lambda: self.rotate_image())
+
+        
 
         
         

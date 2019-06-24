@@ -1224,6 +1224,9 @@
        </item>
        <item>
         <widget class="QRadioButton" name="PNG_radioButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>.PNG</string>
          </property>
