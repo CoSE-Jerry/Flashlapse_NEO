@@ -87,6 +87,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_snapshot(self):
         try:
+            AOI_update(self)
             self.Snap_Thread = Threads.Snap()
             self.Snap_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
             self.Snap_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/snapshot.jpg"))
@@ -107,7 +108,13 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
-        
+            
+    def AOI_update(self):
+        Settings.AOI_X = self.AOIX_doubleSpinBox.value()
+        Settings.AOI_Y = self.AOIY_doubleSpinBox.value()
+        Settings.AOI_W = self.AOIW_doubleSpinBox.value()
+        Settings.AOI_H = self.AOIH_doubleSpinBox.value()
+                
  # access variables inside of the UI's file
     def __init__(self):
         super(self.__class__, self).__init__()

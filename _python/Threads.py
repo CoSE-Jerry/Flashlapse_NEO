@@ -109,6 +109,7 @@ class Snap(QThread):
 
     def run(self):
         with PiCamera() as camera:
+            camera.zoom = (Settings.AOI_X, Settings.AOI_Y, Settings.AOI_W, Settings.AOI_H)
             camera.resolution = (380,380)
             camera._set_rotation(90*Settings.rotation)
             camera.capture("../_temp/snapshot.jpg")

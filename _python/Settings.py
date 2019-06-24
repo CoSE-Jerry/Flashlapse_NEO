@@ -50,14 +50,14 @@ def init(self):
     global rotation
     rotation = 0
 
-    global AOE_X
-    AOE_X = 0
-    global AOE_Y
-    AOE_Y = 0
-    global AOE_W
-    AOE_W = 0
-    global AOE_H
-    AOE_H = 0
+    global AOI_X
+    AOI_X = 0
+    global AOI_Y
+    AOI_Y = 0
+    global AOI_W
+    AOI_W = 0
+    global AOI_H
+    AOI_H = 0
 
     global livetime
     livetime = 1
