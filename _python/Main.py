@@ -95,6 +95,18 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
+
+    def start_livefeed(self):
+        try:
+            Settings.livetime = liveFeed_spinBox.value()
+            self.livefeed_Thread = Threads.Live()
+            self.livefeed_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
+            self.livefeed_Thread.finished.connect(lambda: UI_Update.imaging_enable(self))
+            self.livefeed_Thread.start()
+            
+            
+        except Exception as e:
+            print(e)
         
  # access variables inside of the UI's file
     def __init__(self):
@@ -123,6 +135,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         self.clinostatSet_pushButton.clicked.connect(lambda: Commands.clinoStart(self))
         self.snapshot_pushButton.clicked.connect(lambda: self.start_snapshot())
+        self.liveFeed_pushButton.clicked.connect(lambda: self.start_livefeed())
+
+        
         
         '''
 

@@ -59,6 +59,9 @@ def init(self):
     global AOE_H
     AOE_H = 0
 
+    global livetime
+    livetime = 1
+
     
     '''global dropbox_running
     dropbox_running = False

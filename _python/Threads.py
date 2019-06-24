@@ -113,6 +113,20 @@ class Snap(QThread):
             camera._set_rotation(90*Settings.rotation)
             camera.capture("../_temp/snapshot.jpg")
 
+class Live(QThread):
+
+    def __init__(self):
+         QThread.__init__(self)
+
+    def __del__(self):
+         self._running = False
+
+    def run(self):
+        with PiCamera() as camera:
+            camera._set_rotation(90*Settings.rotation)
+            camera.start_preview()
+            sleep(Settings.livetime)
+
 '''class Dropbox(QThread):
     def __init__(self):
         QThread.__init__(self)
