@@ -20,10 +20,10 @@ def light_reset(self):
     
     Settings.commands_list.clear()
 
-def send_CMD()
+def send_CMD():
     Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
 
-def disco_run(self)
+def disco_run(self):
     current_CMD ="2~1"
     send_CMD()
 
