@@ -33,19 +33,27 @@ def send_CMD(self,CMD):
         
 
 def disco_run(self):
+    Settings.commands_list.clear()
     current_CMD ="2~0~"+str(self.disco_spinBox.value())+"\n"
+    Settings.commands_list.append(current_CMD)
     send_CMD(self,current_CMD)
 
 def rainbow_run(self):
+    Settings.commands_list.clear()
     current_CMD ="2~1~"+str(self.rainbow_spinBox.value())+"\n"
+    Settings.commands_list.append(current_CMD)
     send_CMD(self,current_CMD)
 
 def sundial_run(self):
-    current_CMD ="2~2~"+str(self.sundial_spinBox.value())+"\n"
+    Settings.commands_list.clear()
+    current_CMD ="2~2~"+str(self.sundial_spinBox.value()*1000)+"\n"
+    Settings.commands_list.append(current_CMD)
     send_CMD(self,current_CMD)
 
-def pluse_run(self):
+def pulse_run(self):
+    Settings.commands_list.clear()
     current_CMD ="2~2~"+str(self.pluse_spinBox.value())+"\n"
+    Settings.commands_list.append(current_CMD)
     send_CMD(self,current_CMD)
 
 '''def full_color_change(self):
