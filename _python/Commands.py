@@ -28,7 +28,7 @@ def clear_lights():
 
 def deploy_lights():
     for x in Settings.commands_list:
-        Commands.send_CMD_ALT(x)
+        send_CMD_ALT(x)
     current_CMD="4\n"
     send_CMD_ALT(current_CMD)
 
