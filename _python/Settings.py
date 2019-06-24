@@ -89,13 +89,13 @@ def init(self):
     date = time.strftime('%m_%d_%Y')
 
     global interval
-    interval = 1
+    interval = 10
 
     global duration
     duration = 1
 
     global total
-    total = 1
+    total = 6
 
     global current
     current = 0
