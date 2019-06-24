@@ -256,6 +256,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Email_lineEdit.textChanged.connect(lambda: self.Email_Change())
         self.emailConfirm_pushButton.clicked.connect(lambda: self.Email_Entered())
         self.emailDefault_pushButton.clicked.connect(lambda: self.Save_Email())
+
+        self.storage_tabWidget.currentChanged.connect(lambda: UI_Update.validate_input(self))
         
 
         
@@ -263,13 +265,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         
         
         '''
-
-        #load default email
-        fh = open("../_temp/save_data.txt", "r") 
-        self.Dropbox_Email.setText(fh.readline())
-        fh.close
-        self.Email_Change()
-        
         
         self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
         self.add_Date.clicked.connect(lambda: self.Add_Date())

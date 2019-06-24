@@ -96,6 +96,9 @@ def init(self):
     global email
     email = ""
 
+    global storage_mode
+    storage_mode = 0
+
     
     '''global dropbox_running
     dropbox_running = False
