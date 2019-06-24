@@ -98,7 +98,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_livefeed(self):
         try:
-            Settings.livetime = liveFeed_spinBox.value()
+            Settings.livetime = self.liveFeed_spinBox.value()
             self.livefeed_Thread = Threads.Live()
             self.livefeed_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
             self.livefeed_Thread.finished.connect(lambda: UI_Update.imaging_enable(self))
