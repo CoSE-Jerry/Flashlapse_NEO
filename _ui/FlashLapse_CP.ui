@@ -1244,7 +1244,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="local_tab">
        <attribute name="title">
@@ -1532,6 +1532,19 @@
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_22">
       <item>
+       <spacer name="verticalSpacer_9">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>40</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QLabel" name="motor_label">
         <property name="text">
          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Rotate Motor&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -1543,12 +1556,18 @@
         <property name="suffix">
          <string> °</string>
         </property>
+        <property name="minimum">
+         <number>-180</number>
+        </property>
+        <property name="maximum">
+         <number>180</number>
+        </property>
        </widget>
       </item>
       <item>
        <widget class="QPushButton" name="motorConfirm_pushButton">
         <property name="text">
-         <string>Start Routines</string>
+         <string>CONFIRM</string>
         </property>
        </widget>
       </item>
