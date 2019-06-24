@@ -8,7 +8,7 @@ import Settings
 
 #import custom functions
 import Commands
-import Thread
+import Threads
 
 #import UI functions
 import UI_Update
@@ -17,8 +17,7 @@ import UI_Update
 '''
 
 #import custom functions
-import Camera
-import Thread'''
+import Camera'''
  
 # import Qt content
 import PyQt5
