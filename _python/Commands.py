@@ -25,7 +25,7 @@ def light_reset(self):
 
 def clear_lights():
     current_CMD="0\n"
-    send_CMD(self,current_CMD)
+    send_CMD(current_CMD)
 
 def send_CMD(self,CMD):
 
