@@ -157,7 +157,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 self.Imaging_Thread.capturing.connect(lambda: UI_Update.imaging_disable(self))
                 self.Imaging_Thread.complete.connect(lambda: UI_Update.update_frame(self,Settings.current_image))
                 self.Imaging_Thread.start()
-            else
+            else:
                 Settings.timelapse_running = False
                 UI_Update.timelapse_enable(self)
             
