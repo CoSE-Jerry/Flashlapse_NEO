@@ -61,12 +61,12 @@ class Schedule(QThread):
     def run(self):
         while Settings.sch_running:
             Commands.reflex_to(Settings.angle_1)
-            for x in range (Settings.delay_1):
+            for x in range (Settings.delay_1*60):
                 sleep(1)
                 if not Settings.sch_running:
                     break
             
-            Commands.reflex_to(Settings.angle_2)
+            Commands.reflex_to(Settings.angle_2*60)
             for x in range (Settings.delay_2):
                 sleep(1)
                 if not Settings.sch_running:

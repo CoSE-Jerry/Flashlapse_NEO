@@ -33,7 +33,10 @@ def deploy_lights():
 def reflex_to(angle):
     current_CMD = "5~"+str(angle)+"\n"
     send_CMD_ALT(current_CMD)
-    print(current_CMD)
+
+def clinoStart():
+    current_CMD = "7\n"
+    send_CMD_ALT(current_CMD)
 
 def send_CMD(self,CMD):
     try:

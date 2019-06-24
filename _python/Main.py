@@ -52,7 +52,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.cycle_running=False
 
 
-    def test_run(self):
+    def schedule_test(self):
         if not Settings.test_running:
             try:
                 Settings.angle_1 = self.rotate1_spinbox.value()
@@ -84,7 +84,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         else:
             UI_Update.schedule_end(self)
             Settings.sch_running=False
-
 
 
        
@@ -222,19 +221,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Live_Complete(self):
         self.Snapshot.setEnabled(True)
         self.Live_Feed.setEnabled(True)
-        self.Live_Feed.setText("Live Feed (30s)")
-
-    def Kill_Theads(self):
-        print(Settings.sch_running)
-        print(Settings.dropbox_running)
-        if Settings.sch_running:
-            print("killing Schedule_Thread")
-            self.Schedule_Thread.terminate()
-            Settings.sch_running = False
-            
-        if Settings.dropbox_running:
-            print("killing Dropbox_Thread")
-            Settings.dropbox_running = False'''
+        self.Live_Feed.setText("Live Feed (30s)")'''
         
  # access variables inside of the UI's file
     def __init__(self):
@@ -256,10 +243,13 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         self.confirmCycle_pushButton.clicked.connect(lambda: self.start_cycle())
         
-        self.schedulerTest_pushButton.clicked.connect(lambda: self.test_run())
+        self.schedulerTest_pushButton.clicked.connect(lambda: self.schedule_test())
         self.schedulerSet_pushButton.clicked.connect(lambda: self.schedule_run())
         self.motorSpeed_slider.valueChanged.connect(lambda: Commands.motorSliderChange(self))
         self.motorSpeed_slider.sliderReleased.connect(lambda: Commands.motorSliderRelease(self))
+
+        self.clinostatSet_pushButton.clicked.connect(lambda: Commands.clinoStart())
+        
         '''
 
         #load default email
