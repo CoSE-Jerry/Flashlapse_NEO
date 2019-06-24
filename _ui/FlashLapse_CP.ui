@@ -77,7 +77,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="lighting_tab">
      <attribute name="title">
@@ -1619,7 +1619,7 @@
       <rect>
        <x>13</x>
        <y>10</y>
-       <width>234</width>
+       <width>211</width>
        <height>111</height>
       </rect>
      </property>
@@ -1634,7 +1634,14 @@
       <item>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="2" column="0">
-         <widget class="QDoubleSpinBox" name="AOIX_doubleSpinBox"/>
+         <widget class="QDoubleSpinBox" name="AOIX_doubleSpinBox">
+          <property name="maximum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="2">
          <widget class="QLabel" name="AOIW_label">
@@ -1644,10 +1651,30 @@
          </widget>
         </item>
         <item row="2" column="2">
-         <widget class="QDoubleSpinBox" name="AOIW_doubleSpinBox"/>
+         <widget class="QDoubleSpinBox" name="AOIW_doubleSpinBox">
+          <property name="maximum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+          <property name="value">
+           <double>1.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="2" column="3">
-         <widget class="QDoubleSpinBox" name="AOIH_doubleSpinBox"/>
+         <widget class="QDoubleSpinBox" name="AOIH_doubleSpinBox">
+          <property name="maximum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+          <property name="value">
+           <double>1.000000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="0">
          <widget class="QLabel" name="AOIX_label">
@@ -1664,7 +1691,14 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QDoubleSpinBox" name="AOIY_doubleSpinBox"/>
+         <widget class="QDoubleSpinBox" name="AOIY_doubleSpinBox">
+          <property name="maximum">
+           <double>1.000000000000000</double>
+          </property>
+          <property name="singleStep">
+           <double>0.100000000000000</double>
+          </property>
+         </widget>
         </item>
         <item row="1" column="3">
          <widget class="QLabel" name="AOIH_label">
