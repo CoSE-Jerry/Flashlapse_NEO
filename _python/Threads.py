@@ -101,13 +101,13 @@ class Test(QThread):
     def run(self):
         while Settings.cycle_running:
             Commands.reflex_to(Settings.angle_1)
-            for x in range 5:
+            for x in range (5):
                 sleep(1)
                 if not Settings.cycle_running:
                     break
             
             Commands.reflex_to(Settings.angle_2)
-            for x in range 5:
+            for x in range (5):
                 sleep(1)
                 if not Settings.cycle_running:
                     break
