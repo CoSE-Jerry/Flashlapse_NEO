@@ -149,6 +149,24 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
+
+    def IST_Edit(self):
+        Settings.sequence_name = self.imageTitle_lineEdit.text()
+        Settings.full_dir = Settings.default_dir + "/" + Settings.sequence_name
+        self.directory_label.setText(Settings.full_dir)
+        
+        if Settings.date not in Settings.sequence_name: 
+            self.addDate_pushButton.setEnabled(True)
+        if(len(Settings.sequence_name) == 0):
+            self.addDate_pushButton.setEnabled(False)
+        UI_Update.validate_input(self)
+
+    def add_date(self):
+        Settings.sequence_name = Settings.sequence_name + "_" + Settings.date
+        self.title_lineEdit.setText(Settings.sequence_name)
+        Settings.full_dir = Settings.default_dir + "/" + Settings.sequence_name
+        self.directory_label.setText(Settings.full_dir)
+        self.addDate_pushButton.setEnabled(False)
         
                 
  # access variables inside of the UI's file
@@ -185,6 +203,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.rotate_pushButton.clicked.connect(lambda: self.rotate_image())
 
         self.motorConfirm_pushButton.clicked.connect(lambda: Commands.motor_rotate(self))
+
+        self.imageTitle_lineEdit.textChanged.connect(lambda: self.IST_Edit())
         
 
         
@@ -201,7 +221,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         
         
         self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
-        self.Rotate.clicked.connect(lambda: self.Start_Rotate())
         self.add_Date.clicked.connect(lambda: self.Add_Date())
         self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
         self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())

@@ -67,6 +67,30 @@ def init(self):
     y_resolution = 2464
     global image_format
     image_format = 0
+    
+    global sequence_name
+    sequence_name = ""
+
+    global default_dir
+    default_dir = "/home/pi/Desktop"
+
+    global full_dir
+    full_dir = ""
+
+    global date
+    date = time.strftime('%m_%d_%Y')
+
+    global interval
+    interval = 1
+
+    global duration
+    duration = 1
+
+    global total
+    total = 1
+
+    global current
+    current = 0
 
     
     '''global dropbox_running
@@ -74,8 +98,7 @@ def init(self):
     
     
 
-    global sequence_name
-    sequence_name = ""
+
     global email
     email = ""
     global file_list

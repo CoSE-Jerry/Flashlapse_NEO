@@ -45,6 +45,14 @@ def update_frame(self,file):
     self.Misc_Frame.setEnabled(True)
     temp_img = PyQt5.QtGui.QImage(file)
     self.Image_Frame.setPixmap(QtGui.QPixmap(temp_img))
+
+def validate_input(self):
+    Settings.total = int(Settings.duration/Settings.interval)
+    if(Settings.total>0 and len(Settings.sequence_name)!=0):
+        self.startRoutines_pushButton.setEnabled(True)
+    else:
+        self.startRoutines_pushButton.setEnabled(False)
+    self.Progress_Label.setText("Progress: "+str(Settings.current) + "/" + str(Settings.total))
     
 
 '''def check_stat(self):
