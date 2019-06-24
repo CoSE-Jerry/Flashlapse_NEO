@@ -7,7 +7,7 @@ def light_confirm(self):
     Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
 
 def light_reset(self):
-    current_CMD="1~0~57~0~0~0~50"
+    current_CMD="0"
     Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
 
     self.R_spinBox.setValue(0)
@@ -15,7 +15,7 @@ def light_reset(self):
     self.B_spinBox.setValue(0)
     self.Start_spinBox.setValue(0)
     self.End_spinBox.setValue(1)
-    self.BRT_spinBox.setValue(50)
+    self.BRT_spinBox.setValue(20)
     
     Settings.commands_list.clear()
 
