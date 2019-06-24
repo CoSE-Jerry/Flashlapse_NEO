@@ -1158,7 +1158,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Motor RPM: 5.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+       <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Motor RPM: 5.0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
       </property>
      </widget>
      <widget class="QSlider" name="motorSpeed_slider">
@@ -1174,7 +1174,7 @@
        <cursorShape>OpenHandCursor</cursorShape>
       </property>
       <property name="minimum">
-       <number>0</number>
+       <number>10</number>
       </property>
       <property name="maximum">
        <number>100</number>

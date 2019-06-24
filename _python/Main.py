@@ -283,8 +283,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         self.schedulerTest_pushButton.clicked.connect(lambda: self.test_run())
         self.motorSpeed_slider.valueChanged.connect(lambda: Commands.motorSliderChange(self))
-        
-
+        self.motorSpeed_slider.sliderReleased.connect(lambda: Commands.motorSliderRelease(self))
         '''
 
         #load default email
