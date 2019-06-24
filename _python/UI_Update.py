@@ -59,7 +59,7 @@ def update_frame(self,file):
     self.Image_Frame.setPixmap(QtGui.QPixmap(temp_img))
 
 def validate_input(self):
-    Settings.total = int(Settings.duration/Settings.interval)
+    Settings.total = int((Settings.duration*60)/Settings.interval)
     if(Settings.total>0 and len(Settings.sequence_name)!=0):
         self.startRoutines_pushButton.setEnabled(True)
     else:
