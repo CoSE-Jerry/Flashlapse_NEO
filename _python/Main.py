@@ -229,7 +229,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def __init__(self):
         super(self.__class__, self).__init__()
         self.setupUi(self) # gets defined in the UI file
-        Settings.init()
+        Settings.init(self)
         
         
         self.Start_spinBox.valueChanged.connect(lambda: UI_Update.LED_validate(self))

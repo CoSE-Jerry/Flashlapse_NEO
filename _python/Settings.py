@@ -1,6 +1,6 @@
 import serial
 
-def init():
+def init(self):
 
     global base_Connected
     base_Connected = True
@@ -10,7 +10,7 @@ def init():
         ASD = serial.Serial('/dev/ttyACM0', 9600)
     
     except:
-        base_Connected =False
+        UI_Update.desync(self)
     
 
     global commands_list
