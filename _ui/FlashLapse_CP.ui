@@ -77,7 +77,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="lighting_tab">
      <attribute name="title">
@@ -1244,7 +1244,7 @@
        </rect>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="local_tab">
        <attribute name="title">
@@ -1734,6 +1734,9 @@
      </layout>
     </widget>
     <widget class="QPushButton" name="startRoutines_pushButton">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>160</x>
@@ -1743,7 +1746,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Start Routines</string>
+      <string>Start Local Image Sequence</string>
      </property>
     </widget>
    </widget>

@@ -674,6 +674,7 @@ class Ui_MainWindow(object):
         self.gridLayout_3.addWidget(self.AOIW_doubleSpinBox, 6, 0, 1, 1)
         self.verticalLayout_12.addLayout(self.gridLayout_3)
         self.startRoutines_pushButton = QtWidgets.QPushButton(self.Misc_Frame)
+        self.startRoutines_pushButton.setEnabled(False)
         self.startRoutines_pushButton.setGeometry(QtCore.QRect(160, 150, 211, 61))
         self.startRoutines_pushButton.setObjectName("startRoutines_pushButton")
         MainWindow.setCentralWidget(self.centralwidget)
@@ -689,9 +690,9 @@ class Ui_MainWindow(object):
         self.actionCreate_Timelapse.setObjectName("actionCreate_Timelapse")
 
         self.retranslateUi(MainWindow)
-        self.Control_Tab.setCurrentIndex(2)
+        self.Control_Tab.setCurrentIndex(0)
         self.motion_tabWidget.setCurrentIndex(0)
-        self.storage_tabWidget.setCurrentIndex(1)
+        self.storage_tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -780,7 +781,7 @@ class Ui_MainWindow(object):
         self.AOIY_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Y</span></p></body></html>"))
         self.AOIH_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">H</span></p></body></html>"))
         self.AOIW_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">W</span></p></body></html>"))
-        self.startRoutines_pushButton.setText(_translate("MainWindow", "Start Routines"))
+        self.startRoutines_pushButton.setText(_translate("MainWindow", "Start Local Image Sequence"))
         self.actionOpen_Directory.setText(_translate("MainWindow", "Open Directory"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionCreate_Timelapse.setText(_translate("MainWindow", "Create Timelapse"))
