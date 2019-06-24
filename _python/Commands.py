@@ -1,4 +1,5 @@
 import Settings
+import UI_Update
 import PyQt5
 from PyQt5 import QtCore, QtGui, QtWidgets
 from time import sleep
@@ -28,10 +29,8 @@ def send_CMD(self,CMD):
         Settings.ASD.write(bytes(CMD, 'UTF-8'))
     
     except:
-        error_img = PyQt5.QtGui.QImage("../_image/Error.png")
-        self.Image_Frame.setPixmap(QtGui.QPixmap(error_img))
-        self.Control_Tab.setEnabled(False)
-        self.Misc_Frame.setEnabled(False)
+        UI_Update.desync(self)
+        
 
 def disco_run(self):
     current_CMD ="2~1\n"

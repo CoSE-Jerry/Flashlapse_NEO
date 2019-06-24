@@ -8,6 +8,12 @@ def LED_validate(self):
     else:
         self.lightConfirm_pushButton.setEnabled(True)
 
+def desync(self);
+    error_img = PyQt5.QtGui.QImage("../_image/Error.png")
+    self.Image_Frame.setPixmap(QtGui.QPixmap(error_img))
+    self.Control_Tab.setEnabled(False)
+    self.Misc_Frame.setEnabled(False)
+
 '''def check_stat(self):
     return self.Start_Schedule.isEnabled()
 

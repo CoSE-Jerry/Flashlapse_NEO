@@ -3,7 +3,6 @@ import serial
 def init():
 
     global base_Connected
-    
     base_Connected = True
 
     try:
