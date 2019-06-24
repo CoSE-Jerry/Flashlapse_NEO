@@ -109,6 +109,19 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_5">
         <item>
+         <spacer name="verticalSpacer_7">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>20</width>
+            <height>40</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
          <widget class="QLabel" name="powerCycle_label">
           <property name="text">
            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Power Cycle&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
@@ -276,6 +289,9 @@
          <widget class="QSpinBox" name="sundial_spinBox">
           <property name="suffix">
            <string> s</string>
+          </property>
+          <property name="minimum">
+           <number>1</number>
           </property>
           <property name="maximum">
            <number>999</number>

@@ -33,6 +33,20 @@ date = time.strftime('%m_%d_%Y')
 # create class for Raspberry Pi GUI
 class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
+    def start_cycle(self):
+    if not Settings.cycle_running:
+        try:
+            Settings.cycle_time = self.powerCycle_spinBox.value()
+            self.Cycle_Thread = Threads.Cycle()
+            self.Cycle_Thread.started.connect(lambda: UI_Update.cycle_start(self))
+            self.Cycle_Thread.finished.connect(lambda: UI_Update.cycle_end(self))
+            self.Cycle_Thread.start()
+            
+        except Exception as e:
+            print(e)
+    else:
+        Settings.cycle_running = False
+
     '''def Start_Snapshot(self):
         try:
             sch_ready= UI_Update_General.check_stat(self)
@@ -242,6 +256,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.rainbow_pushButton.clicked.connect(lambda: Commands.rainbow_run(self))
         self.sundial_pushButton.clicked.connect(lambda: Commands.sundial_run(self))
         self.pulse_pushButton.clicked.connect(lambda: Commands.pulse_run(self))
+
+        self.confirmCycle_pushButton.clicked.connect(lambda: self.start_cycle())
 
         '''
 

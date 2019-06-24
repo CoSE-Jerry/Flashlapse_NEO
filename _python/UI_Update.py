@@ -14,6 +14,14 @@ def desync(self):
     self.Control_Tab.setEnabled(False)
     self.Misc_Frame.setEnabled(False)
 
+def cycle_start(self):
+    self.confirmCycle_pushButton.setText("TERMINATE CYCLE")
+    Settings.cycle_running = True
+
+def cycle_end(self):
+    self.confirmCycle_pushButton.setText("CONFIRM")
+    Settings.cycle_running = False
+
 '''def check_stat(self):
     return self.Start_Schedule.isEnabled()
 

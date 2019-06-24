@@ -20,6 +20,12 @@ def init(self):
     global current_CMD
     current_CMD = ""
 
+    global cycle_running
+    cycle_running = False
+
+    global cycle_time
+    cycle_time =60
+
     '''global sch_running
     sch_running = False
     global dropbox_running

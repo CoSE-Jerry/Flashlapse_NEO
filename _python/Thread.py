@@ -1,4 +1,5 @@
 import Settings
+import Commands
 import os
 import sys
 import subprocess
@@ -12,8 +13,38 @@ from PyQt5.QtCore import QThread
 from picamera import PiCamera
 
 
-#QThread for schedule function
-class Schedule(QThread):
+
+class Cycle(QThread):
+
+    def __init__(self):
+        QThread.__init__(self)
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        
+        Commands.clear_lights()
+        sleep(1)
+        for x in Settings.commands_list:
+            Commands.sendCMD(x)
+        
+        while True:
+            for x in range(Settings.cycle_time):
+                sleep(1)
+                
+                if not Settings.cycle_running:
+                    break
+                
+            Commands.clear_lights()
+            
+            for x in range(Settings.cycle_time):
+                sleep(1)
+                
+                if not Settings.cycle_running:
+                    break
+
+'''class Schedule(QThread):
 
     captured = QtCore.pyqtSignal()
     
@@ -122,4 +153,4 @@ class Email(QThread):
         server.login(Email.user, Email.password)
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text)
-        Settings.email_running = False
+        Settings.email_running = False'''

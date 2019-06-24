@@ -23,6 +23,10 @@ def light_reset(self):
     
     Settings.commands_list.clear()
 
+def clear_lights():
+    current_CMD="0\n"
+    send_CMD(self,current_CMD)
+
 def send_CMD(self,CMD):
 
     try:
@@ -30,8 +34,11 @@ def send_CMD(self,CMD):
     
     except:
         UI_Update.desync(self)
-        
 
+def send_CMD(CMD):
+
+        Settings.ASD.write(bytes(CMD, 'UTF-8'))
+        
 def disco_run(self):
     Settings.commands_list.clear()
     current_CMD ="2~0~"+str(self.disco_spinBox.value())+"\n"
