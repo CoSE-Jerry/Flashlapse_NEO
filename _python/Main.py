@@ -78,13 +78,12 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 
                 self.Schedule_Thread = Threads.Schedule()
                 self.Schedule_Thread.started.connect(lambda: UI_Update.schedule_start(self))
-                self.Schedule_Thread.finished.connect(lambda: UI_Update.schedule_end(self))
                 self.Schedule_Thread.start()
             except Exception as e:
                 print(e)
         else:
-            UI_Update.test_end(self)
-            Settings.test_running=False
+            UI_Update.schedule_end(self)
+            Settings.sch_running=False
 
 
 
