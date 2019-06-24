@@ -1,8 +1,14 @@
 import Settings
 import PyQt5
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-def check_stat(self):
+
+def LED_validate(self):
+    if(self.Start_spinBox.value()>=self.End_spinBox.value()):
+        self.light_Confirm_pushButton.setEnabled(False)
+    else:
+        self.light_Confirm_pushButton.setEnabled(True)
+
+'''def check_stat(self):
     return self.Start_Schedule.isEnabled()
 
 def schedule_disable(self):
@@ -32,4 +38,4 @@ def snap_enable(self,sch_flip):
     self.Snapshot.setEnabled(True)
     self.Live_Feed.setEnabled(True)
     if sch_flip:
-        self.Start_Schedule.setEnabled(True)
+        self.Start_Schedule.setEnabled(True)'''

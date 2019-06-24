@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'FlashLapse_CP.ui'
 #
-# Created by: PyQt5 UI code generator 5.12.2
+# Created by: PyQt5 UI code generator 5.12.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -117,7 +117,7 @@ class Ui_MainWindow(object):
         self.Start_label.setObjectName("Start_label")
         self.verticalLayout_18.addWidget(self.Start_label)
         self.Start_spinBox = QtWidgets.QSpinBox(self.horizontalLayoutWidget_4)
-        self.Start_spinBox.setMaximum(33)
+        self.Start_spinBox.setMaximum(58)
         self.Start_spinBox.setObjectName("Start_spinBox")
         self.verticalLayout_18.addWidget(self.Start_spinBox)
         self.horizontalLayout_5.addLayout(self.verticalLayout_18)
@@ -128,7 +128,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_19.addWidget(self.End_label)
         self.End_spinBox = QtWidgets.QSpinBox(self.horizontalLayoutWidget_4)
         self.End_spinBox.setMinimum(1)
-        self.End_spinBox.setMaximum(57)
+        self.End_spinBox.setMaximum(58)
         self.End_spinBox.setObjectName("End_spinBox")
         self.verticalLayout_19.addWidget(self.End_spinBox)
         self.horizontalLayout_5.addLayout(self.verticalLayout_19)
@@ -382,6 +382,7 @@ class Ui_MainWindow(object):
         self.clinostatImaging_label.setObjectName("clinostatImaging_label")
         self.verticalLayout_8.addWidget(self.clinostatImaging_label)
         self.ClinostatImaging_spinbox = QtWidgets.QSpinBox(self.verticalLayoutWidget_11)
+        self.ClinostatImaging_spinbox.setMinimum(1)
         self.ClinostatImaging_spinbox.setMaximum(99999)
         self.ClinostatImaging_spinbox.setDisplayIntegerBase(10)
         self.ClinostatImaging_spinbox.setObjectName("ClinostatImaging_spinbox")
@@ -702,11 +703,17 @@ class Ui_MainWindow(object):
         self.Address_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">LED Address</span></p></body></html>"))
         self.color_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Color Setting</span></p></body></html>"))
         self.Start_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Start LED:</span></p></body></html>"))
+        self.Start_spinBox.setPrefix(_translate("MainWindow", "# "))
         self.End_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">End LED:</span></p></body></html>"))
+        self.End_spinBox.setPrefix(_translate("MainWindow", "# "))
         self.BRT_lable.setText(_translate("MainWindow", "<html><head/><body><p><span style=\" font-weight:600;\">Brightness:</span></p></body></html>"))
+        self.BRT_spinBox.setSuffix(_translate("MainWindow", " %"))
         self.G_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Green:</span></p></body></html>"))
+        self.R_spinBox.setSuffix(_translate("MainWindow", " %"))
+        self.G_spinBox.setSuffix(_translate("MainWindow", " %"))
         self.R_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Red:</span></p></body></html>"))
         self.B_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Blue:</span></p></body></html>"))
+        self.B_spinBox.setSuffix(_translate("MainWindow", " %"))
         self.lightConfirm_pushButton.setText(_translate("MainWindow", "CONFIRM"))
         self.lightReset_pushButton.setText(_translate("MainWindow", "RESET"))
         self.Control_Tab.setTabText(self.Control_Tab.indexOf(self.lighting_tab), _translate("MainWindow", "Lighting"))
@@ -776,6 +783,7 @@ class Ui_MainWindow(object):
         self.AOIH_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">H</span></p></body></html>"))
         self.AOI_pushButton.setText(_translate("MainWindow", "Confirm"))
         self.motor_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Rotate Motor</span></p></body></html>"))
+        self.motor_spinBox.setSuffix(_translate("MainWindow", " °"))
         self.motorConfirm_pushButton.setText(_translate("MainWindow", "Start Routines"))
         self.actionOpen_Directory.setText(_translate("MainWindow", "Open Directory"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))

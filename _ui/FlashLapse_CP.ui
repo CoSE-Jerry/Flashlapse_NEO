@@ -291,8 +291,11 @@
           </item>
           <item>
            <widget class="QSpinBox" name="Start_spinBox">
+            <property name="prefix">
+             <string># </string>
+            </property>
             <property name="maximum">
-             <number>33</number>
+             <number>58</number>
             </property>
            </widget>
           </item>
@@ -309,11 +312,14 @@
           </item>
           <item>
            <widget class="QSpinBox" name="End_spinBox">
+            <property name="prefix">
+             <string># </string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
             <property name="maximum">
-             <number>57</number>
+             <number>58</number>
             </property>
            </widget>
           </item>
@@ -333,6 +339,9 @@
           </item>
           <item>
            <widget class="QSpinBox" name="BRT_spinBox">
+            <property name="suffix">
+             <string> %</string>
+            </property>
             <property name="minimum">
              <number>1</number>
             </property>
@@ -367,6 +376,9 @@
         </item>
         <item row="0" column="1">
          <widget class="QSpinBox" name="R_spinBox">
+          <property name="suffix">
+           <string> %</string>
+          </property>
           <property name="maximum">
            <number>100</number>
           </property>
@@ -374,6 +386,9 @@
         </item>
         <item row="0" column="3">
          <widget class="QSpinBox" name="G_spinBox">
+          <property name="suffix">
+           <string> %</string>
+          </property>
           <property name="maximum">
            <number>100</number>
           </property>
@@ -395,6 +410,9 @@
         </item>
         <item row="0" column="5">
          <widget class="QSpinBox" name="B_spinBox">
+          <property name="suffix">
+           <string> %</string>
+          </property>
           <property name="maximum">
            <number>100</number>
           </property>
@@ -949,6 +967,9 @@
            </property>
            <property name="prefix">
             <string>EVERY </string>
+           </property>
+           <property name="minimum">
+            <number>1</number>
            </property>
            <property name="maximum">
             <number>99999</number>
@@ -1637,7 +1658,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QSpinBox" name="motor_spinBox"/>
+      <widget class="QSpinBox" name="motor_spinBox">
+       <property name="suffix">
+        <string> °</string>
+       </property>
+      </widget>
      </item>
      <item>
       <widget class="QPushButton" name="motorConfirm_pushButton">
