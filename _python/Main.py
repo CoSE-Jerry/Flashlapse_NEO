@@ -2,6 +2,7 @@
 import sys
 import time
 import os
+import re
 
 #import settings
 import Settings
