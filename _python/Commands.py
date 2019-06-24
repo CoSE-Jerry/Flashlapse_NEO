@@ -21,14 +21,17 @@ def light_reset(self):
     Settings.commands_list.clear()
 
 def send_CMD(CMD):
-    Settings.ASD.write(bytes(CMD, 'UTF-8'))
+
+    try:
+        Settings.ASD.write(bytes(CMD, 'UTF-8'))
+    
+    except:
+        base_Connected = False
+    
 
 def disco_run(self):
     current_CMD ="2~1\n"
     send_CMD(current_CMD)
-
-def send_CMD(CMD):
-    Settings.ASD.write(bytes(CMD, 'UTF-8'))
 
 '''def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
