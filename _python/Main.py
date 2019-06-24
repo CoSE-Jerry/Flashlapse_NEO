@@ -114,9 +114,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Camera_update()
             self.Preview_Thread = Threads.Preview()
             self.Preview_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
-            if(Settings.image_format)
+            if(Settings.image_format):
                 self.Preview_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/preview.jpg"))
-            else
+            else:
                 self.Preview_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/preview.png"))
             self.Preview_Thread.start()
             

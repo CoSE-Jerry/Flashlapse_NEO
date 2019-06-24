@@ -141,9 +141,9 @@ class Preview(QThread):
             camera.zoom = (Settings.AOI_X, Settings.AOI_Y, Settings.AOI_W, Settings.AOI_H)
             camera.resolution = (380,380)
             camera._set_rotation(90*Settings.rotation)
-            if(Settings.image_format)
+            if(Settings.image_format):
                 camera.capture("../_temp/preview.jpg")
-            else
+            else:
                 camera.capture("../_temp/preview.png")
 
 class Preview(QThread):
