@@ -9,8 +9,10 @@ import Settings
 #import custom functions
 import Commands
 
-'''#import UI functions
-import UI_Update_General
+#import UI functions
+import UI_Update
+
+'''
 
 #import custom functions
 import Camera
