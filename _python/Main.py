@@ -237,9 +237,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         self.lightConfirm_pushButton.clicked.connect(lambda: Commands.light_confirm(self))
         self.lightReset_pushButton.clicked.connect(lambda: Commands.light_reset(self))
-        self.disco_pushButton.clicked.connect(lambda: Commands.disco_run(self))
-
         
+        self.disco_pushButton.clicked.connect(lambda: Commands.disco_run(self))
+        self.rainbow_pushButton.clicked.connect(lambda: Commands.rainbow_run(self))
+        self.sundial_pushButton.clicked.connect(lambda: Commands.sundial_run(self))
+        self.pulse_pushButton.clicked.connect(lambda: Commands.pulse_run(self))
 
         '''
 
