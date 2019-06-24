@@ -99,7 +99,7 @@ class Test(QThread):
         self._running = False
        
     def run(self):
-        while Settings.cycle_running:
+        while Settings.test_running:
             Commands.reflex_to(Settings.angle_1)
             for x in range (5):
                 sleep(1)

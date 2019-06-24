@@ -62,6 +62,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 self.Test_Thread.started.connect(lambda: UI_Update.test_start(self))
                 self.Test_Thread.finished.connect(lambda: UI_Update.test_end(self))
                 self.Test_Thread.start()
+                print(test)
             except Exception as e:
                 print(e)
         else:
