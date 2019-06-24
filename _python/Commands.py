@@ -34,7 +34,7 @@ def reflex_to(angle):
     current_CMD = "5~"+str(angle)+"\n"
     send_CMD_ALT(current_CMD)
 
-def clinoStart(slef):
+def clinoStart(self):
     if not Settings.clino_running:
         Settings.clino_running = True
         current_CMD = "7\n"
