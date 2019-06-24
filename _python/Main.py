@@ -275,7 +275,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.emailDefault_pushButton.clicked.connect(lambda: self.Save_Email())
 
         self.storage_tabWidget.currentChanged.connect(lambda: UI_Update.validate_input(self))
-        self.startRoutines_pushButton.connect(lambda: self.start_sequence())
+        self.startRoutines_pushButton.clicked.connect(lambda: self.start_sequence())
         
 
         
