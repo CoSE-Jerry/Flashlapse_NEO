@@ -35,14 +35,14 @@ def reflex_to(angle):
     send_CMD_ALT(current_CMD)
 
 def clinoStart(slef):
-    if not clino_running:
-        clino_running = True
+    if not Settings.clino_running:
+        Settings.clino_running = True
         current_CMD = "7\n"
         send_CMD_ALT(current_CMD)
         self.clinostatSet_pushButton.setText("Stop Clinostat")
         
     else:
-        clino_running = False
+        Settings.clino_running = False
         current_CMD = "\n"
         send_CMD_ALT(current_CMD)
         self.clinostatSet_pushButton.setText("Set Clinostat")
