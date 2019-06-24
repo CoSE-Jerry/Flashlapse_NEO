@@ -93,6 +93,9 @@ def init(self):
     global current
     current = 0
 
+    global email
+    email = ""
+
     
     '''global dropbox_running
     dropbox_running = False

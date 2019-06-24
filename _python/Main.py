@@ -183,6 +183,28 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             Settings.full_dir = m_directory +"/"+ Settings.sequence_name
             self.directory_label.setText(Settings.full_dir)
         UI_Update.validate_input(self)
+
+    def Email_Change(self):
+        valid = None
+        if (len(self.Dropbox_Email.text())) > 7:
+            valid = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.Dropbox_Email.text())
+        if (valid != None):
+            self.emailConfirm_pushButton.setEnabled(True)
+        else:
+            self.emailConfirm_pushButton.setEnabled(False)
+            self.emailDefault_pushButton.setEnabled(False)
+
+    def Email_Entered(self):
+        Settings.email = self.Email_lineEdit.text()
+        self.emailDefault_pushButton.setEnabled(True)
+        UI_Update_General.schedule_update(self)
+
+    def Save_Email(self):
+        open("../_temp/save_data.txt", "w").close()
+
+        file = open("../_temp/save_data.txt","w") 
+        file.write(Settings.email)  
+        file.close()
         
                 
  # access variables inside of the UI's file
@@ -225,6 +247,10 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.ImageInterval_spinBox.valueChanged.connect(lambda: self.ICI_Change())
         self.imageDuration_spinBox.valueChanged.connect(lambda: self.ISD_Change())
         self.directory_pushButton.clicked.connect(lambda: self.select_directory())
+
+        self.Email_lineEdit.textChanged.connect(lambda: self.Email_Change())
+        self.emailConfirm_pushButton.clicked.connect(lambda: self.Email_Entered())
+        self.emailDefault_pushButton.clicked.connect(lambda: self.Save_Email())
         
 
         
