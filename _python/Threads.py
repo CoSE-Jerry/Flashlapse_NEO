@@ -99,11 +99,18 @@ class Test(QThread):
         self._running = False
        
     def run(self):
-        while True:
+        while Settings.cycle_running:
             Commands.reflex_to(Settings.angle_1)
-            sleep(5)
+            for x in range 5:
+                sleep(1)
+                if not Settings.cycle_running:
+                    break
+            
             Commands.reflex_to(Settings.angle_2)
-            sleep(5)
+            for x in range 5:
+                sleep(1)
+                if not Settings.cycle_running:
+                    break
 
 '''class Dropbox(QThread):
     def __init__(self):
