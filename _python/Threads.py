@@ -183,6 +183,32 @@ class Image(QThread):
                     break
             if not Settings.timelapse_running:
                 break
+
+class Dropbox(QThread):
+    
+    def __init__(self):
+        QThread.__init__(self)
+        Settings.dropbox_running = True
+
+    def __del__(self):
+        self._running = False
+
+    def run(self):  
+        os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /" + Settings.cpuserial)
+        os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /" + Settings.cpuserial+"/"+Settings.sequence_name)
+        Settings.link = str(subprocess.check_output("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /" + Settings.cpuserial, shell=True))
+        Settings.link = Settings.link.replace("b' > ", "")
+        Settings.link = Settings.link.split("\\")[0]
+        count = 0
+        while (count<Settings.total-1):
+            if (len(Settings.file_list) > 0):
+                os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + file_list[0] + " /"+Settings.cpuserial+"/"+Settings.sequence_name)
+                os.system("rm " + file_list[0])
+                del file_list[0]
+                count+=1
+            if not Settings.dropbox_running:
+                break
+            
             
         
 '''

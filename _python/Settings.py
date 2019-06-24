@@ -123,15 +123,5 @@ def init(self):
     f.close()
     print (cpuserial)
 
-    
-    '''
-    
-    global file_list
-    file_list = []
     global link
     link = ""
-    global file
-    file = ""
-
-    global current_image
-    current_image = "" '''

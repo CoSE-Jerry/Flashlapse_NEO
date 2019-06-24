@@ -166,7 +166,14 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         except Exception as e:
             print(e)
             
-        #if(Settings.storage_mode):
+        if(Settings.storage_mode):
+            try:
+                self.Dropbox_Thread = Threads.Dropbox()
+                self.Dropbox_Thread.start()
+
+            except Exception as e:
+                print(e)
+            
     
 
     def IST_Edit(self):
