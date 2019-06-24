@@ -22,7 +22,6 @@ class Cycle(QThread):
 
     def __del__(self):
         self._running = False
-        Settings.test_running = False
 
     def run(self):
         
@@ -96,6 +95,8 @@ class Test(QThread):
             for x in range (5):
                 sleep(1)
                 if not Settings.cycle_running:
+                    break
+            if not Settings.cycle_running:
                     break
 
 '''class Dropbox(QThread):
