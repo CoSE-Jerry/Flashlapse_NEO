@@ -781,7 +781,7 @@ class Ui_MainWindow(object):
         self.AOIY_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">Y</span></p></body></html>"))
         self.AOIH_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">H</span></p></body></html>"))
         self.AOIW_label.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\"><span style=\" font-weight:600;\">W</span></p></body></html>"))
-        self.startRoutines_pushButton.setText(_translate("MainWindow", "Start Local Image Sequence"))
+        self.startRoutines_pushButton.setText(_translate("MainWindow", "Start LOCAL Image Sequence"))
         self.actionOpen_Directory.setText(_translate("MainWindow", "Open Directory"))
         self.actionExit.setText(_translate("MainWindow", "Exit"))
         self.actionCreate_Timelapse.setText(_translate("MainWindow", "Create Timelapse"))

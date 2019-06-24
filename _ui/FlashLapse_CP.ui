@@ -1746,7 +1746,7 @@
       </rect>
      </property>
      <property name="text">
-      <string>Start Local Image Sequence</string>
+      <string>Start LOCAL Image Sequence</string>
      </property>
     </widget>
    </widget>
