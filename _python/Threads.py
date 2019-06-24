@@ -200,7 +200,7 @@ class Dropbox(QThread):
         Settings.link = Settings.link.replace("b' > ", "")
         Settings.link = Settings.link.split("\\")[0]
         count = 0
-        while (count<Settings.total-1):
+        while (count<Settings.total):
             if (len(Settings.file_list) > 0):
                 os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + Settings.file_list[0] + " /"+Settings.cpuserial+"/"+Settings.sequence_name)
                 os.system("rm " + Settings.file_list[0])
