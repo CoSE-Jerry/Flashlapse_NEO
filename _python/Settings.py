@@ -1,8 +1,18 @@
 import serial
 
 def init():
-    global ASD
-    ASD = serial.Serial('/dev/ttyACM0', 9600)
+
+    global base_Connected
+    
+    base_Connected = True
+
+    try:
+        global ASD
+        ASD = serial.Serial('/dev/ttyACM0', 9600)
+    
+    except:
+        base_Connected =False
+    
 
     global commands_list
     commands_list = []
