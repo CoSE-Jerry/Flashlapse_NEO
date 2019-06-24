@@ -184,6 +184,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.y_resolution_spinBox.valueChanged.connect(lambda: self.update_resolution())
         self.rotate_pushButton.clicked.connect(lambda: self.rotate_image())
 
+        self.motorConfirm_pushButton.clicked.connect(lambda: Commands.motor_rotate())
+        
+
         
 
         
