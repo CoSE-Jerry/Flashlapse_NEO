@@ -52,7 +52,7 @@ def sundial_run(self):
 
 def pulse_run(self):
     Settings.commands_list.clear()
-    current_CMD ="2~2~"+str(self.pluse_spinBox.value())+"\n"
+    current_CMD ="2~2~"+str(self.pulse_spinBox.value())+"\n"
     Settings.commands_list.append(current_CMD)
     send_CMD(self,current_CMD)
 
