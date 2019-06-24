@@ -25,7 +25,7 @@ def cycle_end(self):
 def test_start(self):
     self.confirmCycle_pushButton.setText("TERMINATE TEST")
 
-def cycle_end(self):
+def test_end(self):
     self.confirmCycle_pushButton.setText("Test Run")
     
 
