@@ -198,7 +198,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def Email_Entered(self):
         Settings.email = self.Email_lineEdit.text()
         self.emailDefault_pushButton.setEnabled(True)
-        UI_Update_General.schedule_update(self)
 
     def Save_Email(self):
         open("../_temp/save_data.txt", "w").close()
