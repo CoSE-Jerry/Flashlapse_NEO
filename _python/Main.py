@@ -147,6 +147,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_sequence(self):
         Settings.file = Settings.full_dir + "_%04d.jpg"
+        print(Settings.file)
         try:
             if not Settings.timelapse_running:
                 self.Camera_update()
