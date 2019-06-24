@@ -148,7 +148,43 @@ class Preview(QThread):
             else:
                 camera.capture("../_temp/preview.png")
 
-'''class Dropbox(QThread):
+class Image(QThread):
+    capturing = QtCore.pyqtSignal()
+    complete = QtCore.pyqtSignal()
+    def __init__(self):
+        QThread.__init__(self)
+        Settings.timelapse_running = True
+        
+    def __del__(self):
+        self._running = False
+
+    def run(self):
+        if(not os.path.isdir(Settings.full_dir)):
+            os.mkdir(Settings.full_dir)
+        for i in range(Settings.total):
+            Settings.current = i
+            sleep(0.2)
+            Settings.current_image = file % i
+            self.capturing.emit()
+            with PiCamera() as camera:
+                sleep(0.8)
+                camera.zoom = (Settings.AOI_X, Settings.AOI_Y, Settings.AOI_W, Settings.AOI_H)
+                camera.resolution = (Settings.x_resolution,Settings.y_resolution)
+                camera._set_rotation(90*Settings.rotation)
+                camera.capture(Settings.current_image)
+            self.complete.emit()
+            Settings.file_list.append(Settings.current_image)
+
+            for x in range(Settings.interval-1):
+                sleep(1)
+                if not Settings.timelapse_running:
+                    break
+            if not Settings.timelapse_running:
+                break
+            
+        
+'''
+class Dropbox(QThread):
     def __init__(self):
         QThread.__init__(self)
         os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /MECHSTIM/" + Settings.sequence_name)

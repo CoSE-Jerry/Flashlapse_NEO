@@ -41,6 +41,18 @@ def imaging_disable(self):
 def imaging_enable(self):
     self.Misc_Frame.setEnabled(True)
 
+def timelapse_disable(self):
+    if(Settings.storage_mode):
+        self.startRoutines_pushButton.setText("End CLOUD Image Sequence")
+    else:
+        self.startRoutines_pushButton.setText("End LOCAL Image Sequence")
+
+def timelapse_enable(self):
+    if(Settings.storage_mode):
+        self.startRoutines_pushButton.setText("Start CLOUD Image Sequence")
+    else:
+        self.startRoutines_pushButton.setText("Start LOCAL Image Sequence")
+
 def update_frame(self,file):
     self.Misc_Frame.setEnabled(True)
     temp_img = PyQt5.QtGui.QImage(file)

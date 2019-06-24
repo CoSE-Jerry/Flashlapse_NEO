@@ -115,10 +115,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             self.Camera_update()
             self.Preview_Thread = Threads.Preview()
             self.Preview_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
-            if(Settings.image_format):
-                self.Preview_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/preview.jpg"))
-            else:
-                self.Preview_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/preview.png"))
+            self.Preview_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/preview.jpg"))
             self.Preview_Thread.start()
             
         except Exception as e:
@@ -133,10 +130,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         Settings.x_resolution=self.x_resolution_spinBox.value()
         Settings.y_resolution=self.y_resolution_spinBox.value()
 
-        if(self.JPG_radioButton.isChecked()):
-            Settings.image_format = 1
-        else:
-            Settings.image_format = 0
+
 
     def rotate_image(self):
         try:
@@ -150,6 +144,28 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
+
+    def start_sequence(self):
+        Settings.file = Settings.full_dir + "_%04d.jpg"
+        try:
+            if not Settings.timelapse_running:
+                self.Camera_update()
+                
+                self.Imaging_Thread = Threads.Image()
+                self.Imaging_Thread.started.connect(lambda: UI_Update.timelapse_disable(self))
+                self.Imaging_Thread.finished.connect(lambda: UI_Update.timelapse_enable(self))
+                self.Imaging_Thread.capturing.connect(lambda: UI_Update.imaging_disable(self))
+                self.Imaging_Thread.complete.connect(lambda: UI_Update.update_frame(self,Settings.current_image))
+                self.Imaging_Thread.start()
+            else
+                Settings.timelapse_running = False
+                UI_Update.timelapse_enable(self)
+            
+            
+        except Exception as e:
+            print(e)
+
+    
 
     def IST_Edit(self):
         Settings.sequence_name = self.imageTitle_lineEdit.text().replace(" ", "_")
@@ -208,7 +224,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         file.write(Settings.email)  
         file.close()
         
-                
  # access variables inside of the UI's file
     def __init__(self):
         super(self.__class__, self).__init__()
@@ -260,6 +275,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.emailDefault_pushButton.clicked.connect(lambda: self.Save_Email())
 
         self.storage_tabWidget.currentChanged.connect(lambda: UI_Update.validate_input(self))
+        self.startRoutines_pushButton.connect(lambda: self.start_sequence())
         
 
         
@@ -267,29 +283,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         
         
         '''
-        
-        self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
-        self.add_Date.clicked.connect(lambda: self.Add_Date())
-        self.Dropbox_Email.textChanged.connect(lambda: self.Email_Change())
-        self.Dropbox_Confirm.clicked.connect(lambda: self.Email_Entered())
-        self.Save_Default.clicked.connect(lambda: self.Save_Email())
-        self.Storage_Directory.clicked.connect(lambda: self.Select_Storage_Directory())
-        self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
-        self.Set_Schedule.clicked.connect(lambda: self.Confirm_Schedule())
-        self.Test_Run.clicked.connect(lambda: self.test_run())
-        
-        self.Reset_Position.clicked.connect(lambda: self.reset_position())
-        self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
-        self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
-        self.Full_Color_Select.activated.connect(lambda: Command.full_color_change(self))
-        self.brightness_spinBox.valueChanged.connect(lambda: self.brightness_change())
-        self.Left_Select.activated.connect(lambda: Command.half_color_change_left(self))
-        self.Right_Select.activated.connect(lambda: Command.half_color_change_right(self))
-        self.Top_Color_Select.activated.connect(lambda: Command.third_color_change_top(self))
-        self.LL_Color_Select.activated.connect(lambda: Command.third_color_change_lower_left(self))
-        self.LR_Color_Select.activated.connect(lambda: Command.third_color_change_lower_right(self))
-
-        self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
         self.Inject_Code.clicked.connect(lambda: Command.inject_code(self))'''
 
 

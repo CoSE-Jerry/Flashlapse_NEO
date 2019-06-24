@@ -35,6 +35,15 @@ def init(self):
 
     global clino_running
     clino_running = False
+
+    global timelapse_running
+    timelapse_running = False
+    
+    global dropbox_running
+    dropbox_running = False
+
+    global email_running
+    email_running = False
     
     global angle_1
     angle_1 = 0
@@ -66,8 +75,6 @@ def init(self):
     x_resolution = 2464
     global y_res
     y_resolution = 2464
-    global image_format
-    image_format = 0
     
     global sequence_name
     sequence_name = ""
@@ -99,15 +106,18 @@ def init(self):
     global storage_mode
     storage_mode = 0
 
-    
-    '''global dropbox_running
-    dropbox_running = False
-    
-    
+    global file_list
+    file_list = []
 
+    global file
+    file = ""
 
-    global email
-    email = ""
+    global current_image
+    current_image = ""
+
+    
+    '''
+    
     global file_list
     file_list = []
     global link
