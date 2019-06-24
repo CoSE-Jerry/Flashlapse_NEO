@@ -151,7 +151,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             print(e)
 
     def IST_Edit(self):
-        Settings.sequence_name = self.imageTitle_lineEdit.text()
+        Settings.sequence_name = self.imageTitle_lineEdit.text().replace(" ", "_")
+        self.imageTitle_lineEdit.setText(Settings.sequence_name)
         Settings.full_dir = Settings.default_dir + "/" + Settings.sequence_name
         self.directory_label.setText(Settings.full_dir)
         
