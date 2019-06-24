@@ -5,11 +5,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from time import sleep
 
 def light_confirm(self):
-    current_CMD = "1~"+str(self.Start_spinBox.value())+"~"+str(self.End_spinBox.value())+"~"+ str(self.R_spinBox.value()) + "~" + str(self.G_spinBox.value()) + "~" + str(self.B_spinBox.value())+ "~" + str(self.BRT_spinBox.value())+"\n"
-    Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
-    Settings.commands_list.append(current_CMD)
+    current_CMD = str(self.Start_spinBox.value())+"~"+str(self.End_spinBox.value())+"~"+ str(self.R_spinBox.value()) + "~" + str(self.G_spinBox.value()) + "~" + str(self.B_spinBox.value())+ "~" + str(self.BRT_spinBox.value())+"\n"
+    Settings.commands_list.append("3~"+current_CMD)
+    Settings.ASD.write(bytes("1~"+current_CMD, 'UTF-8'))
     
-
 def light_reset(self):
     current_CMD="0\n"
     send_CMD(self,current_CMD)
@@ -27,8 +26,13 @@ def clear_lights():
     current_CMD="0\n"
     send_CMD_ALT(current_CMD)
 
-def send_CMD(self,CMD):
+def deploy_lights():
+    for x in Settings.commands_list:
+        Commands.send_CMD_ALT(x)
+    current_CMD="4\n"
+    send_CMD_ALT(current_CMD)
 
+def send_CMD(self,CMD):
     try:
         Settings.ASD.write(bytes(CMD, 'UTF-8'))
     

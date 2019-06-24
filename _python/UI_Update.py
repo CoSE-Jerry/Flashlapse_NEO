@@ -1,4 +1,5 @@
 import Settings
+import Commands
 import PyQt5
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -21,6 +22,8 @@ def cycle_start(self):
 def cycle_end(self):
     self.confirmCycle_pushButton.setText("CONFIRM")
     Settings.cycle_running = False
+    Commands.deploy_lights()
+    
 
 '''def check_stat(self):
     return self.Start_Schedule.isEnabled()
