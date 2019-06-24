@@ -202,9 +202,9 @@ class Dropbox(QThread):
         count = 0
         while (count<Settings.total-1):
             if (len(Settings.file_list) > 0):
-                os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + file_list[0] + " /"+Settings.cpuserial+"/"+Settings.sequence_name)
-                os.system("rm " + file_list[0])
-                del file_list[0]
+                os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + Settings.file_list[0] + " /"+Settings.cpuserial+"/"+Settings.sequence_name)
+                os.system("rm " + Settings.file_list[0])
+                del Settings.file_list[0]
                 count+=1
             if not Settings.dropbox_running:
                 break
