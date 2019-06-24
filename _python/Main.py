@@ -87,7 +87,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_snapshot(self):
         try:
-            AOI_update(self)
+            self.AOI_update()
             self.Snap_Thread = Threads.Snap()
             self.Snap_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
             self.Snap_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/snapshot.jpg"))
