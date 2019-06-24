@@ -100,9 +100,9 @@ class Test(QThread):
        
     def run(self):
         while True:
-            commands.reflex_to(Settings.angle_1)
+            Commands.reflex_to(Settings.angle_1)
             sleep(5)
-            commands.reflex_to(Settings.angle_2)
+            Commands.reflex_to(Settings.angle_2)
             sleep(5)
 
 '''class Dropbox(QThread):
