@@ -47,18 +47,23 @@ def init(self):
     global rpm
     RPM = 5
 
+    global rotation
+    rotation = 0
+
+    global AOE_X
+    AOE_X = 0
+    global AOE_Y
+    AOE_Y = 0
+    global AOE_W
+    AOE_W = 0
+    global AOE_H
+    AOE_H = 0
+
     
     '''global dropbox_running
     dropbox_running = False
     
-    global ASD
-    ASD = serial.Serial('/dev/ttyACM0', 9600)
     
-
-    global sch_confirmed
-    sch_confirmed = False
-    global cycle
-    cycle = 0
 
     global sequence_name
     sequence_name = ""

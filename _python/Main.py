@@ -83,145 +83,18 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 print(e)
         else:
             UI_Update.schedule_end(self)
-            Settings.sch_running=False
+            Settings.sch_running=False       
 
-
-       
-
-    '''def Start_Snapshot(self):
+    def start_snapshot(self):
         try:
-            sch_ready= UI_Update_General.check_stat(self)
-            sch_flip = sch_ready
-            self.Snap_Thread = Camera.Snap()
-            self.Snap_Thread.started.connect(lambda: UI_Update_General.snap_disable(self,sch_flip))
-            self.Snap_Thread.finished.connect(lambda: UI_Update_General.snap_enable(self,sch_flip))
+            self.Snap_Thread = Threads.Snap()
+            self.Snap_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
+            self.Snap_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/snapshot.jpg"))
             self.Snap_Thread.start()
+            
             
         except Exception as e:
             print(e)
-
-    def IST_Edit(self):
-        Settings.sequence_name = self.IST_Editor.text()
-        Settings.full_dir = default_dir + "/" + Settings.sequence_name
-        self.Directory_Label.setText(Settings.full_dir)
-        if date not in Settings.sequence_name: 
-            self.add_Date.setEnabled(True)
-        if(len(Settings.sequence_name) == 0):
-            self.add_Date.setEnabled(False)
-        UI_Update_General.schedule_update(self)
-
-    def Add_Date(self):
-        Settings.sequence_name = Settings.sequence_name + "_" + date
-        self.IST_Editor.setText(Settings.sequence_name)
-        Settings.full_dir = default_dir + "/" + Settings.sequence_name
-        self.Directory_Label.setText(Settings.full_dir)
-        self.add_Date.setEnabled(False)
-
-    def Start_Rotate(self):
-        Settings.rotation += 1
-        try:
-            sch_ready= UI_Update_General.check_stat(self)
-            sch_flip = sch_ready
-            self.Snap_Thread = Camera.Snap()
-            self.Snap_Thread.started.connect(lambda: UI_Update_General.snap_disable(self,sch_flip))
-            self.Snap_Thread.finished.connect(lambda: UI_Update_General.snap_enable(self,sch_flip))
-            self.Snap_Thread.start()
-            
-        except Exception as e:
-            print(e)
-
-    def Email_Change(self):
-        valid = None
-        if (len(self.Dropbox_Email.text())) > 7:
-            valid = re.match('^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$', self.Dropbox_Email.text())
-        if (valid != None):
-            self.Dropbox_Confirm.setEnabled(True)
-        else:
-            self.Dropbox_Confirm.setEnabled(False)
-            self.Cloud_Sync.setEnabled(False)
-            self.Local_Storage.setChecked(True)
-            self.Save_Default.setEnabled(False)
-
-    def Email_Entered(self):
-        Settings.email = self.Dropbox_Email.text()
-        self.Cloud_Sync.setEnabled(True)
-        self.Cloud_Sync.setChecked(True)
-        self.Save_Default.setEnabled(True)
-        UI_Update_General.schedule_update(self)
-
-    def Save_Email(self):
-        open("../_temp/save_data.txt", "w").close()
-
-        file = open("../_temp/save_data.txt","w") 
-        file.write(Settings.email)  
-        file.close()
-
-    def Select_Storage_Directory(self):
-        global default_dir
-        default_dir = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/home/pi/Desktop'))
-        if(len(default_dir)!=0):
-            Settings.full_dir = default_dir + "/" + Settings.sequence_name
-            self.Directory_Label.setText(Settings.full_dir)
-            
-
-    def change_image(self):
-        self.Image_Frame.setPixmap(QtGui.QPixmap(Settings.current_image))
-        
-
-    def test_run(self):
-        Settings.angle_1 = self.rotate_to_spinbox_1.value()
-        Settings.angle_2 = self.rotate_to_spinbox_2.value()
-
-        if(Settings.sch_running):
-            self.Schedule_Thread.__del__()
-
-        self.Test_Thread = Thread.Test()
-        self.Test_Thread.start()
-
-    def reset_position(self):
-        if(Settings.sch_running):
-            self.Schedule_Thread.__del__()
-            
-        Settings.ASD.write(bytes("2~0", 'UTF-8'))
-
-    def value_changed(self):
-        self.Motor_Speed.setText("Motor Speed: "+str(self.Speed_Select.value()))
-
-    def slider_released(self):
-        Settings.ASD.write(bytes('3~'+str(self.Speed_Select.value()), 'UTF-8'))
-
-    def brightness_change(self):
-        Settings.ASD.write(bytes('4~'+str(self.brightness_spinBox.value()), 'UTF-8'))
-
-    def custom_update(self):
-        Settings.custom_R = self.R_spinBox.value()
-        Settings.custom_G = self.G_spinBox.value()
-        Settings.custom_B = self.B_spinBox.value()
-
-    def Confirm_Schedule(self):
-
-        Settings.angle_1 = self.rotate_to_spinbox_1.value()
-        Settings.angle_2 = self.rotate_to_spinbox_2.value()
-
-        
-        Settings.sch_confirmed = True
-        UI_Update_General.schedule_update(self)
-
-    def Start_Live_Feed(self):
-        self.Live_Thread = Camera.Live()
-        self.Live_Thread.started.connect(lambda: self.Processing_Live())
-        self.Live_Thread.finished.connect(lambda: self.Live_Complete())
-        self.Live_Thread.start()
-
-    def Processing_Live(self):
-        self.Snapshot.setEnabled(False)
-        self.Live_Feed.setEnabled(False)
-        self.Live_Feed.setText("Processing...")
-        
-    def Live_Complete(self):
-        self.Snapshot.setEnabled(True)
-        self.Live_Feed.setEnabled(True)
-        self.Live_Feed.setText("Live Feed (30s)")'''
         
  # access variables inside of the UI's file
     def __init__(self):
@@ -249,6 +122,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.motorSpeed_slider.sliderReleased.connect(lambda: Commands.motorSliderRelease(self))
 
         self.clinostatSet_pushButton.clicked.connect(lambda: Commands.clinoStart(self))
+        self.snapshot_pushButton.clicked.connect(lambda: self.start_snapshot())
         
         '''
 
@@ -258,7 +132,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         fh.close
         self.Email_Change()
         
-        self.Snapshot.clicked.connect(lambda: self.Start_Snapshot())
+        
         self.IST_Editor.textChanged.connect(lambda: self.IST_Edit())
         self.Rotate.clicked.connect(lambda: self.Start_Rotate())
         self.add_Date.clicked.connect(lambda: self.Add_Date())

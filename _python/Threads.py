@@ -99,6 +99,20 @@ class Test(QThread):
             if not Settings.test_running:
                     break
 
+class Snap(QThread):
+
+    def __init__(self):
+         QThread.__init__(self)
+
+    def __del__(self):
+         self._running = False
+
+    def run(self):
+        with PiCamera() as camera:
+            camera.resolution = (380,380)
+            camera._set_rotation(90*Settings.rotation)
+            camera.capture("../_temp/snapshot.jpg")
+
 '''class Dropbox(QThread):
     def __init__(self):
         QThread.__init__(self)

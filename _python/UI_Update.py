@@ -34,6 +34,17 @@ def schedule_start(self):
 
 def schedule_end(self):
     self.schedulerSet_pushButton.setText("Set Schedule")
+
+def imaging_disable(self):
+    self.Misc_Frame.setEnabled(False)
+
+def imaging_enable(self):
+    self.Misc_Frame.setEnabled(True)
+
+def update_frame(self,file):
+    self.Misc_Frame.setEnabled(True)
+    temp_img = PyQt5.QtGui.QImage(file)
+    self.Image_Frame.setPixmap(QtGui.QPixmap(temp_img))
     
 
 '''def check_stat(self):
