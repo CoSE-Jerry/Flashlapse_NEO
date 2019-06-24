@@ -165,10 +165,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
-        if(Settings.storage_mode):
-        self.startRoutines_pushButton.setText("Start CLOUD Image Sequence")
-    else:
-
+            
+        #if(Settings.storage_mode):
     
 
     def IST_Edit(self):
