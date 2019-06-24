@@ -845,20 +845,13 @@
        <widget class="QWidget" name="verticalLayoutWidget_10">
         <property name="geometry">
          <rect>
-          <x>340</x>
+          <x>30</x>
           <y>330</y>
-          <width>131</width>
+          <width>441</width>
           <height>132</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_17">
-         <item>
-          <widget class="QPushButton" name="schedulerReset_pushButton">
-           <property name="text">
-            <string>Reset Position</string>
-           </property>
-          </widget>
-         </item>
          <item>
           <widget class="QPushButton" name="schedulerTest_pushButton">
            <property name="text">
@@ -876,61 +869,6 @@
           <widget class="QPushButton" name="schedulerSet_pushButton">
            <property name="text">
             <string>Set Schedule</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-       <widget class="QWidget" name="verticalLayoutWidget">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>320</y>
-          <width>281</width>
-          <height>141</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <item>
-          <widget class="QLabel" name="scheduleDuration_label">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment Duration:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="scheduleDuration_spinbox">
-           <property name="suffix">
-            <string> REFLEXS</string>
-           </property>
-           <property name="maximum">
-            <number>99999</number>
-           </property>
-           <property name="value">
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="scheduleImaging_label">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Schedule Imaging:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="scheduleImaging_spinbox">
-           <property name="suffix">
-            <string> REFLEXS</string>
-           </property>
-           <property name="prefix">
-            <string>EVERY </string>
-           </property>
-           <property name="maximum">
-            <number>99999</number>
-           </property>
-           <property name="value">
-            <number>1</number>
            </property>
           </widget>
          </item>
@@ -1049,81 +987,16 @@
          <enum>Qt::Horizontal</enum>
         </property>
        </widget>
-       <widget class="QWidget" name="verticalLayoutWidget_11">
-        <property name="geometry">
-         <rect>
-          <x>30</x>
-          <y>320</y>
-          <width>281</width>
-          <height>141</height>
-         </rect>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_8">
-         <item>
-          <widget class="QLabel" name="clinostatDuration_label">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Experiment Duration:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="clinostatDuration_spinbox">
-           <property name="suffix">
-            <string> ROTATIONS</string>
-           </property>
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>99999</number>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QLabel" name="clinostatImaging_label">
-           <property name="text">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Schedule Imaging:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QSpinBox" name="ClinostatImaging_spinbox">
-           <property name="suffix">
-            <string> ROTATIONS</string>
-           </property>
-           <property name="prefix">
-            <string>EVERY </string>
-           </property>
-           <property name="minimum">
-            <number>1</number>
-           </property>
-           <property name="maximum">
-            <number>99999</number>
-           </property>
-           <property name="displayIntegerBase">
-            <number>10</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
        <widget class="QWidget" name="verticalLayoutWidget_12">
         <property name="geometry">
          <rect>
-          <x>340</x>
+          <x>30</x>
           <y>330</y>
-          <width>131</width>
+          <width>441</width>
           <height>132</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_21">
-         <item>
-          <widget class="QPushButton" name="clinostatReset_pushButton">
-           <property name="text">
-            <string>Reset Position</string>
-           </property>
-          </widget>
-         </item>
          <item>
           <widget class="QPushButton" name="clinostatTest_pushButton">
            <property name="text">
@@ -1696,7 +1569,7 @@
       <rect>
        <x>240</x>
        <y>10</y>
-       <width>131</width>
+       <width>136</width>
        <height>114</height>
       </rect>
      </property>
@@ -1759,7 +1632,7 @@
       <rect>
        <x>13</x>
        <y>10</y>
-       <width>221</width>
+       <width>234</width>
        <height>111</height>
       </rect>
      </property>

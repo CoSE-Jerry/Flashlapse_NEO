@@ -67,7 +67,28 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         else:
             UI_Update.test_end(self)
             Settings.test_running=False
-        
+
+    def schedule_run(self):
+        if not Settings.sch_running:
+            try:
+                Settings.angle_1 = self.rotate1_spinbox.value()
+                Settings.angle_2 = self.rotate2_spinbox.value()
+                Settings.delay_1 = self.wait1_spinbox.value()
+                Settings.delay_2 = self.wait2_spinbox.value()
+                
+                self.Schedule_Thread = Threads.Schedule()
+                self.Schedule_Thread.started.connect(lambda: UI_Update.schedule_start(self))
+                self.Schedule_Thread.finished.connect(lambda: UI_Update.schedule_end(self))
+                self.Schedule_Thread.start()
+            except Exception as e:
+                print(e)
+        else:
+            UI_Update.test_end(self)
+            Settings.test_running=False
+
+
+
+       
 
     '''def Start_Snapshot(self):
         try:
@@ -143,50 +164,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         if(len(default_dir)!=0):
             Settings.full_dir = default_dir + "/" + Settings.sequence_name
             self.Directory_Label.setText(Settings.full_dir)
-
-    def start_scheduler(self):
-
-        if not Settings.sch_running:
-            Settings.cycle = self.Total_Reflex.value()
-            icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("../_image/Stop-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-            self.Start_Schedule.setIcon(icon)
-            self.Start_Schedule.setText("Stop Scheduled Imaging")
-            if(not os.path.isdir(Settings.full_dir)):
-                os.mkdir(Settings.full_dir)
-                    
-
-            self.Schedule_Thread = Thread.Schedule()
-            
-            if (self.JPG.isChecked()):
-                Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.jpg"
-            else:
-                Settings.file = Settings.full_dir + "/" + Settings.sequence_name + "_%04d.png"
-
-            self.Schedule_Thread.captured.connect(lambda: self.change_image())
-            self.Schedule_Thread.start()
-
-            if(self.Cloud_Sync.isChecked()):
-                self.Dropbox_Thread = Thread.Dropbox()
-                self.Email_Thread = Thread.Email()
-                self.Dropbox_Thread.start()
-                self.Email_Thread.start()
-            self.Test_Run.setEnabled(False)
-            self.Reset_Position.setEnabled(False)
-            self.Live_Feed.setEnabled(False)
-            self.Snapshot.setEnabled(False)
-
-        else:
-            self.Kill_Theads()
-            
-            icon = QtGui.QIcon()
-            icon.addPixmap(QtGui.QPixmap("../_image/Start-Scheduler.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-            self.Start_Schedule.setIcon(icon)
-            self.Start_Schedule.setText("Start Scheduled Imaging")
-            self.Test_Run.setEnabled(True)
-            self.Reset_Position.setEnabled(True)
-            self.Live_Feed.setEnabled(True)
-            self.Snapshot.setEnabled(True)
             
 
     def change_image(self):
@@ -227,8 +204,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         Settings.angle_1 = self.rotate_to_spinbox_1.value()
         Settings.angle_2 = self.rotate_to_spinbox_2.value()
-        Settings.delay_1 = self.wait_spinbox_1.value()
-        Settings.delay_2 = self.wait_spinbox_2.value()
+
         
         Settings.sch_confirmed = True
         UI_Update_General.schedule_update(self)
@@ -280,8 +256,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.pulse_pushButton.clicked.connect(lambda: Commands.pulse_run(self))
 
         self.confirmCycle_pushButton.clicked.connect(lambda: self.start_cycle())
-
+        
         self.schedulerTest_pushButton.clicked.connect(lambda: self.test_run())
+        self.schedulerSet_pushButton.clicked.connect(lambda: self.schedule_run())
         self.motorSpeed_slider.valueChanged.connect(lambda: Commands.motorSliderChange(self))
         self.motorSpeed_slider.sliderReleased.connect(lambda: Commands.motorSliderRelease(self))
         '''

@@ -48,7 +48,7 @@ class Cycle(QThread):
             if not Settings.cycle_running:
                 break
 
-'''class Schedule(QThread):
+class Schedule(QThread):
     
     def __init__(self):
         QThread.__init__(self)
@@ -59,34 +59,19 @@ class Cycle(QThread):
         self._running = False
         
     def run(self):
-        count = 1
-        while (count/2)<Settings.cycle:
-            Settings.current_image = Settings.file % count
-            with PiCamera() as camera:
-                sleep(0.8)
-                camera.resolution = (2464,2464)
-                camera._set_rotation(90*Settings.rotation)
-                camera.capture(Settings.current_image)
-                self.captured.emit()
-            Settings.file_list.append(Settings.current_image)
+        while Settings.sch_running:
+            Commands.reflex_to(Settings.angle_1)
+            for x in range (Settings.delay_1):
+                sleep(1)
+                if not Settings.cycle_running:
+                    break
             
-            count+=1
-            Settings.ASD.write(bytes("2~"+str(Settings.angle_1), 'UTF-8'))
-            sleep(Settings.delay_1*60)
-
-            Settings.current_image = Settings.file % count
-            with PiCamera() as camera:
-                sleep(0.8)
-                camera.resolution = (2464,2464)
-                camera._set_rotation(90*Settings.rotation)
-                camera.capture(Settings.current_image)
-                self.captured.emit()
-            Settings.file_list.append(Settings.current_image)
-
-            count+=1
-            Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
-            sleep(Settings.delay_2*60)
-        Settings.dropbox_running = False'''
+            Commands.reflex_to(Settings.angle_2)
+            for x in range (Settings.delay_2):
+                sleep(1)
+                if not Settings.cycle_running:
+                    breka
+        
 
 
 class Test(QThread):
@@ -99,7 +84,7 @@ class Test(QThread):
         self._running = False
        
     def run(self):
-        while Settings.test_running:
+        for x in range (5):
             Commands.reflex_to(Settings.angle_1)
             for x in range (5):
                 sleep(1)

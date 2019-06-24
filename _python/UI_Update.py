@@ -27,6 +27,12 @@ def test_start(self):
 
 def test_end(self):
     self.schedulerTest_pushButton.setText("Test Run")
+
+def schedule_start(self):
+    self.schedulerSet_pushButton.setText("TERMINATE")
+
+def schedule_end(self):
+    self.schedulerSet_pushButton.setText("Set Schedule")
     
 
 '''def check_stat(self):
