@@ -163,7 +163,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def add_date(self):
         Settings.sequence_name = Settings.sequence_name + "_" + Settings.date
-        self.title_lineEdit.setText(Settings.sequence_name)
+        self.imageTitle_lineEdit.setText(Settings.sequence_name)
         Settings.full_dir = Settings.default_dir + "/" + Settings.sequence_name
         self.directory_label.setText(Settings.full_dir)
         self.addDate_pushButton.setEnabled(False)
