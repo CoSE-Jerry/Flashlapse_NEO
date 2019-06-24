@@ -46,6 +46,8 @@ class Cycle(QThread):
                     break
             for x in Settings.commands_list:
                 Commands.send_CMD_ALT(x)
+            if not Settings.cycle_running:
+                break
 
 '''class Schedule(QThread):
 
