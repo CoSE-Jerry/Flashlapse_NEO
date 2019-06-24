@@ -23,10 +23,10 @@ def cycle_end(self):
     Commands.deploy_lights()
 
 def test_start(self):
-    self.confirmCycle_pushButton.setText("TERMINATE TEST")
+    self.schedulerTest_pushButton.setText("TERMINATE TEST")
 
 def test_end(self):
-    self.confirmCycle_pushButton.setText("Test Run")
+    self.schedulerTest_pushButton.setText("Test Run")
     
 
 '''def check_stat(self):

@@ -100,11 +100,9 @@ class Test(QThread):
        
     def run(self):
         while True:
-            current_CMD = "5~"+str(Settings.angle_1)
-            Commands.send_CMD_ALT(current_CMD)
+            commands.reflex_to(Settings.angle_1)
             sleep(5)
-            current_CMD = "5~"+str(Settings.angle_2)
-            Commands.send_CMD_ALT(current_CMD)
+            commands.reflex_to(Settings.angle_2)
             sleep(5)
 
 '''class Dropbox(QThread):
