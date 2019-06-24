@@ -164,7 +164,7 @@ class Image(QThread):
         for i in range(Settings.total):
             Settings.current = i
             sleep(0.2)
-            Settings.current_image = file % i
+            Settings.current_image = Settings.file % i
             self.capturing.emit()
             with PiCamera() as camera:
                 sleep(0.8)
