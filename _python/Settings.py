@@ -111,9 +111,6 @@ def init(self):
     link = ""
     global file
     file = ""
-    global full_dir
-    full_dir = ""
+
     global current_image
-    current_image = ""
-    global command_list
-    command_list = []'''
+    current_image = "" '''

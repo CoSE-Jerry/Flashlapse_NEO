@@ -216,7 +216,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         fh = open("../_temp/save_data.txt", "r") 
         self.Email_lineEdit.setText(fh.readline())
         fh.close
-        self.Email_Change()
+        Settings.email = self.Email_lineEdit.text()
         
         
         self.Start_spinBox.valueChanged.connect(lambda: UI_Update.LED_validate(self))
