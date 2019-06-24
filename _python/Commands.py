@@ -32,7 +32,7 @@ def deploy_lights():
 
 def reflex_to(angle):
     current_CMD = "5~"+str(angle)+"\n"
-    Commands.send_CMD_ALT(current_CMD)
+    send_CMD_ALT(current_CMD)
 
 def send_CMD(self,CMD):
     try:
