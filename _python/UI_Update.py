@@ -56,8 +56,8 @@ def validate_input(self):
     if(self.storage_tabWidget.currentIndex() ==0):
         Settings.storage_mode=0
         self.startRoutines_pushButton.setText("Start LOCAL Image Sequence")
-    else
-        if(len(Settings.email)!=0)
+    else:
+        if(len(Settings.email)!=0):
             Settings.storage_mode=1
             self.startRoutines_pushButton.setText("Start CLOUD Image Sequence")
         
