@@ -4,9 +4,9 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 def LED_validate(self):
     if(self.Start_spinBox.value()>=self.End_spinBox.value()):
-        self.light_Confirm_pushButton.setEnabled(False)
+        self.lightConfirm_pushButton.setEnabled(False)
     else:
-        self.light_Confirm_pushButton.setEnabled(True)
+        self.lightConfirm_pushButton.setEnabled(True)
 
 '''def check_stat(self):
     return self.Start_Schedule.isEnabled()
