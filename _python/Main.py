@@ -39,14 +39,16 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             try:
                 Settings.cycle_time = self.powerCycle_spinBox.value()
                 self.Cycle_Thread = Threads.Cycle()
+
                 self.Cycle_Thread.started.connect(lambda: UI_Update.cycle_start(self))
                 self.Cycle_Thread.finished.connect(lambda: UI_Update.cycle_end(self))
+                
                 self.Cycle_Thread.start()
                 
             except Exception as e:
                 print(e)
         else:
-            Settings.cycle_running = False
+            UI_Update.cycle_end(self)
 
     '''def Start_Snapshot(self):
         try:
