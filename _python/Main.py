@@ -59,6 +59,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 Settings.angle_2 = self.rotate2_spinbox.value()
                 
                 self.Test_Thread = Threads.Test()
+                self.Test_Thread.started.connect(lambda: UI_Update.test_start(self))
+                self.Test_Thread.finished.connect(lambda: UI_Update.test_end(self))
                 self.Test_Thread.start()
             except Exception as e:
                 print(e)
