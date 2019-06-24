@@ -26,13 +26,11 @@ def init(self):
     global cycle_time
     cycle_time =60
 
-    '''global sch_running
+    global sch_running
     sch_running = False
-    global dropbox_running
-    dropbox_running = False
-    
-    global ASD
-    ASD = serial.Serial('/dev/ttyACM0', 9600)
+
+    global test_running
+    test_running = False
     
     global angle_1
     angle_1 = 0
@@ -42,8 +40,17 @@ def init(self):
     delay_1 = 0
     global delay_2
     delay_2 = 0
-    global rotation
-    rotation = 2
+    
+    global rpm
+    rpm = 2
+
+    
+    '''global dropbox_running
+    dropbox_running = False
+    
+    global ASD
+    ASD = serial.Serial('/dev/ttyACM0', 9600)
+    
 
     global sch_confirmed
     sch_confirmed = False

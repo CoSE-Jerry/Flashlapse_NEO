@@ -17,12 +17,16 @@ def desync(self):
 
 def cycle_start(self):
     self.confirmCycle_pushButton.setText("TERMINATE CYCLE")
-    Settings.cycle_running = True
 
 def cycle_end(self):
     self.confirmCycle_pushButton.setText("CONFIRM")
-    Settings.cycle_running = False
     Commands.deploy_lights()
+
+def test_start(self):
+    self.confirmCycle_pushButton.setText("TERMINATE TEST")
+
+def cycle_end(self):
+    self.confirmCycle_pushButton.setText("Test Run")
     
 
 '''def check_stat(self):

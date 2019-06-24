@@ -18,6 +18,7 @@ class Cycle(QThread):
 
     def __init__(self):
         QThread.__init__(self)
+        Settings.cycle_running = True
 
     def __del__(self):
         self._running = False
@@ -29,7 +30,7 @@ class Cycle(QThread):
         Commands.deploy_lights()
         
         while True:
-            for x in range(Settings.cycle_time):
+            for x in range(Settings.cycle_time*60):
                 sleep(1)
                 
                 if not Settings.cycle_running:
@@ -37,7 +38,7 @@ class Cycle(QThread):
                 
             Commands.clear_lights()
             
-            for x in range(Settings.cycle_time):
+            for x in range(Settings.cycle_time*60):
                 sleep(1)
                 
                 if not Settings.cycle_running:
@@ -48,8 +49,6 @@ class Cycle(QThread):
                 break
 
 '''class Schedule(QThread):
-
-    captured = QtCore.pyqtSignal()
     
     def __init__(self):
         QThread.__init__(self)
@@ -87,23 +86,26 @@ class Cycle(QThread):
             count+=1
             Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
             sleep(Settings.delay_2*60)
-        Settings.dropbox_running = False
+        Settings.dropbox_running = False'''
 
 
 class Test(QThread):
     
     def __init__(self):
         QThread.__init__(self)
+        Settings.test_running = True
 
     def __del__(self): 
         self._running = False
        
     def run(self):
-        Settings.ASD.write(bytes("2~"+str(Settings.angle_1), 'UTF-8'))
+        current_CMD = "5~"+str(Settings.angle_1)
+        Commands.send_CMD_ALT(current_CMD):
         sleep(5)
-        Settings.ASD.write(bytes("2~"+str(Settings.angle_2), 'UTF-8'))
+        current_CMD = "5~"+str(Settings.angle_2)
+        Commands.send_CMD_ALT(current_CMD):
 
-class Dropbox(QThread):
+'''class Dropbox(QThread):
     def __init__(self):
         QThread.__init__(self)
         os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /MECHSTIM/" + Settings.sequence_name)

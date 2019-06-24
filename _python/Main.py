@@ -49,6 +49,22 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 print(e)
         else:
             UI_Update.cycle_end(self)
+            Settings.cycle_running=False
+
+
+    def test_run(self):
+        if not Settings.test_running:
+            try:
+                Settings.angle_1 = self.rotate1_spinbox.value()
+                Settings.angle_2 = self.rotate2_spinbox.value()
+                
+                self.Test_Thread = Thread.Test()
+                self.Test_Thread.start()
+            except Exception as e:
+                print(e)
+        else:
+            UI_Update.test_end(self)
+            Settings.test_running=False
 
     '''def Start_Snapshot(self):
         try:
@@ -262,6 +278,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         self.confirmCycle_pushButton.clicked.connect(lambda: self.start_cycle())
 
+        self.schedulerTest_pushButton.clicked.connect(lambda: self.test_run())
+        
+
         '''
 
         #load default email
@@ -281,6 +300,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Start_Schedule.clicked.connect(lambda: self.start_scheduler())
         self.Set_Schedule.clicked.connect(lambda: self.Confirm_Schedule())
         self.Test_Run.clicked.connect(lambda: self.test_run())
+        
         self.Reset_Position.clicked.connect(lambda: self.reset_position())
         self.Speed_Select.valueChanged.connect(lambda: self.value_changed())
         self.Speed_Select.sliderReleased.connect(lambda: self.slider_released())
