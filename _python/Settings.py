@@ -1,4 +1,5 @@
 import serial
+import time
 import UI_Update
 
 def init(self):
