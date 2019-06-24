@@ -3,13 +3,13 @@ from time import sleep
 
 def light_confirm(self):
     current_CMD = "1~"+str(self.Start_spinBox.value())+"~"+str(self.End_spinBox.value())+"~"+ str(self.R_spinBox.value()) + "~" + str(self.G_spinBox.value()) + "~" + str(self.B_spinBox.value())+ "~" + str(self.BRT_spinBox.value())+"\n"
-    send_CMD()
+    send_CMD(self)
     Settings.commands_list.append(current_CMD)
     
 
 def light_reset(self):
     current_CMD="0"
-    send_CMD()
+    send_CMD(self)
 
     self.R_spinBox.setValue(0)
     self.G_spinBox.setValue(0) 
@@ -20,12 +20,12 @@ def light_reset(self):
     
     Settings.commands_list.clear()
 
-def send_CMD():
+def send_CMD(self):
     Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
 
 def disco_run(self):
     current_CMD ="2~1"
-    send_CMD()
+    send_CMD(self)
 
 '''def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
