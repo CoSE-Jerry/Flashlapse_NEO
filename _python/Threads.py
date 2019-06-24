@@ -173,7 +173,9 @@ class Image(QThread):
                 camera._set_rotation(90*Settings.rotation)
                 camera.capture(Settings.current_image)
             self.complete.emit()
-            Settings.file_list.append(Settings.current_image)
+
+            if(Settings.storage_mode):
+                Settings.file_list.append(Settings.current_image)
 
             for x in range(Settings.interval-1):
                 sleep(1)

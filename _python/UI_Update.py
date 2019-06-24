@@ -46,12 +46,20 @@ def timelapse_disable(self):
         self.startRoutines_pushButton.setText("End CLOUD Image Sequence")
     else:
         self.startRoutines_pushButton.setText("End LOCAL Image Sequence")
+    self.snapshot_pushButton.setEnabled(False)
+    self.liveFeed_pushButton.setEnabled(False)
+    self.preview_pushButton.setEnabled(False)
+    self.rotate_pushButton.setEnabled(False)
 
 def timelapse_enable(self):
     if(Settings.storage_mode):
         self.startRoutines_pushButton.setText("Start CLOUD Image Sequence")
     else:
         self.startRoutines_pushButton.setText("Start LOCAL Image Sequence")
+    self.snapshot_pushButton.setEnabled(True)
+    self.liveFeed_pushButton.setEnabled(True)
+    self.preview_pushButton.setEnabled(True)
+    self.rotate_pushButton.setEnabled(True)
 
 def update_frame(self,file):
     self.Misc_Frame.setEnabled(True)

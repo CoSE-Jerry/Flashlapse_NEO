@@ -147,7 +147,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_sequence(self):
         Settings.file = Settings.full_dir +"/"+Settings.sequence_name+"_%04d.jpg"
-        print(Settings.file)
+        
         try:
             if not Settings.timelapse_running:
                 self.Camera_update()
@@ -165,6 +165,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
+        if(Settings.storage_mode):
+        self.startRoutines_pushButton.setText("Start CLOUD Image Sequence")
+    else:
 
     
 
