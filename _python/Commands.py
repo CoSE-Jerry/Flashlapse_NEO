@@ -1,4 +1,6 @@
 import Settings
+import PyQt5
+from PyQt5 import QtCore, QtGui, QtWidgets
 from time import sleep
 
 def light_confirm(self):
