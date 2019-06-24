@@ -9,7 +9,7 @@ def light_confirm(self):
 
 def light_reset(self):
     current_CMD="0\n"
-    send_CMD(self)
+    send_CMD()
 
     self.R_spinBox.setValue(0)
     self.G_spinBox.setValue(0) 
