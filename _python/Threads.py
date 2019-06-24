@@ -128,6 +128,39 @@ class Live(QThread):
             camera.start_preview()
             sleep(Settings.livetime)
 
+class Preview(QThread):
+
+    def __init__(self):
+         QThread.__init__(self)
+
+    def __del__(self):
+         self._running = False
+
+    def run(self):
+        with PiCamera() as camera:
+            camera.zoom = (Settings.AOI_X, Settings.AOI_Y, Settings.AOI_W, Settings.AOI_H)
+            camera.resolution = (380,380)
+            camera._set_rotation(90*Settings.rotation)
+            if(Settings.image_format)
+                camera.capture("../_temp/preview.jpg")
+            else
+                camera.capture("../_temp/preview.png")
+
+class Preview(QThread):
+
+    def __init__(self):
+         QThread.__init__(self)
+
+    def __del__(self):
+         self._running = False
+
+    def run(self):
+        with PiCamera() as camera:
+            camera.zoom = (Settings.AOI_X, Settings.AOI_Y, Settings.AOI_W, Settings.AOI_H)
+            camera.resolution = (Settings.x_resolution,Settings.y_resolution)
+            camera._set_rotation(90*Settings.rotation)
+            camera.capture("../_temp/snapshot.jpg")
+
 '''class Dropbox(QThread):
     def __init__(self):
         QThread.__init__(self)

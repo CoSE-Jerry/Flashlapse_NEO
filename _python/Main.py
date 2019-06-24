@@ -87,7 +87,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
     def start_snapshot(self):
         try:
-            self.AOI_update()
+            self.Camera_update()
             self.Snap_Thread = Threads.Snap()
             self.Snap_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
             self.Snap_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/snapshot.jpg"))
@@ -108,12 +108,35 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
             
         except Exception as e:
             print(e)
+
+    def start_preview(self):
+        try:
+            self.Camera_update()
+            self.Preview_Thread = Threads.Preview()
+            self.Preview_Thread.started.connect(lambda: UI_Update.imaging_disable(self))
+            if(Settings.image_format)
+                self.Preview_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/preview.jpg"))
+            else
+                self.Preview_Thread.finished.connect(lambda: UI_Update.update_frame(self,"../_temp/preview.png"))
+            self.Preview_Thread.start()
             
-    def AOI_update(self):
+        except Exception as e:
+            print(e)
+            
+    def Camera_update(self):
         Settings.AOI_X = self.AOIX_doubleSpinBox.value()
         Settings.AOI_Y = self.AOIY_doubleSpinBox.value()
         Settings.AOI_W = self.AOIW_doubleSpinBox.value()
         Settings.AOI_H = self.AOIH_doubleSpinBox.value()
+        
+        Settings.x_resolution=self.x_resolution_spinBox.value()
+        Settings.y_resolution=self.y_resolution_spinBox.value()
+
+        if(self.JPG_radioButton.isChecked()):
+            Settings.image_format = 1
+        else:
+            Settings.image_format = 0
+        
                 
  # access variables inside of the UI's file
     def __init__(self):
@@ -143,6 +166,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.clinostatSet_pushButton.clicked.connect(lambda: Commands.clinoStart(self))
         self.snapshot_pushButton.clicked.connect(lambda: self.start_snapshot())
         self.liveFeed_pushButton.clicked.connect(lambda: self.start_livefeed())
+        self.preview_pushButton.clicked.connect(lambda: self.start_preview())
+        self.x_resolution_spinBox.valueChanged.connect(lambda: self.update_resolution())
+        self.y_resolution_spinBox.valueChanged.connect(lambda: self.update_resolution())
 
         
         

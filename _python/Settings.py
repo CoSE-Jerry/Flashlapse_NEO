@@ -61,6 +61,12 @@ def init(self):
 
     global livetime
     livetime = 1
+    global x_res
+    x_resolution = 2464
+    global y_res
+    y_resolution = 2464
+    global image_format
+    image_format = 0
 
     
     '''global dropbox_running
