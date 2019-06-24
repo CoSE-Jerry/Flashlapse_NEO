@@ -8,9 +8,11 @@ import Settings
 
 #import custom functions
 import Commands
+import Thread
 
 #import UI functions
 import UI_Update
+
 
 '''
 
