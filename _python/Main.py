@@ -170,11 +170,11 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.addDate_pushButton.setEnabled(False)
 
     def ICI_Change(self):
-        Settings.interval = self.ICI_spinBox.value()
+        Settings.interval = self.ImageInterval_spinBox.value()
         UI_Update.validate_input(self)
                 
     def ISD_Change(self):
-        Settings.duration = self.ISD_spinBox.value()
+        Settings.duration = self.imageDuration_spinBox.value()
         UI_Update.validate_input(self)
         
                 
