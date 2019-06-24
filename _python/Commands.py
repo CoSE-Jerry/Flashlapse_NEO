@@ -24,7 +24,7 @@ def light_reset(self):
     #Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
 
 def disco_run(self):
-    current_CMD ="2~1"
+    current_CMD ="2~1\n"
     Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
 
 '''def full_color_change(self):
