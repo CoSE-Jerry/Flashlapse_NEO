@@ -63,14 +63,14 @@ class Schedule(QThread):
             Commands.reflex_to(Settings.angle_1)
             for x in range (Settings.delay_1):
                 sleep(1)
-                if not Settings.cycle_running:
+                if not Settings.sch_running:
                     break
             
             Commands.reflex_to(Settings.angle_2)
             for x in range (Settings.delay_2):
                 sleep(1)
-                if not Settings.cycle_running:
-                    breka
+                if not Settings.sch_running:
+                    break
         
 
 
@@ -88,15 +88,15 @@ class Test(QThread):
             Commands.reflex_to(Settings.angle_1)
             for x in range (5):
                 sleep(1)
-                if not Settings.cycle_running:
+                if not Settings.test_running:
                     break
             
             Commands.reflex_to(Settings.angle_2)
             for x in range (5):
                 sleep(1)
-                if not Settings.cycle_running:
+                if not Settings.test_running:
                     break
-            if not Settings.cycle_running:
+            if not Settings.test_running:
                     break
 
 '''class Dropbox(QThread):
