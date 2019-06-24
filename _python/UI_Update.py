@@ -27,6 +27,7 @@ def test_start(self):
 
 def test_end(self):
     self.schedulerTest_pushButton.setText("Test Run")
+    Settings.test_running = False
 
 def schedule_start(self):
     self.schedulerSet_pushButton.setText("TERMINATE")
