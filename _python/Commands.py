@@ -30,7 +30,8 @@ def send_CMD(self,CMD):
     except:
         error_img = PyQt5.QtGui.QImage("../_image/Error.png")
         self.Image_Frame.setPixmap(QtGui.QPixmap(error_img))
-        self.MainWindow.setEnabled(False)
+        self.Control_Tab.setEnabled(False)
+        self.Misc_Frame.setEnabled(False)
 
 def disco_run(self):
     current_CMD ="2~1\n"
