@@ -27,7 +27,7 @@ class Cycle(QThread):
         Commands.clear_lights()
         sleep(1)
         for x in Settings.commands_list:
-            Commands.sendCMD(x)
+            Commands.send_CMD_ALT(x)
         
         while True:
             for x in range(Settings.cycle_time):

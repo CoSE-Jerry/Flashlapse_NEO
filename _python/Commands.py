@@ -35,9 +35,8 @@ def send_CMD(self,CMD):
     except:
         UI_Update.desync(self)
 
-def send_CMD(CMD):
-
-        Settings.ASD.write(bytes(CMD, 'UTF-8'))
+def send_CMD_ALT(CMD):
+    Settings.ASD.write(bytes(CMD, 'UTF-8'))
         
 def disco_run(self):
     Settings.commands_list.clear()
