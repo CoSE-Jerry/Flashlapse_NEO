@@ -22,6 +22,7 @@ class Cycle(QThread):
 
     def __del__(self):
         self._running = False
+        Settings.test_running = False
 
     def run(self):
         
