@@ -73,7 +73,7 @@ def motorSliderChange(self):
     Settings.RPM=self.motorSpeed_slider.sliderPosition()/10
     self.motorSpeed_label.setText("Motor RPM: "+ str(Settings.RPM))
 
-def motorSliderRelease(self)
+def motorSliderRelease(self):
     current_CMD ="6~"+str(int(60/(2.038*Settings.RPM)))+"\n"
     send_CMD_ALT(current_CMD)
     
