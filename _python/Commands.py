@@ -11,7 +11,7 @@ def light_confirm(self):
 
 def light_reset(self):
     current_CMD="0\n"
-    send_CMD(current_CMD)
+    send_CMD(self,current_CMD)
 
     self.R_spinBox.setValue(0)
     self.G_spinBox.setValue(0) 
@@ -22,7 +22,7 @@ def light_reset(self):
     
     Settings.commands_list.clear()
 
-def send_CMD(CMD):
+def send_CMD(self,CMD):
 
     try:
         Settings.ASD.write(bytes(CMD, 'UTF-8'))
@@ -34,7 +34,7 @@ def send_CMD(CMD):
 
 def disco_run(self):
     current_CMD ="2~1\n"
-    send_CMD(current_CMD)
+    send_CMD(self,current_CMD)
 
 '''def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
