@@ -176,6 +176,13 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
     def ISD_Change(self):
         Settings.duration = self.imageDuration_spinBox.value()
         UI_Update.validate_input(self)
+
+    def select_directory(self):
+        m_directory = str(QFileDialog.getExistingDirectory(self, "Select Directory",'/media/pi'))
+        if(len(m_directory)!=0):
+            Settings.full_dir = m_directory +"/"+ Settings.sequence_name
+            self.directory_label.setText(Settings.full_dir)
+        UI_Update.validate_input(self)
         
                 
  # access variables inside of the UI's file
@@ -217,6 +224,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.addDate_pushButton.clicked.connect(lambda: self.add_date())
         self.ImageInterval_spinBox.valueChanged.connect(lambda: self.ICI_Change())
         self.imageDuration_spinBox.valueChanged.connect(lambda: self.ISD_Change())
+        self.directory_pushButton.clicked.connect(lambda: self.select_directory())
         
 
         
@@ -252,10 +260,6 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.Top_Color_Select.activated.connect(lambda: Command.third_color_change_top(self))
         self.LL_Color_Select.activated.connect(lambda: Command.third_color_change_lower_left(self))
         self.LR_Color_Select.activated.connect(lambda: Command.third_color_change_lower_right(self))
-
-        self.R_spinBox.valueChanged.connect(lambda: self.custom_update())
-        self.G_spinBox.valueChanged.connect(lambda: self.custom_update())
-        self.B_spinBox.valueChanged.connect(lambda: self.custom_update())
 
         self.Live_Feed.clicked.connect(lambda: self.Start_Live_Feed())
         self.Inject_Code.clicked.connect(lambda: Command.inject_code(self))'''
