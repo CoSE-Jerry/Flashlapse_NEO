@@ -41,7 +41,7 @@ def clinoStart(slef):
         send_CMD_ALT(current_CMD)
         self.clinostatSet_pushButton.setText("Stop Clinostat")
         
-    else
+    else:
         clino_running = False
         current_CMD = "\n"
         send_CMD_ALT(current_CMD)
