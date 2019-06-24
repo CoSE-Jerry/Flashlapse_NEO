@@ -65,7 +65,7 @@
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="lighting_tab">
      <attribute name="title">
@@ -1025,9 +1025,9 @@
      <widget class="QLabel" name="motorSpeed_label">
       <property name="geometry">
        <rect>
-        <x>450</x>
+        <x>430</x>
         <y>530</y>
-        <width>91</width>
+        <width>121</width>
         <height>31</height>
        </rect>
       </property>
@@ -1040,7 +1040,7 @@
        <rect>
         <x>28</x>
         <y>530</y>
-        <width>401</width>
+        <width>381</width>
         <height>32</height>
        </rect>
       </property>

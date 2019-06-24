@@ -231,11 +231,15 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.setupUi(self) # gets defined in the UI file
         Settings.init()
         
+        
         self.Start_spinBox.valueChanged.connect(lambda: UI_Update.LED_validate(self))
         self.End_spinBox.valueChanged.connect(lambda: UI_Update.LED_validate(self))
 
         self.lightConfirm_pushButton.clicked.connect(lambda: Commands.light_confirm(self))
         self.lightReset_pushButton.clicked.connect(lambda: Commands.light_reset(self))
+        self.disco_pushButton.clicked.connect(lambda: Commands.disco_run(self))
+
+        
 
         '''
 
