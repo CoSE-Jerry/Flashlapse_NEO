@@ -67,6 +67,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         else:
             UI_Update.test_end(self)
             Settings.test_running=False
+        
 
     '''def Start_Snapshot(self):
         try:
@@ -281,6 +282,7 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         self.confirmCycle_pushButton.clicked.connect(lambda: self.start_cycle())
 
         self.schedulerTest_pushButton.clicked.connect(lambda: self.test_run())
+        self.motorSpeed_slider.valueChanged.connect(lambda: Commands.motorSliderChange(self))
         
 
         '''

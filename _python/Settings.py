@@ -42,7 +42,7 @@ def init(self):
     delay_2 = 0
     
     global rpm
-    rpm = 2
+    RPM = 5
 
     
     '''global dropbox_running

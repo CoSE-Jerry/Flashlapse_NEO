@@ -69,6 +69,11 @@ def pulse_run(self):
     Settings.commands_list.append(current_CMD)
     send_CMD(self,current_CMD)
 
+def motorSliderChange(self):
+    Settings.RPM=self.motorSpeed_slider.sliderPosition()/10
+    self.motorSpeed_label.setText("Motor RPM: "+ str(Settings.RPM))
+    
+
 '''def full_color_change(self):
     temp = self.Full_Color_Select.currentIndex()
 
