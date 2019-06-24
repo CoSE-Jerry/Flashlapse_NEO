@@ -168,6 +168,14 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
         Settings.full_dir = Settings.default_dir + "/" + Settings.sequence_name
         self.directory_label.setText(Settings.full_dir)
         self.addDate_pushButton.setEnabled(False)
+
+    def ICI_Change(self):
+        Settings.interval = self.ICI_spinBox.value()
+        UI_Update.validate_input(self)
+                
+    def ISD_Change(self):
+        Settings.duration = self.ISD_spinBox.value()
+        UI_Update.validate_input(self)
         
                 
  # access variables inside of the UI's file
@@ -207,6 +215,8 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
 
         self.imageTitle_lineEdit.textChanged.connect(lambda: self.IST_Edit())
         self.addDate_pushButton.clicked.connect(lambda: self.add_date())
+        self.ImageInterval_spinBox.valueChanged.connect(lambda: self.ICI_Change())
+        self.imageDuration_spinBox.valueChanged.connect(lambda: self.ISD_Change())
         
 
         
