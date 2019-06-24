@@ -171,6 +171,9 @@ class MainWindow(QMainWindow, FlashLapse_UI.Ui_MainWindow):
                 self.Dropbox_Thread = Threads.Dropbox()
                 self.Dropbox_Thread.start()
 
+                self.Email_Thread = Threads.Email()
+                self.Email_Thread.start()
+
             except Exception as e:
                 print(e)
             

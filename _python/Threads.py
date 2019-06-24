@@ -209,29 +209,6 @@ class Dropbox(QThread):
             if not Settings.dropbox_running:
                 break
             
-            
-        
-'''
-class Dropbox(QThread):
-    def __init__(self):
-        QThread.__init__(self)
-        os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh mkdir /MECHSTIM/" + Settings.sequence_name)
-        Settings.dropbox_running = True
-        Settings.file_list.clear
-        
-    def __del__(self):
-        self._running = False
-
-    def run(self):  
-        Settings.link = str(subprocess.check_output("/home/pi/Dropbox-Uploader/dropbox_uploader.sh share /MECHSTIM/" + Settings.sequence_name, shell=True))
-        Settings.link = Settings.link.replace("b' > ", "")
-        Settings.link = Settings.link.split("\\")[0]
-        while Settings.dropbox_running:
-            if (len(Settings.file_list) > 0):
-                os.system("/home/pi/Dropbox-Uploader/dropbox_uploader.sh upload " + Settings.file_list[0] + " /MECHSTIM/"+Settings.sequence_name)
-                os.system("rm " + Settings.file_list[0])
-                del Settings.file_list[0]
-
 class Email(QThread):
     
     def __init__(self):
@@ -248,14 +225,14 @@ class Email(QThread):
         sys.path.insert(0,'../../HP')
         import Email
         body = None
-        fromaddr = "notification_noreply@flashlapseinnovations.com"
+        fromaddr = "notification_noreply@coseinstruments.com"
         toaddr = Settings.email
         msg = MIMEMultipart()
         msg['From'] = fromaddr
         msg['To'] = toaddr
-        msg['Subject'] = "MECHSTIM NOTIFICATION"
+        msg['Subject'] = "COSE FLASHLAPSE NOTIFICATION"
 
-        body = "Hi " + Settings.email.split("@")[0] + "! \n\n" "Your MECHSTIM image sequence " + Settings.sequence_name + " has been initiated, check it out here.\n\n" + Settings.link + "\n\nTeam Flashlapse"       
+        body = "Hi " + Settings.email.split("@")[0] + "! \n\n" "Your Flashlapse image sequence " + Settings.sequence_name + " has been initiated, check it out here.\n\n" + Settings.link + "\n\nCOSE INSTRUMENTS"       
         
         msg.attach(MIMEText(body, 'plain'))
         server = smtplib.SMTP('email-smtp.us-east-1.amazonaws.com', 587)
@@ -265,4 +242,3 @@ class Email(QThread):
         server.login(Email.user, Email.password)
         text = msg.as_string()
         server.sendmail(fromaddr, toaddr, text)
-        Settings.email_running = False'''
