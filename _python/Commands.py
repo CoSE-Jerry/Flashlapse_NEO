@@ -9,7 +9,7 @@ def light_confirm(self):
 
 def light_reset(self):
     current_CMD="0\n"
-    send_CMD()
+    send_CMD(self)
 
     self.R_spinBox.setValue(0)
     self.G_spinBox.setValue(0) 
@@ -21,7 +21,7 @@ def light_reset(self):
     Settings.commands_list.clear()
 
 def send_CMD(self):
-    Settings.ASD.write(bytes(current_CMD, 'UTF-8'))
+    Settings.ASD.write(bytes(Settings.current_CMD, 'UTF-8'))
 
 def disco_run(self):
     current_CMD ="2~1\n"
